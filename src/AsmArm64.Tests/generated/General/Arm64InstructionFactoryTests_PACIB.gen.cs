@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACIB_General
+public class Arm64InstructionFactoryTests_PACIB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_PACIB_General
     [TestMethod]
     public void Test_PACIB_64p_dp_1src_0()
     {
-        
-        {
-            var raw = PACIB(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X0, X2", asm);
-        }
-        
-        {
-            var raw = PACIB(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X15, X2", asm);
-        }
-        
-        {
-            var raw = PACIB(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB XZR, X2", asm);
-        }
-        
-        {
-            var raw = PACIB(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X0, X18", asm);
-        }
-        
-        {
-            var raw = PACIB(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X15, X18", asm);
-        }
-        
-        {
-            var raw = PACIB(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB XZR, X18", asm);
-        }
-        
-        {
-            var raw = PACIB(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X0, SP", asm);
-        }
-        
-        {
-            var raw = PACIB(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB X15, SP", asm);
-        }
-        
-        {
-            var raw = PACIB(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIB XZR, SP", asm);
-        }
+        TestInst(PACIB(X0, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X2");
+        TestInst(PACIB(X15, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X2");
+        TestInst(PACIB(XZR, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X2");
+        TestInst(PACIB(X0, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X18");
+        TestInst(PACIB(X15, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X18");
+        TestInst(PACIB(XZR, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X18");
+        TestInst(PACIB(X0, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, SP");
+        TestInst(PACIB(X15, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, SP");
+        TestInst(PACIB(XZR, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, SP");
     }
 }

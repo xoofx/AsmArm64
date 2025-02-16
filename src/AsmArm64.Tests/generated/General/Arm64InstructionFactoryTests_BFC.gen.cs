@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BFC_General
+public class Arm64InstructionFactoryTests_BFC_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_BFC_General
     [TestMethod]
     public void Test_BFC_bfm_32m_bitfield_0()
     {
-        
-        {
-            var raw = BFC(W0, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC W0, #5, #1", asm);
-        }
-        
-        {
-            var raw = BFC(W15, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC W15, #5, #1", asm);
-        }
-        
-        {
-            var raw = BFC(WZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC WZR, #5, #1", asm);
-        }
+        TestInst(BFC(W0, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W0, #5, #1");
+        TestInst(BFC(W15, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W15, #5, #1");
+        TestInst(BFC(WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC WZR, #5, #1");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_BFC_General
     [TestMethod]
     public void Test_BFC_bfm_64m_bitfield_1()
     {
-        
-        {
-            var raw = BFC(X0, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC X0, #5, #1", asm);
-        }
-        
-        {
-            var raw = BFC(X15, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC X15, #5, #1", asm);
-        }
-        
-        {
-            var raw = BFC(XZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFC XZR, #5, #1", asm);
-        }
+        TestInst(BFC(X0, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X0, #5, #1");
+        TestInst(BFC(X15, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X15, #5, #1");
+        TestInst(BFC(XZR, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC XZR, #5, #1");
     }
 }

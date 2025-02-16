@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_IRG_General
+public class Arm64InstructionFactoryTests_IRG_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,167 +24,23 @@ public class Arm64InstructionFactoryTests_IRG_General
     [TestMethod]
     public void Test_IRG_64i_dp_2src_0()
     {
-        
-        {
-            var raw = IRG(X1, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, X2, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X17, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, X2, X2", asm);
-        }
-        
-        {
-            var raw = IRG(SP, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, X2, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X1, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, X18, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X17, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, X18, X2", asm);
-        }
-        
-        {
-            var raw = IRG(SP, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, X18, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X1, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, SP, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X17, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, SP, X2", asm);
-        }
-        
-        {
-            var raw = IRG(SP, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, SP, X2", asm);
-        }
-        
-        {
-            var raw = IRG(X1, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, X2, X17", asm);
-        }
-        
-        {
-            var raw = IRG(X17, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, X2, X17", asm);
-        }
-        
-        {
-            var raw = IRG(SP, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, X2, X17", asm);
-        }
-        
-        {
-            var raw = IRG(X1, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, X18, X17", asm);
-        }
-        
-        {
-            var raw = IRG(X17, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, X18, X17", asm);
-        }
-        
-        {
-            var raw = IRG(SP, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, X18, X17", asm);
-        }
-        
-        {
-            var raw = IRG(X1, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X1, SP, X17", asm);
-        }
-        
-        {
-            var raw = IRG(X17, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG X17, SP, X17", asm);
-        }
-        
-        {
-            var raw = IRG(SP, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IRG_64i_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IRG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IRG SP, SP, X17", asm);
-        }
+        TestInst(IRG(X1, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X2");
+        TestInst(IRG(X17, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X2");
+        TestInst(IRG(SP, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X2");
+        TestInst(IRG(X1, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X2");
+        TestInst(IRG(X17, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X2");
+        TestInst(IRG(SP, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X2");
+        TestInst(IRG(X1, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X2");
+        TestInst(IRG(X17, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X2");
+        TestInst(IRG(SP, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X2");
+        TestInst(IRG(X1, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X17");
+        TestInst(IRG(X17, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X17");
+        TestInst(IRG(SP, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X17");
+        TestInst(IRG(X1, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X17");
+        TestInst(IRG(X17, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X17");
+        TestInst(IRG(SP, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X17");
+        TestInst(IRG(X1, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X17");
+        TestInst(IRG(X17, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X17");
+        TestInst(IRG(SP, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X17");
     }
 }

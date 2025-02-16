@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CMPP_General
+public class Arm64InstructionFactoryTests_CMPP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CMPP_General
     [TestMethod]
     public void Test_CMPP_subps_64s_dp_2src_0()
     {
-        
-        {
-            var raw = CMPP(X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X1, X2", asm);
-        }
-        
-        {
-            var raw = CMPP(X17, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X17, X2", asm);
-        }
-        
-        {
-            var raw = CMPP(SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP SP, X2", asm);
-        }
-        
-        {
-            var raw = CMPP(X1, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X1, X18", asm);
-        }
-        
-        {
-            var raw = CMPP(X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X17, X18", asm);
-        }
-        
-        {
-            var raw = CMPP(SP, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP SP, X18", asm);
-        }
-        
-        {
-            var raw = CMPP(X1, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X1, SP", asm);
-        }
-        
-        {
-            var raw = CMPP(X17, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP X17, SP", asm);
-        }
-        
-        {
-            var raw = CMPP(SP, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMPP_subps_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMPP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMPP SP, SP", asm);
-        }
+        TestInst(CMPP(X1, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X2");
+        TestInst(CMPP(X17, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X2");
+        TestInst(CMPP(SP, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X2");
+        TestInst(CMPP(X1, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X18");
+        TestInst(CMPP(X17, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X18");
+        TestInst(CMPP(SP, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X18");
+        TestInst(CMPP(X1, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, SP");
+        TestInst(CMPP(X17, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, SP");
+        TestInst(CMPP(SP, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, SP");
     }
 }

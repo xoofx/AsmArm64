@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STEORB_General
+public class Arm64InstructionFactoryTests_STEORB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STEORB_General
     [TestMethod]
     public void Test_STEORB_ldeorb_32_memop_0()
     {
-        
-        {
-            var raw = STEORB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STEORB_ldeorb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STEORB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STEORB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STEORB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STEORB_ldeorb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STEORB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STEORB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STEORB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STEORB_ldeorb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STEORB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STEORB WZR, [X2]", asm);
-        }
+        TestInst(STEORB(W0, _[X2]), Arm64InstructionId.STEORB_ldeorb_32_memop, Arm64Mnemonic.STEORB, "STEORB W0, [X2]");
+        TestInst(STEORB(W15, _[X2]), Arm64InstructionId.STEORB_ldeorb_32_memop, Arm64Mnemonic.STEORB, "STEORB W15, [X2]");
+        TestInst(STEORB(WZR, _[X2]), Arm64InstructionId.STEORB_ldeorb_32_memop, Arm64Mnemonic.STEORB, "STEORB WZR, [X2]");
     }
 }

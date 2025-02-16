@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GCSPUSHM_System
+public class Arm64InstructionFactoryTests_GCSPUSHM_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_GCSPUSHM_System
     [TestMethod]
     public void Test_GCSPUSHM_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = GCSPUSHM(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSPUSHM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSPUSHM X0", asm);
-        }
-        
-        {
-            var raw = GCSPUSHM(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSPUSHM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSPUSHM X15", asm);
-        }
-        
-        {
-            var raw = GCSPUSHM(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSPUSHM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSPUSHM XZR", asm);
-        }
+        TestInst(GCSPUSHM(X0), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X0");
+        TestInst(GCSPUSHM(X15), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X15");
+        TestInst(GCSPUSHM(XZR), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM XZR");
     }
 }

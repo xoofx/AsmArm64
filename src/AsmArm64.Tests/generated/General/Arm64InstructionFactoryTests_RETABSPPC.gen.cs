@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RETABSPPC_General
+public class Arm64InstructionFactoryTests_RETABSPPC_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_RETABSPPC_General
     [TestMethod]
     public void Test_RETABSPPC_only_miscbranch_0()
     {
-        
-        {
-            var raw = RETABSPPC(-32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RETABSPPC_only_miscbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RETABSPPC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RETABSPPC #-32", asm);
-        }
+        TestInst(RETABSPPC(-32), Arm64InstructionId.RETABSPPC_only_miscbranch, Arm64Mnemonic.RETABSPPC, "RETABSPPC #-32");
     }
 }

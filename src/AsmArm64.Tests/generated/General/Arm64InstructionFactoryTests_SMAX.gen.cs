@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SMAX_General
+public class Arm64InstructionFactoryTests_SMAX_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_SMAX_General
     [TestMethod]
     public void Test_SMAX_32_minmax_imm_0()
     {
-        
-        {
-            var raw = SMAX(W0, W1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, WZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, WZR, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, WZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, WZR, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, WZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, WZR, #5", asm);
-        }
+        TestInst(SMAX(W0, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W1, #5");
+        TestInst(SMAX(W15, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W1, #5");
+        TestInst(SMAX(WZR, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W1, #5");
+        TestInst(SMAX(W0, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W16, #5");
+        TestInst(SMAX(W15, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W16, #5");
+        TestInst(SMAX(WZR, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W16, #5");
+        TestInst(SMAX(W0, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, WZR, #5");
+        TestInst(SMAX(W15, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, WZR, #5");
+        TestInst(SMAX(WZR, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, #5");
     }
     
     /// <summary>
@@ -113,87 +41,15 @@ public class Arm64InstructionFactoryTests_SMAX_General
     [TestMethod]
     public void Test_SMAX_64_minmax_imm_1()
     {
-        
-        {
-            var raw = SMAX(X0, X1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X1, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X1, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X16, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X16, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, XZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, XZR, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, XZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, XZR, #5", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, XZR, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_minmax_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, XZR, #5", asm);
-        }
+        TestInst(SMAX(X0, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X1, #5");
+        TestInst(SMAX(X15, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X1, #5");
+        TestInst(SMAX(XZR, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X1, #5");
+        TestInst(SMAX(X0, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X16, #5");
+        TestInst(SMAX(X15, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X16, #5");
+        TestInst(SMAX(XZR, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X16, #5");
+        TestInst(SMAX(X0, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, XZR, #5");
+        TestInst(SMAX(X15, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, XZR, #5");
+        TestInst(SMAX(XZR, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, #5");
     }
     
     /// <summary>
@@ -202,249 +58,33 @@ public class Arm64InstructionFactoryTests_SMAX_General
     [TestMethod]
     public void Test_SMAX_32_dp_2src_2()
     {
-        
-        {
-            var raw = SMAX(W0, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(W0, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W0, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(W15, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX W15, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SMAX(WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX WZR, WZR, WZR", asm);
-        }
+        TestInst(SMAX(W0, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W2");
+        TestInst(SMAX(W15, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W2");
+        TestInst(SMAX(WZR, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W2");
+        TestInst(SMAX(W0, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W2");
+        TestInst(SMAX(W15, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W2");
+        TestInst(SMAX(WZR, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W2");
+        TestInst(SMAX(W0, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W2");
+        TestInst(SMAX(W15, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W2");
+        TestInst(SMAX(WZR, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W2");
+        TestInst(SMAX(W0, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W17");
+        TestInst(SMAX(W15, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W17");
+        TestInst(SMAX(WZR, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W17");
+        TestInst(SMAX(W0, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W17");
+        TestInst(SMAX(W15, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W17");
+        TestInst(SMAX(WZR, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W17");
+        TestInst(SMAX(W0, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W17");
+        TestInst(SMAX(W15, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W17");
+        TestInst(SMAX(WZR, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W17");
+        TestInst(SMAX(W0, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, WZR");
+        TestInst(SMAX(W15, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, WZR");
+        TestInst(SMAX(WZR, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, WZR");
+        TestInst(SMAX(W0, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, WZR");
+        TestInst(SMAX(W15, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, WZR");
+        TestInst(SMAX(WZR, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, WZR");
+        TestInst(SMAX(W0, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, WZR");
+        TestInst(SMAX(W15, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, WZR");
+        TestInst(SMAX(WZR, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -453,248 +93,32 @@ public class Arm64InstructionFactoryTests_SMAX_General
     [TestMethod]
     public void Test_SMAX_64_dp_2src_3()
     {
-        
-        {
-            var raw = SMAX(X0, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(X0, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X0, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(X15, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX X15, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SMAX(XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMAX_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMAX XZR, XZR, XZR", asm);
-        }
+        TestInst(SMAX(X0, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X2");
+        TestInst(SMAX(X15, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X2");
+        TestInst(SMAX(XZR, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X2");
+        TestInst(SMAX(X0, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X2");
+        TestInst(SMAX(X15, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X2");
+        TestInst(SMAX(XZR, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X2");
+        TestInst(SMAX(X0, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X2");
+        TestInst(SMAX(X15, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X2");
+        TestInst(SMAX(XZR, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X2");
+        TestInst(SMAX(X0, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X17");
+        TestInst(SMAX(X15, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X17");
+        TestInst(SMAX(XZR, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X17");
+        TestInst(SMAX(X0, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X17");
+        TestInst(SMAX(X15, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X17");
+        TestInst(SMAX(XZR, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X17");
+        TestInst(SMAX(X0, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X17");
+        TestInst(SMAX(X15, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X17");
+        TestInst(SMAX(XZR, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X17");
+        TestInst(SMAX(X0, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, XZR");
+        TestInst(SMAX(X15, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, XZR");
+        TestInst(SMAX(XZR, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, XZR");
+        TestInst(SMAX(X0, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, XZR");
+        TestInst(SMAX(X15, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, XZR");
+        TestInst(SMAX(XZR, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, XZR");
+        TestInst(SMAX(X0, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, XZR");
+        TestInst(SMAX(X15, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, XZR");
+        TestInst(SMAX(XZR, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, XZR");
     }
 }

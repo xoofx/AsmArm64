@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAXP_General
+public class Arm64InstructionFactoryTests_LDAXP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_LDAXP_General
     [TestMethod]
     public void Test_LDAXP_lp32_ldstexclp_0()
     {
-        
-        {
-            var raw = LDAXP(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp32_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP WZR, WZR, [X3]", asm);
-        }
+        TestInst(LDAXP(W0, W1, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W0, W1, [X3]");
+        TestInst(LDAXP(W15, W1, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W15, W1, [X3]");
+        TestInst(LDAXP(WZR, W1, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP WZR, W1, [X3]");
+        TestInst(LDAXP(W0, W16, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W0, W16, [X3]");
+        TestInst(LDAXP(W15, W16, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W15, W16, [X3]");
+        TestInst(LDAXP(WZR, W16, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP WZR, W16, [X3]");
+        TestInst(LDAXP(W0, WZR, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W0, WZR, [X3]");
+        TestInst(LDAXP(W15, WZR, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP W15, WZR, [X3]");
+        TestInst(LDAXP(WZR, WZR, _[X3]), Arm64InstructionId.LDAXP_lp32_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_LDAXP_General
     [TestMethod]
     public void Test_LDAXP_lp64_ldstexclp_1()
     {
-        
-        {
-            var raw = LDAXP(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDAXP(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAXP_lp64_ldstexclp, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAXP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAXP XZR, XZR, [X3]", asm);
-        }
+        TestInst(LDAXP(X0, X1, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X0, X1, [X3]");
+        TestInst(LDAXP(X15, X1, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X15, X1, [X3]");
+        TestInst(LDAXP(XZR, X1, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP XZR, X1, [X3]");
+        TestInst(LDAXP(X0, X16, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X0, X16, [X3]");
+        TestInst(LDAXP(X15, X16, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X15, X16, [X3]");
+        TestInst(LDAXP(XZR, X16, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP XZR, X16, [X3]");
+        TestInst(LDAXP(X0, XZR, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X0, XZR, [X3]");
+        TestInst(LDAXP(X15, XZR, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP X15, XZR, [X3]");
+        TestInst(LDAXP(XZR, XZR, _[X3]), Arm64InstructionId.LDAXP_lp64_ldstexclp, Arm64Mnemonic.LDAXP, "LDAXP XZR, XZR, [X3]");
     }
 }

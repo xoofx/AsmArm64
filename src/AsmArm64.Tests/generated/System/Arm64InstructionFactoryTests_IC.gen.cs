@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_IC_System
+public class Arm64InstructionFactoryTests_IC_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_IC_System
     [TestMethod]
     public void Test_IC_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = IC(IALLU, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IC_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IC iallu, X1", asm);
-        }
-        
-        {
-            var raw = IC(IALLU, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.IC_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.IC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("IC iallu, X16", asm);
-        }
+        TestInst(IC(IALLU, X1), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X1");
+        TestInst(IC(IALLU, X16), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X16");
     }
 }

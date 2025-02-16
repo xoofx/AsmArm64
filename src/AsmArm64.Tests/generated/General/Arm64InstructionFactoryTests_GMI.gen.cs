@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GMI_General
+public class Arm64InstructionFactoryTests_GMI_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,248 +24,32 @@ public class Arm64InstructionFactoryTests_GMI_General
     [TestMethod]
     public void Test_GMI_64g_dp_2src_0()
     {
-        
-        {
-            var raw = GMI(X0, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X2, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X2, X2", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X2, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X2, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X0, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X18, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X18, X2", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X18, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X18, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X0, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, SP, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X15, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, SP, X2", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, SP, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, SP, X2", asm);
-        }
-        
-        {
-            var raw = GMI(X0, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X2, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X2, X17", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X2, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X2, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X0, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X18, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X18, X17", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X18, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X18, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X0, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, SP, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X15, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, SP, X17", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, SP, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, SP, X17", asm);
-        }
-        
-        {
-            var raw = GMI(X0, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X2, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X2, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X2, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(X0, X18, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, X18, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(X15, X18, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, X18, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, X18, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, X18, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(X0, SP, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X0, SP, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(X15, SP, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI X15, SP, XZR", asm);
-        }
-        
-        {
-            var raw = GMI(XZR, SP, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GMI_64g_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GMI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GMI XZR, SP, XZR", asm);
-        }
+        TestInst(GMI(X0, X2, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X2, X2");
+        TestInst(GMI(X15, X2, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X2, X2");
+        TestInst(GMI(XZR, X2, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X2, X2");
+        TestInst(GMI(X0, X18, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X18, X2");
+        TestInst(GMI(X15, X18, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X18, X2");
+        TestInst(GMI(XZR, X18, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X18, X2");
+        TestInst(GMI(X0, SP, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, SP, X2");
+        TestInst(GMI(X15, SP, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, SP, X2");
+        TestInst(GMI(XZR, SP, X2), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, SP, X2");
+        TestInst(GMI(X0, X2, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X2, X17");
+        TestInst(GMI(X15, X2, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X2, X17");
+        TestInst(GMI(XZR, X2, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X2, X17");
+        TestInst(GMI(X0, X18, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X18, X17");
+        TestInst(GMI(X15, X18, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X18, X17");
+        TestInst(GMI(XZR, X18, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X18, X17");
+        TestInst(GMI(X0, SP, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, SP, X17");
+        TestInst(GMI(X15, SP, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, SP, X17");
+        TestInst(GMI(XZR, SP, X17), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, SP, X17");
+        TestInst(GMI(X0, X2, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X2, XZR");
+        TestInst(GMI(X15, X2, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X2, XZR");
+        TestInst(GMI(XZR, X2, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X2, XZR");
+        TestInst(GMI(X0, X18, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, X18, XZR");
+        TestInst(GMI(X15, X18, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, X18, XZR");
+        TestInst(GMI(XZR, X18, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, X18, XZR");
+        TestInst(GMI(X0, SP, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X0, SP, XZR");
+        TestInst(GMI(X15, SP, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI X15, SP, XZR");
+        TestInst(GMI(XZR, SP, XZR), Arm64InstructionId.GMI_64g_dp_2src, Arm64Mnemonic.GMI, "GMI XZR, SP, XZR");
     }
 }

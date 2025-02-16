@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACDB_General
+public class Arm64InstructionFactoryTests_PACDB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_PACDB_General
     [TestMethod]
     public void Test_PACDB_64p_dp_1src_0()
     {
-        
-        {
-            var raw = PACDB(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X0, X2", asm);
-        }
-        
-        {
-            var raw = PACDB(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X15, X2", asm);
-        }
-        
-        {
-            var raw = PACDB(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB XZR, X2", asm);
-        }
-        
-        {
-            var raw = PACDB(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X0, X18", asm);
-        }
-        
-        {
-            var raw = PACDB(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X15, X18", asm);
-        }
-        
-        {
-            var raw = PACDB(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB XZR, X18", asm);
-        }
-        
-        {
-            var raw = PACDB(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X0, SP", asm);
-        }
-        
-        {
-            var raw = PACDB(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB X15, SP", asm);
-        }
-        
-        {
-            var raw = PACDB(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDB XZR, SP", asm);
-        }
+        TestInst(PACDB(X0, X2), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X0, X2");
+        TestInst(PACDB(X15, X2), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X15, X2");
+        TestInst(PACDB(XZR, X2), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB XZR, X2");
+        TestInst(PACDB(X0, X18), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X0, X18");
+        TestInst(PACDB(X15, X18), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X15, X18");
+        TestInst(PACDB(XZR, X18), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB XZR, X18");
+        TestInst(PACDB(X0, SP), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X0, SP");
+        TestInst(PACDB(X15, SP), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB X15, SP");
+        TestInst(PACDB(XZR, SP), Arm64InstructionId.PACDB_64p_dp_1src, Arm64Mnemonic.PACDB, "PACDB XZR, SP");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CLS_Advsimd
+public class Arm64InstructionFactoryTests_CLS_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_0()
     {
-        
-        {
-            var raw = CLS(V0.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.8B, V31.8B", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.8B, V31.8B", asm);
-        }
+        TestInst(CLS(V0.T_8B, V1.T_8B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.8B, V1.8B");
+        TestInst(CLS(V30.T_8B, V1.T_8B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.8B, V1.8B");
+        TestInst(CLS(V0.T_8B, V31.T_8B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.8B, V31.8B");
+        TestInst(CLS(V30.T_8B, V31.T_8B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_1()
     {
-        
-        {
-            var raw = CLS(V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.16B, V31.16B", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.16B, V31.16B", asm);
-        }
+        TestInst(CLS(V0.T_16B, V1.T_16B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.16B, V1.16B");
+        TestInst(CLS(V30.T_16B, V1.T_16B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.16B, V1.16B");
+        TestInst(CLS(V0.T_16B, V31.T_16B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.16B, V31.16B");
+        TestInst(CLS(V30.T_16B, V31.T_16B), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.16B, V31.16B");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_2()
     {
-        
-        {
-            var raw = CLS(V0.T_4H, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.4H, V1.4H", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_4H, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.4H, V1.4H", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_4H, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.4H, V31.4H", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_4H, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.4H, V31.4H", asm);
-        }
+        TestInst(CLS(V0.T_4H, V1.T_4H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.4H, V1.4H");
+        TestInst(CLS(V30.T_4H, V1.T_4H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.4H, V1.4H");
+        TestInst(CLS(V0.T_4H, V31.T_4H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.4H, V31.4H");
+        TestInst(CLS(V30.T_4H, V31.T_4H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.4H, V31.4H");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_3()
     {
-        
-        {
-            var raw = CLS(V0.T_8H, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.8H, V1.8H", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_8H, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.8H, V1.8H", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_8H, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.8H, V31.8H", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_8H, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.8H, V31.8H", asm);
-        }
+        TestInst(CLS(V0.T_8H, V1.T_8H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.8H, V1.8H");
+        TestInst(CLS(V30.T_8H, V1.T_8H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.8H, V1.8H");
+        TestInst(CLS(V0.T_8H, V31.T_8H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.8H, V31.8H");
+        TestInst(CLS(V30.T_8H, V31.T_8H), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.8H, V31.8H");
     }
     
     /// <summary>
@@ -200,42 +72,10 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_4()
     {
-        
-        {
-            var raw = CLS(V0.T_2S, V1.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.2S, V1.2S", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_2S, V1.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.2S, V1.2S", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_2S, V31.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.2S, V31.2S", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_2S, V31.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.2S, V31.2S", asm);
-        }
+        TestInst(CLS(V0.T_2S, V1.T_2S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.2S, V1.2S");
+        TestInst(CLS(V30.T_2S, V1.T_2S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.2S, V1.2S");
+        TestInst(CLS(V0.T_2S, V31.T_2S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.2S, V31.2S");
+        TestInst(CLS(V30.T_2S, V31.T_2S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -244,41 +84,9 @@ public class Arm64InstructionFactoryTests_CLS_Advsimd
     [TestMethod]
     public void Test_CLS_asimdmisc_r_5()
     {
-        
-        {
-            var raw = CLS(V0.T_4S, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.4S, V1.4S", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_4S, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.4S, V1.4S", asm);
-        }
-        
-        {
-            var raw = CLS(V0.T_4S, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V0.4S, V31.4S", asm);
-        }
-        
-        {
-            var raw = CLS(V30.T_4S, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLS_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLS V30.4S, V31.4S", asm);
-        }
+        TestInst(CLS(V0.T_4S, V1.T_4S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.4S, V1.4S");
+        TestInst(CLS(V30.T_4S, V1.T_4S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.4S, V1.4S");
+        TestInst(CLS(V0.T_4S, V31.T_4S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V0.4S, V31.4S");
+        TestInst(CLS(V30.T_4S, V31.T_4S), Arm64InstructionId.CLS_asimdmisc_r, Arm64Mnemonic.CLS, "CLS V30.4S, V31.4S");
     }
 }

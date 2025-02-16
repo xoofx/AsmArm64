@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_NEGS_General
+public class Arm64InstructionFactoryTests_NEGS_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,330 +24,42 @@ public class Arm64InstructionFactoryTests_NEGS_General
     [TestMethod]
     public void Test_NEGS_subs_32_addsub_shift_0()
     {
-        
-        {
-            var raw = NEGS(W0, W1, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W1", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W1, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W1", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W1, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W1", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W16, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W16", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W16, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W16", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W16, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W16", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, WZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, WZR", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, WZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, WZR", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, WZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, WZR", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W1, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W1, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W1, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W1, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W1, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W1, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W16, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W16, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W16, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W16, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W16, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W16, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, WZR, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, WZR, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, WZR, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, WZR, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, WZR, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, WZR, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W1, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W1, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W1, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W1, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W1, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W1, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W16, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W16, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W16, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W16, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W16, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W16, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, WZR, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, WZR, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, WZR, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, WZR, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, WZR, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, WZR, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W1, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W1, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W1, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W1, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W1, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W1, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, W16, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, W16, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, W16, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, W16, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, W16, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, W16, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(W0, WZR, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W0, WZR, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(W15, WZR, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS W15, WZR, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(WZR, WZR, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CMP WZR, WZR, ASR #12", asm);
-        }
+        TestInst(NEGS(W0, W1, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W1");
+        TestInst(NEGS(W15, W1, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W1");
+        TestInst(NEGS(WZR, W1, _LSL, 0), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W1");
+        TestInst(NEGS(W0, W16, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W16");
+        TestInst(NEGS(W15, W16, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W16");
+        TestInst(NEGS(WZR, W16, _LSL, 0), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W16");
+        TestInst(NEGS(W0, WZR, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, WZR");
+        TestInst(NEGS(W15, WZR, _LSL, 0), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, WZR");
+        TestInst(NEGS(WZR, WZR, _LSL, 0), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, WZR");
+        TestInst(NEGS(W0, W1, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W1, LSL #1");
+        TestInst(NEGS(W15, W1, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W1, LSL #1");
+        TestInst(NEGS(WZR, W1, _LSL, 1), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W1, LSL #1");
+        TestInst(NEGS(W0, W16, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W16, LSL #1");
+        TestInst(NEGS(W15, W16, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W16, LSL #1");
+        TestInst(NEGS(WZR, W16, _LSL, 1), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W16, LSL #1");
+        TestInst(NEGS(W0, WZR, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, WZR, LSL #1");
+        TestInst(NEGS(W15, WZR, _LSL, 1), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, WZR, LSL #1");
+        TestInst(NEGS(WZR, WZR, _LSL, 1), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, WZR, LSL #1");
+        TestInst(NEGS(W0, W1, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W1, LSR #10");
+        TestInst(NEGS(W15, W1, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W1, LSR #10");
+        TestInst(NEGS(WZR, W1, _LSR, 10), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W1, LSR #10");
+        TestInst(NEGS(W0, W16, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W16, LSR #10");
+        TestInst(NEGS(W15, W16, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W16, LSR #10");
+        TestInst(NEGS(WZR, W16, _LSR, 10), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W16, LSR #10");
+        TestInst(NEGS(W0, WZR, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, WZR, LSR #10");
+        TestInst(NEGS(W15, WZR, _LSR, 10), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, WZR, LSR #10");
+        TestInst(NEGS(WZR, WZR, _LSR, 10), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, WZR, LSR #10");
+        TestInst(NEGS(W0, W1, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W1, ASR #12");
+        TestInst(NEGS(W15, W1, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W1, ASR #12");
+        TestInst(NEGS(WZR, W1, _ASR, 12), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W1, ASR #12");
+        TestInst(NEGS(W0, W16, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, W16, ASR #12");
+        TestInst(NEGS(W15, W16, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, W16, ASR #12");
+        TestInst(NEGS(WZR, W16, _ASR, 12), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, W16, ASR #12");
+        TestInst(NEGS(W0, WZR, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W0, WZR, ASR #12");
+        TestInst(NEGS(W15, WZR, _ASR, 12), Arm64InstructionId.NEGS_subs_32_addsub_shift, Arm64Mnemonic.NEGS, "NEGS W15, WZR, ASR #12");
+        TestInst(NEGS(WZR, WZR, _ASR, 12), Arm64InstructionId.CMP_subs_32_addsub_shift, Arm64Mnemonic.CMP, "CMP WZR, WZR, ASR #12");
     }
     
     /// <summary>
@@ -356,221 +68,29 @@ public class Arm64InstructionFactoryTests_NEGS_General
     [TestMethod]
     public void Test_NEGS_subs_64_addsub_shift_1()
     {
-        
-        {
-            var raw = NEGS(X0, X1, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X1", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X1, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X1", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X16, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X16", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X16, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X16", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, XZR", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, XZR", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X1, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X1, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X1, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X1, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X16, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X16, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X16, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X16, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, XZR, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, XZR, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, XZR, _LSL, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, XZR, LSL #1", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X1, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X1, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X1, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X1, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X16, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X16, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X16, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X16, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, XZR, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, XZR, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, XZR, _LSR, 10);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, XZR, LSR #10", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X1, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X1, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X1, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X1, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, X16, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, X16, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, X16, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, X16, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(X0, XZR, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X0, XZR, ASR #12", asm);
-        }
-        
-        {
-            var raw = NEGS(X15, XZR, _ASR, 12);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_64_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS X15, XZR, ASR #12", asm);
-        }
+        TestInst(NEGS(X0, X1, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X1");
+        TestInst(NEGS(X15, X1, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X1");
+        TestInst(NEGS(X0, X16, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X16");
+        TestInst(NEGS(X15, X16, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X16");
+        TestInst(NEGS(X0, XZR, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, XZR");
+        TestInst(NEGS(X15, XZR, _LSL, 0), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, XZR");
+        TestInst(NEGS(X0, X1, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X1, LSL #1");
+        TestInst(NEGS(X15, X1, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X1, LSL #1");
+        TestInst(NEGS(X0, X16, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X16, LSL #1");
+        TestInst(NEGS(X15, X16, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X16, LSL #1");
+        TestInst(NEGS(X0, XZR, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, XZR, LSL #1");
+        TestInst(NEGS(X15, XZR, _LSL, 1), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, XZR, LSL #1");
+        TestInst(NEGS(X0, X1, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X1, LSR #10");
+        TestInst(NEGS(X15, X1, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X1, LSR #10");
+        TestInst(NEGS(X0, X16, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X16, LSR #10");
+        TestInst(NEGS(X15, X16, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X16, LSR #10");
+        TestInst(NEGS(X0, XZR, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, XZR, LSR #10");
+        TestInst(NEGS(X15, XZR, _LSR, 10), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, XZR, LSR #10");
+        TestInst(NEGS(X0, X1, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X1, ASR #12");
+        TestInst(NEGS(X15, X1, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X1, ASR #12");
+        TestInst(NEGS(X0, X16, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, X16, ASR #12");
+        TestInst(NEGS(X15, X16, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, X16, ASR #12");
+        TestInst(NEGS(X0, XZR, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X0, XZR, ASR #12");
+        TestInst(NEGS(X15, XZR, _ASR, 12), Arm64InstructionId.NEGS_subs_64_addsub_shift, Arm64Mnemonic.NEGS, "NEGS X15, XZR, ASR #12");
     }
 }

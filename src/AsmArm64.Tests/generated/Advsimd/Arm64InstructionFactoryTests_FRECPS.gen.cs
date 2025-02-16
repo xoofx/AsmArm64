@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FRECPS_Advsimd
+public class Arm64InstructionFactoryTests_FRECPS_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asisdsamefp16_only_0()
     {
-        
-        {
-            var raw = FRECPS(H0, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H0, H1, H2", asm);
-        }
-        
-        {
-            var raw = FRECPS(H31, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H31, H1, H2", asm);
-        }
-        
-        {
-            var raw = FRECPS(H0, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H0, H31, H2", asm);
-        }
-        
-        {
-            var raw = FRECPS(H31, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H31, H31, H2", asm);
-        }
-        
-        {
-            var raw = FRECPS(H0, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H0, H1, H31", asm);
-        }
-        
-        {
-            var raw = FRECPS(H31, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H31, H1, H31", asm);
-        }
-        
-        {
-            var raw = FRECPS(H0, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H0, H31, H31", asm);
-        }
-        
-        {
-            var raw = FRECPS(H31, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS H31, H31, H31", asm);
-        }
+        TestInst(FRECPS(H0, H1, H2), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H0, H1, H2");
+        TestInst(FRECPS(H31, H1, H2), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H31, H1, H2");
+        TestInst(FRECPS(H0, H31, H2), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H0, H31, H2");
+        TestInst(FRECPS(H31, H31, H2), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H31, H31, H2");
+        TestInst(FRECPS(H0, H1, H31), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H0, H1, H31");
+        TestInst(FRECPS(H31, H1, H31), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H31, H1, H31");
+        TestInst(FRECPS(H0, H31, H31), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H0, H31, H31");
+        TestInst(FRECPS(H31, H31, H31), Arm64InstructionId.FRECPS_asisdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS H31, H31, H31");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asisdsame_only_1()
     {
-        
-        {
-            var raw = FRECPS(S1, S2, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S1, S2, S3", asm);
-        }
-        
-        {
-            var raw = FRECPS(S31, S2, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S31, S2, S3", asm);
-        }
-        
-        {
-            var raw = FRECPS(S1, S0, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S1, S0, S3", asm);
-        }
-        
-        {
-            var raw = FRECPS(S31, S0, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S31, S0, S3", asm);
-        }
-        
-        {
-            var raw = FRECPS(S1, S2, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S1, S2, S1", asm);
-        }
-        
-        {
-            var raw = FRECPS(S31, S2, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S31, S2, S1", asm);
-        }
-        
-        {
-            var raw = FRECPS(S1, S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S1, S0, S1", asm);
-        }
-        
-        {
-            var raw = FRECPS(S31, S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS S31, S0, S1", asm);
-        }
+        TestInst(FRECPS(S1, S2, S3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S1, S2, S3");
+        TestInst(FRECPS(S31, S2, S3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S31, S2, S3");
+        TestInst(FRECPS(S1, S0, S3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S1, S0, S3");
+        TestInst(FRECPS(S31, S0, S3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S31, S0, S3");
+        TestInst(FRECPS(S1, S2, S1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S1, S2, S1");
+        TestInst(FRECPS(S31, S2, S1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S31, S2, S1");
+        TestInst(FRECPS(S1, S0, S1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S1, S0, S1");
+        TestInst(FRECPS(S31, S0, S1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS S31, S0, S1");
     }
     
     /// <summary>
@@ -184,78 +56,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asisdsame_only_2()
     {
-        
-        {
-            var raw = FRECPS(D1, D2, D3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D1, D2, D3", asm);
-        }
-        
-        {
-            var raw = FRECPS(D31, D2, D3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D31, D2, D3", asm);
-        }
-        
-        {
-            var raw = FRECPS(D1, D0, D3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D1, D0, D3", asm);
-        }
-        
-        {
-            var raw = FRECPS(D31, D0, D3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D31, D0, D3", asm);
-        }
-        
-        {
-            var raw = FRECPS(D1, D2, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D1, D2, D1", asm);
-        }
-        
-        {
-            var raw = FRECPS(D31, D2, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D31, D2, D1", asm);
-        }
-        
-        {
-            var raw = FRECPS(D1, D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D1, D0, D1", asm);
-        }
-        
-        {
-            var raw = FRECPS(D31, D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS D31, D0, D1", asm);
-        }
+        TestInst(FRECPS(D1, D2, D3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D1, D2, D3");
+        TestInst(FRECPS(D31, D2, D3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D31, D2, D3");
+        TestInst(FRECPS(D1, D0, D3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D1, D0, D3");
+        TestInst(FRECPS(D31, D0, D3), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D31, D0, D3");
+        TestInst(FRECPS(D1, D2, D1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D1, D2, D1");
+        TestInst(FRECPS(D31, D2, D1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D31, D2, D1");
+        TestInst(FRECPS(D1, D0, D1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D1, D0, D1");
+        TestInst(FRECPS(D31, D0, D1), Arm64InstructionId.FRECPS_asisdsame_only, Arm64Mnemonic.FRECPS, "FRECPS D31, D0, D1");
     }
     
     /// <summary>
@@ -264,78 +72,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asimdsamefp16_only_3()
     {
-        
-        {
-            var raw = FRECPS(V0.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4H, V31.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4H, V31.4H, V0.4H", asm);
-        }
+        TestInst(FRECPS(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4H, V1.4H, V2.4H");
+        TestInst(FRECPS(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4H, V1.4H, V2.4H");
+        TestInst(FRECPS(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4H, V31.4H, V2.4H");
+        TestInst(FRECPS(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4H, V31.4H, V2.4H");
+        TestInst(FRECPS(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4H, V1.4H, V0.4H");
+        TestInst(FRECPS(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4H, V1.4H, V0.4H");
+        TestInst(FRECPS(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4H, V31.4H, V0.4H");
+        TestInst(FRECPS(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -344,78 +88,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asimdsamefp16_only_4()
     {
-        
-        {
-            var raw = FRECPS(V0.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.8H, V31.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.8H, V31.8H, V0.8H", asm);
-        }
+        TestInst(FRECPS(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.8H, V1.8H, V2.8H");
+        TestInst(FRECPS(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.8H, V1.8H, V2.8H");
+        TestInst(FRECPS(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.8H, V31.8H, V2.8H");
+        TestInst(FRECPS(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.8H, V31.8H, V2.8H");
+        TestInst(FRECPS(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.8H, V1.8H, V0.8H");
+        TestInst(FRECPS(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.8H, V1.8H, V0.8H");
+        TestInst(FRECPS(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V0.8H, V31.8H, V0.8H");
+        TestInst(FRECPS(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FRECPS_asimdsamefp16_only, Arm64Mnemonic.FRECPS, "FRECPS V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -424,78 +104,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asimdsame_only_5()
     {
-        
-        {
-            var raw = FRECPS(V0.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2S, V31.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2S, V31.2S, V0.2S", asm);
-        }
+        TestInst(FRECPS(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2S, V1.2S, V2.2S");
+        TestInst(FRECPS(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2S, V1.2S, V2.2S");
+        TestInst(FRECPS(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2S, V31.2S, V2.2S");
+        TestInst(FRECPS(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2S, V31.2S, V2.2S");
+        TestInst(FRECPS(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2S, V1.2S, V0.2S");
+        TestInst(FRECPS(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2S, V1.2S, V0.2S");
+        TestInst(FRECPS(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2S, V31.2S, V0.2S");
+        TestInst(FRECPS(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -504,78 +120,14 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asimdsame_only_6()
     {
-        
-        {
-            var raw = FRECPS(V0.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.4S, V31.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.4S, V31.4S, V0.4S", asm);
-        }
+        TestInst(FRECPS(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4S, V1.4S, V2.4S");
+        TestInst(FRECPS(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4S, V1.4S, V2.4S");
+        TestInst(FRECPS(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4S, V31.4S, V2.4S");
+        TestInst(FRECPS(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4S, V31.4S, V2.4S");
+        TestInst(FRECPS(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4S, V1.4S, V0.4S");
+        TestInst(FRECPS(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4S, V1.4S, V0.4S");
+        TestInst(FRECPS(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.4S, V31.4S, V0.4S");
+        TestInst(FRECPS(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -584,77 +136,13 @@ public class Arm64InstructionFactoryTests_FRECPS_Advsimd
     [TestMethod]
     public void Test_FRECPS_asimdsame_only_7()
     {
-        
-        {
-            var raw = FRECPS(V0.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V0.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V0.2D, V31.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FRECPS(V30.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPS V30.2D, V31.2D, V0.2D", asm);
-        }
+        TestInst(FRECPS(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2D, V1.2D, V2.2D");
+        TestInst(FRECPS(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2D, V1.2D, V2.2D");
+        TestInst(FRECPS(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2D, V31.2D, V2.2D");
+        TestInst(FRECPS(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2D, V31.2D, V2.2D");
+        TestInst(FRECPS(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2D, V1.2D, V0.2D");
+        TestInst(FRECPS(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2D, V1.2D, V0.2D");
+        TestInst(FRECPS(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V0.2D, V31.2D, V0.2D");
+        TestInst(FRECPS(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FRECPS_asimdsame_only, Arm64Mnemonic.FRECPS, "FRECPS V30.2D, V31.2D, V0.2D");
     }
 }

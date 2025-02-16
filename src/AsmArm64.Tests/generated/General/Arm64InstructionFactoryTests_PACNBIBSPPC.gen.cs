@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACNBIBSPPC_General
+public class Arm64InstructionFactoryTests_PACNBIBSPPC_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_PACNBIBSPPC_General
     [TestMethod]
     public void Test_PACNBIBSPPC_64lr_dp_1src_0()
     {
-        
-        {
-            var raw = PACNBIBSPPC();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACNBIBSPPC_64lr_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACNBIBSPPC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACNBIBSPPC", asm);
-        }
+        TestInst(PACNBIBSPPC(), Arm64InstructionId.PACNBIBSPPC_64lr_dp_1src, Arm64Mnemonic.PACNBIBSPPC, "PACNBIBSPPC");
     }
 }

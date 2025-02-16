@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SSHLL_Advsimd
+public class Arm64InstructionFactoryTests_SSHLL_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_SSHLL_Advsimd
     [TestMethod]
     public void Test_SSHLL_asimdshf_l_0()
     {
-        
-        {
-            var raw = SSHLL(V0.T_8H, V1.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.8H, V1.8B, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_8H, V1.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.8H, V1.8B, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V0.T_8H, V31.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.8H, V31.8B, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_8H, V31.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.8H, V31.8B, #5", asm);
-        }
+        TestInst(SSHLL(V0.T_8H, V1.T_8B, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.8H, V1.8B, #5");
+        TestInst(SSHLL(V30.T_8H, V1.T_8B, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.8H, V1.8B, #5");
+        TestInst(SSHLL(V0.T_8H, V31.T_8B, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.8H, V31.8B, #5");
+        TestInst(SSHLL(V30.T_8H, V31.T_8B, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.8H, V31.8B, #5");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_SSHLL_Advsimd
     [TestMethod]
     public void Test_SSHLL_asimdshf_l_1()
     {
-        
-        {
-            var raw = SSHLL(V0.T_4S, V1.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.4S, V1.4H, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_4S, V1.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.4S, V1.4H, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V0.T_4S, V31.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.4S, V31.4H, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_4S, V31.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.4S, V31.4H, #5", asm);
-        }
+        TestInst(SSHLL(V0.T_4S, V1.T_4H, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.4S, V1.4H, #5");
+        TestInst(SSHLL(V30.T_4S, V1.T_4H, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.4S, V1.4H, #5");
+        TestInst(SSHLL(V0.T_4S, V31.T_4H, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.4S, V31.4H, #5");
+        TestInst(SSHLL(V30.T_4S, V31.T_4H, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.4S, V31.4H, #5");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_SSHLL_Advsimd
     [TestMethod]
     public void Test_SSHLL_asimdshf_l_2()
     {
-        
-        {
-            var raw = SSHLL(V0.T_2D, V1.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.2D, V1.2S, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_2D, V1.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.2D, V1.2S, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V0.T_2D, V31.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V0.2D, V31.2S, #5", asm);
-        }
-        
-        {
-            var raw = SSHLL(V30.T_2D, V31.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSHLL_asimdshf_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSHLL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSHLL V30.2D, V31.2S, #5", asm);
-        }
+        TestInst(SSHLL(V0.T_2D, V1.T_2S, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.2D, V1.2S, #5");
+        TestInst(SSHLL(V30.T_2D, V1.T_2S, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.2D, V1.2S, #5");
+        TestInst(SSHLL(V0.T_2D, V31.T_2S, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V0.2D, V31.2S, #5");
+        TestInst(SSHLL(V30.T_2D, V31.T_2S, 5), Arm64InstructionId.SSHLL_asimdshf_l, Arm64Mnemonic.SSHLL, "SSHLL V30.2D, V31.2S, #5");
     }
 }

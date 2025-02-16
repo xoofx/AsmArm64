@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STUMAXLB_General
+public class Arm64InstructionFactoryTests_STUMAXLB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STUMAXLB_General
     [TestMethod]
     public void Test_STUMAXLB_ldumaxlb_32_memop_0()
     {
-        
-        {
-            var raw = STUMAXLB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAXLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAXLB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAXLB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAXLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAXLB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAXLB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAXLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAXLB WZR, [X2]", asm);
-        }
+        TestInst(STUMAXLB(W0, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W0, [X2]");
+        TestInst(STUMAXLB(W15, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W15, [X2]");
+        TestInst(STUMAXLB(WZR, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB WZR, [X2]");
     }
 }

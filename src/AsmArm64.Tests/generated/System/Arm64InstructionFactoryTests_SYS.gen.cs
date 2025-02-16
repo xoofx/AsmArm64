@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SYS_System
+public class Arm64InstructionFactoryTests_SYS_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SYS_System
     [TestMethod]
     public void Test_SYS_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = SYS(5, C1, C2, 5, X4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C1, C2, #5, X4", asm);
-        }
-        
-        {
-            var raw = SYS(5, C15, C2, 5, X4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C15, C2, #5, X4", asm);
-        }
-        
-        {
-            var raw = SYS(5, C1, C15, 5, X4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C1, C15, #5, X4", asm);
-        }
-        
-        {
-            var raw = SYS(5, C15, C15, 5, X4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C15, C15, #5, X4", asm);
-        }
-        
-        {
-            var raw = SYS(5, C1, C2, 5, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C1, C2, #5, X19", asm);
-        }
-        
-        {
-            var raw = SYS(5, C15, C2, 5, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C15, C2, #5, X19", asm);
-        }
-        
-        {
-            var raw = SYS(5, C1, C15, 5, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C1, C15, #5, X19", asm);
-        }
-        
-        {
-            var raw = SYS(5, C15, C15, 5, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SYS_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SYS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SYS #5, C15, C15, #5, X19", asm);
-        }
+        TestInst(SYS(5, C1, C2, 5, X4), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C1, C2, #5, X4");
+        TestInst(SYS(5, C15, C2, 5, X4), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C15, C2, #5, X4");
+        TestInst(SYS(5, C1, C15, 5, X4), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C1, C15, #5, X4");
+        TestInst(SYS(5, C15, C15, 5, X4), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C15, C15, #5, X4");
+        TestInst(SYS(5, C1, C2, 5, X19), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C1, C2, #5, X19");
+        TestInst(SYS(5, C15, C2, 5, X19), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C15, C2, #5, X19");
+        TestInst(SYS(5, C1, C15, 5, X19), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C1, C15, #5, X19");
+        TestInst(SYS(5, C15, C15, 5, X19), Arm64InstructionId.SYS_cr_systeminstrs, Arm64Mnemonic.SYS, "SYS #5, C15, C15, #5, X19");
     }
 }

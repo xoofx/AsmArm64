@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIA171615_General
+public class Arm64InstructionFactoryTests_AUTIA171615_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_AUTIA171615_General
     [TestMethod]
     public void Test_AUTIA171615_64lr_dp_1src_0()
     {
-        
-        {
-            var raw = AUTIA171615();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIA171615_64lr_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIA171615, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIA171615", asm);
-        }
+        TestInst(AUTIA171615(), Arm64InstructionId.AUTIA171615_64lr_dp_1src, Arm64Mnemonic.AUTIA171615, "AUTIA171615");
     }
 }

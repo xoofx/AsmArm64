@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CSETM_General
+public class Arm64InstructionFactoryTests_CSETM_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,60 +24,12 @@ public class Arm64InstructionFactoryTests_CSETM_General
     [TestMethod]
     public void Test_CSETM_csinv_32_condsel_0()
     {
-        
-        {
-            var raw = CSETM(W0, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W0, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(W15, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W15, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(W0, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W0, HS", asm);
-        }
-        
-        {
-            var raw = CSETM(W15, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W15, HS", asm);
-        }
-        
-        {
-            var raw = CSETM(WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM WZR, HS", asm);
-        }
+        TestInst(CSETM(W0, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, NE");
+        TestInst(CSETM(W15, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, NE");
+        TestInst(CSETM(WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, NE");
+        TestInst(CSETM(W0, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, HS");
+        TestInst(CSETM(W15, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, HS");
+        TestInst(CSETM(WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, HS");
     }
     
     /// <summary>
@@ -86,59 +38,11 @@ public class Arm64InstructionFactoryTests_CSETM_General
     [TestMethod]
     public void Test_CSETM_csinv_64_condsel_1()
     {
-        
-        {
-            var raw = CSETM(X0, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X0, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(X15, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X15, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSETM(X0, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X0, HS", asm);
-        }
-        
-        {
-            var raw = CSETM(X15, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X15, HS", asm);
-        }
-        
-        {
-            var raw = CSETM(XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM XZR, HS", asm);
-        }
+        TestInst(CSETM(X0, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X0, NE");
+        TestInst(CSETM(X15, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X15, NE");
+        TestInst(CSETM(XZR, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM XZR, NE");
+        TestInst(CSETM(X0, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X0, HS");
+        TestInst(CSETM(X15, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X15, HS");
+        TestInst(CSETM(XZR, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM XZR, HS");
     }
 }

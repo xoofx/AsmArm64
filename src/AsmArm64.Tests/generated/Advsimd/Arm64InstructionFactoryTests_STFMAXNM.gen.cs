@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STFMAXNM_Advsimd
+public class Arm64InstructionFactoryTests_STFMAXNM_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_STFMAXNM_Advsimd
     [TestMethod]
     public void Test_STFMAXNM_16_0()
     {
-        
-        {
-            var raw = STFMAXNM(H0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM H0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMAXNM(H31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM H31, [X2]", asm);
-        }
+        TestInst(STFMAXNM(H0, _[X2]), Arm64InstructionId.STFMAXNM_16, Arm64Mnemonic.STFMAXNM, "STFMAXNM H0, [X2]");
+        TestInst(STFMAXNM(H31, _[X2]), Arm64InstructionId.STFMAXNM_16, Arm64Mnemonic.STFMAXNM, "STFMAXNM H31, [X2]");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_STFMAXNM_Advsimd
     [TestMethod]
     public void Test_STFMAXNM_32_1()
     {
-        
-        {
-            var raw = STFMAXNM(S0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM S0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMAXNM(S31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM S31, [X2]", asm);
-        }
+        TestInst(STFMAXNM(S0, _[X2]), Arm64InstructionId.STFMAXNM_32, Arm64Mnemonic.STFMAXNM, "STFMAXNM S0, [X2]");
+        TestInst(STFMAXNM(S31, _[X2]), Arm64InstructionId.STFMAXNM_32, Arm64Mnemonic.STFMAXNM, "STFMAXNM S31, [X2]");
     }
     
     /// <summary>
@@ -76,23 +44,7 @@ public class Arm64InstructionFactoryTests_STFMAXNM_Advsimd
     [TestMethod]
     public void Test_STFMAXNM_64_2()
     {
-        
-        {
-            var raw = STFMAXNM(D0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM D0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMAXNM(D31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMAXNM_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMAXNM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMAXNM D31, [X2]", asm);
-        }
+        TestInst(STFMAXNM(D0, _[X2]), Arm64InstructionId.STFMAXNM_64, Arm64Mnemonic.STFMAXNM, "STFMAXNM D0, [X2]");
+        TestInst(STFMAXNM(D31, _[X2]), Arm64InstructionId.STFMAXNM_64, Arm64Mnemonic.STFMAXNM, "STFMAXNM D31, [X2]");
     }
 }

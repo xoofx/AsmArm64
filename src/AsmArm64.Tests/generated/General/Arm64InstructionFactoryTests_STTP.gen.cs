@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STTP_General
+public class Arm64InstructionFactoryTests_STTP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_STTP_General
     [TestMethod]
     public void Test_STTP_64_ldstpair_post_0()
     {
-        
-        {
-            var raw = STTP(X0, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(X0, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(X0, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, XZR, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(X15, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, XZR, [X3], #40", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, XZR, [X3], #40", asm);
-        }
+        TestInst(STTP(X0, X1, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X0, X1, [X3], #40");
+        TestInst(STTP(X15, X1, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X15, X1, [X3], #40");
+        TestInst(STTP(XZR, X1, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP XZR, X1, [X3], #40");
+        TestInst(STTP(X0, X16, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X0, X16, [X3], #40");
+        TestInst(STTP(X15, X16, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X15, X16, [X3], #40");
+        TestInst(STTP(XZR, X16, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP XZR, X16, [X3], #40");
+        TestInst(STTP(X0, XZR, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X0, XZR, [X3], #40");
+        TestInst(STTP(X15, XZR, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP X15, XZR, [X3], #40");
+        TestInst(STTP(XZR, XZR, _[X3], 40), Arm64InstructionId.STTP_64_ldstpair_post, Arm64Mnemonic.STTP, "STTP XZR, XZR, [X3], #40");
     }
     
     /// <summary>
@@ -113,87 +41,15 @@ public class Arm64InstructionFactoryTests_STTP_General
     [TestMethod]
     public void Test_STTP_64_ldstpair_pre_1()
     {
-        
-        {
-            var raw = STTP(X0, X1, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X1, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X1, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X1, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X1, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X1, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(X0, X16, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X16, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X16, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X16, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X16, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X16, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(X0, XZR, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, XZR, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(X15, XZR, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, XZR, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, XZR, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, XZR, [X3, #5]!", asm);
-        }
+        TestInst(STTP(X0, X1, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X0, X1, [X3, #5]!");
+        TestInst(STTP(X15, X1, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X15, X1, [X3, #5]!");
+        TestInst(STTP(XZR, X1, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP XZR, X1, [X3, #5]!");
+        TestInst(STTP(X0, X16, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X0, X16, [X3, #5]!");
+        TestInst(STTP(X15, X16, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X15, X16, [X3, #5]!");
+        TestInst(STTP(XZR, X16, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP XZR, X16, [X3, #5]!");
+        TestInst(STTP(X0, XZR, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X0, XZR, [X3, #5]!");
+        TestInst(STTP(X15, XZR, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP X15, XZR, [X3, #5]!");
+        TestInst(STTP(XZR, XZR, _[X3, 5].Pre), Arm64InstructionId.STTP_64_ldstpair_pre, Arm64Mnemonic.STTP, "STTP XZR, XZR, [X3, #5]!");
     }
     
     /// <summary>
@@ -202,86 +58,14 @@ public class Arm64InstructionFactoryTests_STTP_General
     [TestMethod]
     public void Test_STTP_64_ldstpair_off_2()
     {
-        
-        {
-            var raw = STTP(X0, X1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(X0, X16, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, X16, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(X15, X16, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, X16, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, X16, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, X16, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(X0, XZR, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X0, XZR, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(X15, XZR, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP X15, XZR, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = STTP(XZR, XZR, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTP XZR, XZR, [X3, #5]", asm);
-        }
+        TestInst(STTP(X0, X1, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X0, X1, [X3, #5]");
+        TestInst(STTP(X15, X1, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X15, X1, [X3, #5]");
+        TestInst(STTP(XZR, X1, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP XZR, X1, [X3, #5]");
+        TestInst(STTP(X0, X16, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X0, X16, [X3, #5]");
+        TestInst(STTP(X15, X16, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X15, X16, [X3, #5]");
+        TestInst(STTP(XZR, X16, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP XZR, X16, [X3, #5]");
+        TestInst(STTP(X0, XZR, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X0, XZR, [X3, #5]");
+        TestInst(STTP(X15, XZR, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP X15, XZR, [X3, #5]");
+        TestInst(STTP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STTP_64_ldstpair_off, Arm64Mnemonic.STTP, "STTP XZR, XZR, [X3, #5]");
     }
 }

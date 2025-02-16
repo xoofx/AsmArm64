@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MRRS_System
+public class Arm64InstructionFactoryTests_MRRS_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_MRRS_System
     [TestMethod]
     public void Test_MRRS_rs_systemmovepr_0()
     {
-        
-        {
-            var raw = MRRS(X0, X1, PAR_EL1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MRRS_rs_systemmovepr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MRRS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MRRS X0, X1, PAR_EL1", asm);
-        }
-        
-        {
-            var raw = MRRS(X15, X16, PAR_EL1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MRRS_rs_systemmovepr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MRRS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MRRS X15, X16, PAR_EL1", asm);
-        }
-        
-        {
-            var raw = MRRS(XZR, X0, PAR_EL1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MRRS_rs_systemmovepr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MRRS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MRRS XZR, X0, PAR_EL1", asm);
-        }
+        TestInst(MRRS(X0, X1, PAR_EL1), Arm64InstructionId.MRRS_rs_systemmovepr, Arm64Mnemonic.MRRS, "MRRS X0, X1, PAR_EL1");
+        TestInst(MRRS(X15, X16, PAR_EL1), Arm64InstructionId.MRRS_rs_systemmovepr, Arm64Mnemonic.MRRS, "MRRS X15, X16, PAR_EL1");
+        TestInst(MRRS(XZR, X0, PAR_EL1), Arm64InstructionId.MRRS_rs_systemmovepr, Arm64Mnemonic.MRRS, "MRRS XZR, X0, PAR_EL1");
     }
 }

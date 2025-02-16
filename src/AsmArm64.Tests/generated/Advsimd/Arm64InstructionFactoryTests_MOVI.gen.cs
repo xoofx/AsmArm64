@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MOVI_Advsimd
+public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_0()
     {
-        
-        {
-            var raw = MOVI(V0.T_8B, 5, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_n_b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.8B, #5", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_8B, 5, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_n_b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.8B, #5", asm);
-        }
+        TestInst(MOVI(V0.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.8B, #5");
+        TestInst(MOVI(V30.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.8B, #5");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_1()
     {
-        
-        {
-            var raw = MOVI(V0.T_16B, 5, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_n_b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.16B, #5", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_16B, 5, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_n_b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.16B, #5", asm);
-        }
+        TestInst(MOVI(V0.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.16B, #5");
+        TestInst(MOVI(V30.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.16B, #5");
     }
     
     /// <summary>
@@ -76,24 +44,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_2()
     {
-        
-        {
-            var raw = MOVI(V0.T_4H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.4H, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_4H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.4H, #5, LSL #8", asm);
-        }
+        TestInst(MOVI(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.4H, #5, LSL #8");
+        TestInst(MOVI(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.4H, #5, LSL #8");
     }
     
     /// <summary>
@@ -102,24 +54,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_3()
     {
-        
-        {
-            var raw = MOVI(V0.T_8H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.8H, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_8H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.8H, #5, LSL #8", asm);
-        }
+        TestInst(MOVI(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.8H, #5, LSL #8");
+        TestInst(MOVI(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.8H, #5, LSL #8");
     }
     
     /// <summary>
@@ -128,24 +64,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_4()
     {
-        
-        {
-            var raw = MOVI(V0.T_2S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.2S, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_2S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.2S, #5, LSL #8", asm);
-        }
+        TestInst(MOVI(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, LSL #8");
+        TestInst(MOVI(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, LSL #8");
     }
     
     /// <summary>
@@ -154,24 +74,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_5()
     {
-        
-        {
-            var raw = MOVI(V0.T_4S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.4S, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_4S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.4S, #5, LSL #8", asm);
-        }
+        TestInst(MOVI(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, LSL #8");
+        TestInst(MOVI(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, LSL #8");
     }
     
     /// <summary>
@@ -180,24 +84,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_6()
     {
-        
-        {
-            var raw = MOVI(V0.T_2S, 5, _MSL, 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_m_sm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.2S, #5, MSL #16", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_2S, 5, _MSL, 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_m_sm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.2S, #5, MSL #16", asm);
-        }
+        TestInst(MOVI(V0.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, MSL #16");
+        TestInst(MOVI(V30.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, MSL #16");
     }
     
     /// <summary>
@@ -206,24 +94,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_7()
     {
-        
-        {
-            var raw = MOVI(V0.T_4S, 5, _MSL, 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_m_sm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.4S, #5, MSL #16", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_4S, 5, _MSL, 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_m_sm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.4S, #5, MSL #16", asm);
-        }
+        TestInst(MOVI(V0.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, MSL #16");
+        TestInst(MOVI(V30.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, MSL #16");
     }
     
     /// <summary>
@@ -232,24 +104,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_d_ds_8()
     {
-        
-        {
-            var raw = MOVI(D0, 0xff00ffUL);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d_ds, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI D0, #0xff00ff", asm);
-        }
-        
-        {
-            var raw = MOVI(D31, 0xff00ffUL);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d_ds, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI D31, #0xff00ff", asm);
-        }
+        TestInst(MOVI(D0, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D0, #0xff00ff");
+        TestInst(MOVI(D31, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D31, #0xff00ff");
     }
     
     /// <summary>
@@ -258,23 +114,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_d2_d_9()
     {
-        
-        {
-            var raw = MOVI(V0.T_2D, 0xff00ffUL);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d2_d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V0.2D, #0xff00ff", asm);
-        }
-        
-        {
-            var raw = MOVI(V30.T_2D, 0xff00ffUL);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d2_d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOVI V30.2D, #0xff00ff", asm);
-        }
+        TestInst(MOVI(V0.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V0.2D, #0xff00ff");
+        TestInst(MOVI(V30.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V30.2D, #0xff00ff");
     }
 }

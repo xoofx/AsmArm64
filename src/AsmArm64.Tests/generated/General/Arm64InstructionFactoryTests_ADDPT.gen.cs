@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ADDPT_General
+public class Arm64InstructionFactoryTests_ADDPT_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,248 +24,32 @@ public class Arm64InstructionFactoryTests_ADDPT_General
     [TestMethod]
     public void Test_ADDPT_64_addsub_pt_0()
     {
-        
-        {
-            var raw = ADDPT(X1, X2, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X2, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X2, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X2, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X2, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X2, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, X18, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X18, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X18, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X18, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X18, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X18, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, SP, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, SP, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, SP, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, SP, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, SP, X2, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, SP, X2", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, X2, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X2, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X2, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X2, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X2, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X2, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, X18, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X18, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X18, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X18, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X18, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X18, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, SP, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, SP, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, SP, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, SP, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, SP, X17, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, SP, X17", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, X2, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X2, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X2, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X2, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X2, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X2, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, X18, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, X18, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, X18, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, X18, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, X18, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, X18, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(X1, SP, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X1, SP, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(X17, SP, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT X17, SP, XZR", asm);
-        }
-        
-        {
-            var raw = ADDPT(SP, SP, XZR, _LSL, 0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADDPT_64_addsub_pt, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADDPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADDPT SP, SP, XZR", asm);
-        }
+        TestInst(ADDPT(X1, X2, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X2, X2");
+        TestInst(ADDPT(X17, X2, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X2, X2");
+        TestInst(ADDPT(SP, X2, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X2, X2");
+        TestInst(ADDPT(X1, X18, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X18, X2");
+        TestInst(ADDPT(X17, X18, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X18, X2");
+        TestInst(ADDPT(SP, X18, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X18, X2");
+        TestInst(ADDPT(X1, SP, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, SP, X2");
+        TestInst(ADDPT(X17, SP, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, SP, X2");
+        TestInst(ADDPT(SP, SP, X2, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, SP, X2");
+        TestInst(ADDPT(X1, X2, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X2, X17");
+        TestInst(ADDPT(X17, X2, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X2, X17");
+        TestInst(ADDPT(SP, X2, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X2, X17");
+        TestInst(ADDPT(X1, X18, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X18, X17");
+        TestInst(ADDPT(X17, X18, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X18, X17");
+        TestInst(ADDPT(SP, X18, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X18, X17");
+        TestInst(ADDPT(X1, SP, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, SP, X17");
+        TestInst(ADDPT(X17, SP, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, SP, X17");
+        TestInst(ADDPT(SP, SP, X17, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, SP, X17");
+        TestInst(ADDPT(X1, X2, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X2, XZR");
+        TestInst(ADDPT(X17, X2, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X2, XZR");
+        TestInst(ADDPT(SP, X2, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X2, XZR");
+        TestInst(ADDPT(X1, X18, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, X18, XZR");
+        TestInst(ADDPT(X17, X18, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, X18, XZR");
+        TestInst(ADDPT(SP, X18, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, X18, XZR");
+        TestInst(ADDPT(X1, SP, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X1, SP, XZR");
+        TestInst(ADDPT(X17, SP, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT X17, SP, XZR");
+        TestInst(ADDPT(SP, SP, XZR, _LSL, 0), Arm64InstructionId.ADDPT_64_addsub_pt, Arm64Mnemonic.ADDPT, "ADDPT SP, SP, XZR");
     }
 }

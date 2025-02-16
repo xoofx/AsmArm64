@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CSINV_General
+public class Arm64InstructionFactoryTests_CSINV_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,492 +24,60 @@ public class Arm64InstructionFactoryTests_CSINV_General
     [TestMethod]
     public void Test_CSINV_32_condsel_0()
     {
-        
-        {
-            var raw = CSINV(W0, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W0, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W15, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM WZR, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W0, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV W15, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV WZR, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(W0, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W0, LO", asm);
-        }
-        
-        {
-            var raw = CSINV(W15, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM W15, LO", asm);
-        }
-        
-        {
-            var raw = CSINV(WZR, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM WZR, LO", asm);
-        }
+        TestInst(CSINV(W0, W1, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, W2, NE");
+        TestInst(CSINV(W15, W1, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, W2, NE");
+        TestInst(CSINV(WZR, W1, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, W2, NE");
+        TestInst(CSINV(W0, W16, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, W2, NE");
+        TestInst(CSINV(W15, W16, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, W2, NE");
+        TestInst(CSINV(WZR, W16, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, W2, NE");
+        TestInst(CSINV(W0, WZR, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, WZR, W2, NE");
+        TestInst(CSINV(W15, WZR, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, WZR, W2, NE");
+        TestInst(CSINV(WZR, WZR, W2, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, WZR, W2, NE");
+        TestInst(CSINV(W0, W1, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, W17, NE");
+        TestInst(CSINV(W15, W1, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, W17, NE");
+        TestInst(CSINV(WZR, W1, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, W17, NE");
+        TestInst(CSINV(W0, W16, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, W17, NE");
+        TestInst(CSINV(W15, W16, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, W17, NE");
+        TestInst(CSINV(WZR, W16, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, W17, NE");
+        TestInst(CSINV(W0, WZR, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, WZR, W17, NE");
+        TestInst(CSINV(W15, WZR, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, WZR, W17, NE");
+        TestInst(CSINV(WZR, WZR, W17, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, WZR, W17, NE");
+        TestInst(CSINV(W0, W1, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, WZR, NE");
+        TestInst(CSINV(W15, W1, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, WZR, NE");
+        TestInst(CSINV(WZR, W1, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, WZR, NE");
+        TestInst(CSINV(W0, W16, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, WZR, NE");
+        TestInst(CSINV(W15, W16, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, WZR, NE");
+        TestInst(CSINV(WZR, W16, WZR, NE), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, WZR, NE");
+        TestInst(CSINV(W0, WZR, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, EQ");
+        TestInst(CSINV(W15, WZR, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, EQ");
+        TestInst(CSINV(WZR, WZR, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, EQ");
+        TestInst(CSINV(W0, W1, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, W2, HS");
+        TestInst(CSINV(W15, W1, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, W2, HS");
+        TestInst(CSINV(WZR, W1, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, W2, HS");
+        TestInst(CSINV(W0, W16, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, W2, HS");
+        TestInst(CSINV(W15, W16, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, W2, HS");
+        TestInst(CSINV(WZR, W16, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, W2, HS");
+        TestInst(CSINV(W0, WZR, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, WZR, W2, HS");
+        TestInst(CSINV(W15, WZR, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, WZR, W2, HS");
+        TestInst(CSINV(WZR, WZR, W2, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, WZR, W2, HS");
+        TestInst(CSINV(W0, W1, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, W17, HS");
+        TestInst(CSINV(W15, W1, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, W17, HS");
+        TestInst(CSINV(WZR, W1, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, W17, HS");
+        TestInst(CSINV(W0, W16, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, W17, HS");
+        TestInst(CSINV(W15, W16, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, W17, HS");
+        TestInst(CSINV(WZR, W16, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, W17, HS");
+        TestInst(CSINV(W0, WZR, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, WZR, W17, HS");
+        TestInst(CSINV(W15, WZR, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, WZR, W17, HS");
+        TestInst(CSINV(WZR, WZR, W17, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, WZR, W17, HS");
+        TestInst(CSINV(W0, W1, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W1, WZR, HS");
+        TestInst(CSINV(W15, W1, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W1, WZR, HS");
+        TestInst(CSINV(WZR, W1, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W1, WZR, HS");
+        TestInst(CSINV(W0, W16, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W0, W16, WZR, HS");
+        TestInst(CSINV(W15, W16, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV W15, W16, WZR, HS");
+        TestInst(CSINV(WZR, W16, WZR, HS), Arm64InstructionId.CSINV_32_condsel, Arm64Mnemonic.CSINV, "CSINV WZR, W16, WZR, HS");
+        TestInst(CSINV(W0, WZR, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, LO");
+        TestInst(CSINV(W15, WZR, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, LO");
+        TestInst(CSINV(WZR, WZR, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, LO");
     }
     
     /// <summary>
@@ -518,491 +86,59 @@ public class Arm64InstructionFactoryTests_CSINV_General
     [TestMethod]
     public void Test_CSINV_64_condsel_1()
     {
-        
-        {
-            var raw = CSINV(X0, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X0, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X15, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM XZR, EQ", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X0, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV X15, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSINV_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSINV XZR, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSINV(X0, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X0, LO", asm);
-        }
-        
-        {
-            var raw = CSINV(X15, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM X15, LO", asm);
-        }
-        
-        {
-            var raw = CSINV(XZR, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSETM_csinv_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSETM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSETM XZR, LO", asm);
-        }
+        TestInst(CSINV(X0, X1, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, X2, NE");
+        TestInst(CSINV(X15, X1, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, X2, NE");
+        TestInst(CSINV(XZR, X1, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, X2, NE");
+        TestInst(CSINV(X0, X16, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, X2, NE");
+        TestInst(CSINV(X15, X16, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, X2, NE");
+        TestInst(CSINV(XZR, X16, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, X2, NE");
+        TestInst(CSINV(X0, XZR, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, XZR, X2, NE");
+        TestInst(CSINV(X15, XZR, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, XZR, X2, NE");
+        TestInst(CSINV(XZR, XZR, X2, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, XZR, X2, NE");
+        TestInst(CSINV(X0, X1, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, X17, NE");
+        TestInst(CSINV(X15, X1, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, X17, NE");
+        TestInst(CSINV(XZR, X1, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, X17, NE");
+        TestInst(CSINV(X0, X16, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, X17, NE");
+        TestInst(CSINV(X15, X16, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, X17, NE");
+        TestInst(CSINV(XZR, X16, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, X17, NE");
+        TestInst(CSINV(X0, XZR, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, XZR, X17, NE");
+        TestInst(CSINV(X15, XZR, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, XZR, X17, NE");
+        TestInst(CSINV(XZR, XZR, X17, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, XZR, X17, NE");
+        TestInst(CSINV(X0, X1, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, XZR, NE");
+        TestInst(CSINV(X15, X1, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, XZR, NE");
+        TestInst(CSINV(XZR, X1, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, XZR, NE");
+        TestInst(CSINV(X0, X16, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, XZR, NE");
+        TestInst(CSINV(X15, X16, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, XZR, NE");
+        TestInst(CSINV(XZR, X16, XZR, NE), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, XZR, NE");
+        TestInst(CSINV(X0, XZR, XZR, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X0, EQ");
+        TestInst(CSINV(X15, XZR, XZR, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X15, EQ");
+        TestInst(CSINV(XZR, XZR, XZR, NE), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM XZR, EQ");
+        TestInst(CSINV(X0, X1, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, X2, HS");
+        TestInst(CSINV(X15, X1, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, X2, HS");
+        TestInst(CSINV(XZR, X1, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, X2, HS");
+        TestInst(CSINV(X0, X16, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, X2, HS");
+        TestInst(CSINV(X15, X16, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, X2, HS");
+        TestInst(CSINV(XZR, X16, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, X2, HS");
+        TestInst(CSINV(X0, XZR, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, XZR, X2, HS");
+        TestInst(CSINV(X15, XZR, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, XZR, X2, HS");
+        TestInst(CSINV(XZR, XZR, X2, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, XZR, X2, HS");
+        TestInst(CSINV(X0, X1, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, X17, HS");
+        TestInst(CSINV(X15, X1, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, X17, HS");
+        TestInst(CSINV(XZR, X1, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, X17, HS");
+        TestInst(CSINV(X0, X16, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, X17, HS");
+        TestInst(CSINV(X15, X16, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, X17, HS");
+        TestInst(CSINV(XZR, X16, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, X17, HS");
+        TestInst(CSINV(X0, XZR, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, XZR, X17, HS");
+        TestInst(CSINV(X15, XZR, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, XZR, X17, HS");
+        TestInst(CSINV(XZR, XZR, X17, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, XZR, X17, HS");
+        TestInst(CSINV(X0, X1, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X1, XZR, HS");
+        TestInst(CSINV(X15, X1, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X1, XZR, HS");
+        TestInst(CSINV(XZR, X1, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X1, XZR, HS");
+        TestInst(CSINV(X0, X16, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X0, X16, XZR, HS");
+        TestInst(CSINV(X15, X16, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV X15, X16, XZR, HS");
+        TestInst(CSINV(XZR, X16, XZR, HS), Arm64InstructionId.CSINV_64_condsel, Arm64Mnemonic.CSINV, "CSINV XZR, X16, XZR, HS");
+        TestInst(CSINV(X0, XZR, XZR, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X0, LO");
+        TestInst(CSINV(X15, XZR, XZR, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM X15, LO");
+        TestInst(CSINV(XZR, XZR, XZR, HS), Arm64InstructionId.CSETM_csinv_64_condsel, Arm64Mnemonic.CSETM, "CSETM XZR, LO");
     }
 }

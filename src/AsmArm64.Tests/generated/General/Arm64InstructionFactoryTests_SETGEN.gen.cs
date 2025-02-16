@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SETGEN_General
+public class Arm64InstructionFactoryTests_SETGEN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_SETGEN_General
     [TestMethod]
     public void Test_SETGEN_set_memcms_0()
     {
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X1, X2", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X16, X2", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X1, X17", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X16, X17", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SETGEN(_[X1].Pre, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGEN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGEN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGEN [X1]!, XZR, XZR", asm);
-        }
+        TestInst(SETGEN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X1, X2");
+        TestInst(SETGEN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X16, X2");
+        TestInst(SETGEN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, XZR, X2");
+        TestInst(SETGEN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X1, X17");
+        TestInst(SETGEN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X16, X17");
+        TestInst(SETGEN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, XZR, X17");
+        TestInst(SETGEN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X1, XZR");
+        TestInst(SETGEN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, X16, XZR");
+        TestInst(SETGEN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGEN_set_memcms, Arm64Mnemonic.SETGEN, "SETGEN [X1]!, XZR, XZR");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STTADD_General
+public class Arm64InstructionFactoryTests_STTADD_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STTADD_General
     [TestMethod]
     public void Test_STTADD_ldtadd_32_memop_unpriv_0()
     {
-        
-        {
-            var raw = STTADD(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STTADD(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STTADD(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD WZR, [X2]", asm);
-        }
+        TestInst(STTADD(W0, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W0, [X2]");
+        TestInst(STTADD(W15, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W15, [X2]");
+        TestInst(STTADD(WZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STTADD_General
     [TestMethod]
     public void Test_STTADD_ldtadd_64_memop_unpriv_1()
     {
-        
-        {
-            var raw = STTADD(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STTADD(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STTADD(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTADD XZR, [X2]", asm);
-        }
+        TestInst(STTADD(X0, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X0, [X2]");
+        TestInst(STTADD(X15, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X15, [X2]");
+        TestInst(STTADD(XZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD XZR, [X2]");
     }
 }

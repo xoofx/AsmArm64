@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_TTEST_System
+public class Arm64InstructionFactoryTests_TTEST_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_TTEST_System
     [TestMethod]
     public void Test_TTEST_br_systemresult_0()
     {
-        
-        {
-            var raw = TTEST(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TTEST_br_systemresult, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TTEST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TTEST X0", asm);
-        }
-        
-        {
-            var raw = TTEST(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TTEST_br_systemresult, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TTEST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TTEST X15", asm);
-        }
-        
-        {
-            var raw = TTEST(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TTEST_br_systemresult, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TTEST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TTEST XZR", asm);
-        }
+        TestInst(TTEST(X0), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X0");
+        TestInst(TTEST(X15), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X15");
+        TestInst(TTEST(XZR), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST XZR");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BCAX_Advsimd
+public class Arm64InstructionFactoryTests_BCAX_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,149 +24,21 @@ public class Arm64InstructionFactoryTests_BCAX_Advsimd
     [TestMethod]
     public void Test_BCAX_vvv16_crypto4_0()
     {
-        
-        {
-            var raw = BCAX(V0.T_16B, V1.T_16B, V2.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V1.16B, V2.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V1.T_16B, V2.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V1.16B, V2.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V31.T_16B, V2.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V31.16B, V2.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V31.T_16B, V2.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V31.16B, V2.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V1.T_16B, V0.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V1.16B, V0.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V1.T_16B, V0.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V1.16B, V0.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V31.T_16B, V0.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V31.16B, V0.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V31.T_16B, V0.T_16B, V3.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V31.16B, V0.16B, V3.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V1.T_16B, V2.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V1.16B, V2.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V1.T_16B, V2.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V1.16B, V2.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V31.T_16B, V2.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V31.16B, V2.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V31.T_16B, V2.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V31.16B, V2.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V1.T_16B, V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V1.16B, V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V1.T_16B, V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V1.16B, V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V0.T_16B, V31.T_16B, V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V0.16B, V31.16B, V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = BCAX(V30.T_16B, V31.T_16B, V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BCAX_vvv16_crypto4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BCAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BCAX V30.16B, V31.16B, V0.16B, V1.16B", asm);
-        }
+        TestInst(BCAX(V0.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V1.16B, V2.16B, V3.16B");
+        TestInst(BCAX(V30.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V1.16B, V2.16B, V3.16B");
+        TestInst(BCAX(V0.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V31.16B, V2.16B, V3.16B");
+        TestInst(BCAX(V30.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V31.16B, V2.16B, V3.16B");
+        TestInst(BCAX(V0.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V1.16B, V0.16B, V3.16B");
+        TestInst(BCAX(V30.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V1.16B, V0.16B, V3.16B");
+        TestInst(BCAX(V0.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V31.16B, V0.16B, V3.16B");
+        TestInst(BCAX(V30.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V31.16B, V0.16B, V3.16B");
+        TestInst(BCAX(V0.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V1.16B, V2.16B, V1.16B");
+        TestInst(BCAX(V30.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V1.16B, V2.16B, V1.16B");
+        TestInst(BCAX(V0.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V31.16B, V2.16B, V1.16B");
+        TestInst(BCAX(V30.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V31.16B, V2.16B, V1.16B");
+        TestInst(BCAX(V0.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V1.16B, V0.16B, V1.16B");
+        TestInst(BCAX(V30.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V1.16B, V0.16B, V1.16B");
+        TestInst(BCAX(V0.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V0.16B, V31.16B, V0.16B, V1.16B");
+        TestInst(BCAX(V30.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.BCAX_vvv16_crypto4, Arm64Mnemonic.BCAX, "BCAX V30.16B, V31.16B, V0.16B, V1.16B");
     }
 }

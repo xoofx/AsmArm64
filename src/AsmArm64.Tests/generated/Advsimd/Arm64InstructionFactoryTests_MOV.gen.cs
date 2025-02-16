@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MOV_Advsimd
+public class Arm64InstructionFactoryTests_MOV_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_iv_v_0()
     {
-        
-        {
-            var raw = MOV(V0.B[0], V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.B[0], V1.B[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.B[1], V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.B[1], V1.B[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V0.B[0], V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.B[0], V31.B[1]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.B[1], V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.B[1], V31.B[1]", asm);
-        }
+        TestInst(MOV(V0.B[0], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V1.B[0]");
+        TestInst(MOV(V30.B[1], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V1.B[0]");
+        TestInst(MOV(V0.B[0], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V31.B[1]");
+        TestInst(MOV(V30.B[1], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V31.B[1]");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_iv_v_1()
     {
-        
-        {
-            var raw = MOV(V0.H[0], V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.H[0], V1.H[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.H[1], V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.H[1], V1.H[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V0.H[0], V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.H[0], V31.H[1]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.H[1], V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.H[1], V31.H[1]", asm);
-        }
+        TestInst(MOV(V0.H[0], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V1.H[0]");
+        TestInst(MOV(V30.H[1], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V1.H[0]");
+        TestInst(MOV(V0.H[0], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V31.H[1]");
+        TestInst(MOV(V30.H[1], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V31.H[1]");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_iv_v_2()
     {
-        
-        {
-            var raw = MOV(V0.S[0], V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.S[0], V1.S[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.S[1], V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.S[1], V1.S[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V0.S[0], V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.S[0], V31.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.S[1], V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.S[1], V31.S[1]", asm);
-        }
+        TestInst(MOV(V0.S[0], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V1.S[0]");
+        TestInst(MOV(V30.S[1], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V1.S[0]");
+        TestInst(MOV(V0.S[0], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V31.S[1]");
+        TestInst(MOV(V30.S[1], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V31.S[1]");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_iv_v_3()
     {
-        
-        {
-            var raw = MOV(V0.D[0], V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.D[0], V1.D[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.D[1], V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.D[1], V1.D[0]", asm);
-        }
-        
-        {
-            var raw = MOV(V0.D[0], V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.D[0], V31.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(V30.D[1], V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_iv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.D[1], V31.D[1]", asm);
-        }
+        TestInst(MOV(V0.D[0], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V1.D[0]");
+        TestInst(MOV(V30.D[1], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V1.D[0]");
+        TestInst(MOV(V0.D[0], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V31.D[1]");
+        TestInst(MOV(V30.D[1], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V31.D[1]");
     }
     
     /// <summary>
@@ -200,42 +72,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_ir_r_4()
     {
-        
-        {
-            var raw = MOV(V0.B[0], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.B[0], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V30.B[1], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.B[1], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V0.B[0], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.B[0], WZR", asm);
-        }
-        
-        {
-            var raw = MOV(V30.B[1], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.B[1], WZR", asm);
-        }
+        TestInst(MOV(V0.B[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], W2");
+        TestInst(MOV(V30.B[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], W2");
+        TestInst(MOV(V0.B[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], WZR");
+        TestInst(MOV(V30.B[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], WZR");
     }
     
     /// <summary>
@@ -244,42 +84,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_ir_r_5()
     {
-        
-        {
-            var raw = MOV(V0.H[0], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.H[0], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V30.H[1], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.H[1], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V0.H[0], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.H[0], WZR", asm);
-        }
-        
-        {
-            var raw = MOV(V30.H[1], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.H[1], WZR", asm);
-        }
+        TestInst(MOV(V0.H[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], W2");
+        TestInst(MOV(V30.H[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], W2");
+        TestInst(MOV(V0.H[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], WZR");
+        TestInst(MOV(V30.H[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], WZR");
     }
     
     /// <summary>
@@ -288,42 +96,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_ir_r_6()
     {
-        
-        {
-            var raw = MOV(V0.S[0], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.S[0], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V30.S[1], W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.S[1], W2", asm);
-        }
-        
-        {
-            var raw = MOV(V0.S[0], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.S[0], WZR", asm);
-        }
-        
-        {
-            var raw = MOV(V30.S[1], WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.S[1], WZR", asm);
-        }
+        TestInst(MOV(V0.S[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], W2");
+        TestInst(MOV(V30.S[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], W2");
+        TestInst(MOV(V0.S[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], WZR");
+        TestInst(MOV(V30.S[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], WZR");
     }
     
     /// <summary>
@@ -332,42 +108,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_ins_asimdins_ir_r_7()
     {
-        
-        {
-            var raw = MOV(V0.D[0], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.D[0], X2", asm);
-        }
-        
-        {
-            var raw = MOV(V30.D[1], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.D[1], X2", asm);
-        }
-        
-        {
-            var raw = MOV(V0.D[0], XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.D[0], XZR", asm);
-        }
-        
-        {
-            var raw = MOV(V30.D[1], XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_ins_asimdins_ir_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.D[1], XZR", asm);
-        }
+        TestInst(MOV(V0.D[0], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], X2");
+        TestInst(MOV(V30.D[1], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], X2");
+        TestInst(MOV(V0.D[0], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], XZR");
+        TestInst(MOV(V30.D[1], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], XZR");
     }
     
     /// <summary>
@@ -376,42 +120,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_dup_asisdone_only_8()
     {
-        
-        {
-            var raw = MOV(B1, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B1, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = MOV(B31, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B31, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = MOV(B1, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B1, V31.B[1]", asm);
-        }
-        
-        {
-            var raw = MOV(B31, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B31, V31.B[1]", asm);
-        }
+        TestInst(MOV(B1, V1.B[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B1, V1.B[0]");
+        TestInst(MOV(B31, V1.B[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B31, V1.B[0]");
+        TestInst(MOV(B1, V31.B[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B1, V31.B[1]");
+        TestInst(MOV(B31, V31.B[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B31, V31.B[1]");
     }
     
     /// <summary>
@@ -420,42 +132,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_dup_asisdone_only_9()
     {
-        
-        {
-            var raw = MOV(H1, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H1, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = MOV(H31, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H31, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = MOV(H1, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H1, V31.H[1]", asm);
-        }
-        
-        {
-            var raw = MOV(H31, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H31, V31.H[1]", asm);
-        }
+        TestInst(MOV(H1, V1.H[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H1, V1.H[0]");
+        TestInst(MOV(H31, V1.H[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H31, V1.H[0]");
+        TestInst(MOV(H1, V31.H[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H1, V31.H[1]");
+        TestInst(MOV(H31, V31.H[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H31, V31.H[1]");
     }
     
     /// <summary>
@@ -464,42 +144,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_dup_asisdone_only_10()
     {
-        
-        {
-            var raw = MOV(S1, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S1, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = MOV(S31, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S31, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = MOV(S1, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S1, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(S31, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S31, V31.S[1]", asm);
-        }
+        TestInst(MOV(S1, V1.S[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S1, V1.S[0]");
+        TestInst(MOV(S31, V1.S[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S31, V1.S[0]");
+        TestInst(MOV(S1, V31.S[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S1, V31.S[1]");
+        TestInst(MOV(S31, V31.S[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S31, V31.S[1]");
     }
     
     /// <summary>
@@ -508,42 +156,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_dup_asisdone_only_11()
     {
-        
-        {
-            var raw = MOV(D1, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D1, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = MOV(D31, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D31, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = MOV(D1, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D1, V31.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(D31, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D31, V31.D[1]", asm);
-        }
+        TestInst(MOV(D1, V1.D[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D1, V1.D[0]");
+        TestInst(MOV(D31, V1.D[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D31, V1.D[0]");
+        TestInst(MOV(D1, V31.D[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D1, V31.D[1]");
+        TestInst(MOV(D31, V31.D[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D31, V31.D[1]");
     }
     
     /// <summary>
@@ -552,60 +168,12 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_umov_asimdins_w_w_12()
     {
-        
-        {
-            var raw = MOV(W0, V1.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV W0, V1.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(W15, V1.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV W15, V1.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(WZR, V1.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV WZR, V1.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(W0, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV W0, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(W15, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV W15, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = MOV(WZR, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_w_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV WZR, V31.S[1]", asm);
-        }
+        TestInst(MOV(W0, V1.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV W0, V1.S[1]");
+        TestInst(MOV(W15, V1.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV W15, V1.S[1]");
+        TestInst(MOV(WZR, V1.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV WZR, V1.S[1]");
+        TestInst(MOV(W0, V31.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV W0, V31.S[1]");
+        TestInst(MOV(W15, V31.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV W15, V31.S[1]");
+        TestInst(MOV(WZR, V31.S[1]), Arm64InstructionId.MOV_umov_asimdins_w_w, Arm64Mnemonic.MOV, "MOV WZR, V31.S[1]");
     }
     
     /// <summary>
@@ -614,60 +182,12 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_umov_asimdins_x_x_13()
     {
-        
-        {
-            var raw = MOV(X0, V1.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV X0, V1.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(X15, V1.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV X15, V1.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(XZR, V1.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV XZR, V1.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(X0, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV X0, V31.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(X15, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV X15, V31.D[1]", asm);
-        }
-        
-        {
-            var raw = MOV(XZR, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_umov_asimdins_x_x, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV XZR, V31.D[1]", asm);
-        }
+        TestInst(MOV(X0, V1.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV X0, V1.D[1]");
+        TestInst(MOV(X15, V1.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV X15, V1.D[1]");
+        TestInst(MOV(XZR, V1.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV XZR, V1.D[1]");
+        TestInst(MOV(X0, V31.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV X0, V31.D[1]");
+        TestInst(MOV(X15, V31.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV X15, V31.D[1]");
+        TestInst(MOV(XZR, V31.D[1]), Arm64InstructionId.MOV_umov_asimdins_x_x, Arm64Mnemonic.MOV, "MOV XZR, V31.D[1]");
     }
     
     /// <summary>
@@ -676,42 +196,10 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_orr_asimdsame_only_14()
     {
-        
-        {
-            var raw = MOV(V0.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = MOV(V30.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = MOV(V0.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.8B, V31.8B", asm);
-        }
-        
-        {
-            var raw = MOV(V30.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.8B, V31.8B", asm);
-        }
+        TestInst(MOV(V0.T_8B, V1.T_8B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V0.8B, V1.8B");
+        TestInst(MOV(V30.T_8B, V1.T_8B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V30.8B, V1.8B");
+        TestInst(MOV(V0.T_8B, V31.T_8B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V0.8B, V31.8B");
+        TestInst(MOV(V30.T_8B, V31.T_8B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -720,41 +208,9 @@ public class Arm64InstructionFactoryTests_MOV_Advsimd
     [TestMethod]
     public void Test_MOV_orr_asimdsame_only_15()
     {
-        
-        {
-            var raw = MOV(V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = MOV(V30.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = MOV(V0.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V0.16B, V31.16B", asm);
-        }
-        
-        {
-            var raw = MOV(V30.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_orr_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV V30.16B, V31.16B", asm);
-        }
+        TestInst(MOV(V0.T_16B, V1.T_16B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V0.16B, V1.16B");
+        TestInst(MOV(V30.T_16B, V1.T_16B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V30.16B, V1.16B");
+        TestInst(MOV(V0.T_16B, V31.T_16B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V0.16B, V31.16B");
+        TestInst(MOV(V30.T_16B, V31.T_16B), Arm64InstructionId.MOV_orr_asimdsame_only, Arm64Mnemonic.MOV, "MOV V30.16B, V31.16B");
     }
 }

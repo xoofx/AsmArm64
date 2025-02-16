@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STLURH_General
+public class Arm64InstructionFactoryTests_STLURH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STLURH_General
     [TestMethod]
     public void Test_STLURH_32_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = STLURH(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURH W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLURH(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURH W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLURH(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURH WZR, [X2, #5]", asm);
-        }
+        TestInst(STLURH(W0, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W0, [X2, #5]");
+        TestInst(STLURH(W15, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W15, [X2, #5]");
+        TestInst(STLURH(WZR, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH WZR, [X2, #5]");
     }
 }

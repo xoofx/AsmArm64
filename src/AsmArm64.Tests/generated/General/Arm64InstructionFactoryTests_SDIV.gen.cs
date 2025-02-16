@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SDIV_General
+public class Arm64InstructionFactoryTests_SDIV_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,249 +24,33 @@ public class Arm64InstructionFactoryTests_SDIV_General
     [TestMethod]
     public void Test_SDIV_32_dp_2src_0()
     {
-        
-        {
-            var raw = SDIV(W0, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W1, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W1, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W1, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W16, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W16, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W16, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W1, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W1, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W1, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W16, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W16, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W16, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(W0, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W0, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(W15, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV W15, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SDIV(WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_32_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV WZR, WZR, WZR", asm);
-        }
+        TestInst(SDIV(W0, W1, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W1, W2");
+        TestInst(SDIV(W15, W1, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W1, W2");
+        TestInst(SDIV(WZR, W1, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W1, W2");
+        TestInst(SDIV(W0, W16, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W16, W2");
+        TestInst(SDIV(W15, W16, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W16, W2");
+        TestInst(SDIV(WZR, W16, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W16, W2");
+        TestInst(SDIV(W0, WZR, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, WZR, W2");
+        TestInst(SDIV(W15, WZR, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, WZR, W2");
+        TestInst(SDIV(WZR, WZR, W2), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, WZR, W2");
+        TestInst(SDIV(W0, W1, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W1, W17");
+        TestInst(SDIV(W15, W1, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W1, W17");
+        TestInst(SDIV(WZR, W1, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W1, W17");
+        TestInst(SDIV(W0, W16, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W16, W17");
+        TestInst(SDIV(W15, W16, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W16, W17");
+        TestInst(SDIV(WZR, W16, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W16, W17");
+        TestInst(SDIV(W0, WZR, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, WZR, W17");
+        TestInst(SDIV(W15, WZR, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, WZR, W17");
+        TestInst(SDIV(WZR, WZR, W17), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, WZR, W17");
+        TestInst(SDIV(W0, W1, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W1, WZR");
+        TestInst(SDIV(W15, W1, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W1, WZR");
+        TestInst(SDIV(WZR, W1, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W1, WZR");
+        TestInst(SDIV(W0, W16, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, W16, WZR");
+        TestInst(SDIV(W15, W16, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, W16, WZR");
+        TestInst(SDIV(WZR, W16, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, W16, WZR");
+        TestInst(SDIV(W0, WZR, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W0, WZR, WZR");
+        TestInst(SDIV(W15, WZR, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV W15, WZR, WZR");
+        TestInst(SDIV(WZR, WZR, WZR), Arm64InstructionId.SDIV_32_dp_2src, Arm64Mnemonic.SDIV, "SDIV WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -275,248 +59,32 @@ public class Arm64InstructionFactoryTests_SDIV_General
     [TestMethod]
     public void Test_SDIV_64_dp_2src_1()
     {
-        
-        {
-            var raw = SDIV(X0, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X1, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X1, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X1, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X16, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X16, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X16, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X1, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X1, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X1, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X16, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X16, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X16, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(X0, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X0, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(X15, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV X15, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SDIV(XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SDIV_64_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SDIV XZR, XZR, XZR", asm);
-        }
+        TestInst(SDIV(X0, X1, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X1, X2");
+        TestInst(SDIV(X15, X1, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X1, X2");
+        TestInst(SDIV(XZR, X1, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X1, X2");
+        TestInst(SDIV(X0, X16, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X16, X2");
+        TestInst(SDIV(X15, X16, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X16, X2");
+        TestInst(SDIV(XZR, X16, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X16, X2");
+        TestInst(SDIV(X0, XZR, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, XZR, X2");
+        TestInst(SDIV(X15, XZR, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, XZR, X2");
+        TestInst(SDIV(XZR, XZR, X2), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, XZR, X2");
+        TestInst(SDIV(X0, X1, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X1, X17");
+        TestInst(SDIV(X15, X1, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X1, X17");
+        TestInst(SDIV(XZR, X1, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X1, X17");
+        TestInst(SDIV(X0, X16, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X16, X17");
+        TestInst(SDIV(X15, X16, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X16, X17");
+        TestInst(SDIV(XZR, X16, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X16, X17");
+        TestInst(SDIV(X0, XZR, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, XZR, X17");
+        TestInst(SDIV(X15, XZR, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, XZR, X17");
+        TestInst(SDIV(XZR, XZR, X17), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, XZR, X17");
+        TestInst(SDIV(X0, X1, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X1, XZR");
+        TestInst(SDIV(X15, X1, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X1, XZR");
+        TestInst(SDIV(XZR, X1, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X1, XZR");
+        TestInst(SDIV(X0, X16, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, X16, XZR");
+        TestInst(SDIV(X15, X16, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, X16, XZR");
+        TestInst(SDIV(XZR, X16, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, X16, XZR");
+        TestInst(SDIV(X0, XZR, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X0, XZR, XZR");
+        TestInst(SDIV(X15, XZR, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV X15, XZR, XZR");
+        TestInst(SDIV(XZR, XZR, XZR), Arm64InstructionId.SDIV_64_dp_2src, Arm64Mnemonic.SDIV, "SDIV XZR, XZR, XZR");
     }
 }

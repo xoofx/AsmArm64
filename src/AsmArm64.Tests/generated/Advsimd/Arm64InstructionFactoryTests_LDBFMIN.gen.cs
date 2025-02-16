@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDBFMIN_Advsimd
+public class Arm64InstructionFactoryTests_LDBFMIN_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDBFMIN_Advsimd
     [TestMethod]
     public void Test_LDBFMIN_16_0()
     {
-        
-        {
-            var raw = LDBFMIN(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMIN H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMIN(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMIN H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMIN(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMIN H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMIN(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMIN H31, H31, [X3]", asm);
-        }
+        TestInst(LDBFMIN(H0, H1, _[X3]), Arm64InstructionId.LDBFMIN_16, Arm64Mnemonic.LDBFMIN, "LDBFMIN H0, H1, [X3]");
+        TestInst(LDBFMIN(H31, H1, _[X3]), Arm64InstructionId.LDBFMIN_16, Arm64Mnemonic.LDBFMIN, "LDBFMIN H31, H1, [X3]");
+        TestInst(LDBFMIN(H0, H31, _[X3]), Arm64InstructionId.LDBFMIN_16, Arm64Mnemonic.LDBFMIN, "LDBFMIN H0, H31, [X3]");
+        TestInst(LDBFMIN(H31, H31, _[X3]), Arm64InstructionId.LDBFMIN_16, Arm64Mnemonic.LDBFMIN, "LDBFMIN H31, H31, [X3]");
     }
 }

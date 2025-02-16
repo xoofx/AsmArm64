@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDBFADDA_Advsimd
+public class Arm64InstructionFactoryTests_LDBFADDA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDBFADDA_Advsimd
     [TestMethod]
     public void Test_LDBFADDA_16_0()
     {
-        
-        {
-            var raw = LDBFADDA(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFADDA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFADDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFADDA H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFADDA(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFADDA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFADDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFADDA H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFADDA(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFADDA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFADDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFADDA H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFADDA(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFADDA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFADDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFADDA H31, H31, [X3]", asm);
-        }
+        TestInst(LDBFADDA(H0, H1, _[X3]), Arm64InstructionId.LDBFADDA_16, Arm64Mnemonic.LDBFADDA, "LDBFADDA H0, H1, [X3]");
+        TestInst(LDBFADDA(H31, H1, _[X3]), Arm64InstructionId.LDBFADDA_16, Arm64Mnemonic.LDBFADDA, "LDBFADDA H31, H1, [X3]");
+        TestInst(LDBFADDA(H0, H31, _[X3]), Arm64InstructionId.LDBFADDA_16, Arm64Mnemonic.LDBFADDA, "LDBFADDA H0, H31, [X3]");
+        TestInst(LDBFADDA(H31, H31, _[X3]), Arm64InstructionId.LDBFADDA_16, Arm64Mnemonic.LDBFADDA, "LDBFADDA H31, H31, [X3]");
     }
 }

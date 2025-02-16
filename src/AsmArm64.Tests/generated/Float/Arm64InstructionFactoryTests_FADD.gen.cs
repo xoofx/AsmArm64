@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FADD_Float
+public class Arm64InstructionFactoryTests_FADD_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_FADD_Float
     [TestMethod]
     public void Test_FADD_h_floatdp2_0()
     {
-        
-        {
-            var raw = FADD(H0, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H0, H1, H2", asm);
-        }
-        
-        {
-            var raw = FADD(H31, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H31, H1, H2", asm);
-        }
-        
-        {
-            var raw = FADD(H0, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H0, H31, H2", asm);
-        }
-        
-        {
-            var raw = FADD(H31, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H31, H31, H2", asm);
-        }
-        
-        {
-            var raw = FADD(H0, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H0, H1, H31", asm);
-        }
-        
-        {
-            var raw = FADD(H31, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H31, H1, H31", asm);
-        }
-        
-        {
-            var raw = FADD(H0, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H0, H31, H31", asm);
-        }
-        
-        {
-            var raw = FADD(H31, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD H31, H31, H31", asm);
-        }
+        TestInst(FADD(H0, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H2");
+        TestInst(FADD(H31, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H2");
+        TestInst(FADD(H0, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H2");
+        TestInst(FADD(H31, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H2");
+        TestInst(FADD(H0, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H31");
+        TestInst(FADD(H31, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H31");
+        TestInst(FADD(H0, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H31");
+        TestInst(FADD(H31, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H31");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_FADD_Float
     [TestMethod]
     public void Test_FADD_s_floatdp2_1()
     {
-        
-        {
-            var raw = FADD(S0, S1, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S0, S1, S2", asm);
-        }
-        
-        {
-            var raw = FADD(S31, S1, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S31, S1, S2", asm);
-        }
-        
-        {
-            var raw = FADD(S0, S31, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S0, S31, S2", asm);
-        }
-        
-        {
-            var raw = FADD(S31, S31, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S31, S31, S2", asm);
-        }
-        
-        {
-            var raw = FADD(S0, S1, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S0, S1, S31", asm);
-        }
-        
-        {
-            var raw = FADD(S31, S1, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S31, S1, S31", asm);
-        }
-        
-        {
-            var raw = FADD(S0, S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S0, S31, S31", asm);
-        }
-        
-        {
-            var raw = FADD(S31, S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD S31, S31, S31", asm);
-        }
+        TestInst(FADD(S0, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S2");
+        TestInst(FADD(S31, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S2");
+        TestInst(FADD(S0, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S2");
+        TestInst(FADD(S31, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S2");
+        TestInst(FADD(S0, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S31");
+        TestInst(FADD(S31, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S31");
+        TestInst(FADD(S0, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S31");
+        TestInst(FADD(S31, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S31");
     }
     
     /// <summary>
@@ -184,77 +56,13 @@ public class Arm64InstructionFactoryTests_FADD_Float
     [TestMethod]
     public void Test_FADD_d_floatdp2_2()
     {
-        
-        {
-            var raw = FADD(D0, D1, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D0, D1, D2", asm);
-        }
-        
-        {
-            var raw = FADD(D31, D1, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D31, D1, D2", asm);
-        }
-        
-        {
-            var raw = FADD(D0, D31, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D0, D31, D2", asm);
-        }
-        
-        {
-            var raw = FADD(D31, D31, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D31, D31, D2", asm);
-        }
-        
-        {
-            var raw = FADD(D0, D1, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D0, D1, D31", asm);
-        }
-        
-        {
-            var raw = FADD(D31, D1, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D31, D1, D31", asm);
-        }
-        
-        {
-            var raw = FADD(D0, D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D0, D31, D31", asm);
-        }
-        
-        {
-            var raw = FADD(D31, D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FADD_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FADD D31, D31, D31", asm);
-        }
+        TestInst(FADD(D0, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D2");
+        TestInst(FADD(D31, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D2");
+        TestInst(FADD(D0, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D2");
+        TestInst(FADD(D31, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D2");
+        TestInst(FADD(D0, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D31");
+        TestInst(FADD(D31, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D31");
+        TestInst(FADD(D0, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D31");
+        TestInst(FADD(D31, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D31");
     }
 }

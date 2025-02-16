@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDFMINNMA_Advsimd
+public class Arm64InstructionFactoryTests_LDFMINNMA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_LDFMINNMA_Advsimd
     [TestMethod]
     public void Test_LDFMINNMA_16_0()
     {
-        
-        {
-            var raw = LDFMINNMA(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA H31, H31, [X3]", asm);
-        }
+        TestInst(LDFMINNMA(H0, H1, _[X3]), Arm64InstructionId.LDFMINNMA_16, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA H0, H1, [X3]");
+        TestInst(LDFMINNMA(H31, H1, _[X3]), Arm64InstructionId.LDFMINNMA_16, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA H31, H1, [X3]");
+        TestInst(LDFMINNMA(H0, H31, _[X3]), Arm64InstructionId.LDFMINNMA_16, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA H0, H31, [X3]");
+        TestInst(LDFMINNMA(H31, H31, _[X3]), Arm64InstructionId.LDFMINNMA_16, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA H31, H31, [X3]");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_LDFMINNMA_Advsimd
     [TestMethod]
     public void Test_LDFMINNMA_32_1()
     {
-        
-        {
-            var raw = LDFMINNMA(S0, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA S0, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(S31, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA S31, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(S0, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA S0, S31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(S31, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA S31, S31, [X3]", asm);
-        }
+        TestInst(LDFMINNMA(S0, S1, _[X3]), Arm64InstructionId.LDFMINNMA_32, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA S0, S1, [X3]");
+        TestInst(LDFMINNMA(S31, S1, _[X3]), Arm64InstructionId.LDFMINNMA_32, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA S31, S1, [X3]");
+        TestInst(LDFMINNMA(S0, S31, _[X3]), Arm64InstructionId.LDFMINNMA_32, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA S0, S31, [X3]");
+        TestInst(LDFMINNMA(S31, S31, _[X3]), Arm64InstructionId.LDFMINNMA_32, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA S31, S31, [X3]");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_LDFMINNMA_Advsimd
     [TestMethod]
     public void Test_LDFMINNMA_64_2()
     {
-        
-        {
-            var raw = LDFMINNMA(D0, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA D0, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(D31, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA D31, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(D0, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA D0, D31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINNMA(D31, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINNMA_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINNMA D31, D31, [X3]", asm);
-        }
+        TestInst(LDFMINNMA(D0, D1, _[X3]), Arm64InstructionId.LDFMINNMA_64, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA D0, D1, [X3]");
+        TestInst(LDFMINNMA(D31, D1, _[X3]), Arm64InstructionId.LDFMINNMA_64, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA D31, D1, [X3]");
+        TestInst(LDFMINNMA(D0, D31, _[X3]), Arm64InstructionId.LDFMINNMA_64, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA D0, D31, [X3]");
+        TestInst(LDFMINNMA(D31, D31, _[X3]), Arm64InstructionId.LDFMINNMA_64, Arm64Mnemonic.LDFMINNMA, "LDFMINNMA D31, D31, [X3]");
     }
 }

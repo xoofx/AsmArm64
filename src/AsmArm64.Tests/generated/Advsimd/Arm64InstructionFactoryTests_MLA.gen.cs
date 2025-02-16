@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MLA_Advsimd
+public class Arm64InstructionFactoryTests_MLA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdelem_r_0()
     {
-        
-        {
-            var raw = MLA(V0.T_4H, V1.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V1.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V1.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V1.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V31.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V31.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V31.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V31.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V31.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V31.4H, V0.H[1]", asm);
-        }
+        TestInst(MLA(V0.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4H, V1.4H, V2.H[0]");
+        TestInst(MLA(V30.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4H, V1.4H, V2.H[0]");
+        TestInst(MLA(V0.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4H, V31.4H, V2.H[0]");
+        TestInst(MLA(V30.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4H, V31.4H, V2.H[0]");
+        TestInst(MLA(V0.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4H, V1.4H, V0.H[1]");
+        TestInst(MLA(V30.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4H, V1.4H, V0.H[1]");
+        TestInst(MLA(V0.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4H, V31.4H, V0.H[1]");
+        TestInst(MLA(V30.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4H, V31.4H, V0.H[1]");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdelem_r_1()
     {
-        
-        {
-            var raw = MLA(V0.T_8H, V1.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V1.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V1.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V1.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V31.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V31.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V31.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V31.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V31.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V31.8H, V0.H[1]", asm);
-        }
+        TestInst(MLA(V0.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.8H, V1.8H, V2.H[0]");
+        TestInst(MLA(V30.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.8H, V1.8H, V2.H[0]");
+        TestInst(MLA(V0.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.8H, V31.8H, V2.H[0]");
+        TestInst(MLA(V30.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.8H, V31.8H, V2.H[0]");
+        TestInst(MLA(V0.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.8H, V1.8H, V0.H[1]");
+        TestInst(MLA(V30.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.8H, V1.8H, V0.H[1]");
+        TestInst(MLA(V0.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.8H, V31.8H, V0.H[1]");
+        TestInst(MLA(V30.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.8H, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -184,78 +56,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdelem_r_2()
     {
-        
-        {
-            var raw = MLA(V0.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V31.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V31.2S, V0.S[1]", asm);
-        }
+        TestInst(MLA(V0.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.2S, V1.2S, V2.S[0]");
+        TestInst(MLA(V30.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.2S, V1.2S, V2.S[0]");
+        TestInst(MLA(V0.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.2S, V31.2S, V2.S[0]");
+        TestInst(MLA(V30.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.2S, V31.2S, V2.S[0]");
+        TestInst(MLA(V0.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.2S, V1.2S, V0.S[1]");
+        TestInst(MLA(V30.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.2S, V1.2S, V0.S[1]");
+        TestInst(MLA(V0.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.2S, V31.2S, V0.S[1]");
+        TestInst(MLA(V30.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.2S, V31.2S, V0.S[1]");
     }
     
     /// <summary>
@@ -264,78 +72,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdelem_r_3()
     {
-        
-        {
-            var raw = MLA(V0.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V31.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V31.4S, V0.S[1]", asm);
-        }
+        TestInst(MLA(V0.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4S, V1.4S, V2.S[0]");
+        TestInst(MLA(V30.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4S, V1.4S, V2.S[0]");
+        TestInst(MLA(V0.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4S, V31.4S, V2.S[0]");
+        TestInst(MLA(V30.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4S, V31.4S, V2.S[0]");
+        TestInst(MLA(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4S, V1.4S, V0.S[1]");
+        TestInst(MLA(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4S, V1.4S, V0.S[1]");
+        TestInst(MLA(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V0.4S, V31.4S, V0.S[1]");
+        TestInst(MLA(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.MLA_asimdelem_r, Arm64Mnemonic.MLA, "MLA V30.4S, V31.4S, V0.S[1]");
     }
     
     /// <summary>
@@ -344,78 +88,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_4()
     {
-        
-        {
-            var raw = MLA(V0.T_8B, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8B, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8B, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8B, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8B, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8B, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8B, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8B, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8B, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8B, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8B, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8B, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8B, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8B, V31.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8B, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8B, V31.8B, V0.8B", asm);
-        }
+        TestInst(MLA(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8B, V1.8B, V2.8B");
+        TestInst(MLA(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8B, V1.8B, V2.8B");
+        TestInst(MLA(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8B, V31.8B, V2.8B");
+        TestInst(MLA(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8B, V31.8B, V2.8B");
+        TestInst(MLA(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8B, V1.8B, V0.8B");
+        TestInst(MLA(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8B, V1.8B, V0.8B");
+        TestInst(MLA(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8B, V31.8B, V0.8B");
+        TestInst(MLA(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8B, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -424,78 +104,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_5()
     {
-        
-        {
-            var raw = MLA(V0.T_16B, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.16B, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_16B, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.16B, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_16B, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.16B, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_16B, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.16B, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_16B, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.16B, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_16B, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.16B, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_16B, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.16B, V31.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_16B, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.16B, V31.16B, V0.16B", asm);
-        }
+        TestInst(MLA(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.16B, V1.16B, V2.16B");
+        TestInst(MLA(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.16B, V1.16B, V2.16B");
+        TestInst(MLA(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.16B, V31.16B, V2.16B");
+        TestInst(MLA(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.16B, V31.16B, V2.16B");
+        TestInst(MLA(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.16B, V1.16B, V0.16B");
+        TestInst(MLA(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.16B, V1.16B, V0.16B");
+        TestInst(MLA(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.16B, V31.16B, V0.16B");
+        TestInst(MLA(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.16B, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -504,78 +120,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_6()
     {
-        
-        {
-            var raw = MLA(V0.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4H, V31.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4H, V31.4H, V0.4H", asm);
-        }
+        TestInst(MLA(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4H, V1.4H, V2.4H");
+        TestInst(MLA(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4H, V1.4H, V2.4H");
+        TestInst(MLA(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4H, V31.4H, V2.4H");
+        TestInst(MLA(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4H, V31.4H, V2.4H");
+        TestInst(MLA(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4H, V1.4H, V0.4H");
+        TestInst(MLA(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4H, V1.4H, V0.4H");
+        TestInst(MLA(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4H, V31.4H, V0.4H");
+        TestInst(MLA(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -584,78 +136,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_7()
     {
-        
-        {
-            var raw = MLA(V0.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.8H, V31.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.8H, V31.8H, V0.8H", asm);
-        }
+        TestInst(MLA(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8H, V1.8H, V2.8H");
+        TestInst(MLA(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8H, V1.8H, V2.8H");
+        TestInst(MLA(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8H, V31.8H, V2.8H");
+        TestInst(MLA(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8H, V31.8H, V2.8H");
+        TestInst(MLA(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8H, V1.8H, V0.8H");
+        TestInst(MLA(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8H, V1.8H, V0.8H");
+        TestInst(MLA(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.8H, V31.8H, V0.8H");
+        TestInst(MLA(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -664,78 +152,14 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_8()
     {
-        
-        {
-            var raw = MLA(V0.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.2S, V31.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.2S, V31.2S, V0.2S", asm);
-        }
+        TestInst(MLA(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.2S, V1.2S, V2.2S");
+        TestInst(MLA(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.2S, V1.2S, V2.2S");
+        TestInst(MLA(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.2S, V31.2S, V2.2S");
+        TestInst(MLA(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.2S, V31.2S, V2.2S");
+        TestInst(MLA(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.2S, V1.2S, V0.2S");
+        TestInst(MLA(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.2S, V1.2S, V0.2S");
+        TestInst(MLA(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.2S, V31.2S, V0.2S");
+        TestInst(MLA(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -744,77 +168,13 @@ public class Arm64InstructionFactoryTests_MLA_Advsimd
     [TestMethod]
     public void Test_MLA_asimdsame_only_9()
     {
-        
-        {
-            var raw = MLA(V0.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V0.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V0.4S, V31.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = MLA(V30.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MLA_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MLA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MLA V30.4S, V31.4S, V0.4S", asm);
-        }
+        TestInst(MLA(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4S, V1.4S, V2.4S");
+        TestInst(MLA(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4S, V1.4S, V2.4S");
+        TestInst(MLA(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4S, V31.4S, V2.4S");
+        TestInst(MLA(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4S, V31.4S, V2.4S");
+        TestInst(MLA(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4S, V1.4S, V0.4S");
+        TestInst(MLA(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4S, V1.4S, V0.4S");
+        TestInst(MLA(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V0.4S, V31.4S, V0.4S");
+        TestInst(MLA(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.MLA_asimdsame_only, Arm64Mnemonic.MLA, "MLA V30.4S, V31.4S, V0.4S");
     }
 }

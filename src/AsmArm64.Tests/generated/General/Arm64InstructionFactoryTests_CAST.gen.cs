@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CAST_General
+public class Arm64InstructionFactoryTests_CAST_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CAST_General
     [TestMethod]
     public void Test_CAST_c64_comswap_unpriv_0()
     {
-        
-        {
-            var raw = CAST(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CAST(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CAST_c64_comswap_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CAST, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CAST XZR, XZR, [X3]", asm);
-        }
+        TestInst(CAST(X0, X1, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X0, X1, [X3]");
+        TestInst(CAST(X15, X1, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X15, X1, [X3]");
+        TestInst(CAST(XZR, X1, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST XZR, X1, [X3]");
+        TestInst(CAST(X0, X16, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X0, X16, [X3]");
+        TestInst(CAST(X15, X16, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X15, X16, [X3]");
+        TestInst(CAST(XZR, X16, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST XZR, X16, [X3]");
+        TestInst(CAST(X0, XZR, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X0, XZR, [X3]");
+        TestInst(CAST(X15, XZR, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST X15, XZR, [X3]");
+        TestInst(CAST(XZR, XZR, _[X3]), Arm64InstructionId.CAST_c64_comswap_unpriv, Arm64Mnemonic.CAST, "CAST XZR, XZR, [X3]");
     }
 }

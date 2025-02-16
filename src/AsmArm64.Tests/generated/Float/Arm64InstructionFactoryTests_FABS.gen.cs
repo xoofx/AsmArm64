@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FABS_Float
+public class Arm64InstructionFactoryTests_FABS_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FABS_Float
     [TestMethod]
     public void Test_FABS_h_floatdp1_0()
     {
-        
-        {
-            var raw = FABS(H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS H0, H1", asm);
-        }
-        
-        {
-            var raw = FABS(H31, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS H31, H1", asm);
-        }
-        
-        {
-            var raw = FABS(H0, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS H0, H31", asm);
-        }
-        
-        {
-            var raw = FABS(H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS H31, H31", asm);
-        }
+        TestInst(FABS(H0, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H1");
+        TestInst(FABS(H31, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H1");
+        TestInst(FABS(H0, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H31");
+        TestInst(FABS(H31, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H31");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FABS_Float
     [TestMethod]
     public void Test_FABS_s_floatdp1_1()
     {
-        
-        {
-            var raw = FABS(S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS S0, S1", asm);
-        }
-        
-        {
-            var raw = FABS(S31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS S31, S1", asm);
-        }
-        
-        {
-            var raw = FABS(S0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS S0, S31", asm);
-        }
-        
-        {
-            var raw = FABS(S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS S31, S31", asm);
-        }
+        TestInst(FABS(S0, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S1");
+        TestInst(FABS(S31, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S1");
+        TestInst(FABS(S0, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S31");
+        TestInst(FABS(S31, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S31");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FABS_Float
     [TestMethod]
     public void Test_FABS_d_floatdp1_2()
     {
-        
-        {
-            var raw = FABS(D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS D0, D1", asm);
-        }
-        
-        {
-            var raw = FABS(D31, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS D31, D1", asm);
-        }
-        
-        {
-            var raw = FABS(D0, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS D0, D31", asm);
-        }
-        
-        {
-            var raw = FABS(D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FABS_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FABS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FABS D31, D31", asm);
-        }
+        TestInst(FABS(D0, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D1");
+        TestInst(FABS(D31, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D1");
+        TestInst(FABS(D0, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D31");
+        TestInst(FABS(D31, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D31");
     }
 }

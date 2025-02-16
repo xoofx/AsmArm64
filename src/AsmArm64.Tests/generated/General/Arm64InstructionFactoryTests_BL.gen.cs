@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BL_General
+public class Arm64InstructionFactoryTests_BL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_BL_General
     [TestMethod]
     public void Test_BL_only_branch_imm_0()
     {
-        
-        {
-            var raw = BL(32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BL_only_branch_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BL #32", asm);
-        }
+        TestInst(BL(32), Arm64InstructionId.BL_only_branch_imm, Arm64Mnemonic.BL, "BL #32");
     }
 }

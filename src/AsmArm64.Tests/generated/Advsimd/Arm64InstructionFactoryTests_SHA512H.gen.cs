@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SHA512H_Advsimd
+public class Arm64InstructionFactoryTests_SHA512H_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SHA512H_Advsimd
     [TestMethod]
     public void Test_SHA512H_qqv_cryptosha512_3_0()
     {
-        
-        {
-            var raw = SHA512H(Q0, Q1, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q0, Q1, V2.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q31, Q1, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q31, Q1, V2.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q0, Q31, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q0, Q31, V2.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q31, Q31, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q31, Q31, V2.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q0, Q1, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q0, Q1, V0.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q31, Q1, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q31, Q1, V0.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q0, Q31, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q0, Q31, V0.2D", asm);
-        }
-        
-        {
-            var raw = SHA512H(Q31, Q31, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA512H_qqv_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA512H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA512H Q31, Q31, V0.2D", asm);
-        }
+        TestInst(SHA512H(Q0, Q1, V2.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q0, Q1, V2.2D");
+        TestInst(SHA512H(Q31, Q1, V2.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q31, Q1, V2.2D");
+        TestInst(SHA512H(Q0, Q31, V2.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q0, Q31, V2.2D");
+        TestInst(SHA512H(Q31, Q31, V2.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q31, Q31, V2.2D");
+        TestInst(SHA512H(Q0, Q1, V0.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q0, Q1, V0.2D");
+        TestInst(SHA512H(Q31, Q1, V0.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q31, Q1, V0.2D");
+        TestInst(SHA512H(Q0, Q31, V0.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q0, Q31, V0.2D");
+        TestInst(SHA512H(Q31, Q31, V0.T_2D), Arm64InstructionId.SHA512H_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H, "SHA512H Q31, Q31, V0.2D");
     }
 }

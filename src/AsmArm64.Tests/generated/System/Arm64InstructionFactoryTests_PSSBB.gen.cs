@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PSSBB_System
+public class Arm64InstructionFactoryTests_PSSBB_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_PSSBB_System
     [TestMethod]
     public void Test_PSSBB_dsb_bo_barriers_0()
     {
-        
-        {
-            var raw = PSSBB();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PSSBB_dsb_bo_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PSSBB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PSSBB", asm);
-        }
+        TestInst(PSSBB(), Arm64InstructionId.PSSBB_dsb_bo_barriers, Arm64Mnemonic.PSSBB, "PSSBB");
     }
 }

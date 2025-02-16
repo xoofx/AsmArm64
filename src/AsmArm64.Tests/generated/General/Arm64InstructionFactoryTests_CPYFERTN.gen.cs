@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CPYFERTN_General
+public class Arm64InstructionFactoryTests_CPYFERTN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_CPYFERTN_General
     [TestMethod]
     public void Test_CPYFERTN_cpy_memcms_0()
     {
-        
-        {
-            var raw = CPYFERTN(_[X1].Pre, _[X2].Pre, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYFERTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYFERTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYFERTN [X1]!, [X2]!, X2", asm);
-        }
-        
-        {
-            var raw = CPYFERTN(_[X1].Pre, _[X2].Pre, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYFERTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYFERTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYFERTN [X1]!, [X2]!, X17", asm);
-        }
-        
-        {
-            var raw = CPYFERTN(_[X1].Pre, _[X2].Pre, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYFERTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYFERTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYFERTN [X1]!, [X2]!, XZR", asm);
-        }
+        TestInst(CPYFERTN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFERTN_cpy_memcms, Arm64Mnemonic.CPYFERTN, "CPYFERTN [X1]!, [X2]!, X2");
+        TestInst(CPYFERTN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFERTN_cpy_memcms, Arm64Mnemonic.CPYFERTN, "CPYFERTN [X1]!, [X2]!, X17");
+        TestInst(CPYFERTN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFERTN_cpy_memcms, Arm64Mnemonic.CPYFERTN, "CPYFERTN [X1]!, [X2]!, XZR");
     }
 }

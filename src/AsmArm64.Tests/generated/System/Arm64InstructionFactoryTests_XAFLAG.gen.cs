@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_XAFLAG_System
+public class Arm64InstructionFactoryTests_XAFLAG_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_XAFLAG_System
     [TestMethod]
     public void Test_XAFLAG_m_pstate_0()
     {
-        
-        {
-            var raw = XAFLAG();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XAFLAG_m_pstate, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XAFLAG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XAFLAG", asm);
-        }
+        TestInst(XAFLAG(), Arm64InstructionId.XAFLAG_m_pstate, Arm64Mnemonic.XAFLAG, "XAFLAG");
     }
 }

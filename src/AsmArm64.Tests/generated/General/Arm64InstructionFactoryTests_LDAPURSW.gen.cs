@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAPURSW_General
+public class Arm64InstructionFactoryTests_LDAPURSW_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDAPURSW_General
     [TestMethod]
     public void Test_LDAPURSW_64_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = LDAPURSW(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURSW X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURSW(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURSW X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURSW(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURSW XZR, [X2, #5]", asm);
-        }
+        TestInst(LDAPURSW(X0, _[X2, 5]), Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSW, "LDAPURSW X0, [X2, #5]");
+        TestInst(LDAPURSW(X15, _[X2, 5]), Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSW, "LDAPURSW X15, [X2, #5]");
+        TestInst(LDAPURSW(XZR, _[X2, 5]), Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSW, "LDAPURSW XZR, [X2, #5]");
     }
 }

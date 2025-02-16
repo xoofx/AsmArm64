@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSMINH_General
+public class Arm64InstructionFactoryTests_STSMINH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STSMINH_General
     [TestMethod]
     public void Test_STSMINH_ldsminh_32_memop_0()
     {
-        
-        {
-            var raw = STSMINH(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMINH(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMINH(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH WZR, [X2]", asm);
-        }
+        TestInst(STSMINH(W0, _[X2]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH W0, [X2]");
+        TestInst(STSMINH(W15, _[X2]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH W15, [X2]");
+        TestInst(STSMINH(WZR, _[X2]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH WZR, [X2]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACDZB_General
+public class Arm64InstructionFactoryTests_PACDZB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_PACDZB_General
     [TestMethod]
     public void Test_PACDZB_64z_dp_1src_0()
     {
-        
-        {
-            var raw = PACDZB(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDZB X0", asm);
-        }
-        
-        {
-            var raw = PACDZB(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDZB X15", asm);
-        }
-        
-        {
-            var raw = PACDZB(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDZB XZR", asm);
-        }
+        TestInst(PACDZB(X0), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X0");
+        TestInst(PACDZB(X15), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X15");
+        TestInst(PACDZB(XZR), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB XZR");
     }
 }

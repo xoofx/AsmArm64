@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSMAXL_General
+public class Arm64InstructionFactoryTests_STSMAXL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STSMAXL_General
     [TestMethod]
     public void Test_STSMAXL_ldsmaxl_32_memop_0()
     {
-        
-        {
-            var raw = STSMAXL(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXL(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXL(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL WZR, [X2]", asm);
-        }
+        TestInst(STSMAXL(W0, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, Arm64Mnemonic.STSMAXL, "STSMAXL W0, [X2]");
+        TestInst(STSMAXL(W15, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, Arm64Mnemonic.STSMAXL, "STSMAXL W15, [X2]");
+        TestInst(STSMAXL(WZR, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_32_memop, Arm64Mnemonic.STSMAXL, "STSMAXL WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STSMAXL_General
     [TestMethod]
     public void Test_STSMAXL_ldsmaxl_64_memop_1()
     {
-        
-        {
-            var raw = STSMAXL(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXL(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXL(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXL XZR, [X2]", asm);
-        }
+        TestInst(STSMAXL(X0, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, Arm64Mnemonic.STSMAXL, "STSMAXL X0, [X2]");
+        TestInst(STSMAXL(X15, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, Arm64Mnemonic.STSMAXL, "STSMAXL X15, [X2]");
+        TestInst(STSMAXL(XZR, _[X2]), Arm64InstructionId.STSMAXL_ldsmaxl_64_memop, Arm64Mnemonic.STSMAXL, "STSMAXL XZR, [X2]");
     }
 }

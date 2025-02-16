@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACDA_General
+public class Arm64InstructionFactoryTests_PACDA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_PACDA_General
     [TestMethod]
     public void Test_PACDA_64p_dp_1src_0()
     {
-        
-        {
-            var raw = PACDA(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X0, X2", asm);
-        }
-        
-        {
-            var raw = PACDA(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X15, X2", asm);
-        }
-        
-        {
-            var raw = PACDA(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA XZR, X2", asm);
-        }
-        
-        {
-            var raw = PACDA(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X0, X18", asm);
-        }
-        
-        {
-            var raw = PACDA(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X15, X18", asm);
-        }
-        
-        {
-            var raw = PACDA(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA XZR, X18", asm);
-        }
-        
-        {
-            var raw = PACDA(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X0, SP", asm);
-        }
-        
-        {
-            var raw = PACDA(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA X15, SP", asm);
-        }
-        
-        {
-            var raw = PACDA(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACDA XZR, SP", asm);
-        }
+        TestInst(PACDA(X0, X2), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X0, X2");
+        TestInst(PACDA(X15, X2), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X15, X2");
+        TestInst(PACDA(XZR, X2), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA XZR, X2");
+        TestInst(PACDA(X0, X18), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X0, X18");
+        TestInst(PACDA(X15, X18), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X15, X18");
+        TestInst(PACDA(XZR, X18), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA XZR, X18");
+        TestInst(PACDA(X0, SP), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X0, SP");
+        TestInst(PACDA(X15, SP), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA X15, SP");
+        TestInst(PACDA(XZR, SP), Arm64InstructionId.PACDA_64p_dp_1src, Arm64Mnemonic.PACDA, "PACDA XZR, SP");
     }
 }

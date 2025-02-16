@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DSB_System
+public class Arm64InstructionFactoryTests_DSB_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,15 +24,7 @@ public class Arm64InstructionFactoryTests_DSB_System
     [TestMethod]
     public void Test_DSB_bo_barriers_0()
     {
-        
-        {
-            var raw = DSB(OSHLD);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DSB_bo_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DSB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DSB OSHLD", asm);
-        }
+        TestInst(DSB(OSHLD), Arm64InstructionId.DSB_bo_barriers, Arm64Mnemonic.DSB, "DSB OSHLD");
     }
     
     /// <summary>
@@ -41,14 +33,6 @@ public class Arm64InstructionFactoryTests_DSB_System
     [TestMethod]
     public void Test_DSB_bon_barriers_1()
     {
-        
-        {
-            var raw = DSB(OSH);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DSB_bon_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DSB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DSB OSH", asm);
-        }
+        TestInst(DSB(OSH), Arm64InstructionId.DSB_bon_barriers, Arm64Mnemonic.DSB, "DSB OSH");
     }
 }

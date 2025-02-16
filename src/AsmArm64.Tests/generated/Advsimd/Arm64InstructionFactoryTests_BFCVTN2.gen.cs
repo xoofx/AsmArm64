@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BFCVTN2_Advsimd
+public class Arm64InstructionFactoryTests_BFCVTN2_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_BFCVTN2_Advsimd
     [TestMethod]
     public void Test_BFCVTN2_asimdmisc_4s_0()
     {
-        
-        {
-            var raw = BFCVTN2(V0.T_8H, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVTN2_asimdmisc_4s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVTN2 V0.8H, V1.4S", asm);
-        }
-        
-        {
-            var raw = BFCVTN2(V30.T_8H, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVTN2_asimdmisc_4s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVTN2 V30.8H, V1.4S", asm);
-        }
-        
-        {
-            var raw = BFCVTN2(V0.T_8H, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVTN2_asimdmisc_4s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVTN2 V0.8H, V31.4S", asm);
-        }
-        
-        {
-            var raw = BFCVTN2(V30.T_8H, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVTN2_asimdmisc_4s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVTN2 V30.8H, V31.4S", asm);
-        }
+        TestInst(BFCVTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.BFCVTN2_asimdmisc_4s, Arm64Mnemonic.BFCVTN2, "BFCVTN2 V0.8H, V1.4S");
+        TestInst(BFCVTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.BFCVTN2_asimdmisc_4s, Arm64Mnemonic.BFCVTN2, "BFCVTN2 V30.8H, V1.4S");
+        TestInst(BFCVTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.BFCVTN2_asimdmisc_4s, Arm64Mnemonic.BFCVTN2, "BFCVTN2 V0.8H, V31.4S");
+        TestInst(BFCVTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.BFCVTN2_asimdmisc_4s, Arm64Mnemonic.BFCVTN2, "BFCVTN2 V30.8H, V31.4S");
     }
 }

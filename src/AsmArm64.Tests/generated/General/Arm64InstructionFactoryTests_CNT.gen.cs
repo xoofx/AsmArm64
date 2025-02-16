@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CNT_General
+public class Arm64InstructionFactoryTests_CNT_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_CNT_General
     [TestMethod]
     public void Test_CNT_32_dp_1src_0()
     {
-        
-        {
-            var raw = CNT(W0, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W0, W1", asm);
-        }
-        
-        {
-            var raw = CNT(W15, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W15, W1", asm);
-        }
-        
-        {
-            var raw = CNT(WZR, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT WZR, W1", asm);
-        }
-        
-        {
-            var raw = CNT(W0, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W0, W16", asm);
-        }
-        
-        {
-            var raw = CNT(W15, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W15, W16", asm);
-        }
-        
-        {
-            var raw = CNT(WZR, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT WZR, W16", asm);
-        }
-        
-        {
-            var raw = CNT(W0, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W0, WZR", asm);
-        }
-        
-        {
-            var raw = CNT(W15, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT W15, WZR", asm);
-        }
-        
-        {
-            var raw = CNT(WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT WZR, WZR", asm);
-        }
+        TestInst(CNT(W0, W1), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W0, W1");
+        TestInst(CNT(W15, W1), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W15, W1");
+        TestInst(CNT(WZR, W1), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT WZR, W1");
+        TestInst(CNT(W0, W16), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W0, W16");
+        TestInst(CNT(W15, W16), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W15, W16");
+        TestInst(CNT(WZR, W16), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT WZR, W16");
+        TestInst(CNT(W0, WZR), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W0, WZR");
+        TestInst(CNT(W15, WZR), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT W15, WZR");
+        TestInst(CNT(WZR, WZR), Arm64InstructionId.CNT_32_dp_1src, Arm64Mnemonic.CNT, "CNT WZR, WZR");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_CNT_General
     [TestMethod]
     public void Test_CNT_64_dp_1src_1()
     {
-        
-        {
-            var raw = CNT(X0, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X0, X1", asm);
-        }
-        
-        {
-            var raw = CNT(X15, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X15, X1", asm);
-        }
-        
-        {
-            var raw = CNT(XZR, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT XZR, X1", asm);
-        }
-        
-        {
-            var raw = CNT(X0, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X0, X16", asm);
-        }
-        
-        {
-            var raw = CNT(X15, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X15, X16", asm);
-        }
-        
-        {
-            var raw = CNT(XZR, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT XZR, X16", asm);
-        }
-        
-        {
-            var raw = CNT(X0, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X0, XZR", asm);
-        }
-        
-        {
-            var raw = CNT(X15, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT X15, XZR", asm);
-        }
-        
-        {
-            var raw = CNT(XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNT XZR, XZR", asm);
-        }
+        TestInst(CNT(X0, X1), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X0, X1");
+        TestInst(CNT(X15, X1), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X15, X1");
+        TestInst(CNT(XZR, X1), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT XZR, X1");
+        TestInst(CNT(X0, X16), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X0, X16");
+        TestInst(CNT(X15, X16), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X15, X16");
+        TestInst(CNT(XZR, X16), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT XZR, X16");
+        TestInst(CNT(X0, XZR), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X0, XZR");
+        TestInst(CNT(X15, XZR), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT X15, XZR");
+        TestInst(CNT(XZR, XZR), Arm64InstructionId.CNT_64_dp_1src, Arm64Mnemonic.CNT, "CNT XZR, XZR");
     }
 }

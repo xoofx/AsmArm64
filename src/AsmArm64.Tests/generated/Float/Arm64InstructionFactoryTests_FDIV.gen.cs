@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FDIV_Float
+public class Arm64InstructionFactoryTests_FDIV_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_FDIV_Float
     [TestMethod]
     public void Test_FDIV_h_floatdp2_0()
     {
-        
-        {
-            var raw = FDIV(H0, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H0, H1, H2", asm);
-        }
-        
-        {
-            var raw = FDIV(H31, H1, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H31, H1, H2", asm);
-        }
-        
-        {
-            var raw = FDIV(H0, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H0, H31, H2", asm);
-        }
-        
-        {
-            var raw = FDIV(H31, H31, H2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H31, H31, H2", asm);
-        }
-        
-        {
-            var raw = FDIV(H0, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H0, H1, H31", asm);
-        }
-        
-        {
-            var raw = FDIV(H31, H1, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H31, H1, H31", asm);
-        }
-        
-        {
-            var raw = FDIV(H0, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H0, H31, H31", asm);
-        }
-        
-        {
-            var raw = FDIV(H31, H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_h_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV H31, H31, H31", asm);
-        }
+        TestInst(FDIV(H0, H1, H2), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H0, H1, H2");
+        TestInst(FDIV(H31, H1, H2), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H31, H1, H2");
+        TestInst(FDIV(H0, H31, H2), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H0, H31, H2");
+        TestInst(FDIV(H31, H31, H2), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H31, H31, H2");
+        TestInst(FDIV(H0, H1, H31), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H0, H1, H31");
+        TestInst(FDIV(H31, H1, H31), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H31, H1, H31");
+        TestInst(FDIV(H0, H31, H31), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H0, H31, H31");
+        TestInst(FDIV(H31, H31, H31), Arm64InstructionId.FDIV_h_floatdp2, Arm64Mnemonic.FDIV, "FDIV H31, H31, H31");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_FDIV_Float
     [TestMethod]
     public void Test_FDIV_s_floatdp2_1()
     {
-        
-        {
-            var raw = FDIV(S0, S1, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S0, S1, S2", asm);
-        }
-        
-        {
-            var raw = FDIV(S31, S1, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S31, S1, S2", asm);
-        }
-        
-        {
-            var raw = FDIV(S0, S31, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S0, S31, S2", asm);
-        }
-        
-        {
-            var raw = FDIV(S31, S31, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S31, S31, S2", asm);
-        }
-        
-        {
-            var raw = FDIV(S0, S1, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S0, S1, S31", asm);
-        }
-        
-        {
-            var raw = FDIV(S31, S1, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S31, S1, S31", asm);
-        }
-        
-        {
-            var raw = FDIV(S0, S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S0, S31, S31", asm);
-        }
-        
-        {
-            var raw = FDIV(S31, S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_s_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV S31, S31, S31", asm);
-        }
+        TestInst(FDIV(S0, S1, S2), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S0, S1, S2");
+        TestInst(FDIV(S31, S1, S2), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S31, S1, S2");
+        TestInst(FDIV(S0, S31, S2), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S0, S31, S2");
+        TestInst(FDIV(S31, S31, S2), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S31, S31, S2");
+        TestInst(FDIV(S0, S1, S31), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S0, S1, S31");
+        TestInst(FDIV(S31, S1, S31), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S31, S1, S31");
+        TestInst(FDIV(S0, S31, S31), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S0, S31, S31");
+        TestInst(FDIV(S31, S31, S31), Arm64InstructionId.FDIV_s_floatdp2, Arm64Mnemonic.FDIV, "FDIV S31, S31, S31");
     }
     
     /// <summary>
@@ -184,77 +56,13 @@ public class Arm64InstructionFactoryTests_FDIV_Float
     [TestMethod]
     public void Test_FDIV_d_floatdp2_2()
     {
-        
-        {
-            var raw = FDIV(D0, D1, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D0, D1, D2", asm);
-        }
-        
-        {
-            var raw = FDIV(D31, D1, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D31, D1, D2", asm);
-        }
-        
-        {
-            var raw = FDIV(D0, D31, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D0, D31, D2", asm);
-        }
-        
-        {
-            var raw = FDIV(D31, D31, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D31, D31, D2", asm);
-        }
-        
-        {
-            var raw = FDIV(D0, D1, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D0, D1, D31", asm);
-        }
-        
-        {
-            var raw = FDIV(D31, D1, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D31, D1, D31", asm);
-        }
-        
-        {
-            var raw = FDIV(D0, D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D0, D31, D31", asm);
-        }
-        
-        {
-            var raw = FDIV(D31, D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FDIV_d_floatdp2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FDIV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FDIV D31, D31, D31", asm);
-        }
+        TestInst(FDIV(D0, D1, D2), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D0, D1, D2");
+        TestInst(FDIV(D31, D1, D2), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D31, D1, D2");
+        TestInst(FDIV(D0, D31, D2), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D0, D31, D2");
+        TestInst(FDIV(D31, D31, D2), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D31, D31, D2");
+        TestInst(FDIV(D0, D1, D31), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D0, D1, D31");
+        TestInst(FDIV(D31, D1, D31), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D31, D1, D31");
+        TestInst(FDIV(D0, D31, D31), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D0, D31, D31");
+        TestInst(FDIV(D31, D31, D31), Arm64InstructionId.FDIV_d_floatdp2, Arm64Mnemonic.FDIV, "FDIV D31, D31, D31");
     }
 }

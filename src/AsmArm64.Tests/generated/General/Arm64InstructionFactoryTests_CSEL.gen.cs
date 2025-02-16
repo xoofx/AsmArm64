@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CSEL_General
+public class Arm64InstructionFactoryTests_CSEL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,492 +24,60 @@ public class Arm64InstructionFactoryTests_CSEL_General
     [TestMethod]
     public void Test_CSEL_32_condsel_0()
     {
-        
-        {
-            var raw = CSEL(W0, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, W2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, W2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, W17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, W17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, W2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, W2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, W17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, W17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W1, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W1, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, W16, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, W16, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W0, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W0, WZR, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(W15, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL W15, WZR, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(WZR, WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL WZR, WZR, WZR, HS", asm);
-        }
+        TestInst(CSEL(W0, W1, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, W2, NE");
+        TestInst(CSEL(W15, W1, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, W2, NE");
+        TestInst(CSEL(WZR, W1, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, W2, NE");
+        TestInst(CSEL(W0, W16, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, W2, NE");
+        TestInst(CSEL(W15, W16, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, W2, NE");
+        TestInst(CSEL(WZR, W16, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, W2, NE");
+        TestInst(CSEL(W0, WZR, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, W2, NE");
+        TestInst(CSEL(W15, WZR, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, W2, NE");
+        TestInst(CSEL(WZR, WZR, W2, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, W2, NE");
+        TestInst(CSEL(W0, W1, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, W17, NE");
+        TestInst(CSEL(W15, W1, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, W17, NE");
+        TestInst(CSEL(WZR, W1, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, W17, NE");
+        TestInst(CSEL(W0, W16, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, W17, NE");
+        TestInst(CSEL(W15, W16, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, W17, NE");
+        TestInst(CSEL(WZR, W16, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, W17, NE");
+        TestInst(CSEL(W0, WZR, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, W17, NE");
+        TestInst(CSEL(W15, WZR, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, W17, NE");
+        TestInst(CSEL(WZR, WZR, W17, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, W17, NE");
+        TestInst(CSEL(W0, W1, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, WZR, NE");
+        TestInst(CSEL(W15, W1, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, WZR, NE");
+        TestInst(CSEL(WZR, W1, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, WZR, NE");
+        TestInst(CSEL(W0, W16, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, WZR, NE");
+        TestInst(CSEL(W15, W16, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, WZR, NE");
+        TestInst(CSEL(WZR, W16, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, WZR, NE");
+        TestInst(CSEL(W0, WZR, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, WZR, NE");
+        TestInst(CSEL(W15, WZR, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, WZR, NE");
+        TestInst(CSEL(WZR, WZR, WZR, NE), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, WZR, NE");
+        TestInst(CSEL(W0, W1, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, W2, HS");
+        TestInst(CSEL(W15, W1, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, W2, HS");
+        TestInst(CSEL(WZR, W1, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, W2, HS");
+        TestInst(CSEL(W0, W16, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, W2, HS");
+        TestInst(CSEL(W15, W16, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, W2, HS");
+        TestInst(CSEL(WZR, W16, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, W2, HS");
+        TestInst(CSEL(W0, WZR, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, W2, HS");
+        TestInst(CSEL(W15, WZR, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, W2, HS");
+        TestInst(CSEL(WZR, WZR, W2, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, W2, HS");
+        TestInst(CSEL(W0, W1, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, W17, HS");
+        TestInst(CSEL(W15, W1, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, W17, HS");
+        TestInst(CSEL(WZR, W1, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, W17, HS");
+        TestInst(CSEL(W0, W16, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, W17, HS");
+        TestInst(CSEL(W15, W16, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, W17, HS");
+        TestInst(CSEL(WZR, W16, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, W17, HS");
+        TestInst(CSEL(W0, WZR, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, W17, HS");
+        TestInst(CSEL(W15, WZR, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, W17, HS");
+        TestInst(CSEL(WZR, WZR, W17, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, W17, HS");
+        TestInst(CSEL(W0, W1, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W1, WZR, HS");
+        TestInst(CSEL(W15, W1, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W1, WZR, HS");
+        TestInst(CSEL(WZR, W1, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W1, WZR, HS");
+        TestInst(CSEL(W0, W16, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, W16, WZR, HS");
+        TestInst(CSEL(W15, W16, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, W16, WZR, HS");
+        TestInst(CSEL(WZR, W16, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, W16, WZR, HS");
+        TestInst(CSEL(W0, WZR, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W0, WZR, WZR, HS");
+        TestInst(CSEL(W15, WZR, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL W15, WZR, WZR, HS");
+        TestInst(CSEL(WZR, WZR, WZR, HS), Arm64InstructionId.CSEL_32_condsel, Arm64Mnemonic.CSEL, "CSEL WZR, WZR, WZR, HS");
     }
     
     /// <summary>
@@ -518,491 +86,59 @@ public class Arm64InstructionFactoryTests_CSEL_General
     [TestMethod]
     public void Test_CSEL_64_condsel_1()
     {
-        
-        {
-            var raw = CSEL(X0, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, X2, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, X2, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, X17, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, X17, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, X2, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, X2, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, X17, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, X17, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X1, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X1, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, X16, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, X16, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X0, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X0, XZR, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(X15, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL X15, XZR, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CSEL(XZR, XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSEL_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSEL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSEL XZR, XZR, XZR, HS", asm);
-        }
+        TestInst(CSEL(X0, X1, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, X2, NE");
+        TestInst(CSEL(X15, X1, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, X2, NE");
+        TestInst(CSEL(XZR, X1, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, X2, NE");
+        TestInst(CSEL(X0, X16, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, X2, NE");
+        TestInst(CSEL(X15, X16, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, X2, NE");
+        TestInst(CSEL(XZR, X16, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, X2, NE");
+        TestInst(CSEL(X0, XZR, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, X2, NE");
+        TestInst(CSEL(X15, XZR, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, X2, NE");
+        TestInst(CSEL(XZR, XZR, X2, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, X2, NE");
+        TestInst(CSEL(X0, X1, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, X17, NE");
+        TestInst(CSEL(X15, X1, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, X17, NE");
+        TestInst(CSEL(XZR, X1, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, X17, NE");
+        TestInst(CSEL(X0, X16, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, X17, NE");
+        TestInst(CSEL(X15, X16, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, X17, NE");
+        TestInst(CSEL(XZR, X16, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, X17, NE");
+        TestInst(CSEL(X0, XZR, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, X17, NE");
+        TestInst(CSEL(X15, XZR, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, X17, NE");
+        TestInst(CSEL(XZR, XZR, X17, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, X17, NE");
+        TestInst(CSEL(X0, X1, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, XZR, NE");
+        TestInst(CSEL(X15, X1, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, XZR, NE");
+        TestInst(CSEL(XZR, X1, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, XZR, NE");
+        TestInst(CSEL(X0, X16, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, XZR, NE");
+        TestInst(CSEL(X15, X16, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, XZR, NE");
+        TestInst(CSEL(XZR, X16, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, XZR, NE");
+        TestInst(CSEL(X0, XZR, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, XZR, NE");
+        TestInst(CSEL(X15, XZR, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, XZR, NE");
+        TestInst(CSEL(XZR, XZR, XZR, NE), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, XZR, NE");
+        TestInst(CSEL(X0, X1, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, X2, HS");
+        TestInst(CSEL(X15, X1, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, X2, HS");
+        TestInst(CSEL(XZR, X1, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, X2, HS");
+        TestInst(CSEL(X0, X16, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, X2, HS");
+        TestInst(CSEL(X15, X16, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, X2, HS");
+        TestInst(CSEL(XZR, X16, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, X2, HS");
+        TestInst(CSEL(X0, XZR, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, X2, HS");
+        TestInst(CSEL(X15, XZR, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, X2, HS");
+        TestInst(CSEL(XZR, XZR, X2, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, X2, HS");
+        TestInst(CSEL(X0, X1, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, X17, HS");
+        TestInst(CSEL(X15, X1, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, X17, HS");
+        TestInst(CSEL(XZR, X1, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, X17, HS");
+        TestInst(CSEL(X0, X16, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, X17, HS");
+        TestInst(CSEL(X15, X16, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, X17, HS");
+        TestInst(CSEL(XZR, X16, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, X17, HS");
+        TestInst(CSEL(X0, XZR, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, X17, HS");
+        TestInst(CSEL(X15, XZR, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, X17, HS");
+        TestInst(CSEL(XZR, XZR, X17, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, X17, HS");
+        TestInst(CSEL(X0, X1, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X1, XZR, HS");
+        TestInst(CSEL(X15, X1, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X1, XZR, HS");
+        TestInst(CSEL(XZR, X1, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X1, XZR, HS");
+        TestInst(CSEL(X0, X16, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, X16, XZR, HS");
+        TestInst(CSEL(X15, X16, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, X16, XZR, HS");
+        TestInst(CSEL(XZR, X16, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, X16, XZR, HS");
+        TestInst(CSEL(X0, XZR, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X0, XZR, XZR, HS");
+        TestInst(CSEL(X15, XZR, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL X15, XZR, XZR, HS");
+        TestInst(CSEL(XZR, XZR, XZR, HS), Arm64InstructionId.CSEL_64_condsel, Arm64Mnemonic.CSEL, "CSEL XZR, XZR, XZR, HS");
     }
 }

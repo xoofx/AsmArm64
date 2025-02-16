@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSETH_General
+public class Arm64InstructionFactoryTests_STSETH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STSETH_General
     [TestMethod]
     public void Test_STSETH_ldseth_32_memop_0()
     {
-        
-        {
-            var raw = STSETH(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETH_ldseth_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETH W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETH(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETH_ldseth_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETH W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETH(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETH_ldseth_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETH WZR, [X2]", asm);
-        }
+        TestInst(STSETH(W0, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W0, [X2]");
+        TestInst(STSETH(W15, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W15, [X2]");
+        TestInst(STSETH(WZR, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH WZR, [X2]");
     }
 }

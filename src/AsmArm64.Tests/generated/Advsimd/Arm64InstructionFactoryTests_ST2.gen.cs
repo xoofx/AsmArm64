@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ST2_Advsimd
+public class Arm64InstructionFactoryTests_ST2_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_0()
     {
-        
-        {
-            var raw = ST2(V0.T_8B.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8B, V1.8B }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8B.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8B, V31.8B }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_8B.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.8B, V1.8B }, [X2]");
+        TestInst(ST2(V30.T_8B.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.8B, V31.8B }, [X2]");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_1()
     {
-        
-        {
-            var raw = ST2(V0.T_16B.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.16B, V1.16B }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_16B.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.16B, V31.16B }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_16B.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.16B, V1.16B }, [X2]");
+        TestInst(ST2(V30.T_16B.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.16B, V31.16B }, [X2]");
     }
     
     /// <summary>
@@ -76,24 +44,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_2()
     {
-        
-        {
-            var raw = ST2(V0.T_4H.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4H, V1.4H }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4H.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4H, V31.4H }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_4H.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.4H, V1.4H }, [X2]");
+        TestInst(ST2(V30.T_4H.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.4H, V31.4H }, [X2]");
     }
     
     /// <summary>
@@ -102,24 +54,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_3()
     {
-        
-        {
-            var raw = ST2(V0.T_8H.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8H, V1.8H }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8H.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8H, V31.8H }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_8H.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.8H, V1.8H }, [X2]");
+        TestInst(ST2(V30.T_8H.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.8H, V31.8H }, [X2]");
     }
     
     /// <summary>
@@ -128,24 +64,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_4()
     {
-        
-        {
-            var raw = ST2(V0.T_2S.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2S, V1.2S }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2S.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2S, V31.2S }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_2S.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.2S, V1.2S }, [X2]");
+        TestInst(ST2(V30.T_2S.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.2S, V31.2S }, [X2]");
     }
     
     /// <summary>
@@ -154,24 +74,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_5()
     {
-        
-        {
-            var raw = ST2(V0.T_4S.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4S, V1.4S }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4S.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4S, V31.4S }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_4S.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.4S, V1.4S }, [X2]");
+        TestInst(ST2(V30.T_4S.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.4S, V31.4S }, [X2]");
     }
     
     /// <summary>
@@ -180,24 +84,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlse_r2_6()
     {
-        
-        {
-            var raw = ST2(V0.T_2D.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2D, V1.2D }, [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2D.Group2(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlse_r2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2D, V31.2D }, [X2]", asm);
-        }
+        TestInst(ST2(V0.T_2D.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V0.2D, V1.2D }, [X2]");
+        TestInst(ST2(V30.T_2D.Group2(), _[X2]), Arm64InstructionId.ST2_asisdlse_r2, Arm64Mnemonic.ST2, "ST2 { V30.2D, V31.2D }, [X2]");
     }
     
     /// <summary>
@@ -206,24 +94,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_7()
     {
-        
-        {
-            var raw = ST2(V0.T_8B.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8B, V1.8B }, [X2], #16", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8B.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8B, V31.8B }, [X2], #16", asm);
-        }
+        TestInst(ST2(V0.T_8B.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.8B, V1.8B }, [X2], #16");
+        TestInst(ST2(V30.T_8B.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.8B, V31.8B }, [X2], #16");
     }
     
     /// <summary>
@@ -232,24 +104,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_8()
     {
-        
-        {
-            var raw = ST2(V0.T_16B.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.16B, V1.16B }, [X2], #32", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_16B.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.16B, V31.16B }, [X2], #32", asm);
-        }
+        TestInst(ST2(V0.T_16B.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.16B, V1.16B }, [X2], #32");
+        TestInst(ST2(V30.T_16B.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.16B, V31.16B }, [X2], #32");
     }
     
     /// <summary>
@@ -258,24 +114,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_9()
     {
-        
-        {
-            var raw = ST2(V0.T_4H.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4H, V1.4H }, [X2], #16", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4H.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4H, V31.4H }, [X2], #16", asm);
-        }
+        TestInst(ST2(V0.T_4H.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.4H, V1.4H }, [X2], #16");
+        TestInst(ST2(V30.T_4H.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.4H, V31.4H }, [X2], #16");
     }
     
     /// <summary>
@@ -284,24 +124,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_10()
     {
-        
-        {
-            var raw = ST2(V0.T_8H.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8H, V1.8H }, [X2], #32", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8H.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8H, V31.8H }, [X2], #32", asm);
-        }
+        TestInst(ST2(V0.T_8H.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.8H, V1.8H }, [X2], #32");
+        TestInst(ST2(V30.T_8H.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.8H, V31.8H }, [X2], #32");
     }
     
     /// <summary>
@@ -310,24 +134,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_11()
     {
-        
-        {
-            var raw = ST2(V0.T_2S.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2S, V1.2S }, [X2], #16", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2S.Group2(), _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2S, V31.2S }, [X2], #16", asm);
-        }
+        TestInst(ST2(V0.T_2S.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.2S, V1.2S }, [X2], #16");
+        TestInst(ST2(V30.T_2S.Group2(), _[X2], 16), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.2S, V31.2S }, [X2], #16");
     }
     
     /// <summary>
@@ -336,24 +144,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_12()
     {
-        
-        {
-            var raw = ST2(V0.T_4S.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4S, V1.4S }, [X2], #32", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4S.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4S, V31.4S }, [X2], #32", asm);
-        }
+        TestInst(ST2(V0.T_4S.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.4S, V1.4S }, [X2], #32");
+        TestInst(ST2(V30.T_4S.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.4S, V31.4S }, [X2], #32");
     }
     
     /// <summary>
@@ -362,24 +154,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_i2_i_13()
     {
-        
-        {
-            var raw = ST2(V0.T_2D.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2D, V1.2D }, [X2], #32", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2D.Group2(), _[X2], 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_i2_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2D, V31.2D }, [X2], #32", asm);
-        }
+        TestInst(ST2(V0.T_2D.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V0.2D, V1.2D }, [X2], #32");
+        TestInst(ST2(V30.T_2D.Group2(), _[X2], 32), Arm64InstructionId.ST2_asisdlsep_i2_i, Arm64Mnemonic.ST2, "ST2 { V30.2D, V31.2D }, [X2], #32");
     }
     
     /// <summary>
@@ -388,42 +164,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_14()
     {
-        
-        {
-            var raw = ST2(V0.T_8B.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8B, V1.8B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8B.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8B, V31.8B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_8B.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8B, V1.8B }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8B.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8B, V31.8B }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_8B.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.8B, V1.8B }, [X2], X2");
+        TestInst(ST2(V30.T_8B.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.8B, V31.8B }, [X2], X2");
+        TestInst(ST2(V0.T_8B.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.8B, V1.8B }, [X2], X17");
+        TestInst(ST2(V30.T_8B.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.8B, V31.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -432,42 +176,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_15()
     {
-        
-        {
-            var raw = ST2(V0.T_16B.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.16B, V1.16B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_16B.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.16B, V31.16B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_16B.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.16B, V1.16B }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_16B.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.16B, V31.16B }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_16B.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.16B, V1.16B }, [X2], X2");
+        TestInst(ST2(V30.T_16B.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.16B, V31.16B }, [X2], X2");
+        TestInst(ST2(V0.T_16B.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.16B, V1.16B }, [X2], X17");
+        TestInst(ST2(V30.T_16B.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.16B, V31.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -476,42 +188,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_16()
     {
-        
-        {
-            var raw = ST2(V0.T_4H.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4H, V1.4H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4H.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4H, V31.4H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_4H.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4H, V1.4H }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4H.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4H, V31.4H }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_4H.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.4H, V1.4H }, [X2], X2");
+        TestInst(ST2(V30.T_4H.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.4H, V31.4H }, [X2], X2");
+        TestInst(ST2(V0.T_4H.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.4H, V1.4H }, [X2], X17");
+        TestInst(ST2(V30.T_4H.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.4H, V31.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -520,42 +200,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_17()
     {
-        
-        {
-            var raw = ST2(V0.T_8H.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8H, V1.8H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8H.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8H, V31.8H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_8H.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.8H, V1.8H }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_8H.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.8H, V31.8H }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_8H.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.8H, V1.8H }, [X2], X2");
+        TestInst(ST2(V30.T_8H.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.8H, V31.8H }, [X2], X2");
+        TestInst(ST2(V0.T_8H.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.8H, V1.8H }, [X2], X17");
+        TestInst(ST2(V30.T_8H.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.8H, V31.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -564,42 +212,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_18()
     {
-        
-        {
-            var raw = ST2(V0.T_2S.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2S, V1.2S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2S.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2S, V31.2S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_2S.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2S, V1.2S }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2S.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2S, V31.2S }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_2S.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.2S, V1.2S }, [X2], X2");
+        TestInst(ST2(V30.T_2S.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.2S, V31.2S }, [X2], X2");
+        TestInst(ST2(V0.T_2S.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.2S, V1.2S }, [X2], X17");
+        TestInst(ST2(V30.T_2S.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.2S, V31.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -608,42 +224,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_19()
     {
-        
-        {
-            var raw = ST2(V0.T_4S.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4S, V1.4S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4S.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4S, V31.4S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_4S.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.4S, V1.4S }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_4S.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.4S, V31.4S }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_4S.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.4S, V1.4S }, [X2], X2");
+        TestInst(ST2(V30.T_4S.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.4S, V31.4S }, [X2], X2");
+        TestInst(ST2(V0.T_4S.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.4S, V1.4S }, [X2], X17");
+        TestInst(ST2(V30.T_4S.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.4S, V31.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -652,42 +236,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsep_r2_r_20()
     {
-        
-        {
-            var raw = ST2(V0.T_2D.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2D, V1.2D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2D.Group2(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2D, V31.2D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.T_2D.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.2D, V1.2D }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.T_2D.Group2(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsep_r2_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.2D, V31.2D }, [X2], X17", asm);
-        }
+        TestInst(ST2(V0.T_2D.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.2D, V1.2D }, [X2], X2");
+        TestInst(ST2(V30.T_2D.Group2(), _[X2], X2), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.2D, V31.2D }, [X2], X2");
+        TestInst(ST2(V0.T_2D.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V0.2D, V1.2D }, [X2], X17");
+        TestInst(ST2(V30.T_2D.Group2(), _[X2], X17), Arm64InstructionId.ST2_asisdlsep_r2_r, Arm64Mnemonic.ST2, "ST2 { V30.2D, V31.2D }, [X2], X17");
     }
     
     /// <summary>
@@ -696,24 +248,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlso_b2_2b_21()
     {
-        
-        {
-            var raw = ST2(V0.B.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_b2_2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.B, V1.B }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.B.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_b2_2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.B, V31.B }[1], [X2]", asm);
-        }
+        TestInst(ST2(V0.B.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_b2_2b, Arm64Mnemonic.ST2, "ST2 { V0.B, V1.B }[1], [X2]");
+        TestInst(ST2(V30.B.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_b2_2b, Arm64Mnemonic.ST2, "ST2 { V30.B, V31.B }[1], [X2]");
     }
     
     /// <summary>
@@ -722,24 +258,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlso_h2_2h_22()
     {
-        
-        {
-            var raw = ST2(V0.H.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_h2_2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.H, V1.H }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.H.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_h2_2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.H, V31.H }[1], [X2]", asm);
-        }
+        TestInst(ST2(V0.H.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_h2_2h, Arm64Mnemonic.ST2, "ST2 { V0.H, V1.H }[1], [X2]");
+        TestInst(ST2(V30.H.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_h2_2h, Arm64Mnemonic.ST2, "ST2 { V30.H, V31.H }[1], [X2]");
     }
     
     /// <summary>
@@ -748,24 +268,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlso_s2_2s_23()
     {
-        
-        {
-            var raw = ST2(V0.S.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_s2_2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.S, V1.S }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.S.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_s2_2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.S, V31.S }[1], [X2]", asm);
-        }
+        TestInst(ST2(V0.S.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_s2_2s, Arm64Mnemonic.ST2, "ST2 { V0.S, V1.S }[1], [X2]");
+        TestInst(ST2(V30.S.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_s2_2s, Arm64Mnemonic.ST2, "ST2 { V30.S, V31.S }[1], [X2]");
     }
     
     /// <summary>
@@ -774,24 +278,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlso_d2_2d_24()
     {
-        
-        {
-            var raw = ST2(V0.D.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_d2_2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.D, V1.D }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = ST2(V30.D.Group2()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlso_d2_2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.D, V31.D }[1], [X2]", asm);
-        }
+        TestInst(ST2(V0.D.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_d2_2d, Arm64Mnemonic.ST2, "ST2 { V0.D, V1.D }[1], [X2]");
+        TestInst(ST2(V30.D.Group2()[1], _[X2]), Arm64InstructionId.ST2_asisdlso_d2_2d, Arm64Mnemonic.ST2, "ST2 { V30.D, V31.D }[1], [X2]");
     }
     
     /// <summary>
@@ -800,24 +288,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_b2_i2b_25()
     {
-        
-        {
-            var raw = ST2(V0.B.Group2()[1], _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_b2_i2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.B, V1.B }[1], [X2], #2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.B.Group2()[1], _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_b2_i2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.B, V31.B }[1], [X2], #2", asm);
-        }
+        TestInst(ST2(V0.B.Group2()[1], _[X2], 2), Arm64InstructionId.ST2_asisdlsop_b2_i2b, Arm64Mnemonic.ST2, "ST2 { V0.B, V1.B }[1], [X2], #2");
+        TestInst(ST2(V30.B.Group2()[1], _[X2], 2), Arm64InstructionId.ST2_asisdlsop_b2_i2b, Arm64Mnemonic.ST2, "ST2 { V30.B, V31.B }[1], [X2], #2");
     }
     
     /// <summary>
@@ -826,42 +298,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_bx2_r2b_26()
     {
-        
-        {
-            var raw = ST2(V0.B.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_bx2_r2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.B, V1.B }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.B.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_bx2_r2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.B, V31.B }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.B.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_bx2_r2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.B, V1.B }[1], [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.B.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_bx2_r2b, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.B, V31.B }[1], [X2], X17", asm);
-        }
+        TestInst(ST2(V0.B.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_bx2_r2b, Arm64Mnemonic.ST2, "ST2 { V0.B, V1.B }[1], [X2], X2");
+        TestInst(ST2(V30.B.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_bx2_r2b, Arm64Mnemonic.ST2, "ST2 { V30.B, V31.B }[1], [X2], X2");
+        TestInst(ST2(V0.B.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_bx2_r2b, Arm64Mnemonic.ST2, "ST2 { V0.B, V1.B }[1], [X2], X17");
+        TestInst(ST2(V30.B.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_bx2_r2b, Arm64Mnemonic.ST2, "ST2 { V30.B, V31.B }[1], [X2], X17");
     }
     
     /// <summary>
@@ -870,24 +310,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_h2_i2h_27()
     {
-        
-        {
-            var raw = ST2(V0.H.Group2()[1], _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_h2_i2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.H, V1.H }[1], [X2], #4", asm);
-        }
-        
-        {
-            var raw = ST2(V30.H.Group2()[1], _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_h2_i2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.H, V31.H }[1], [X2], #4", asm);
-        }
+        TestInst(ST2(V0.H.Group2()[1], _[X2], 4), Arm64InstructionId.ST2_asisdlsop_h2_i2h, Arm64Mnemonic.ST2, "ST2 { V0.H, V1.H }[1], [X2], #4");
+        TestInst(ST2(V30.H.Group2()[1], _[X2], 4), Arm64InstructionId.ST2_asisdlsop_h2_i2h, Arm64Mnemonic.ST2, "ST2 { V30.H, V31.H }[1], [X2], #4");
     }
     
     /// <summary>
@@ -896,42 +320,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_hx2_r2h_28()
     {
-        
-        {
-            var raw = ST2(V0.H.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_hx2_r2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.H, V1.H }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.H.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_hx2_r2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.H, V31.H }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.H.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_hx2_r2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.H, V1.H }[1], [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.H.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_hx2_r2h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.H, V31.H }[1], [X2], X17", asm);
-        }
+        TestInst(ST2(V0.H.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_hx2_r2h, Arm64Mnemonic.ST2, "ST2 { V0.H, V1.H }[1], [X2], X2");
+        TestInst(ST2(V30.H.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_hx2_r2h, Arm64Mnemonic.ST2, "ST2 { V30.H, V31.H }[1], [X2], X2");
+        TestInst(ST2(V0.H.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_hx2_r2h, Arm64Mnemonic.ST2, "ST2 { V0.H, V1.H }[1], [X2], X17");
+        TestInst(ST2(V30.H.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_hx2_r2h, Arm64Mnemonic.ST2, "ST2 { V30.H, V31.H }[1], [X2], X17");
     }
     
     /// <summary>
@@ -940,24 +332,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_s2_i2s_29()
     {
-        
-        {
-            var raw = ST2(V0.S.Group2()[1], _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_s2_i2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.S, V1.S }[1], [X2], #8", asm);
-        }
-        
-        {
-            var raw = ST2(V30.S.Group2()[1], _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_s2_i2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.S, V31.S }[1], [X2], #8", asm);
-        }
+        TestInst(ST2(V0.S.Group2()[1], _[X2], 8), Arm64InstructionId.ST2_asisdlsop_s2_i2s, Arm64Mnemonic.ST2, "ST2 { V0.S, V1.S }[1], [X2], #8");
+        TestInst(ST2(V30.S.Group2()[1], _[X2], 8), Arm64InstructionId.ST2_asisdlsop_s2_i2s, Arm64Mnemonic.ST2, "ST2 { V30.S, V31.S }[1], [X2], #8");
     }
     
     /// <summary>
@@ -966,42 +342,10 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_sx2_r2s_30()
     {
-        
-        {
-            var raw = ST2(V0.S.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_sx2_r2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.S, V1.S }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.S.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_sx2_r2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.S, V31.S }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.S.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_sx2_r2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.S, V1.S }[1], [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.S.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_sx2_r2s, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.S, V31.S }[1], [X2], X17", asm);
-        }
+        TestInst(ST2(V0.S.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_sx2_r2s, Arm64Mnemonic.ST2, "ST2 { V0.S, V1.S }[1], [X2], X2");
+        TestInst(ST2(V30.S.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_sx2_r2s, Arm64Mnemonic.ST2, "ST2 { V30.S, V31.S }[1], [X2], X2");
+        TestInst(ST2(V0.S.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_sx2_r2s, Arm64Mnemonic.ST2, "ST2 { V0.S, V1.S }[1], [X2], X17");
+        TestInst(ST2(V30.S.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_sx2_r2s, Arm64Mnemonic.ST2, "ST2 { V30.S, V31.S }[1], [X2], X17");
     }
     
     /// <summary>
@@ -1010,24 +354,8 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_d2_i2d_31()
     {
-        
-        {
-            var raw = ST2(V0.D.Group2()[1], _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_d2_i2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.D, V1.D }[1], [X2], #16", asm);
-        }
-        
-        {
-            var raw = ST2(V30.D.Group2()[1], _[X2], 16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_d2_i2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.D, V31.D }[1], [X2], #16", asm);
-        }
+        TestInst(ST2(V0.D.Group2()[1], _[X2], 16), Arm64InstructionId.ST2_asisdlsop_d2_i2d, Arm64Mnemonic.ST2, "ST2 { V0.D, V1.D }[1], [X2], #16");
+        TestInst(ST2(V30.D.Group2()[1], _[X2], 16), Arm64InstructionId.ST2_asisdlsop_d2_i2d, Arm64Mnemonic.ST2, "ST2 { V30.D, V31.D }[1], [X2], #16");
     }
     
     /// <summary>
@@ -1036,41 +364,9 @@ public class Arm64InstructionFactoryTests_ST2_Advsimd
     [TestMethod]
     public void Test_ST2_asisdlsop_dx2_r2d_32()
     {
-        
-        {
-            var raw = ST2(V0.D.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_dx2_r2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.D, V1.D }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V30.D.Group2()[1], _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_dx2_r2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.D, V31.D }[1], [X2], X2", asm);
-        }
-        
-        {
-            var raw = ST2(V0.D.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_dx2_r2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V0.D, V1.D }[1], [X2], X17", asm);
-        }
-        
-        {
-            var raw = ST2(V30.D.Group2()[1], _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ST2_asisdlsop_dx2_r2d, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ST2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ST2 { V30.D, V31.D }[1], [X2], X17", asm);
-        }
+        TestInst(ST2(V0.D.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_dx2_r2d, Arm64Mnemonic.ST2, "ST2 { V0.D, V1.D }[1], [X2], X2");
+        TestInst(ST2(V30.D.Group2()[1], _[X2], X2), Arm64InstructionId.ST2_asisdlsop_dx2_r2d, Arm64Mnemonic.ST2, "ST2 { V30.D, V31.D }[1], [X2], X2");
+        TestInst(ST2(V0.D.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_dx2_r2d, Arm64Mnemonic.ST2, "ST2 { V0.D, V1.D }[1], [X2], X17");
+        TestInst(ST2(V30.D.Group2()[1], _[X2], X17), Arm64InstructionId.ST2_asisdlsop_dx2_r2d, Arm64Mnemonic.ST2, "ST2 { V30.D, V31.D }[1], [X2], X17");
     }
 }

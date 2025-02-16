@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STUMINLB_General
+public class Arm64InstructionFactoryTests_STUMINLB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STUMINLB_General
     [TestMethod]
     public void Test_STUMINLB_lduminlb_32_memop_0()
     {
-        
-        {
-            var raw = STUMINLB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINLB_lduminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINLB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINLB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINLB_lduminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINLB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINLB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINLB_lduminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINLB WZR, [X2]", asm);
-        }
+        TestInst(STUMINLB(W0, _[X2]), Arm64InstructionId.STUMINLB_lduminlb_32_memop, Arm64Mnemonic.STUMINLB, "STUMINLB W0, [X2]");
+        TestInst(STUMINLB(W15, _[X2]), Arm64InstructionId.STUMINLB_lduminlb_32_memop, Arm64Mnemonic.STUMINLB, "STUMINLB W15, [X2]");
+        TestInst(STUMINLB(WZR, _[X2]), Arm64InstructionId.STUMINLB_lduminlb_32_memop, Arm64Mnemonic.STUMINLB, "STUMINLB WZR, [X2]");
     }
 }

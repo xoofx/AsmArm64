@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSETL_General
+public class Arm64InstructionFactoryTests_STSETL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STSETL_General
     [TestMethod]
     public void Test_STSETL_ldsetl_32_memop_0()
     {
-        
-        {
-            var raw = STSETL(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETL(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETL(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL WZR, [X2]", asm);
-        }
+        TestInst(STSETL(W0, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W0, [X2]");
+        TestInst(STSETL(W15, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W15, [X2]");
+        TestInst(STSETL(WZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STSETL_General
     [TestMethod]
     public void Test_STSETL_ldsetl_64_memop_1()
     {
-        
-        {
-            var raw = STSETL(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETL(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSETL(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSETL_ldsetl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSETL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSETL XZR, [X2]", asm);
-        }
+        TestInst(STSETL(X0, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X0, [X2]");
+        TestInst(STSETL(X15, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X15, [X2]");
+        TestInst(STSETL(XZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL XZR, [X2]");
     }
 }

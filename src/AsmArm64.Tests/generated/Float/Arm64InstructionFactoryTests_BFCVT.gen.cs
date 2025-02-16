@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BFCVT_Float
+public class Arm64InstructionFactoryTests_BFCVT_Float : Arm64InstructionFactoryTests
 {
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.BFCVT"/>.
@@ -23,41 +23,9 @@ public class Arm64InstructionFactoryTests_BFCVT_Float
     [TestMethod]
     public void Test_BFCVT_bs_floatdp1_0()
     {
-        
-        {
-            var raw = BFCVT(H0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVT_bs_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVT H0, S1", asm);
-        }
-        
-        {
-            var raw = BFCVT(H31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVT_bs_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVT H31, S1", asm);
-        }
-        
-        {
-            var raw = BFCVT(H0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVT_bs_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVT H0, S31", asm);
-        }
-        
-        {
-            var raw = BFCVT(H31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BFCVT_bs_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BFCVT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BFCVT H31, S31", asm);
-        }
+        TestInst(BFCVT(H0, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S1");
+        TestInst(BFCVT(H31, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S1");
+        TestInst(BFCVT(H0, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S31");
+        TestInst(BFCVT(H31, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S31");
     }
 }

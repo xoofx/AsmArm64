@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STUMAX_General
+public class Arm64InstructionFactoryTests_STUMAX_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STUMAX_General
     [TestMethod]
     public void Test_STUMAX_ldumax_32_memop_0()
     {
-        
-        {
-            var raw = STUMAX(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAX(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAX(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX WZR, [X2]", asm);
-        }
+        TestInst(STUMAX(W0, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W0, [X2]");
+        TestInst(STUMAX(W15, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W15, [X2]");
+        TestInst(STUMAX(WZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STUMAX_General
     [TestMethod]
     public void Test_STUMAX_ldumax_64_memop_1()
     {
-        
-        {
-            var raw = STUMAX(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAX(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMAX(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMAX_ldumax_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMAX XZR, [X2]", asm);
-        }
+        TestInst(STUMAX(X0, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X0, [X2]");
+        TestInst(STUMAX(X15, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X15, [X2]");
+        TestInst(STUMAX(XZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX XZR, [X2]");
     }
 }

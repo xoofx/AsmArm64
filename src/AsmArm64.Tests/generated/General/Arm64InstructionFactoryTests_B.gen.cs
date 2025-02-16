@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_B_General
+public class Arm64InstructionFactoryTests_B_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,15 +24,7 @@ public class Arm64InstructionFactoryTests_B_General
     [TestMethod]
     public void Test_B_only_branch_imm_0()
     {
-        
-        {
-            var raw = B(32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.B_only_branch_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("B #32", asm);
-        }
+        TestInst(B(32), Arm64InstructionId.B_only_branch_imm, Arm64Mnemonic.B, "B #32");
     }
     
     /// <summary>
@@ -41,23 +33,7 @@ public class Arm64InstructionFactoryTests_B_General
     [TestMethod]
     public void Test_B_only_condbranch_1()
     {
-        
-        {
-            var raw = B(NE, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.B_only_condbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("B.NE #32", asm);
-        }
-        
-        {
-            var raw = B(HS, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.B_only_condbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("B.HS #32", asm);
-        }
+        TestInst(B(NE, 32), Arm64InstructionId.B_only_condbranch, Arm64Mnemonic.B, "B.NE #32");
+        TestInst(B(HS, 32), Arm64InstructionId.B_only_condbranch, Arm64Mnemonic.B, "B.HS #32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CBZ_General
+public class Arm64InstructionFactoryTests_CBZ_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_CBZ_General
     [TestMethod]
     public void Test_CBZ_32_compbranch_0()
     {
-        
-        {
-            var raw = CBZ(W0, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_32_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ W0, #32", asm);
-        }
-        
-        {
-            var raw = CBZ(W15, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_32_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ W15, #32", asm);
-        }
-        
-        {
-            var raw = CBZ(WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_32_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ WZR, #32", asm);
-        }
+        TestInst(CBZ(W0, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W0, #32");
+        TestInst(CBZ(W15, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W15, #32");
+        TestInst(CBZ(WZR, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ WZR, #32");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_CBZ_General
     [TestMethod]
     public void Test_CBZ_64_compbranch_1()
     {
-        
-        {
-            var raw = CBZ(X0, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_64_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ X0, #32", asm);
-        }
-        
-        {
-            var raw = CBZ(X15, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_64_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ X15, #32", asm);
-        }
-        
-        {
-            var raw = CBZ(XZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBZ_64_compbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBZ XZR, #32", asm);
-        }
+        TestInst(CBZ(X0, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X0, #32");
+        TestInst(CBZ(X15, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X15, #32");
+        TestInst(CBZ(XZR, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ XZR, #32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTDB_General
+public class Arm64InstructionFactoryTests_AUTDB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_AUTDB_General
     [TestMethod]
     public void Test_AUTDB_64p_dp_1src_0()
     {
-        
-        {
-            var raw = AUTDB(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X0, X2", asm);
-        }
-        
-        {
-            var raw = AUTDB(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X15, X2", asm);
-        }
-        
-        {
-            var raw = AUTDB(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB XZR, X2", asm);
-        }
-        
-        {
-            var raw = AUTDB(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X0, X18", asm);
-        }
-        
-        {
-            var raw = AUTDB(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X15, X18", asm);
-        }
-        
-        {
-            var raw = AUTDB(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB XZR, X18", asm);
-        }
-        
-        {
-            var raw = AUTDB(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X0, SP", asm);
-        }
-        
-        {
-            var raw = AUTDB(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB X15, SP", asm);
-        }
-        
-        {
-            var raw = AUTDB(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDB XZR, SP", asm);
-        }
+        TestInst(AUTDB(X0, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X2");
+        TestInst(AUTDB(X15, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X2");
+        TestInst(AUTDB(XZR, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X2");
+        TestInst(AUTDB(X0, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X18");
+        TestInst(AUTDB(X15, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X18");
+        TestInst(AUTDB(XZR, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X18");
+        TestInst(AUTDB(X0, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, SP");
+        TestInst(AUTDB(X15, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, SP");
+        TestInst(AUTDB(XZR, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, SP");
     }
 }

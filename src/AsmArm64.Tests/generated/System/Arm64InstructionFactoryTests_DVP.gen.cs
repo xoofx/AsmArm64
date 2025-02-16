@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DVP_System
+public class Arm64InstructionFactoryTests_DVP_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_DVP_System
     [TestMethod]
     public void Test_DVP_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = DVP(RCTX, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DVP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DVP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DVP RCTX, X1", asm);
-        }
-        
-        {
-            var raw = DVP(RCTX, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DVP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DVP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DVP RCTX, X16", asm);
-        }
-        
-        {
-            var raw = DVP(RCTX, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DVP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DVP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DVP RCTX, XZR", asm);
-        }
+        TestInst(DVP(RCTX, X1), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X1");
+        TestInst(DVP(RCTX, X16), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X16");
+        TestInst(DVP(RCTX, XZR), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, XZR");
     }
 }

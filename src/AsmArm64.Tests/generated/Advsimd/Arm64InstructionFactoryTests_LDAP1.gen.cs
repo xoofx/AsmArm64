@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAP1_Advsimd
+public class Arm64InstructionFactoryTests_LDAP1_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_LDAP1_Advsimd
     [TestMethod]
     public void Test_LDAP1_asisdlso_d1_0()
     {
-        
-        {
-            var raw = LDAP1(V0.D.Group1()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAP1_asisdlso_d1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAP1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAP1 { V0.D }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = LDAP1(V30.D.Group1()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAP1_asisdlso_d1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAP1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAP1 { V30.D }[1], [X2]", asm);
-        }
+        TestInst(LDAP1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V0.D }[1], [X2]");
+        TestInst(LDAP1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V30.D }[1], [X2]");
     }
 }

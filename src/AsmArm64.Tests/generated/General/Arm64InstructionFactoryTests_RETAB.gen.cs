@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RETAB_General
+public class Arm64InstructionFactoryTests_RETAB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_RETAB_General
     [TestMethod]
     public void Test_RETAB_64e_branch_reg_0()
     {
-        
-        {
-            var raw = RETAB();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RETAB_64e_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RETAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RETAB", asm);
-        }
+        TestInst(RETAB(), Arm64InstructionId.RETAB_64e_branch_reg, Arm64Mnemonic.RETAB, "RETAB");
     }
 }

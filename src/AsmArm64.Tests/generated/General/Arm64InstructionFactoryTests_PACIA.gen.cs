@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACIA_General
+public class Arm64InstructionFactoryTests_PACIA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_PACIA_General
     [TestMethod]
     public void Test_PACIA_64p_dp_1src_0()
     {
-        
-        {
-            var raw = PACIA(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X0, X2", asm);
-        }
-        
-        {
-            var raw = PACIA(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X15, X2", asm);
-        }
-        
-        {
-            var raw = PACIA(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA XZR, X2", asm);
-        }
-        
-        {
-            var raw = PACIA(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X0, X18", asm);
-        }
-        
-        {
-            var raw = PACIA(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X15, X18", asm);
-        }
-        
-        {
-            var raw = PACIA(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA XZR, X18", asm);
-        }
-        
-        {
-            var raw = PACIA(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X0, SP", asm);
-        }
-        
-        {
-            var raw = PACIA(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA X15, SP", asm);
-        }
-        
-        {
-            var raw = PACIA(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIA XZR, SP", asm);
-        }
+        TestInst(PACIA(X0, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X2");
+        TestInst(PACIA(X15, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X2");
+        TestInst(PACIA(XZR, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X2");
+        TestInst(PACIA(X0, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X18");
+        TestInst(PACIA(X15, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X18");
+        TestInst(PACIA(XZR, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X18");
+        TestInst(PACIA(X0, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, SP");
+        TestInst(PACIA(X15, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, SP");
+        TestInst(PACIA(XZR, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, SP");
     }
 }

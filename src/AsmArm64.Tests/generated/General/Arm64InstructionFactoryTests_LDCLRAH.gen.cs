@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDCLRAH_General
+public class Arm64InstructionFactoryTests_LDCLRAH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_LDCLRAH_General
     [TestMethod]
     public void Test_LDCLRAH_32_memop_0()
     {
-        
-        {
-            var raw = LDCLRAH(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDCLRAH(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDCLRAH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDCLRAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDCLRAH WZR, WZR, [X3]", asm);
-        }
+        TestInst(LDCLRAH(W0, W1, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W0, W1, [X3]");
+        TestInst(LDCLRAH(W15, W1, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W15, W1, [X3]");
+        TestInst(LDCLRAH(WZR, W1, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH WZR, W1, [X3]");
+        TestInst(LDCLRAH(W0, W16, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W0, W16, [X3]");
+        TestInst(LDCLRAH(W15, W16, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W15, W16, [X3]");
+        TestInst(LDCLRAH(WZR, W16, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH WZR, W16, [X3]");
+        TestInst(LDCLRAH(W0, WZR, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W0, WZR, [X3]");
+        TestInst(LDCLRAH(W15, WZR, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH W15, WZR, [X3]");
+        TestInst(LDCLRAH(WZR, WZR, _[X3]), Arm64InstructionId.LDCLRAH_32_memop, Arm64Mnemonic.LDCLRAH, "LDCLRAH WZR, WZR, [X3]");
     }
 }

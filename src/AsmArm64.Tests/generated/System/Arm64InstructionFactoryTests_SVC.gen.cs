@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SVC_System
+public class Arm64InstructionFactoryTests_SVC_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_SVC_System
     [TestMethod]
     public void Test_SVC_ex_exception_0()
     {
-        
-        {
-            var raw = SVC(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SVC_ex_exception, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SVC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SVC #5", asm);
-        }
+        TestInst(SVC(5), Arm64InstructionId.SVC_ex_exception, Arm64Mnemonic.SVC, "SVC #5");
     }
 }

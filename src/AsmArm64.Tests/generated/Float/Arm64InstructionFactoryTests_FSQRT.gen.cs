@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FSQRT_Float
+public class Arm64InstructionFactoryTests_FSQRT_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FSQRT_Float
     [TestMethod]
     public void Test_FSQRT_h_floatdp1_0()
     {
-        
-        {
-            var raw = FSQRT(H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT H0, H1", asm);
-        }
-        
-        {
-            var raw = FSQRT(H31, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT H31, H1", asm);
-        }
-        
-        {
-            var raw = FSQRT(H0, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT H0, H31", asm);
-        }
-        
-        {
-            var raw = FSQRT(H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT H31, H31", asm);
-        }
+        TestInst(FSQRT(H0, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H1");
+        TestInst(FSQRT(H31, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H1");
+        TestInst(FSQRT(H0, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H31");
+        TestInst(FSQRT(H31, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H31");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FSQRT_Float
     [TestMethod]
     public void Test_FSQRT_s_floatdp1_1()
     {
-        
-        {
-            var raw = FSQRT(S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT S0, S1", asm);
-        }
-        
-        {
-            var raw = FSQRT(S31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT S31, S1", asm);
-        }
-        
-        {
-            var raw = FSQRT(S0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT S0, S31", asm);
-        }
-        
-        {
-            var raw = FSQRT(S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT S31, S31", asm);
-        }
+        TestInst(FSQRT(S0, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S1");
+        TestInst(FSQRT(S31, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S1");
+        TestInst(FSQRT(S0, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S31");
+        TestInst(FSQRT(S31, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S31");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FSQRT_Float
     [TestMethod]
     public void Test_FSQRT_d_floatdp1_2()
     {
-        
-        {
-            var raw = FSQRT(D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT D0, D1", asm);
-        }
-        
-        {
-            var raw = FSQRT(D31, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT D31, D1", asm);
-        }
-        
-        {
-            var raw = FSQRT(D0, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT D0, D31", asm);
-        }
-        
-        {
-            var raw = FSQRT(D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FSQRT_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FSQRT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FSQRT D31, D31", asm);
-        }
+        TestInst(FSQRT(D0, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D1");
+        TestInst(FSQRT(D31, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D1");
+        TestInst(FSQRT(D0, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D31");
+        TestInst(FSQRT(D31, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D31");
     }
 }

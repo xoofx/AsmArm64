@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_XTN2_Advsimd
+public class Arm64InstructionFactoryTests_XTN2_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_0()
     {
-        
-        {
-            var raw = XTN2(V0.T_16B, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.16B, V1.8H", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_16B, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.16B, V1.8H", asm);
-        }
-        
-        {
-            var raw = XTN2(V0.T_16B, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.16B, V31.8H", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_16B, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.16B, V31.8H", asm);
-        }
+        TestInst(XTN2(V0.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V1.8H");
+        TestInst(XTN2(V30.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V1.8H");
+        TestInst(XTN2(V0.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V31.8H");
+        TestInst(XTN2(V30.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V31.8H");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_1()
     {
-        
-        {
-            var raw = XTN2(V0.T_8H, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.8H, V1.4S", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_8H, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.8H, V1.4S", asm);
-        }
-        
-        {
-            var raw = XTN2(V0.T_8H, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.8H, V31.4S", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_8H, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.8H, V31.4S", asm);
-        }
+        TestInst(XTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V1.4S");
+        TestInst(XTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V1.4S");
+        TestInst(XTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V31.4S");
+        TestInst(XTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V31.4S");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_2()
     {
-        
-        {
-            var raw = XTN2(V0.T_4S, V1.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.4S, V1.2D", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_4S, V1.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.4S, V1.2D", asm);
-        }
-        
-        {
-            var raw = XTN2(V0.T_4S, V31.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V0.4S, V31.2D", asm);
-        }
-        
-        {
-            var raw = XTN2(V30.T_4S, V31.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XTN2_asimdmisc_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XTN2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XTN2 V30.4S, V31.2D", asm);
-        }
+        TestInst(XTN2(V0.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V1.2D");
+        TestInst(XTN2(V30.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V1.2D");
+        TestInst(XTN2(V0.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V31.2D");
+        TestInst(XTN2(V30.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V31.2D");
     }
 }

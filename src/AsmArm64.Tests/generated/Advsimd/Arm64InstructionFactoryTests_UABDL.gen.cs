@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_UABDL_Advsimd
+public class Arm64InstructionFactoryTests_UABDL_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_UABDL_Advsimd
     [TestMethod]
     public void Test_UABDL_asimddiff_l_0()
     {
-        
-        {
-            var raw = UABDL(V0.T_8H, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.8H, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_8H, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.8H, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_8H, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.8H, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_8H, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.8H, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_8H, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.8H, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_8H, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.8H, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_8H, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.8H, V31.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_8H, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.8H, V31.8B, V0.8B", asm);
-        }
+        TestInst(UABDL(V0.T_8H, V1.T_8B, V2.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.8H, V1.8B, V2.8B");
+        TestInst(UABDL(V30.T_8H, V1.T_8B, V2.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.8H, V1.8B, V2.8B");
+        TestInst(UABDL(V0.T_8H, V31.T_8B, V2.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.8H, V31.8B, V2.8B");
+        TestInst(UABDL(V30.T_8H, V31.T_8B, V2.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.8H, V31.8B, V2.8B");
+        TestInst(UABDL(V0.T_8H, V1.T_8B, V0.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.8H, V1.8B, V0.8B");
+        TestInst(UABDL(V30.T_8H, V1.T_8B, V0.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.8H, V1.8B, V0.8B");
+        TestInst(UABDL(V0.T_8H, V31.T_8B, V0.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.8H, V31.8B, V0.8B");
+        TestInst(UABDL(V30.T_8H, V31.T_8B, V0.T_8B), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.8H, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_UABDL_Advsimd
     [TestMethod]
     public void Test_UABDL_asimddiff_l_1()
     {
-        
-        {
-            var raw = UABDL(V0.T_4S, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.4S, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_4S, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.4S, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_4S, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.4S, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_4S, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.4S, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_4S, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.4S, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_4S, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.4S, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_4S, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.4S, V31.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_4S, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.4S, V31.4H, V0.4H", asm);
-        }
+        TestInst(UABDL(V0.T_4S, V1.T_4H, V2.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.4S, V1.4H, V2.4H");
+        TestInst(UABDL(V30.T_4S, V1.T_4H, V2.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.4S, V1.4H, V2.4H");
+        TestInst(UABDL(V0.T_4S, V31.T_4H, V2.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.4S, V31.4H, V2.4H");
+        TestInst(UABDL(V30.T_4S, V31.T_4H, V2.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.4S, V31.4H, V2.4H");
+        TestInst(UABDL(V0.T_4S, V1.T_4H, V0.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.4S, V1.4H, V0.4H");
+        TestInst(UABDL(V30.T_4S, V1.T_4H, V0.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.4S, V1.4H, V0.4H");
+        TestInst(UABDL(V0.T_4S, V31.T_4H, V0.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.4S, V31.4H, V0.4H");
+        TestInst(UABDL(V30.T_4S, V31.T_4H, V0.T_4H), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.4S, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -184,77 +56,13 @@ public class Arm64InstructionFactoryTests_UABDL_Advsimd
     [TestMethod]
     public void Test_UABDL_asimddiff_l_2()
     {
-        
-        {
-            var raw = UABDL(V0.T_2D, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.2D, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_2D, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.2D, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_2D, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.2D, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_2D, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.2D, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_2D, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.2D, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_2D, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.2D, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V0.T_2D, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V0.2D, V31.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = UABDL(V30.T_2D, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UABDL_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UABDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UABDL V30.2D, V31.2S, V0.2S", asm);
-        }
+        TestInst(UABDL(V0.T_2D, V1.T_2S, V2.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.2D, V1.2S, V2.2S");
+        TestInst(UABDL(V30.T_2D, V1.T_2S, V2.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.2D, V1.2S, V2.2S");
+        TestInst(UABDL(V0.T_2D, V31.T_2S, V2.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.2D, V31.2S, V2.2S");
+        TestInst(UABDL(V30.T_2D, V31.T_2S, V2.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.2D, V31.2S, V2.2S");
+        TestInst(UABDL(V0.T_2D, V1.T_2S, V0.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.2D, V1.2S, V0.2S");
+        TestInst(UABDL(V30.T_2D, V1.T_2S, V0.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.2D, V1.2S, V0.2S");
+        TestInst(UABDL(V0.T_2D, V31.T_2S, V0.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V0.2D, V31.2S, V0.2S");
+        TestInst(UABDL(V30.T_2D, V31.T_2S, V0.T_2S), Arm64InstructionId.UABDL_asimddiff_l, Arm64Mnemonic.UABDL, "UABDL V30.2D, V31.2S, V0.2S");
     }
 }

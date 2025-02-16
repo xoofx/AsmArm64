@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAPURH_General
+public class Arm64InstructionFactoryTests_LDAPURH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDAPURH_General
     [TestMethod]
     public void Test_LDAPURH_32_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = LDAPURH(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURH W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURH(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURH W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURH(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURH WZR, [X2, #5]", asm);
-        }
+        TestInst(LDAPURH(W0, _[X2, 5]), Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURH, "LDAPURH W0, [X2, #5]");
+        TestInst(LDAPURH(W15, _[X2, 5]), Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURH, "LDAPURH W15, [X2, #5]");
+        TestInst(LDAPURH(WZR, _[X2, 5]), Arm64InstructionId.LDAPURH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURH, "LDAPURH WZR, [X2, #5]");
     }
 }

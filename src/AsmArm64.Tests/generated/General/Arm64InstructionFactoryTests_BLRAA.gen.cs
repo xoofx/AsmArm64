@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BLRAA_General
+public class Arm64InstructionFactoryTests_BLRAA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_BLRAA_General
     [TestMethod]
     public void Test_BLRAA_64p_branch_reg_0()
     {
-        
-        {
-            var raw = BLRAA(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X0, X2", asm);
-        }
-        
-        {
-            var raw = BLRAA(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X15, X2", asm);
-        }
-        
-        {
-            var raw = BLRAA(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA XZR, X2", asm);
-        }
-        
-        {
-            var raw = BLRAA(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X0, X18", asm);
-        }
-        
-        {
-            var raw = BLRAA(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X15, X18", asm);
-        }
-        
-        {
-            var raw = BLRAA(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA XZR, X18", asm);
-        }
-        
-        {
-            var raw = BLRAA(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X0, SP", asm);
-        }
-        
-        {
-            var raw = BLRAA(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA X15, SP", asm);
-        }
-        
-        {
-            var raw = BLRAA(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRAA_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRAA XZR, SP", asm);
-        }
+        TestInst(BLRAA(X0, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X2");
+        TestInst(BLRAA(X15, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X2");
+        TestInst(BLRAA(XZR, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X2");
+        TestInst(BLRAA(X0, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X18");
+        TestInst(BLRAA(X15, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X18");
+        TestInst(BLRAA(XZR, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X18");
+        TestInst(BLRAA(X0, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, SP");
+        TestInst(BLRAA(X15, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, SP");
+        TestInst(BLRAA(XZR, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, SP");
     }
 }

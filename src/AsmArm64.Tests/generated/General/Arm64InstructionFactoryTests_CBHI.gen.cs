@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CBHI_General
+public class Arm64InstructionFactoryTests_CBHI_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_CBHI_General
     [TestMethod]
     public void Test_CBHI_32_imm_0()
     {
-        
-        {
-            var raw = CBHI(W0, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W0, #5, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W15, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W15, #5, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(WZR, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI WZR, #5, #32", asm);
-        }
+        TestInst(CBHI(W0, 5, 32), Arm64InstructionId.CBHI_32_imm, Arm64Mnemonic.CBHI, "CBHI W0, #5, #32");
+        TestInst(CBHI(W15, 5, 32), Arm64InstructionId.CBHI_32_imm, Arm64Mnemonic.CBHI, "CBHI W15, #5, #32");
+        TestInst(CBHI(WZR, 5, 32), Arm64InstructionId.CBHI_32_imm, Arm64Mnemonic.CBHI, "CBHI WZR, #5, #32");
     }
     
     /// <summary>
@@ -59,33 +35,9 @@ public class Arm64InstructionFactoryTests_CBHI_General
     [TestMethod]
     public void Test_CBHI_64_imm_1()
     {
-        
-        {
-            var raw = CBHI(X0, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X0, #5, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X15, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X15, #5, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(XZR, 5, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI XZR, #5, #32", asm);
-        }
+        TestInst(CBHI(X0, 5, 32), Arm64InstructionId.CBHI_64_imm, Arm64Mnemonic.CBHI, "CBHI X0, #5, #32");
+        TestInst(CBHI(X15, 5, 32), Arm64InstructionId.CBHI_64_imm, Arm64Mnemonic.CBHI, "CBHI X15, #5, #32");
+        TestInst(CBHI(XZR, 5, 32), Arm64InstructionId.CBHI_64_imm, Arm64Mnemonic.CBHI, "CBHI XZR, #5, #32");
     }
     
     /// <summary>
@@ -94,87 +46,15 @@ public class Arm64InstructionFactoryTests_CBHI_General
     [TestMethod]
     public void Test_CBHI_32_regs_2()
     {
-        
-        {
-            var raw = CBHI(W0, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W0, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W15, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W15, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(WZR, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI WZR, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W0, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W0, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W15, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W15, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(WZR, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI WZR, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W0, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W0, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(W15, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI W15, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(WZR, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_32_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI WZR, WZR, #32", asm);
-        }
+        TestInst(CBHI(W0, W1, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W0, W1, #32");
+        TestInst(CBHI(W15, W1, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W15, W1, #32");
+        TestInst(CBHI(WZR, W1, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI WZR, W1, #32");
+        TestInst(CBHI(W0, W16, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W0, W16, #32");
+        TestInst(CBHI(W15, W16, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W15, W16, #32");
+        TestInst(CBHI(WZR, W16, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI WZR, W16, #32");
+        TestInst(CBHI(W0, WZR, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W0, WZR, #32");
+        TestInst(CBHI(W15, WZR, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI W15, WZR, #32");
+        TestInst(CBHI(WZR, WZR, 32), Arm64InstructionId.CBHI_32_regs, Arm64Mnemonic.CBHI, "CBHI WZR, WZR, #32");
     }
     
     /// <summary>
@@ -183,86 +63,14 @@ public class Arm64InstructionFactoryTests_CBHI_General
     [TestMethod]
     public void Test_CBHI_64_regs_3()
     {
-        
-        {
-            var raw = CBHI(X0, X1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X0, X1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X15, X1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X15, X1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(XZR, X1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI XZR, X1, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X0, X16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X0, X16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X15, X16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X15, X16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(XZR, X16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI XZR, X16, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X0, XZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X0, XZR, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(X15, XZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI X15, XZR, #32", asm);
-        }
-        
-        {
-            var raw = CBHI(XZR, XZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBHI_64_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBHI XZR, XZR, #32", asm);
-        }
+        TestInst(CBHI(X0, X1, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X0, X1, #32");
+        TestInst(CBHI(X15, X1, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X15, X1, #32");
+        TestInst(CBHI(XZR, X1, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI XZR, X1, #32");
+        TestInst(CBHI(X0, X16, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X0, X16, #32");
+        TestInst(CBHI(X15, X16, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X15, X16, #32");
+        TestInst(CBHI(XZR, X16, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI XZR, X16, #32");
+        TestInst(CBHI(X0, XZR, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X0, XZR, #32");
+        TestInst(CBHI(X15, XZR, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI X15, XZR, #32");
+        TestInst(CBHI(XZR, XZR, 32), Arm64InstructionId.CBHI_64_regs, Arm64Mnemonic.CBHI, "CBHI XZR, XZR, #32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RBIT_General
+public class Arm64InstructionFactoryTests_RBIT_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_RBIT_General
     [TestMethod]
     public void Test_RBIT_32_dp_1src_0()
     {
-        
-        {
-            var raw = RBIT(W0, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W0, W1", asm);
-        }
-        
-        {
-            var raw = RBIT(W15, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W15, W1", asm);
-        }
-        
-        {
-            var raw = RBIT(WZR, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT WZR, W1", asm);
-        }
-        
-        {
-            var raw = RBIT(W0, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W0, W16", asm);
-        }
-        
-        {
-            var raw = RBIT(W15, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W15, W16", asm);
-        }
-        
-        {
-            var raw = RBIT(WZR, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT WZR, W16", asm);
-        }
-        
-        {
-            var raw = RBIT(W0, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W0, WZR", asm);
-        }
-        
-        {
-            var raw = RBIT(W15, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT W15, WZR", asm);
-        }
-        
-        {
-            var raw = RBIT(WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT WZR, WZR", asm);
-        }
+        TestInst(RBIT(W0, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W1");
+        TestInst(RBIT(W15, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W1");
+        TestInst(RBIT(WZR, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W1");
+        TestInst(RBIT(W0, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W16");
+        TestInst(RBIT(W15, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W16");
+        TestInst(RBIT(WZR, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W16");
+        TestInst(RBIT(W0, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, WZR");
+        TestInst(RBIT(W15, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, WZR");
+        TestInst(RBIT(WZR, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, WZR");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_RBIT_General
     [TestMethod]
     public void Test_RBIT_64_dp_1src_1()
     {
-        
-        {
-            var raw = RBIT(X0, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X0, X1", asm);
-        }
-        
-        {
-            var raw = RBIT(X15, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X15, X1", asm);
-        }
-        
-        {
-            var raw = RBIT(XZR, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT XZR, X1", asm);
-        }
-        
-        {
-            var raw = RBIT(X0, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X0, X16", asm);
-        }
-        
-        {
-            var raw = RBIT(X15, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X15, X16", asm);
-        }
-        
-        {
-            var raw = RBIT(XZR, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT XZR, X16", asm);
-        }
-        
-        {
-            var raw = RBIT(X0, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X0, XZR", asm);
-        }
-        
-        {
-            var raw = RBIT(X15, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT X15, XZR", asm);
-        }
-        
-        {
-            var raw = RBIT(XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RBIT_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RBIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RBIT XZR, XZR", asm);
-        }
+        TestInst(RBIT(X0, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X1");
+        TestInst(RBIT(X15, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X1");
+        TestInst(RBIT(XZR, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X1");
+        TestInst(RBIT(X0, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X16");
+        TestInst(RBIT(X15, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X16");
+        TestInst(RBIT(XZR, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X16");
+        TestInst(RBIT(X0, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, XZR");
+        TestInst(RBIT(X15, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, XZR");
+        TestInst(RBIT(XZR, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, XZR");
     }
 }

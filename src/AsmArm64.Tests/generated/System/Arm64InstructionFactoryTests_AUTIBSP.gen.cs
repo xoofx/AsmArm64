@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIBSP_System
+public class Arm64InstructionFactoryTests_AUTIBSP_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_AUTIBSP_System
     [TestMethod]
     public void Test_AUTIBSP_hi_hints_0()
     {
-        
-        {
-            var raw = AUTIBSP();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIBSP_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIBSP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIBSP", asm);
-        }
+        TestInst(AUTIBSP(), Arm64InstructionId.AUTIBSP_hi_hints, Arm64Mnemonic.AUTIBSP, "AUTIBSP");
     }
 }

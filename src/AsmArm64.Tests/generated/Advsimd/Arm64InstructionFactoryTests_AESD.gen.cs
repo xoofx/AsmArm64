@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AESD_Advsimd
+public class Arm64InstructionFactoryTests_AESD_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_AESD_Advsimd
     [TestMethod]
     public void Test_AESD_b_cryptoaes_0()
     {
-        
-        {
-            var raw = AESD(V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AESD_b_cryptoaes, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AESD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AESD V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = AESD(V30.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AESD_b_cryptoaes, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AESD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AESD V30.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = AESD(V0.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AESD_b_cryptoaes, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AESD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AESD V0.16B, V31.16B", asm);
-        }
-        
-        {
-            var raw = AESD(V30.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AESD_b_cryptoaes, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AESD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AESD V30.16B, V31.16B", asm);
-        }
+        TestInst(AESD(V0.T_16B, V1.T_16B), Arm64InstructionId.AESD_b_cryptoaes, Arm64Mnemonic.AESD, "AESD V0.16B, V1.16B");
+        TestInst(AESD(V30.T_16B, V1.T_16B), Arm64InstructionId.AESD_b_cryptoaes, Arm64Mnemonic.AESD, "AESD V30.16B, V1.16B");
+        TestInst(AESD(V0.T_16B, V31.T_16B), Arm64InstructionId.AESD_b_cryptoaes, Arm64Mnemonic.AESD, "AESD V0.16B, V31.16B");
+        TestInst(AESD(V30.T_16B, V31.T_16B), Arm64InstructionId.AESD_b_cryptoaes, Arm64Mnemonic.AESD, "AESD V30.16B, V31.16B");
     }
 }

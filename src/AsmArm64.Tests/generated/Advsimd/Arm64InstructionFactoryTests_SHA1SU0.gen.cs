@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SHA1SU0_Advsimd
+public class Arm64InstructionFactoryTests_SHA1SU0_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SHA1SU0_Advsimd
     [TestMethod]
     public void Test_SHA1SU0_vvv_cryptosha3_0()
     {
-        
-        {
-            var raw = SHA1SU0(V0.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V0.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V30.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V30.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V0.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V0.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V30.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V30.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V0.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V0.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V30.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V30.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V0.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V0.4S, V31.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1SU0(V30.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1SU0_vvv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1SU0, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1SU0 V30.4S, V31.4S, V0.4S", asm);
-        }
+        TestInst(SHA1SU0(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V0.4S, V1.4S, V2.4S");
+        TestInst(SHA1SU0(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V30.4S, V1.4S, V2.4S");
+        TestInst(SHA1SU0(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V0.4S, V31.4S, V2.4S");
+        TestInst(SHA1SU0(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V30.4S, V31.4S, V2.4S");
+        TestInst(SHA1SU0(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V0.4S, V1.4S, V0.4S");
+        TestInst(SHA1SU0(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V30.4S, V1.4S, V0.4S");
+        TestInst(SHA1SU0(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V0.4S, V31.4S, V0.4S");
+        TestInst(SHA1SU0(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA1SU0_vvv_cryptosha3, Arm64Mnemonic.SHA1SU0, "SHA1SU0 V30.4S, V31.4S, V0.4S");
     }
 }

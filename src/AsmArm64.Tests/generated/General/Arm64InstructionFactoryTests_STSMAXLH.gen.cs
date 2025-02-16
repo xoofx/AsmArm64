@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSMAXLH_General
+public class Arm64InstructionFactoryTests_STSMAXLH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STSMAXLH_General
     [TestMethod]
     public void Test_STSMAXLH_ldsmaxlh_32_memop_0()
     {
-        
-        {
-            var raw = STSMAXLH(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXLH W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXLH(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXLH W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMAXLH(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMAXLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMAXLH WZR, [X2]", asm);
-        }
+        TestInst(STSMAXLH(W0, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W0, [X2]");
+        TestInst(STSMAXLH(W15, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W15, [X2]");
+        TestInst(STSMAXLH(WZR, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH WZR, [X2]");
     }
 }

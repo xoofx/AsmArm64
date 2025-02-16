@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SETGPTN_General
+public class Arm64InstructionFactoryTests_SETGPTN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_SETGPTN_General
     [TestMethod]
     public void Test_SETGPTN_set_memcms_0()
     {
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X1, X2", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X16, X2", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X1, X17", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X16, X17", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SETGPTN(_[X1].Pre, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGPTN_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGPTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGPTN [X1]!, XZR, XZR", asm);
-        }
+        TestInst(SETGPTN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X2");
+        TestInst(SETGPTN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X2");
+        TestInst(SETGPTN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X2");
+        TestInst(SETGPTN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X17");
+        TestInst(SETGPTN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X17");
+        TestInst(SETGPTN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X17");
+        TestInst(SETGPTN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, XZR");
+        TestInst(SETGPTN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, XZR");
+        TestInst(SETGPTN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, XZR");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FMLALLBT_Advsimd
+public class Arm64InstructionFactoryTests_FMLALLBT_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_FMLALLBT_Advsimd
     [TestMethod]
     public void Test_FMLALLBT_asimdelem_j_0()
     {
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V1.T_16B, V2.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V1.16B, V2.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V1.T_16B, V2.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V1.16B, V2.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V31.T_16B, V2.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V31.16B, V2.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V31.T_16B, V2.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V31.16B, V2.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V1.T_16B, V0.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V1.16B, V0.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V1.T_16B, V0.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V1.16B, V0.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V31.T_16B, V0.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V31.16B, V0.B[1]", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V31.T_16B, V0.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdelem_j, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V31.16B, V0.B[1]", asm);
-        }
+        TestInst(FMLALLBT(V0.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V1.16B, V2.B[1]");
+        TestInst(FMLALLBT(V30.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V1.16B, V2.B[1]");
+        TestInst(FMLALLBT(V0.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V31.16B, V2.B[1]");
+        TestInst(FMLALLBT(V30.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V31.16B, V2.B[1]");
+        TestInst(FMLALLBT(V0.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V1.16B, V0.B[1]");
+        TestInst(FMLALLBT(V30.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V1.16B, V0.B[1]");
+        TestInst(FMLALLBT(V0.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V31.16B, V0.B[1]");
+        TestInst(FMLALLBT(V30.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLBT_asimdelem_j, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V31.16B, V0.B[1]");
     }
     
     /// <summary>
@@ -104,77 +40,13 @@ public class Arm64InstructionFactoryTests_FMLALLBT_Advsimd
     [TestMethod]
     public void Test_FMLALLBT_asimdsame2_g_1()
     {
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V0.T_4S, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V0.4S, V31.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = FMLALLBT(V30.T_4S, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLALLBT_asimdsame2_g, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLALLBT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLALLBT V30.4S, V31.16B, V0.16B", asm);
-        }
+        TestInst(FMLALLBT(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V1.16B, V2.16B");
+        TestInst(FMLALLBT(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V1.16B, V2.16B");
+        TestInst(FMLALLBT(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V31.16B, V2.16B");
+        TestInst(FMLALLBT(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V31.16B, V2.16B");
+        TestInst(FMLALLBT(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V1.16B, V0.16B");
+        TestInst(FMLALLBT(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V1.16B, V0.16B");
+        TestInst(FMLALLBT(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V0.4S, V31.16B, V0.16B");
+        TestInst(FMLALLBT(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLBT_asimdsame2_g, Arm64Mnemonic.FMLALLBT, "FMLALLBT V30.4S, V31.16B, V0.16B");
     }
 }

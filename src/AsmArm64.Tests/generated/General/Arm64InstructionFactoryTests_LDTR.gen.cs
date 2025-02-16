@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDTR_General
+public class Arm64InstructionFactoryTests_LDTR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_LDTR_General
     [TestMethod]
     public void Test_LDTR_32_ldst_unpriv_0()
     {
-        
-        {
-            var raw = LDTR(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_32_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTR(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_32_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTR(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_32_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR WZR, [X2, #5]", asm);
-        }
+        TestInst(LDTR(W0, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W0, [X2, #5]");
+        TestInst(LDTR(W15, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W15, [X2, #5]");
+        TestInst(LDTR(WZR, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_LDTR_General
     [TestMethod]
     public void Test_LDTR_64_ldst_unpriv_1()
     {
-        
-        {
-            var raw = LDTR(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTR(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTR(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTR_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTR XZR, [X2, #5]", asm);
-        }
+        TestInst(LDTR(X0, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X0, [X2, #5]");
+        TestInst(LDTR(X15, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X15, [X2, #5]");
+        TestInst(LDTR(XZR, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR XZR, [X2, #5]");
     }
 }

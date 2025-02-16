@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDP_General
+public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_32_ldstpair_post_0()
     {
-        
-        {
-            var raw = LDP(W0, W1, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W1, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W1, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W1, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W1, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W1, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(W0, W16, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W16, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W16, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W16, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W16, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W16, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(W0, WZR, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, WZR, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(W15, WZR, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, WZR, [X3], #20", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, WZR, _[X3], 20);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, WZR, [X3], #20", asm);
-        }
+        TestInst(LDP(W0, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W1, [X3], #20");
+        TestInst(LDP(W15, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W1, [X3], #20");
+        TestInst(LDP(WZR, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3], #20");
+        TestInst(LDP(W0, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W16, [X3], #20");
+        TestInst(LDP(W15, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W16, [X3], #20");
+        TestInst(LDP(WZR, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3], #20");
+        TestInst(LDP(W0, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3], #20");
+        TestInst(LDP(W15, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3], #20");
+        TestInst(LDP(WZR, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3], #20");
     }
     
     /// <summary>
@@ -113,87 +41,15 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_64_ldstpair_post_1()
     {
-        
-        {
-            var raw = LDP(X0, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X1, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X1, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(X0, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X16, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X16, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(X0, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, XZR, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(X15, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, XZR, [X3], #40", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, XZR, _[X3], 40);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, XZR, [X3], #40", asm);
-        }
+        TestInst(LDP(X0, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X1, [X3], #40");
+        TestInst(LDP(X15, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X1, [X3], #40");
+        TestInst(LDP(XZR, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3], #40");
+        TestInst(LDP(X0, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X16, [X3], #40");
+        TestInst(LDP(X15, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X16, [X3], #40");
+        TestInst(LDP(XZR, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3], #40");
+        TestInst(LDP(X0, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3], #40");
+        TestInst(LDP(X15, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3], #40");
+        TestInst(LDP(XZR, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3], #40");
     }
     
     /// <summary>
@@ -202,87 +58,15 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_32_ldstpair_pre_2()
     {
-        
-        {
-            var raw = LDP(W0, W1, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W1, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W1, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W1, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W1, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W1, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(W0, W16, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W16, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W16, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W16, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W16, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W16, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(W0, WZR, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, WZR, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(W15, WZR, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, WZR, [X3, #20]!", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, WZR, _[X3, 20].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, WZR, [X3, #20]!", asm);
-        }
+        TestInst(LDP(W0, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]!");
+        TestInst(LDP(W15, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]!");
+        TestInst(LDP(WZR, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]!");
+        TestInst(LDP(W0, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]!");
+        TestInst(LDP(W15, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]!");
+        TestInst(LDP(WZR, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]!");
+        TestInst(LDP(W0, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]!");
+        TestInst(LDP(W15, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]!");
+        TestInst(LDP(WZR, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]!");
     }
     
     /// <summary>
@@ -291,87 +75,15 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_64_ldstpair_pre_3()
     {
-        
-        {
-            var raw = LDP(X0, X1, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X1, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X1, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X1, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X1, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X1, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(X0, X16, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X16, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X16, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X16, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X16, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X16, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(X0, XZR, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, XZR, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(X15, XZR, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, XZR, [X3, #40]!", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, XZR, _[X3, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, XZR, [X3, #40]!", asm);
-        }
+        TestInst(LDP(X0, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]!");
+        TestInst(LDP(X15, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]!");
+        TestInst(LDP(XZR, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]!");
+        TestInst(LDP(X0, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]!");
+        TestInst(LDP(X15, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]!");
+        TestInst(LDP(XZR, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]!");
+        TestInst(LDP(X0, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]!");
+        TestInst(LDP(X15, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]!");
+        TestInst(LDP(XZR, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]!");
     }
     
     /// <summary>
@@ -380,87 +92,15 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_32_ldstpair_off_4()
     {
-        
-        {
-            var raw = LDP(W0, W1, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W1, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W1, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W1, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W1, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W1, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(W0, W16, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, W16, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(W15, W16, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, W16, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, W16, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, W16, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(W0, WZR, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W0, WZR, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(W15, WZR, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP W15, WZR, [X3, #20]", asm);
-        }
-        
-        {
-            var raw = LDP(WZR, WZR, _[X3, 20]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_32_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP WZR, WZR, [X3, #20]", asm);
-        }
+        TestInst(LDP(W0, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]");
+        TestInst(LDP(W15, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]");
+        TestInst(LDP(WZR, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]");
+        TestInst(LDP(W0, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]");
+        TestInst(LDP(W15, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]");
+        TestInst(LDP(WZR, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]");
+        TestInst(LDP(W0, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]");
+        TestInst(LDP(W15, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]");
+        TestInst(LDP(WZR, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]");
     }
     
     /// <summary>
@@ -469,86 +109,14 @@ public class Arm64InstructionFactoryTests_LDP_General
     [TestMethod]
     public void Test_LDP_64_ldstpair_off_5()
     {
-        
-        {
-            var raw = LDP(X0, X1, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X1, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X1, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X1, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X1, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X1, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(X0, X16, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, X16, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(X15, X16, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, X16, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, X16, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, X16, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(X0, XZR, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X0, XZR, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(X15, XZR, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP X15, XZR, [X3, #40]", asm);
-        }
-        
-        {
-            var raw = LDP(XZR, XZR, _[X3, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDP XZR, XZR, [X3, #40]", asm);
-        }
+        TestInst(LDP(X0, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]");
+        TestInst(LDP(X15, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]");
+        TestInst(LDP(XZR, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]");
+        TestInst(LDP(X0, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]");
+        TestInst(LDP(X15, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]");
+        TestInst(LDP(XZR, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]");
+        TestInst(LDP(X0, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]");
+        TestInst(LDP(X15, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]");
+        TestInst(LDP(XZR, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]");
     }
 }

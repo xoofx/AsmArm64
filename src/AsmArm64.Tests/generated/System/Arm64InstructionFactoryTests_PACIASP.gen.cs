@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACIASP_System
+public class Arm64InstructionFactoryTests_PACIASP_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_PACIASP_System
     [TestMethod]
     public void Test_PACIASP_hi_hints_0()
     {
-        
-        {
-            var raw = PACIASP();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIASP_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIASP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIASP", asm);
-        }
+        TestInst(PACIASP(), Arm64InstructionId.PACIASP_hi_hints, Arm64Mnemonic.PACIASP, "PACIASP");
     }
 }

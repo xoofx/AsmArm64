@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIBSPPCR_General
+public class Arm64InstructionFactoryTests_AUTIBSPPCR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_AUTIBSPPCR_General
     [TestMethod]
     public void Test_AUTIBSPPCR_64lrr_dp_1src_0()
     {
-        
-        {
-            var raw = AUTIBSPPCR(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIBSPPCR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIBSPPCR X0", asm);
-        }
-        
-        {
-            var raw = AUTIBSPPCR(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIBSPPCR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIBSPPCR X15", asm);
-        }
-        
-        {
-            var raw = AUTIBSPPCR(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIBSPPCR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIBSPPCR XZR", asm);
-        }
+        TestInst(AUTIBSPPCR(X0), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X0");
+        TestInst(AUTIBSPPCR(X15), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X15");
+        TestInst(AUTIBSPPCR(XZR), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR XZR");
     }
 }

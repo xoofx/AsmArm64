@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CHKFEAT_System
+public class Arm64InstructionFactoryTests_CHKFEAT_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_CHKFEAT_System
     [TestMethod]
     public void Test_CHKFEAT_hf_hints_0()
     {
-        
-        {
-            var raw = CHKFEAT(X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CHKFEAT_hf_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CHKFEAT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CHKFEAT X16", asm);
-        }
+        TestInst(CHKFEAT(X16), Arm64InstructionId.CHKFEAT_hf_hints, Arm64Mnemonic.CHKFEAT, "CHKFEAT X16");
     }
 }

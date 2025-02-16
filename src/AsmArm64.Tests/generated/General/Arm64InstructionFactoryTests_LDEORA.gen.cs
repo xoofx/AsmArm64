@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDEORA_General
+public class Arm64InstructionFactoryTests_LDEORA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_LDEORA_General
     [TestMethod]
     public void Test_LDEORA_32_memop_0()
     {
-        
-        {
-            var raw = LDEORA(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA WZR, WZR, [X3]", asm);
-        }
+        TestInst(LDEORA(W0, W1, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W0, W1, [X3]");
+        TestInst(LDEORA(W15, W1, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W15, W1, [X3]");
+        TestInst(LDEORA(WZR, W1, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA WZR, W1, [X3]");
+        TestInst(LDEORA(W0, W16, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W0, W16, [X3]");
+        TestInst(LDEORA(W15, W16, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W15, W16, [X3]");
+        TestInst(LDEORA(WZR, W16, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA WZR, W16, [X3]");
+        TestInst(LDEORA(W0, WZR, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W0, WZR, [X3]");
+        TestInst(LDEORA(W15, WZR, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA W15, WZR, [X3]");
+        TestInst(LDEORA(WZR, WZR, _[X3]), Arm64InstructionId.LDEORA_32_memop, Arm64Mnemonic.LDEORA, "LDEORA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_LDEORA_General
     [TestMethod]
     public void Test_LDEORA_64_memop_1()
     {
-        
-        {
-            var raw = LDEORA(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDEORA(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDEORA_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDEORA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDEORA XZR, XZR, [X3]", asm);
-        }
+        TestInst(LDEORA(X0, X1, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X0, X1, [X3]");
+        TestInst(LDEORA(X15, X1, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X15, X1, [X3]");
+        TestInst(LDEORA(XZR, X1, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA XZR, X1, [X3]");
+        TestInst(LDEORA(X0, X16, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X0, X16, [X3]");
+        TestInst(LDEORA(X15, X16, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X15, X16, [X3]");
+        TestInst(LDEORA(XZR, X16, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA XZR, X16, [X3]");
+        TestInst(LDEORA(X0, XZR, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X0, XZR, [X3]");
+        TestInst(LDEORA(X15, XZR, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA X15, XZR, [X3]");
+        TestInst(LDEORA(XZR, XZR, _[X3]), Arm64InstructionId.LDEORA_64_memop, Arm64Mnemonic.LDEORA, "LDEORA XZR, XZR, [X3]");
     }
 }

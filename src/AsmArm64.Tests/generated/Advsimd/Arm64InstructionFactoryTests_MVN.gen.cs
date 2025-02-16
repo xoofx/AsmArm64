@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MVN_Advsimd
+public class Arm64InstructionFactoryTests_MVN_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_MVN_Advsimd
     [TestMethod]
     public void Test_MVN_not_asimdmisc_r_0()
     {
-        
-        {
-            var raw = MVN(V0.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V0.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = MVN(V30.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V30.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = MVN(V0.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V0.8B, V31.8B", asm);
-        }
-        
-        {
-            var raw = MVN(V30.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V30.8B, V31.8B", asm);
-        }
+        TestInst(MVN(V0.T_8B, V1.T_8B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V0.8B, V1.8B");
+        TestInst(MVN(V30.T_8B, V1.T_8B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V30.8B, V1.8B");
+        TestInst(MVN(V0.T_8B, V31.T_8B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V0.8B, V31.8B");
+        TestInst(MVN(V30.T_8B, V31.T_8B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -68,41 +36,9 @@ public class Arm64InstructionFactoryTests_MVN_Advsimd
     [TestMethod]
     public void Test_MVN_not_asimdmisc_r_1()
     {
-        
-        {
-            var raw = MVN(V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = MVN(V30.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V30.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = MVN(V0.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V0.16B, V31.16B", asm);
-        }
-        
-        {
-            var raw = MVN(V30.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MVN_not_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MVN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MVN V30.16B, V31.16B", asm);
-        }
+        TestInst(MVN(V0.T_16B, V1.T_16B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V0.16B, V1.16B");
+        TestInst(MVN(V30.T_16B, V1.T_16B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V30.16B, V1.16B");
+        TestInst(MVN(V0.T_16B, V31.T_16B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V0.16B, V31.16B");
+        TestInst(MVN(V30.T_16B, V31.T_16B), Arm64InstructionId.MVN_not_asimdmisc_r, Arm64Mnemonic.MVN, "MVN V30.16B, V31.16B");
     }
 }

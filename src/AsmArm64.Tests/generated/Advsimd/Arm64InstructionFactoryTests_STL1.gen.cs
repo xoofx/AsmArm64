@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STL1_Advsimd
+public class Arm64InstructionFactoryTests_STL1_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_STL1_Advsimd
     [TestMethod]
     public void Test_STL1_asisdlso_d1_0()
     {
-        
-        {
-            var raw = STL1(V0.D.Group1()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STL1_asisdlso_d1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STL1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STL1 { V0.D }[1], [X2]", asm);
-        }
-        
-        {
-            var raw = STL1(V30.D.Group1()[1], _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STL1_asisdlso_d1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STL1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STL1 { V30.D }[1], [X2]", asm);
-        }
+        TestInst(STL1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V0.D }[1], [X2]");
+        TestInst(STL1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V30.D }[1], [X2]");
     }
 }

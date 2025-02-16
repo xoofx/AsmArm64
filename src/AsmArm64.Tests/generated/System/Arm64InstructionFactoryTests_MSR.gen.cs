@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MSR_System
+public class Arm64InstructionFactoryTests_MSR_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,15 +24,7 @@ public class Arm64InstructionFactoryTests_MSR_System
     [TestMethod]
     public void Test_MSR_si_pstate_0()
     {
-        
-        {
-            var raw = MSR(DAIFSet, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSR_si_pstate, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSR DAIFSet, #5", asm);
-        }
+        TestInst(MSR(DAIFSet, 5), Arm64InstructionId.MSR_si_pstate, Arm64Mnemonic.MSR, "MSR DAIFSet, #5");
     }
     
     /// <summary>
@@ -41,32 +33,8 @@ public class Arm64InstructionFactoryTests_MSR_System
     [TestMethod]
     public void Test_MSR_sr_systemmove_1()
     {
-        
-        {
-            var raw = MSR(ACCDATA_EL1, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSR ACCDATA_EL1, X1", asm);
-        }
-        
-        {
-            var raw = MSR(ACCDATA_EL1, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSR ACCDATA_EL1, X16", asm);
-        }
-        
-        {
-            var raw = MSR(ACCDATA_EL1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSR ACCDATA_EL1, XZR", asm);
-        }
+        TestInst(MSR(ACCDATA_EL1, X1), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X1");
+        TestInst(MSR(ACCDATA_EL1, X16), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X16");
+        TestInst(MSR(ACCDATA_EL1, XZR), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, XZR");
     }
 }

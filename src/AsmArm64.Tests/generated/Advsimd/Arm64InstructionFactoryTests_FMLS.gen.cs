@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FMLS_Advsimd
+public class Arm64InstructionFactoryTests_FMLS_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asisdelem_rh_h_0()
     {
-        
-        {
-            var raw = FMLS(H0, H1, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H0, H1, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H31, H1, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H31, H1, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H0, H31, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H0, H31, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H31, H31, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H31, H31, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H0, H1, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H0, H1, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H31, H1, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H31, H1, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H0, H31, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H0, H31, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(H31, H31, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS H31, H31, V0.H[1]", asm);
-        }
+        TestInst(FMLS(H0, H1, V2.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H0, H1, V2.H[1]");
+        TestInst(FMLS(H31, H1, V2.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H31, H1, V2.H[1]");
+        TestInst(FMLS(H0, H31, V2.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H0, H31, V2.H[1]");
+        TestInst(FMLS(H31, H31, V2.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H31, H31, V2.H[1]");
+        TestInst(FMLS(H0, H1, V0.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H0, H1, V0.H[1]");
+        TestInst(FMLS(H31, H1, V0.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H31, H1, V0.H[1]");
+        TestInst(FMLS(H0, H31, V0.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H0, H31, V0.H[1]");
+        TestInst(FMLS(H31, H31, V0.H[1]), Arm64InstructionId.FMLS_asisdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS H31, H31, V0.H[1]");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asisdelem_r_sd_1()
     {
-        
-        {
-            var raw = FMLS(S1, S2, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S1, S2, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(S31, S2, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S31, S2, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(S1, S0, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S1, S0, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(S31, S0, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S31, S0, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(S1, S2, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S1, S2, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(S31, S2, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S31, S2, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(S1, S0, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S1, S0, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(S31, S0, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS S31, S0, V0.S[1]", asm);
-        }
+        TestInst(FMLS(S1, S2, V2.S[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S1, S2, V2.S[0]");
+        TestInst(FMLS(S31, S2, V2.S[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S31, S2, V2.S[0]");
+        TestInst(FMLS(S1, S0, V2.S[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S1, S0, V2.S[0]");
+        TestInst(FMLS(S31, S0, V2.S[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S31, S0, V2.S[0]");
+        TestInst(FMLS(S1, S2, V0.S[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S1, S2, V0.S[1]");
+        TestInst(FMLS(S31, S2, V0.S[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S31, S2, V0.S[1]");
+        TestInst(FMLS(S1, S0, V0.S[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S1, S0, V0.S[1]");
+        TestInst(FMLS(S31, S0, V0.S[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS S31, S0, V0.S[1]");
     }
     
     /// <summary>
@@ -184,78 +56,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asisdelem_r_sd_2()
     {
-        
-        {
-            var raw = FMLS(D1, D2, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D1, D2, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(D31, D2, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D31, D2, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(D1, D0, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D1, D0, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(D31, D0, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D31, D0, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(D1, D2, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D1, D2, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(D31, D2, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D31, D2, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(D1, D0, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D1, D0, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(D31, D0, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asisdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS D31, D0, V0.D[1]", asm);
-        }
+        TestInst(FMLS(D1, D2, V2.D[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D1, D2, V2.D[0]");
+        TestInst(FMLS(D31, D2, V2.D[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D31, D2, V2.D[0]");
+        TestInst(FMLS(D1, D0, V2.D[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D1, D0, V2.D[0]");
+        TestInst(FMLS(D31, D0, V2.D[0]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D31, D0, V2.D[0]");
+        TestInst(FMLS(D1, D2, V0.D[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D1, D2, V0.D[1]");
+        TestInst(FMLS(D31, D2, V0.D[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D31, D2, V0.D[1]");
+        TestInst(FMLS(D1, D0, V0.D[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D1, D0, V0.D[1]");
+        TestInst(FMLS(D31, D0, V0.D[1]), Arm64InstructionId.FMLS_asisdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS D31, D0, V0.D[1]");
     }
     
     /// <summary>
@@ -264,78 +72,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdelem_rh_h_3()
     {
-        
-        {
-            var raw = FMLS(V0.T_4H, V1.T_4H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V1.4H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V1.T_4H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V1.4H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V31.T_4H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V31.4H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V31.T_4H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V31.4H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V31.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V31.4H, V0.H[1]", asm);
-        }
+        TestInst(FMLS(V0.T_4H, V1.T_4H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.4H, V1.4H, V2.H[1]");
+        TestInst(FMLS(V30.T_4H, V1.T_4H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.4H, V1.4H, V2.H[1]");
+        TestInst(FMLS(V0.T_4H, V31.T_4H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.4H, V31.4H, V2.H[1]");
+        TestInst(FMLS(V30.T_4H, V31.T_4H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.4H, V31.4H, V2.H[1]");
+        TestInst(FMLS(V0.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.4H, V1.4H, V0.H[1]");
+        TestInst(FMLS(V30.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.4H, V1.4H, V0.H[1]");
+        TestInst(FMLS(V0.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.4H, V31.4H, V0.H[1]");
+        TestInst(FMLS(V30.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.4H, V31.4H, V0.H[1]");
     }
     
     /// <summary>
@@ -344,78 +88,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdelem_rh_h_4()
     {
-        
-        {
-            var raw = FMLS(V0.T_8H, V1.T_8H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V1.8H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V1.T_8H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V1.8H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V31.T_8H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V31.8H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V31.T_8H, V2.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V31.8H, V2.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V31.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_rh_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V31.8H, V0.H[1]", asm);
-        }
+        TestInst(FMLS(V0.T_8H, V1.T_8H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.8H, V1.8H, V2.H[1]");
+        TestInst(FMLS(V30.T_8H, V1.T_8H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.8H, V1.8H, V2.H[1]");
+        TestInst(FMLS(V0.T_8H, V31.T_8H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.8H, V31.8H, V2.H[1]");
+        TestInst(FMLS(V30.T_8H, V31.T_8H, V2.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.8H, V31.8H, V2.H[1]");
+        TestInst(FMLS(V0.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.8H, V1.8H, V0.H[1]");
+        TestInst(FMLS(V30.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.8H, V1.8H, V0.H[1]");
+        TestInst(FMLS(V0.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V0.8H, V31.8H, V0.H[1]");
+        TestInst(FMLS(V30.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.FMLS_asimdelem_rh_h, Arm64Mnemonic.FMLS, "FMLS V30.8H, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -424,78 +104,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdelem_r_sd_5()
     {
-        
-        {
-            var raw = FMLS(V0.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V31.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V31.2S, V0.S[1]", asm);
-        }
+        TestInst(FMLS(V0.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2S, V1.2S, V2.S[0]");
+        TestInst(FMLS(V30.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2S, V1.2S, V2.S[0]");
+        TestInst(FMLS(V0.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2S, V31.2S, V2.S[0]");
+        TestInst(FMLS(V30.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2S, V31.2S, V2.S[0]");
+        TestInst(FMLS(V0.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2S, V1.2S, V0.S[1]");
+        TestInst(FMLS(V30.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2S, V1.2S, V0.S[1]");
+        TestInst(FMLS(V0.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2S, V31.2S, V0.S[1]");
+        TestInst(FMLS(V30.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2S, V31.2S, V0.S[1]");
     }
     
     /// <summary>
@@ -504,78 +120,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdelem_r_sd_6()
     {
-        
-        {
-            var raw = FMLS(V0.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V31.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V31.4S, V0.S[1]", asm);
-        }
+        TestInst(FMLS(V0.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.4S, V1.4S, V2.S[0]");
+        TestInst(FMLS(V30.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.4S, V1.4S, V2.S[0]");
+        TestInst(FMLS(V0.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.4S, V31.4S, V2.S[0]");
+        TestInst(FMLS(V30.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.4S, V31.4S, V2.S[0]");
+        TestInst(FMLS(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.4S, V1.4S, V0.S[1]");
+        TestInst(FMLS(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.4S, V1.4S, V0.S[1]");
+        TestInst(FMLS(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.4S, V31.4S, V0.S[1]");
+        TestInst(FMLS(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.4S, V31.4S, V0.S[1]");
     }
     
     /// <summary>
@@ -584,78 +136,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdelem_r_sd_7()
     {
-        
-        {
-            var raw = FMLS(V0.T_2D, V1.T_2D, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V1.2D, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V1.T_2D, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V1.2D, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V31.T_2D, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V31.2D, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V31.T_2D, V2.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V31.2D, V2.D[0]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V1.T_2D, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V1.2D, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V1.T_2D, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V1.2D, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V31.T_2D, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V31.2D, V0.D[1]", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V31.T_2D, V0.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdelem_r_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V31.2D, V0.D[1]", asm);
-        }
+        TestInst(FMLS(V0.T_2D, V1.T_2D, V2.D[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2D, V1.2D, V2.D[0]");
+        TestInst(FMLS(V30.T_2D, V1.T_2D, V2.D[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2D, V1.2D, V2.D[0]");
+        TestInst(FMLS(V0.T_2D, V31.T_2D, V2.D[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2D, V31.2D, V2.D[0]");
+        TestInst(FMLS(V30.T_2D, V31.T_2D, V2.D[0]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2D, V31.2D, V2.D[0]");
+        TestInst(FMLS(V0.T_2D, V1.T_2D, V0.D[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2D, V1.2D, V0.D[1]");
+        TestInst(FMLS(V30.T_2D, V1.T_2D, V0.D[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2D, V1.2D, V0.D[1]");
+        TestInst(FMLS(V0.T_2D, V31.T_2D, V0.D[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V0.2D, V31.2D, V0.D[1]");
+        TestInst(FMLS(V30.T_2D, V31.T_2D, V0.D[1]), Arm64InstructionId.FMLS_asimdelem_r_sd, Arm64Mnemonic.FMLS, "FMLS V30.2D, V31.2D, V0.D[1]");
     }
     
     /// <summary>
@@ -664,78 +152,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdsamefp16_only_8()
     {
-        
-        {
-            var raw = FMLS(V0.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4H, V31.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4H, V31.4H, V0.4H", asm);
-        }
+        TestInst(FMLS(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.4H, V1.4H, V2.4H");
+        TestInst(FMLS(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.4H, V1.4H, V2.4H");
+        TestInst(FMLS(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.4H, V31.4H, V2.4H");
+        TestInst(FMLS(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.4H, V31.4H, V2.4H");
+        TestInst(FMLS(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.4H, V1.4H, V0.4H");
+        TestInst(FMLS(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.4H, V1.4H, V0.4H");
+        TestInst(FMLS(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.4H, V31.4H, V0.4H");
+        TestInst(FMLS(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -744,78 +168,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdsamefp16_only_9()
     {
-        
-        {
-            var raw = FMLS(V0.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.8H, V31.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsamefp16_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.8H, V31.8H, V0.8H", asm);
-        }
+        TestInst(FMLS(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.8H, V1.8H, V2.8H");
+        TestInst(FMLS(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.8H, V1.8H, V2.8H");
+        TestInst(FMLS(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.8H, V31.8H, V2.8H");
+        TestInst(FMLS(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.8H, V31.8H, V2.8H");
+        TestInst(FMLS(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.8H, V1.8H, V0.8H");
+        TestInst(FMLS(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.8H, V1.8H, V0.8H");
+        TestInst(FMLS(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V0.8H, V31.8H, V0.8H");
+        TestInst(FMLS(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FMLS_asimdsamefp16_only, Arm64Mnemonic.FMLS, "FMLS V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -824,78 +184,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdsame_only_10()
     {
-        
-        {
-            var raw = FMLS(V0.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2S, V31.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2S, V31.2S, V0.2S", asm);
-        }
+        TestInst(FMLS(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2S, V1.2S, V2.2S");
+        TestInst(FMLS(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2S, V1.2S, V2.2S");
+        TestInst(FMLS(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2S, V31.2S, V2.2S");
+        TestInst(FMLS(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2S, V31.2S, V2.2S");
+        TestInst(FMLS(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2S, V1.2S, V0.2S");
+        TestInst(FMLS(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2S, V1.2S, V0.2S");
+        TestInst(FMLS(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2S, V31.2S, V0.2S");
+        TestInst(FMLS(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -904,78 +200,14 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdsame_only_11()
     {
-        
-        {
-            var raw = FMLS(V0.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.4S, V31.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.4S, V31.4S, V0.4S", asm);
-        }
+        TestInst(FMLS(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.4S, V1.4S, V2.4S");
+        TestInst(FMLS(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.4S, V1.4S, V2.4S");
+        TestInst(FMLS(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.4S, V31.4S, V2.4S");
+        TestInst(FMLS(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.4S, V31.4S, V2.4S");
+        TestInst(FMLS(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.4S, V1.4S, V0.4S");
+        TestInst(FMLS(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.4S, V1.4S, V0.4S");
+        TestInst(FMLS(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.4S, V31.4S, V0.4S");
+        TestInst(FMLS(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -984,77 +216,13 @@ public class Arm64InstructionFactoryTests_FMLS_Advsimd
     [TestMethod]
     public void Test_FMLS_asimdsame_only_12()
     {
-        
-        {
-            var raw = FMLS(V0.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V0.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V0.2D, V31.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = FMLS(V30.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMLS_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMLS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMLS V30.2D, V31.2D, V0.2D", asm);
-        }
+        TestInst(FMLS(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2D, V1.2D, V2.2D");
+        TestInst(FMLS(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2D, V1.2D, V2.2D");
+        TestInst(FMLS(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2D, V31.2D, V2.2D");
+        TestInst(FMLS(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2D, V31.2D, V2.2D");
+        TestInst(FMLS(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2D, V1.2D, V0.2D");
+        TestInst(FMLS(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2D, V1.2D, V0.2D");
+        TestInst(FMLS(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V0.2D, V31.2D, V0.2D");
+        TestInst(FMLS(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FMLS_asimdsame_only, Arm64Mnemonic.FMLS, "FMLS V30.2D, V31.2D, V0.2D");
     }
 }

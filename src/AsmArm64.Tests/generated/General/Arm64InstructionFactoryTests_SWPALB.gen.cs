@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SWPALB_General
+public class Arm64InstructionFactoryTests_SWPALB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_SWPALB_General
     [TestMethod]
     public void Test_SWPALB_32_memop_0()
     {
-        
-        {
-            var raw = SWPALB(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPALB(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPALB_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPALB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPALB WZR, WZR, [X3]", asm);
-        }
+        TestInst(SWPALB(W0, W1, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W0, W1, [X3]");
+        TestInst(SWPALB(W15, W1, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W15, W1, [X3]");
+        TestInst(SWPALB(WZR, W1, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB WZR, W1, [X3]");
+        TestInst(SWPALB(W0, W16, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W0, W16, [X3]");
+        TestInst(SWPALB(W15, W16, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W15, W16, [X3]");
+        TestInst(SWPALB(WZR, W16, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB WZR, W16, [X3]");
+        TestInst(SWPALB(W0, WZR, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W0, WZR, [X3]");
+        TestInst(SWPALB(W15, WZR, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB W15, WZR, [X3]");
+        TestInst(SWPALB(WZR, WZR, _[X3]), Arm64InstructionId.SWPALB_32_memop, Arm64Mnemonic.SWPALB, "SWPALB WZR, WZR, [X3]");
     }
 }

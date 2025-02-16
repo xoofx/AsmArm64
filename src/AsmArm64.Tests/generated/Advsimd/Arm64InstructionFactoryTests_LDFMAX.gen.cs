@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDFMAX_Advsimd
+public class Arm64InstructionFactoryTests_LDFMAX_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_LDFMAX_Advsimd
     [TestMethod]
     public void Test_LDFMAX_16_0()
     {
-        
-        {
-            var raw = LDFMAX(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX H31, H31, [X3]", asm);
-        }
+        TestInst(LDFMAX(H0, H1, _[X3]), Arm64InstructionId.LDFMAX_16, Arm64Mnemonic.LDFMAX, "LDFMAX H0, H1, [X3]");
+        TestInst(LDFMAX(H31, H1, _[X3]), Arm64InstructionId.LDFMAX_16, Arm64Mnemonic.LDFMAX, "LDFMAX H31, H1, [X3]");
+        TestInst(LDFMAX(H0, H31, _[X3]), Arm64InstructionId.LDFMAX_16, Arm64Mnemonic.LDFMAX, "LDFMAX H0, H31, [X3]");
+        TestInst(LDFMAX(H31, H31, _[X3]), Arm64InstructionId.LDFMAX_16, Arm64Mnemonic.LDFMAX, "LDFMAX H31, H31, [X3]");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_LDFMAX_Advsimd
     [TestMethod]
     public void Test_LDFMAX_32_1()
     {
-        
-        {
-            var raw = LDFMAX(S0, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX S0, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(S31, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX S31, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(S0, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX S0, S31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(S31, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX S31, S31, [X3]", asm);
-        }
+        TestInst(LDFMAX(S0, S1, _[X3]), Arm64InstructionId.LDFMAX_32, Arm64Mnemonic.LDFMAX, "LDFMAX S0, S1, [X3]");
+        TestInst(LDFMAX(S31, S1, _[X3]), Arm64InstructionId.LDFMAX_32, Arm64Mnemonic.LDFMAX, "LDFMAX S31, S1, [X3]");
+        TestInst(LDFMAX(S0, S31, _[X3]), Arm64InstructionId.LDFMAX_32, Arm64Mnemonic.LDFMAX, "LDFMAX S0, S31, [X3]");
+        TestInst(LDFMAX(S31, S31, _[X3]), Arm64InstructionId.LDFMAX_32, Arm64Mnemonic.LDFMAX, "LDFMAX S31, S31, [X3]");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_LDFMAX_Advsimd
     [TestMethod]
     public void Test_LDFMAX_64_2()
     {
-        
-        {
-            var raw = LDFMAX(D0, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX D0, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(D31, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX D31, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(D0, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX D0, D31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMAX(D31, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMAX_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMAX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMAX D31, D31, [X3]", asm);
-        }
+        TestInst(LDFMAX(D0, D1, _[X3]), Arm64InstructionId.LDFMAX_64, Arm64Mnemonic.LDFMAX, "LDFMAX D0, D1, [X3]");
+        TestInst(LDFMAX(D31, D1, _[X3]), Arm64InstructionId.LDFMAX_64, Arm64Mnemonic.LDFMAX, "LDFMAX D31, D1, [X3]");
+        TestInst(LDFMAX(D0, D31, _[X3]), Arm64InstructionId.LDFMAX_64, Arm64Mnemonic.LDFMAX, "LDFMAX D0, D31, [X3]");
+        TestInst(LDFMAX(D31, D31, _[X3]), Arm64InstructionId.LDFMAX_64, Arm64Mnemonic.LDFMAX, "LDFMAX D31, D31, [X3]");
     }
 }

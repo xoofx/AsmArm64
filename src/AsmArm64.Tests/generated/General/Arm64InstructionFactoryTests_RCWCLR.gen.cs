@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RCWCLR_General
+public class Arm64InstructionFactoryTests_RCWCLR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_RCWCLR_General
     [TestMethod]
     public void Test_RCWCLR_64_memop_0()
     {
-        
-        {
-            var raw = RCWCLR(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWCLR(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWCLR_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWCLR XZR, XZR, [X3]", asm);
-        }
+        TestInst(RCWCLR(X0, X1, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X0, X1, [X3]");
+        TestInst(RCWCLR(X15, X1, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X15, X1, [X3]");
+        TestInst(RCWCLR(XZR, X1, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR XZR, X1, [X3]");
+        TestInst(RCWCLR(X0, X16, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X0, X16, [X3]");
+        TestInst(RCWCLR(X15, X16, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X15, X16, [X3]");
+        TestInst(RCWCLR(XZR, X16, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR XZR, X16, [X3]");
+        TestInst(RCWCLR(X0, XZR, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X0, XZR, [X3]");
+        TestInst(RCWCLR(X15, XZR, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR X15, XZR, [X3]");
+        TestInst(RCWCLR(XZR, XZR, _[X3]), Arm64InstructionId.RCWCLR_64_memop, Arm64Mnemonic.RCWCLR, "RCWCLR XZR, XZR, [X3]");
     }
 }

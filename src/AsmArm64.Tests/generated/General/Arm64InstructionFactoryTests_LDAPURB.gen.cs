@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAPURB_General
+public class Arm64InstructionFactoryTests_LDAPURB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDAPURB_General
     [TestMethod]
     public void Test_LDAPURB_32_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = LDAPURB(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURB W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURB(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURB W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDAPURB(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPURB WZR, [X2, #5]", asm);
-        }
+        TestInst(LDAPURB(W0, _[X2, 5]), Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURB, "LDAPURB W0, [X2, #5]");
+        TestInst(LDAPURB(W15, _[X2, 5]), Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURB, "LDAPURB W15, [X2, #5]");
+        TestInst(LDAPURB(WZR, _[X2, 5]), Arm64InstructionId.LDAPURB_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURB, "LDAPURB WZR, [X2, #5]");
     }
 }

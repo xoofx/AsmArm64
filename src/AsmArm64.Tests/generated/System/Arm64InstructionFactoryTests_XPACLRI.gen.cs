@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_XPACLRI_System
+public class Arm64InstructionFactoryTests_XPACLRI_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_XPACLRI_System
     [TestMethod]
     public void Test_XPACLRI_hi_hints_0()
     {
-        
-        {
-            var raw = XPACLRI();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACLRI_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACLRI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACLRI", asm);
-        }
+        TestInst(XPACLRI(), Arm64InstructionId.XPACLRI_hi_hints, Arm64Mnemonic.XPACLRI, "XPACLRI");
     }
 }

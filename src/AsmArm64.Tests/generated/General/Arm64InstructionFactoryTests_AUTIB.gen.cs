@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIB_General
+public class Arm64InstructionFactoryTests_AUTIB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_AUTIB_General
     [TestMethod]
     public void Test_AUTIB_64p_dp_1src_0()
     {
-        
-        {
-            var raw = AUTIB(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X0, X2", asm);
-        }
-        
-        {
-            var raw = AUTIB(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X15, X2", asm);
-        }
-        
-        {
-            var raw = AUTIB(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB XZR, X2", asm);
-        }
-        
-        {
-            var raw = AUTIB(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X0, X18", asm);
-        }
-        
-        {
-            var raw = AUTIB(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X15, X18", asm);
-        }
-        
-        {
-            var raw = AUTIB(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB XZR, X18", asm);
-        }
-        
-        {
-            var raw = AUTIB(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X0, SP", asm);
-        }
-        
-        {
-            var raw = AUTIB(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB X15, SP", asm);
-        }
-        
-        {
-            var raw = AUTIB(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB XZR, SP", asm);
-        }
+        TestInst(AUTIB(X0, X2), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X0, X2");
+        TestInst(AUTIB(X15, X2), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X15, X2");
+        TestInst(AUTIB(XZR, X2), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB XZR, X2");
+        TestInst(AUTIB(X0, X18), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X0, X18");
+        TestInst(AUTIB(X15, X18), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X15, X18");
+        TestInst(AUTIB(XZR, X18), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB XZR, X18");
+        TestInst(AUTIB(X0, SP), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X0, SP");
+        TestInst(AUTIB(X15, SP), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB X15, SP");
+        TestInst(AUTIB(XZR, SP), Arm64InstructionId.AUTIB_64p_dp_1src, Arm64Mnemonic.AUTIB, "AUTIB XZR, SP");
     }
 }

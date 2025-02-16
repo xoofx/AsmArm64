@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DC_System
+public class Arm64InstructionFactoryTests_DC_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_DC_System
     [TestMethod]
     public void Test_DC_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = DC(CGDSW, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DC cgdsw, X1", asm);
-        }
-        
-        {
-            var raw = DC(CGDSW, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DC cgdsw, X16", asm);
-        }
-        
-        {
-            var raw = DC(CGDSW, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DC cgdsw, XZR", asm);
-        }
+        TestInst(DC(CGDSW, X1), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X1");
+        TestInst(DC(CGDSW, X16), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X16");
+        TestInst(DC(CGDSW, XZR), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, XZR");
     }
 }

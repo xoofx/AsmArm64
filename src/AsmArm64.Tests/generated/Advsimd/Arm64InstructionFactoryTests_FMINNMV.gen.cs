@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FMINNMV_Advsimd
+public class Arm64InstructionFactoryTests_FMINNMV_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FMINNMV_Advsimd
     [TestMethod]
     public void Test_FMINNMV_asimdall_only_h_0()
     {
-        
-        {
-            var raw = FMINNMV(H0, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H0, V1.4H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H31, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H31, V1.4H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H0, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H0, V31.4H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H31, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H31, V31.4H", asm);
-        }
+        TestInst(FMINNMV(H0, V1.T_4H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H0, V1.4H");
+        TestInst(FMINNMV(H31, V1.T_4H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H31, V1.4H");
+        TestInst(FMINNMV(H0, V31.T_4H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H0, V31.4H");
+        TestInst(FMINNMV(H31, V31.T_4H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H31, V31.4H");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FMINNMV_Advsimd
     [TestMethod]
     public void Test_FMINNMV_asimdall_only_h_1()
     {
-        
-        {
-            var raw = FMINNMV(H0, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H0, V1.8H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H31, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H31, V1.8H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H0, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H0, V31.8H", asm);
-        }
-        
-        {
-            var raw = FMINNMV(H31, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_h, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV H31, V31.8H", asm);
-        }
+        TestInst(FMINNMV(H0, V1.T_8H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H0, V1.8H");
+        TestInst(FMINNMV(H31, V1.T_8H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H31, V1.8H");
+        TestInst(FMINNMV(H0, V31.T_8H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H0, V31.8H");
+        TestInst(FMINNMV(H31, V31.T_8H), Arm64InstructionId.FMINNMV_asimdall_only_h, Arm64Mnemonic.FMINNMV, "FMINNMV H31, V31.8H");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FMINNMV_Advsimd
     [TestMethod]
     public void Test_FMINNMV_asimdall_only_sd_2()
     {
-        
-        {
-            var raw = FMINNMV(S0, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV S0, V1.4S", asm);
-        }
-        
-        {
-            var raw = FMINNMV(S31, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV S31, V1.4S", asm);
-        }
-        
-        {
-            var raw = FMINNMV(S0, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV S0, V31.4S", asm);
-        }
-        
-        {
-            var raw = FMINNMV(S31, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FMINNMV_asimdall_only_sd, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FMINNMV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FMINNMV S31, V31.4S", asm);
-        }
+        TestInst(FMINNMV(S0, V1.T_4S), Arm64InstructionId.FMINNMV_asimdall_only_sd, Arm64Mnemonic.FMINNMV, "FMINNMV S0, V1.4S");
+        TestInst(FMINNMV(S31, V1.T_4S), Arm64InstructionId.FMINNMV_asimdall_only_sd, Arm64Mnemonic.FMINNMV, "FMINNMV S31, V1.4S");
+        TestInst(FMINNMV(S0, V31.T_4S), Arm64InstructionId.FMINNMV_asimdall_only_sd, Arm64Mnemonic.FMINNMV, "FMINNMV S0, V31.4S");
+        TestInst(FMINNMV(S31, V31.T_4S), Arm64InstructionId.FMINNMV_asimdall_only_sd, Arm64Mnemonic.FMINNMV, "FMINNMV S31, V31.4S");
     }
 }

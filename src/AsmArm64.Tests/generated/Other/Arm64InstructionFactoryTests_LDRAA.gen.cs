@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Other;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDRAA_Other
+public class Arm64InstructionFactoryTests_LDRAA_Other : Arm64InstructionFactoryTests
 {
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.LDRAA"/>.
@@ -23,33 +23,9 @@ public class Arm64InstructionFactoryTests_LDRAA_Other
     [TestMethod]
     public void Test_LDRAA_64_ldst_pac_0()
     {
-        
-        {
-            var raw = LDRAA(X0, _[X2, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA X0, [X2, #40]", asm);
-        }
-        
-        {
-            var raw = LDRAA(X15, _[X2, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA X15, [X2, #40]", asm);
-        }
-        
-        {
-            var raw = LDRAA(XZR, _[X2, 40]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA XZR, [X2, #40]", asm);
-        }
+        TestInst(LDRAA(X0, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]");
+        TestInst(LDRAA(X15, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]");
+        TestInst(LDRAA(XZR, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]");
     }
     
     /// <summary>
@@ -58,32 +34,8 @@ public class Arm64InstructionFactoryTests_LDRAA_Other
     [TestMethod]
     public void Test_LDRAA_64w_ldst_pac_1()
     {
-        
-        {
-            var raw = LDRAA(X0, _[X2, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64w_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA X0, [X2, #40]!", asm);
-        }
-        
-        {
-            var raw = LDRAA(X15, _[X2, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64w_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA X15, [X2, #40]!", asm);
-        }
-        
-        {
-            var raw = LDRAA(XZR, _[X2, 40].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDRAA_64w_ldst_pac, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDRAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDRAA XZR, [X2, #40]!", asm);
-        }
+        TestInst(LDRAA(X0, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]!");
+        TestInst(LDRAA(X15, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]!");
+        TestInst(LDRAA(XZR, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]!");
     }
 }

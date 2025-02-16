@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RET_General
+public class Arm64InstructionFactoryTests_RET_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_RET_General
     [TestMethod]
     public void Test_RET_64r_branch_reg_0()
     {
-        
-        {
-            var raw = RET(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RET_64r_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RET X0", asm);
-        }
-        
-        {
-            var raw = RET(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RET_64r_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RET X15", asm);
-        }
+        TestInst(RET(X0), Arm64InstructionId.RET_64r_branch_reg, Arm64Mnemonic.RET, "RET X0");
+        TestInst(RET(X15), Arm64InstructionId.RET_64r_branch_reg, Arm64Mnemonic.RET, "RET X15");
     }
 }

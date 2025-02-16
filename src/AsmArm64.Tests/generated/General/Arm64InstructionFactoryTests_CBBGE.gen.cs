@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CBBGE_General
+public class Arm64InstructionFactoryTests_CBBGE_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CBBGE_General
     [TestMethod]
     public void Test_CBBGE_8_regs_0()
     {
-        
-        {
-            var raw = CBBGE(W0, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W0, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(W15, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W15, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(WZR, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE WZR, W1, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(W0, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W0, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(W15, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W15, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(WZR, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE WZR, W16, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(W0, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W0, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(W15, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE W15, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBBGE(WZR, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBGE_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBGE WZR, WZR, #32", asm);
-        }
+        TestInst(CBBGE(W0, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W0, W1, #32");
+        TestInst(CBBGE(W15, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W15, W1, #32");
+        TestInst(CBBGE(WZR, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W1, #32");
+        TestInst(CBBGE(W0, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W0, W16, #32");
+        TestInst(CBBGE(W15, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W15, W16, #32");
+        TestInst(CBBGE(WZR, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W16, #32");
+        TestInst(CBBGE(W0, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W0, WZR, #32");
+        TestInst(CBBGE(W15, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W15, WZR, #32");
+        TestInst(CBBGE(WZR, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, WZR, #32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SUBG_General
+public class Arm64InstructionFactoryTests_SUBG_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_SUBG_General
     [TestMethod]
     public void Test_SUBG_64_addsub_immtags_0()
     {
-        
-        {
-            var raw = SUBG(X1, X2, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X1, X2, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(X17, X2, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X17, X2, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(SP, X2, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG SP, X2, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(X1, X18, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X1, X18, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(X17, X18, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X17, X18, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(SP, X18, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG SP, X18, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(X1, SP, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X1, SP, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(X17, SP, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG X17, SP, #80, #5", asm);
-        }
-        
-        {
-            var raw = SUBG(SP, SP, 80, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBG_64_addsub_immtags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBG SP, SP, #80, #5", asm);
-        }
+        TestInst(SUBG(X1, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X2, #80, #5");
+        TestInst(SUBG(X17, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X2, #80, #5");
+        TestInst(SUBG(SP, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X2, #80, #5");
+        TestInst(SUBG(X1, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X18, #80, #5");
+        TestInst(SUBG(X17, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X18, #80, #5");
+        TestInst(SUBG(SP, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X18, #80, #5");
+        TestInst(SUBG(X1, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, SP, #80, #5");
+        TestInst(SUBG(X17, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, SP, #80, #5");
+        TestInst(SUBG(SP, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, SP, #80, #5");
     }
 }

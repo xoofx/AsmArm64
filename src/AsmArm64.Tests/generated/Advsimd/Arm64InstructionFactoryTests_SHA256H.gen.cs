@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SHA256H_Advsimd
+public class Arm64InstructionFactoryTests_SHA256H_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SHA256H_Advsimd
     [TestMethod]
     public void Test_SHA256H_qqv_cryptosha3_0()
     {
-        
-        {
-            var raw = SHA256H(Q0, Q1, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q0, Q1, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q31, Q1, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q31, Q1, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q0, Q31, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q0, Q31, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q31, Q31, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q31, Q31, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q0, Q1, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q0, Q1, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q31, Q1, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q31, Q1, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q0, Q31, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q0, Q31, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA256H(Q31, Q31, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA256H_qqv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA256H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA256H Q31, Q31, V0.4S", asm);
-        }
+        TestInst(SHA256H(Q0, Q1, V2.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q0, Q1, V2.4S");
+        TestInst(SHA256H(Q31, Q1, V2.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q31, Q1, V2.4S");
+        TestInst(SHA256H(Q0, Q31, V2.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q0, Q31, V2.4S");
+        TestInst(SHA256H(Q31, Q31, V2.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q31, Q31, V2.4S");
+        TestInst(SHA256H(Q0, Q1, V0.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q0, Q1, V0.4S");
+        TestInst(SHA256H(Q31, Q1, V0.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q31, Q1, V0.4S");
+        TestInst(SHA256H(Q0, Q31, V0.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q0, Q31, V0.4S");
+        TestInst(SHA256H(Q31, Q31, V0.T_4S), Arm64InstructionId.SHA256H_qqv_cryptosha3, Arm64Mnemonic.SHA256H, "SHA256H Q31, Q31, V0.4S");
     }
 }

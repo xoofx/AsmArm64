@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SMC_System
+public class Arm64InstructionFactoryTests_SMC_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_SMC_System
     [TestMethod]
     public void Test_SMC_ex_exception_0()
     {
-        
-        {
-            var raw = SMC(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMC_ex_exception, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMC #5", asm);
-        }
+        TestInst(SMC(5), Arm64InstructionId.SMC_ex_exception, Arm64Mnemonic.SMC, "SMC #5");
     }
 }

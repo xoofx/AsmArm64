@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FCMLE_Advsimd
+public class Arm64InstructionFactoryTests_FCMLE_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asisdmiscfp16_fz_0()
     {
-        
-        {
-            var raw = FCMLE(H0, H1, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE H0, H1, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(H31, H1, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE H31, H1, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(H0, H31, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE H0, H31, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(H31, H31, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE H31, H31, #0.0", asm);
-        }
+        TestInst(FCMLE(H0, H1, 0.0f), Arm64InstructionId.FCMLE_asisdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE H0, H1, #0.0");
+        TestInst(FCMLE(H31, H1, 0.0f), Arm64InstructionId.FCMLE_asisdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE H31, H1, #0.0");
+        TestInst(FCMLE(H0, H31, 0.0f), Arm64InstructionId.FCMLE_asisdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE H0, H31, #0.0");
+        TestInst(FCMLE(H31, H31, 0.0f), Arm64InstructionId.FCMLE_asisdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE H31, H31, #0.0");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asisdmisc_fz_1()
     {
-        
-        {
-            var raw = FCMLE(S1, S2, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE S1, S2, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(S31, S2, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE S31, S2, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(S1, S0, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE S1, S0, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(S31, S0, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE S31, S0, #0.0", asm);
-        }
+        TestInst(FCMLE(S1, S2, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE S1, S2, #0.0");
+        TestInst(FCMLE(S31, S2, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE S31, S2, #0.0");
+        TestInst(FCMLE(S1, S0, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE S1, S0, #0.0");
+        TestInst(FCMLE(S31, S0, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE S31, S0, #0.0");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asisdmisc_fz_2()
     {
-        
-        {
-            var raw = FCMLE(D1, D2, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE D1, D2, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(D31, D2, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE D31, D2, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(D1, D0, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE D1, D0, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(D31, D0, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asisdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE D31, D0, #0.0", asm);
-        }
+        TestInst(FCMLE(D1, D2, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE D1, D2, #0.0");
+        TestInst(FCMLE(D31, D2, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE D31, D2, #0.0");
+        TestInst(FCMLE(D1, D0, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE D1, D0, #0.0");
+        TestInst(FCMLE(D31, D0, 0.0f), Arm64InstructionId.FCMLE_asisdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE D31, D0, #0.0");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asimdmiscfp16_fz_3()
     {
-        
-        {
-            var raw = FCMLE(V0.T_4H, V1.T_4H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.4H, V1.4H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_4H, V1.T_4H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.4H, V1.4H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V0.T_4H, V31.T_4H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.4H, V31.4H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_4H, V31.T_4H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.4H, V31.4H, #0.0", asm);
-        }
+        TestInst(FCMLE(V0.T_4H, V1.T_4H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.4H, V1.4H, #0.0");
+        TestInst(FCMLE(V30.T_4H, V1.T_4H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.4H, V1.4H, #0.0");
+        TestInst(FCMLE(V0.T_4H, V31.T_4H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.4H, V31.4H, #0.0");
+        TestInst(FCMLE(V30.T_4H, V31.T_4H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.4H, V31.4H, #0.0");
     }
     
     /// <summary>
@@ -200,42 +72,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asimdmiscfp16_fz_4()
     {
-        
-        {
-            var raw = FCMLE(V0.T_8H, V1.T_8H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.8H, V1.8H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_8H, V1.T_8H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.8H, V1.8H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V0.T_8H, V31.T_8H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.8H, V31.8H, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_8H, V31.T_8H, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmiscfp16_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.8H, V31.8H, #0.0", asm);
-        }
+        TestInst(FCMLE(V0.T_8H, V1.T_8H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.8H, V1.8H, #0.0");
+        TestInst(FCMLE(V30.T_8H, V1.T_8H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.8H, V1.8H, #0.0");
+        TestInst(FCMLE(V0.T_8H, V31.T_8H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.8H, V31.8H, #0.0");
+        TestInst(FCMLE(V30.T_8H, V31.T_8H, 0.0f), Arm64InstructionId.FCMLE_asimdmiscfp16_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.8H, V31.8H, #0.0");
     }
     
     /// <summary>
@@ -244,42 +84,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asimdmisc_fz_5()
     {
-        
-        {
-            var raw = FCMLE(V0.T_2S, V1.T_2S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.2S, V1.2S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_2S, V1.T_2S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.2S, V1.2S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V0.T_2S, V31.T_2S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.2S, V31.2S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_2S, V31.T_2S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.2S, V31.2S, #0.0", asm);
-        }
+        TestInst(FCMLE(V0.T_2S, V1.T_2S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.2S, V1.2S, #0.0");
+        TestInst(FCMLE(V30.T_2S, V1.T_2S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.2S, V1.2S, #0.0");
+        TestInst(FCMLE(V0.T_2S, V31.T_2S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.2S, V31.2S, #0.0");
+        TestInst(FCMLE(V30.T_2S, V31.T_2S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.2S, V31.2S, #0.0");
     }
     
     /// <summary>
@@ -288,42 +96,10 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asimdmisc_fz_6()
     {
-        
-        {
-            var raw = FCMLE(V0.T_4S, V1.T_4S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.4S, V1.4S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_4S, V1.T_4S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.4S, V1.4S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V0.T_4S, V31.T_4S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.4S, V31.4S, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_4S, V31.T_4S, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.4S, V31.4S, #0.0", asm);
-        }
+        TestInst(FCMLE(V0.T_4S, V1.T_4S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.4S, V1.4S, #0.0");
+        TestInst(FCMLE(V30.T_4S, V1.T_4S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.4S, V1.4S, #0.0");
+        TestInst(FCMLE(V0.T_4S, V31.T_4S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.4S, V31.4S, #0.0");
+        TestInst(FCMLE(V30.T_4S, V31.T_4S, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.4S, V31.4S, #0.0");
     }
     
     /// <summary>
@@ -332,41 +108,9 @@ public class Arm64InstructionFactoryTests_FCMLE_Advsimd
     [TestMethod]
     public void Test_FCMLE_asimdmisc_fz_7()
     {
-        
-        {
-            var raw = FCMLE(V0.T_2D, V1.T_2D, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.2D, V1.2D, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_2D, V1.T_2D, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.2D, V1.2D, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V0.T_2D, V31.T_2D, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V0.2D, V31.2D, #0.0", asm);
-        }
-        
-        {
-            var raw = FCMLE(V30.T_2D, V31.T_2D, 0.0f);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FCMLE_asimdmisc_fz, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FCMLE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCMLE V30.2D, V31.2D, #0.0", asm);
-        }
+        TestInst(FCMLE(V0.T_2D, V1.T_2D, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.2D, V1.2D, #0.0");
+        TestInst(FCMLE(V30.T_2D, V1.T_2D, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.2D, V1.2D, #0.0");
+        TestInst(FCMLE(V0.T_2D, V31.T_2D, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V0.2D, V31.2D, #0.0");
+        TestInst(FCMLE(V30.T_2D, V31.T_2D, 0.0f), Arm64InstructionId.FCMLE_asimdmisc_fz, Arm64Mnemonic.FCMLE, "FCMLE V30.2D, V31.2D, #0.0");
     }
 }

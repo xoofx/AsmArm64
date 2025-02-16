@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STSMINLB_General
+public class Arm64InstructionFactoryTests_STSMINLB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STSMINLB_General
     [TestMethod]
     public void Test_STSMINLB_ldsminlb_32_memop_0()
     {
-        
-        {
-            var raw = STSMINLB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINLB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMINLB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINLB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STSMINLB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINLB WZR, [X2]", asm);
-        }
+        TestInst(STSMINLB(W0, _[X2]), Arm64InstructionId.STSMINLB_ldsminlb_32_memop, Arm64Mnemonic.STSMINLB, "STSMINLB W0, [X2]");
+        TestInst(STSMINLB(W15, _[X2]), Arm64InstructionId.STSMINLB_ldsminlb_32_memop, Arm64Mnemonic.STSMINLB, "STSMINLB W15, [X2]");
+        TestInst(STSMINLB(WZR, _[X2]), Arm64InstructionId.STSMINLB_ldsminlb_32_memop, Arm64Mnemonic.STSMINLB, "STSMINLB WZR, [X2]");
     }
 }

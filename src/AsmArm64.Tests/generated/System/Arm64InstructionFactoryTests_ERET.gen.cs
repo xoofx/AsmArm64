@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ERET_System
+public class Arm64InstructionFactoryTests_ERET_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_ERET_System
     [TestMethod]
     public void Test_ERET_64e_branch_reg_0()
     {
-        
-        {
-            var raw = ERET();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ERET_64e_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ERET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ERET", asm);
-        }
+        TestInst(ERET(), Arm64InstructionId.ERET_64e_branch_reg, Arm64Mnemonic.ERET, "ERET");
     }
 }

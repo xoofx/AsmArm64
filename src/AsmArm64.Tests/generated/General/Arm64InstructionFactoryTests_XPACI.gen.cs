@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_XPACI_General
+public class Arm64InstructionFactoryTests_XPACI_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_XPACI_General
     [TestMethod]
     public void Test_XPACI_64z_dp_1src_0()
     {
-        
-        {
-            var raw = XPACI(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACI_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACI X0", asm);
-        }
-        
-        {
-            var raw = XPACI(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACI_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACI X15", asm);
-        }
-        
-        {
-            var raw = XPACI(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACI_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACI XZR", asm);
-        }
+        TestInst(XPACI(X0), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X0");
+        TestInst(XPACI(X15), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X15");
+        TestInst(XPACI(XZR), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI XZR");
     }
 }

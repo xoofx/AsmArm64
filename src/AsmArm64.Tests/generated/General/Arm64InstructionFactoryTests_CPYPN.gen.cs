@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CPYPN_General
+public class Arm64InstructionFactoryTests_CPYPN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_CPYPN_General
     [TestMethod]
     public void Test_CPYPN_cpy_memcms_0()
     {
-        
-        {
-            var raw = CPYPN(_[X1].Pre, _[X2].Pre, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPN [X1]!, [X2]!, X2", asm);
-        }
-        
-        {
-            var raw = CPYPN(_[X1].Pre, _[X2].Pre, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPN [X1]!, [X2]!, X17", asm);
-        }
-        
-        {
-            var raw = CPYPN(_[X1].Pre, _[X2].Pre, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPN [X1]!, [X2]!, XZR", asm);
-        }
+        TestInst(CPYPN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYPN_cpy_memcms, Arm64Mnemonic.CPYPN, "CPYPN [X1]!, [X2]!, X2");
+        TestInst(CPYPN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYPN_cpy_memcms, Arm64Mnemonic.CPYPN, "CPYPN [X1]!, [X2]!, X17");
+        TestInst(CPYPN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYPN_cpy_memcms, Arm64Mnemonic.CPYPN, "CPYPN [X1]!, [X2]!, XZR");
     }
 }

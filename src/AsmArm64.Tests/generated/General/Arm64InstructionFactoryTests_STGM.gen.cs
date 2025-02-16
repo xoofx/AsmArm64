@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STGM_General
+public class Arm64InstructionFactoryTests_STGM_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STGM_General
     [TestMethod]
     public void Test_STGM_64bulk_ldsttags_0()
     {
-        
-        {
-            var raw = STGM(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGM X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STGM(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGM X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STGM(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGM XZR, [X2]", asm);
-        }
+        TestInst(STGM(X0, _[X2]), Arm64InstructionId.STGM_64bulk_ldsttags, Arm64Mnemonic.STGM, "STGM X0, [X2]");
+        TestInst(STGM(X15, _[X2]), Arm64InstructionId.STGM_64bulk_ldsttags, Arm64Mnemonic.STGM, "STGM X15, [X2]");
+        TestInst(STGM(XZR, _[X2]), Arm64InstructionId.STGM_64bulk_ldsttags, Arm64Mnemonic.STGM, "STGM XZR, [X2]");
     }
 }

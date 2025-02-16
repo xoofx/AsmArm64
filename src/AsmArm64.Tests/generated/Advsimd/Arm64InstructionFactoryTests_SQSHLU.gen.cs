@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
+public class Arm64InstructionFactoryTests_SQSHLU_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asisdshf_r_0()
     {
-        
-        {
-            var raw = SQSHLU(B1, B2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU B1, B2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(B31, B2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU B31, B2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(B1, B0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU B1, B0, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(B31, B0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU B31, B0, #5", asm);
-        }
+        TestInst(SQSHLU(B1, B2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU B1, B2, #5");
+        TestInst(SQSHLU(B31, B2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU B31, B2, #5");
+        TestInst(SQSHLU(B1, B0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU B1, B0, #5");
+        TestInst(SQSHLU(B31, B0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU B31, B0, #5");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asisdshf_r_1()
     {
-        
-        {
-            var raw = SQSHLU(H1, H2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU H1, H2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(H31, H2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU H31, H2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(H1, H0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU H1, H0, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(H31, H0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU H31, H0, #5", asm);
-        }
+        TestInst(SQSHLU(H1, H2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU H1, H2, #5");
+        TestInst(SQSHLU(H31, H2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU H31, H2, #5");
+        TestInst(SQSHLU(H1, H0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU H1, H0, #5");
+        TestInst(SQSHLU(H31, H0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU H31, H0, #5");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asisdshf_r_2()
     {
-        
-        {
-            var raw = SQSHLU(S1, S2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU S1, S2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(S31, S2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU S31, S2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(S1, S0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU S1, S0, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(S31, S0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU S31, S0, #5", asm);
-        }
+        TestInst(SQSHLU(S1, S2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU S1, S2, #5");
+        TestInst(SQSHLU(S31, S2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU S31, S2, #5");
+        TestInst(SQSHLU(S1, S0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU S1, S0, #5");
+        TestInst(SQSHLU(S31, S0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU S31, S0, #5");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asisdshf_r_3()
     {
-        
-        {
-            var raw = SQSHLU(D1, D2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU D1, D2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(D31, D2, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU D31, D2, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(D1, D0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU D1, D0, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(D31, D0, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asisdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU D31, D0, #5", asm);
-        }
+        TestInst(SQSHLU(D1, D2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU D1, D2, #5");
+        TestInst(SQSHLU(D31, D2, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU D31, D2, #5");
+        TestInst(SQSHLU(D1, D0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU D1, D0, #5");
+        TestInst(SQSHLU(D31, D0, 5), Arm64InstructionId.SQSHLU_asisdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU D31, D0, #5");
     }
     
     /// <summary>
@@ -200,42 +72,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_4()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_8B, V1.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.8B, V1.8B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_8B, V1.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.8B, V1.8B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_8B, V31.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.8B, V31.8B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_8B, V31.T_8B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.8B, V31.8B, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_8B, V1.T_8B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.8B, V1.8B, #5");
+        TestInst(SQSHLU(V30.T_8B, V1.T_8B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.8B, V1.8B, #5");
+        TestInst(SQSHLU(V0.T_8B, V31.T_8B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.8B, V31.8B, #5");
+        TestInst(SQSHLU(V30.T_8B, V31.T_8B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.8B, V31.8B, #5");
     }
     
     /// <summary>
@@ -244,42 +84,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_5()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_16B, V1.T_16B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.16B, V1.16B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_16B, V1.T_16B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.16B, V1.16B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_16B, V31.T_16B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.16B, V31.16B, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_16B, V31.T_16B, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.16B, V31.16B, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_16B, V1.T_16B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.16B, V1.16B, #5");
+        TestInst(SQSHLU(V30.T_16B, V1.T_16B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.16B, V1.16B, #5");
+        TestInst(SQSHLU(V0.T_16B, V31.T_16B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.16B, V31.16B, #5");
+        TestInst(SQSHLU(V30.T_16B, V31.T_16B, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.16B, V31.16B, #5");
     }
     
     /// <summary>
@@ -288,42 +96,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_6()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_4H, V1.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.4H, V1.4H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_4H, V1.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.4H, V1.4H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_4H, V31.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.4H, V31.4H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_4H, V31.T_4H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.4H, V31.4H, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_4H, V1.T_4H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.4H, V1.4H, #5");
+        TestInst(SQSHLU(V30.T_4H, V1.T_4H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.4H, V1.4H, #5");
+        TestInst(SQSHLU(V0.T_4H, V31.T_4H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.4H, V31.4H, #5");
+        TestInst(SQSHLU(V30.T_4H, V31.T_4H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.4H, V31.4H, #5");
     }
     
     /// <summary>
@@ -332,42 +108,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_7()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_8H, V1.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.8H, V1.8H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_8H, V1.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.8H, V1.8H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_8H, V31.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.8H, V31.8H, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_8H, V31.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.8H, V31.8H, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_8H, V1.T_8H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.8H, V1.8H, #5");
+        TestInst(SQSHLU(V30.T_8H, V1.T_8H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.8H, V1.8H, #5");
+        TestInst(SQSHLU(V0.T_8H, V31.T_8H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.8H, V31.8H, #5");
+        TestInst(SQSHLU(V30.T_8H, V31.T_8H, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.8H, V31.8H, #5");
     }
     
     /// <summary>
@@ -376,42 +120,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_8()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_2S, V1.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.2S, V1.2S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_2S, V1.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.2S, V1.2S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_2S, V31.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.2S, V31.2S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_2S, V31.T_2S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.2S, V31.2S, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_2S, V1.T_2S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.2S, V1.2S, #5");
+        TestInst(SQSHLU(V30.T_2S, V1.T_2S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.2S, V1.2S, #5");
+        TestInst(SQSHLU(V0.T_2S, V31.T_2S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.2S, V31.2S, #5");
+        TestInst(SQSHLU(V30.T_2S, V31.T_2S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.2S, V31.2S, #5");
     }
     
     /// <summary>
@@ -420,42 +132,10 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_9()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_4S, V1.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.4S, V1.4S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_4S, V1.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.4S, V1.4S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_4S, V31.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.4S, V31.4S, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_4S, V31.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.4S, V31.4S, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_4S, V1.T_4S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.4S, V1.4S, #5");
+        TestInst(SQSHLU(V30.T_4S, V1.T_4S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.4S, V1.4S, #5");
+        TestInst(SQSHLU(V0.T_4S, V31.T_4S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.4S, V31.4S, #5");
+        TestInst(SQSHLU(V30.T_4S, V31.T_4S, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.4S, V31.4S, #5");
     }
     
     /// <summary>
@@ -464,41 +144,9 @@ public class Arm64InstructionFactoryTests_SQSHLU_Advsimd
     [TestMethod]
     public void Test_SQSHLU_asimdshf_r_10()
     {
-        
-        {
-            var raw = SQSHLU(V0.T_2D, V1.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.2D, V1.2D, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_2D, V1.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.2D, V1.2D, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V0.T_2D, V31.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V0.2D, V31.2D, #5", asm);
-        }
-        
-        {
-            var raw = SQSHLU(V30.T_2D, V31.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQSHLU_asimdshf_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQSHLU, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQSHLU V30.2D, V31.2D, #5", asm);
-        }
+        TestInst(SQSHLU(V0.T_2D, V1.T_2D, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.2D, V1.2D, #5");
+        TestInst(SQSHLU(V30.T_2D, V1.T_2D, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.2D, V1.2D, #5");
+        TestInst(SQSHLU(V0.T_2D, V31.T_2D, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V0.2D, V31.2D, #5");
+        TestInst(SQSHLU(V30.T_2D, V31.T_2D, 5), Arm64InstructionId.SQSHLU_asimdshf_r, Arm64Mnemonic.SQSHLU, "SQSHLU V30.2D, V31.2D, #5");
     }
 }

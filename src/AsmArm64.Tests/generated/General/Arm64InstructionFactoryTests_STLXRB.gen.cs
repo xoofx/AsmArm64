@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STLXRB_General
+public class Arm64InstructionFactoryTests_STLXRB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_STLXRB_General
     [TestMethod]
     public void Test_STLXRB_sr32_ldstexclr_0()
     {
-        
-        {
-            var raw = STLXRB(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = STLXRB(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLXRB_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLXRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLXRB WZR, WZR, [X3]", asm);
-        }
+        TestInst(STLXRB(W0, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W1, [X3]");
+        TestInst(STLXRB(W15, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W1, [X3]");
+        TestInst(STLXRB(WZR, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W1, [X3]");
+        TestInst(STLXRB(W0, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W16, [X3]");
+        TestInst(STLXRB(W15, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W16, [X3]");
+        TestInst(STLXRB(WZR, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W16, [X3]");
+        TestInst(STLXRB(W0, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, WZR, [X3]");
+        TestInst(STLXRB(W15, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, WZR, [X3]");
+        TestInst(STLXRB(WZR, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, WZR, [X3]");
     }
 }

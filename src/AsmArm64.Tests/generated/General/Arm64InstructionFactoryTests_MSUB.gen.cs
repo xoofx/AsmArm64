@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_MSUB_General
+public class Arm64InstructionFactoryTests_MSUB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,735 +24,87 @@ public class Arm64InstructionFactoryTests_MSUB_General
     [TestMethod]
     public void Test_MSUB_32a_dp_3src_0()
     {
-        
-        {
-            var raw = MSUB(W0, W1, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W2, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, W2, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W17, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, W17, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, WZR, W3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, WZR, W3", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W2, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, W2, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W17, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, W17, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W1, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W1, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W1, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, W16, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, W16, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, W16, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W0, WZR, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB W15, WZR, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, WZR, W18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB WZR, WZR, WZR, W18", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W1, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W1, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W1, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W16, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W16, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W16, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, WZR, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, WZR, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W2, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, WZR, W2", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W1, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W1, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W1, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W16, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W16, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W16, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, WZR, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, WZR, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, W17, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, WZR, W17", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W1, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W1, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W1, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W1, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W1, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W1, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, W16, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, W16, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, W16, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, W16, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, W16, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, W16, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(W0, WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W0, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(W15, WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG W15, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = MSUB(WZR, WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG WZR, WZR, WZR", asm);
-        }
+        TestInst(MSUB(W0, W1, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, W2, W3");
+        TestInst(MSUB(W15, W1, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, W2, W3");
+        TestInst(MSUB(WZR, W1, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, W2, W3");
+        TestInst(MSUB(W0, W16, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, W2, W3");
+        TestInst(MSUB(W15, W16, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, W2, W3");
+        TestInst(MSUB(WZR, W16, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, W2, W3");
+        TestInst(MSUB(W0, WZR, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, W2, W3");
+        TestInst(MSUB(W15, WZR, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, W2, W3");
+        TestInst(MSUB(WZR, WZR, W2, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, W2, W3");
+        TestInst(MSUB(W0, W1, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, W17, W3");
+        TestInst(MSUB(W15, W1, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, W17, W3");
+        TestInst(MSUB(WZR, W1, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, W17, W3");
+        TestInst(MSUB(W0, W16, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, W17, W3");
+        TestInst(MSUB(W15, W16, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, W17, W3");
+        TestInst(MSUB(WZR, W16, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, W17, W3");
+        TestInst(MSUB(W0, WZR, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, W17, W3");
+        TestInst(MSUB(W15, WZR, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, W17, W3");
+        TestInst(MSUB(WZR, WZR, W17, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, W17, W3");
+        TestInst(MSUB(W0, W1, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, WZR, W3");
+        TestInst(MSUB(W15, W1, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, WZR, W3");
+        TestInst(MSUB(WZR, W1, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, WZR, W3");
+        TestInst(MSUB(W0, W16, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, WZR, W3");
+        TestInst(MSUB(W15, W16, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, WZR, W3");
+        TestInst(MSUB(WZR, W16, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, WZR, W3");
+        TestInst(MSUB(W0, WZR, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, WZR, W3");
+        TestInst(MSUB(W15, WZR, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, WZR, W3");
+        TestInst(MSUB(WZR, WZR, WZR, W3), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, WZR, W3");
+        TestInst(MSUB(W0, W1, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, W2, W18");
+        TestInst(MSUB(W15, W1, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, W2, W18");
+        TestInst(MSUB(WZR, W1, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, W2, W18");
+        TestInst(MSUB(W0, W16, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, W2, W18");
+        TestInst(MSUB(W15, W16, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, W2, W18");
+        TestInst(MSUB(WZR, W16, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, W2, W18");
+        TestInst(MSUB(W0, WZR, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, W2, W18");
+        TestInst(MSUB(W15, WZR, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, W2, W18");
+        TestInst(MSUB(WZR, WZR, W2, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, W2, W18");
+        TestInst(MSUB(W0, W1, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, W17, W18");
+        TestInst(MSUB(W15, W1, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, W17, W18");
+        TestInst(MSUB(WZR, W1, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, W17, W18");
+        TestInst(MSUB(W0, W16, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, W17, W18");
+        TestInst(MSUB(W15, W16, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, W17, W18");
+        TestInst(MSUB(WZR, W16, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, W17, W18");
+        TestInst(MSUB(W0, WZR, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, W17, W18");
+        TestInst(MSUB(W15, WZR, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, W17, W18");
+        TestInst(MSUB(WZR, WZR, W17, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, W17, W18");
+        TestInst(MSUB(W0, W1, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W1, WZR, W18");
+        TestInst(MSUB(W15, W1, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W1, WZR, W18");
+        TestInst(MSUB(WZR, W1, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W1, WZR, W18");
+        TestInst(MSUB(W0, W16, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, W16, WZR, W18");
+        TestInst(MSUB(W15, W16, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, W16, WZR, W18");
+        TestInst(MSUB(WZR, W16, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, W16, WZR, W18");
+        TestInst(MSUB(W0, WZR, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W0, WZR, WZR, W18");
+        TestInst(MSUB(W15, WZR, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB W15, WZR, WZR, W18");
+        TestInst(MSUB(WZR, WZR, WZR, W18), Arm64InstructionId.MSUB_32a_dp_3src, Arm64Mnemonic.MSUB, "MSUB WZR, WZR, WZR, W18");
+        TestInst(MSUB(W0, W1, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W2");
+        TestInst(MSUB(W15, W1, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W2");
+        TestInst(MSUB(WZR, W1, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W2");
+        TestInst(MSUB(W0, W16, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W2");
+        TestInst(MSUB(W15, W16, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W2");
+        TestInst(MSUB(WZR, W16, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W2");
+        TestInst(MSUB(W0, WZR, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W2");
+        TestInst(MSUB(W15, WZR, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W2");
+        TestInst(MSUB(WZR, WZR, W2, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W2");
+        TestInst(MSUB(W0, W1, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W17");
+        TestInst(MSUB(W15, W1, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W17");
+        TestInst(MSUB(WZR, W1, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W17");
+        TestInst(MSUB(W0, W16, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W17");
+        TestInst(MSUB(W15, W16, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W17");
+        TestInst(MSUB(WZR, W16, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W17");
+        TestInst(MSUB(W0, WZR, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W17");
+        TestInst(MSUB(W15, WZR, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W17");
+        TestInst(MSUB(WZR, WZR, W17, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W17");
+        TestInst(MSUB(W0, W1, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, WZR");
+        TestInst(MSUB(W15, W1, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, WZR");
+        TestInst(MSUB(WZR, W1, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, WZR");
+        TestInst(MSUB(W0, W16, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, WZR");
+        TestInst(MSUB(W15, W16, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, WZR");
+        TestInst(MSUB(WZR, W16, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, WZR");
+        TestInst(MSUB(W0, WZR, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, WZR");
+        TestInst(MSUB(W15, WZR, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, WZR");
+        TestInst(MSUB(WZR, WZR, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -761,734 +113,86 @@ public class Arm64InstructionFactoryTests_MSUB_General
     [TestMethod]
     public void Test_MSUB_64a_dp_3src_1()
     {
-        
-        {
-            var raw = MSUB(X0, X1, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, X2, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, X17, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, XZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, XZR, X3", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, X2, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, X17, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X1, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X1, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X1, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, X16, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, X16, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, X16, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X0, XZR, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB X15, XZR, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MSUB_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MSUB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MSUB XZR, XZR, XZR, X18", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X1, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X1, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X1, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X16, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X16, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X16, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, XZR, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, XZR, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, XZR, X2", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X1, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X1, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X1, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X16, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X16, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X16, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, XZR, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, XZR, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, X17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, XZR, X17", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X1, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X1, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X1, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X1, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X1, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X1, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, X16, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, X16, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, X16, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, X16, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, X16, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, X16, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(X0, XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X0, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(X15, XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG X15, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = MSUB(XZR, XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MNEG_msub_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MNEG XZR, XZR, XZR", asm);
-        }
+        TestInst(MSUB(X0, X1, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, X2, X3");
+        TestInst(MSUB(X15, X1, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, X2, X3");
+        TestInst(MSUB(XZR, X1, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, X2, X3");
+        TestInst(MSUB(X0, X16, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, X2, X3");
+        TestInst(MSUB(X15, X16, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, X2, X3");
+        TestInst(MSUB(XZR, X16, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, X2, X3");
+        TestInst(MSUB(X0, XZR, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, X2, X3");
+        TestInst(MSUB(X15, XZR, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, X2, X3");
+        TestInst(MSUB(XZR, XZR, X2, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, X2, X3");
+        TestInst(MSUB(X0, X1, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, X17, X3");
+        TestInst(MSUB(X15, X1, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, X17, X3");
+        TestInst(MSUB(XZR, X1, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, X17, X3");
+        TestInst(MSUB(X0, X16, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, X17, X3");
+        TestInst(MSUB(X15, X16, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, X17, X3");
+        TestInst(MSUB(XZR, X16, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, X17, X3");
+        TestInst(MSUB(X0, XZR, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, X17, X3");
+        TestInst(MSUB(X15, XZR, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, X17, X3");
+        TestInst(MSUB(XZR, XZR, X17, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, X17, X3");
+        TestInst(MSUB(X0, X1, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, XZR, X3");
+        TestInst(MSUB(X15, X1, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, XZR, X3");
+        TestInst(MSUB(XZR, X1, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, XZR, X3");
+        TestInst(MSUB(X0, X16, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, XZR, X3");
+        TestInst(MSUB(X15, X16, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, XZR, X3");
+        TestInst(MSUB(XZR, X16, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, XZR, X3");
+        TestInst(MSUB(X0, XZR, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, XZR, X3");
+        TestInst(MSUB(X15, XZR, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, XZR, X3");
+        TestInst(MSUB(XZR, XZR, XZR, X3), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, XZR, X3");
+        TestInst(MSUB(X0, X1, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, X2, X18");
+        TestInst(MSUB(X15, X1, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, X2, X18");
+        TestInst(MSUB(XZR, X1, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, X2, X18");
+        TestInst(MSUB(X0, X16, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, X2, X18");
+        TestInst(MSUB(X15, X16, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, X2, X18");
+        TestInst(MSUB(XZR, X16, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, X2, X18");
+        TestInst(MSUB(X0, XZR, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, X2, X18");
+        TestInst(MSUB(X15, XZR, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, X2, X18");
+        TestInst(MSUB(XZR, XZR, X2, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, X2, X18");
+        TestInst(MSUB(X0, X1, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, X17, X18");
+        TestInst(MSUB(X15, X1, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, X17, X18");
+        TestInst(MSUB(XZR, X1, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, X17, X18");
+        TestInst(MSUB(X0, X16, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, X17, X18");
+        TestInst(MSUB(X15, X16, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, X17, X18");
+        TestInst(MSUB(XZR, X16, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, X17, X18");
+        TestInst(MSUB(X0, XZR, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, X17, X18");
+        TestInst(MSUB(X15, XZR, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, X17, X18");
+        TestInst(MSUB(XZR, XZR, X17, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, X17, X18");
+        TestInst(MSUB(X0, X1, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X1, XZR, X18");
+        TestInst(MSUB(X15, X1, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X1, XZR, X18");
+        TestInst(MSUB(XZR, X1, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X1, XZR, X18");
+        TestInst(MSUB(X0, X16, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, X16, XZR, X18");
+        TestInst(MSUB(X15, X16, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, X16, XZR, X18");
+        TestInst(MSUB(XZR, X16, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, X16, XZR, X18");
+        TestInst(MSUB(X0, XZR, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X0, XZR, XZR, X18");
+        TestInst(MSUB(X15, XZR, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB X15, XZR, XZR, X18");
+        TestInst(MSUB(XZR, XZR, XZR, X18), Arm64InstructionId.MSUB_64a_dp_3src, Arm64Mnemonic.MSUB, "MSUB XZR, XZR, XZR, X18");
+        TestInst(MSUB(X0, X1, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X2");
+        TestInst(MSUB(X15, X1, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X2");
+        TestInst(MSUB(XZR, X1, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X2");
+        TestInst(MSUB(X0, X16, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X2");
+        TestInst(MSUB(X15, X16, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X2");
+        TestInst(MSUB(XZR, X16, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X2");
+        TestInst(MSUB(X0, XZR, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X2");
+        TestInst(MSUB(X15, XZR, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X2");
+        TestInst(MSUB(XZR, XZR, X2, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X2");
+        TestInst(MSUB(X0, X1, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X17");
+        TestInst(MSUB(X15, X1, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X17");
+        TestInst(MSUB(XZR, X1, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X17");
+        TestInst(MSUB(X0, X16, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X17");
+        TestInst(MSUB(X15, X16, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X17");
+        TestInst(MSUB(XZR, X16, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X17");
+        TestInst(MSUB(X0, XZR, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X17");
+        TestInst(MSUB(X15, XZR, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X17");
+        TestInst(MSUB(XZR, XZR, X17, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X17");
+        TestInst(MSUB(X0, X1, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, XZR");
+        TestInst(MSUB(X15, X1, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, XZR");
+        TestInst(MSUB(XZR, X1, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, XZR");
+        TestInst(MSUB(X0, X16, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, XZR");
+        TestInst(MSUB(X15, X16, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, XZR");
+        TestInst(MSUB(XZR, X16, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, XZR");
+        TestInst(MSUB(X0, XZR, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, XZR");
+        TestInst(MSUB(X15, XZR, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, XZR");
+        TestInst(MSUB(XZR, XZR, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, XZR");
     }
 }

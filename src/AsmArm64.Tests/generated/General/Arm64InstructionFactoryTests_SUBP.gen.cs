@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SUBP_General
+public class Arm64InstructionFactoryTests_SUBP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,248 +24,32 @@ public class Arm64InstructionFactoryTests_SUBP_General
     [TestMethod]
     public void Test_SUBP_64s_dp_2src_0()
     {
-        
-        {
-            var raw = SUBP(X0, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X2, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X2, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X2, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, X18, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X18, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X18, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X18, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X18, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X18, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, SP, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, SP, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, SP, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, SP, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, SP, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, SP, X3", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, X2, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X2, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X2, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X2, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X2, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X2, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, X18, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X18, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X18, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X18, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X18, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X18, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, SP, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, SP, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, SP, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, SP, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, SP, X19);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, SP, X19", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, X2, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X2, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X2, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X2, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X2, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X2, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, X18, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, X18, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, X18, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, X18, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, X18, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, X18, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(X0, SP, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X0, SP, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(X15, SP, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP X15, SP, SP", asm);
-        }
-        
-        {
-            var raw = SUBP(XZR, SP, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SUBP_64s_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SUBP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SUBP XZR, SP, SP", asm);
-        }
+        TestInst(SUBP(X0, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X3");
+        TestInst(SUBP(X15, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X3");
+        TestInst(SUBP(XZR, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X3");
+        TestInst(SUBP(X0, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X3");
+        TestInst(SUBP(X15, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X3");
+        TestInst(SUBP(XZR, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X3");
+        TestInst(SUBP(X0, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X3");
+        TestInst(SUBP(X15, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X3");
+        TestInst(SUBP(XZR, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X3");
+        TestInst(SUBP(X0, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X19");
+        TestInst(SUBP(X15, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X19");
+        TestInst(SUBP(XZR, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X19");
+        TestInst(SUBP(X0, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X19");
+        TestInst(SUBP(X15, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X19");
+        TestInst(SUBP(XZR, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X19");
+        TestInst(SUBP(X0, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X19");
+        TestInst(SUBP(X15, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X19");
+        TestInst(SUBP(XZR, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X19");
+        TestInst(SUBP(X0, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, SP");
+        TestInst(SUBP(X15, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, SP");
+        TestInst(SUBP(XZR, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, SP");
+        TestInst(SUBP(X0, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, SP");
+        TestInst(SUBP(X15, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, SP");
+        TestInst(SUBP(XZR, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, SP");
+        TestInst(SUBP(X0, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, SP");
+        TestInst(SUBP(X15, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, SP");
+        TestInst(SUBP(XZR, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, SP");
     }
 }

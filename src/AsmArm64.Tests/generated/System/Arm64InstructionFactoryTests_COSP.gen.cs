@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_COSP_System
+public class Arm64InstructionFactoryTests_COSP_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_COSP_System
     [TestMethod]
     public void Test_COSP_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = COSP(RCTX, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.COSP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.COSP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("COSP RCTX, X1", asm);
-        }
-        
-        {
-            var raw = COSP(RCTX, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.COSP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.COSP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("COSP RCTX, X16", asm);
-        }
-        
-        {
-            var raw = COSP(RCTX, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.COSP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.COSP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("COSP RCTX, XZR", asm);
-        }
+        TestInst(COSP(RCTX, X1), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X1");
+        TestInst(COSP(RCTX, X16), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X16");
+        TestInst(COSP(RCTX, XZR), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, XZR");
     }
 }

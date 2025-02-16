@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PMULL2_Advsimd
+public class Arm64InstructionFactoryTests_PMULL2_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_PMULL2_Advsimd
     [TestMethod]
     public void Test_PMULL2_asimddiff_l_0()
     {
-        
-        {
-            var raw = PMULL2(V0.T_8H, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.8H, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_8H, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.8H, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_8H, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.8H, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_8H, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.8H, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_8H, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.8H, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_8H, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.8H, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_8H, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.8H, V31.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_8H, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.8H, V31.16B, V0.16B", asm);
-        }
+        TestInst(PMULL2(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V2.16B");
+        TestInst(PMULL2(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V2.16B");
+        TestInst(PMULL2(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V2.16B");
+        TestInst(PMULL2(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V2.16B");
+        TestInst(PMULL2(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V0.16B");
+        TestInst(PMULL2(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V0.16B");
+        TestInst(PMULL2(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V0.16B");
+        TestInst(PMULL2(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -104,77 +40,13 @@ public class Arm64InstructionFactoryTests_PMULL2_Advsimd
     [TestMethod]
     public void Test_PMULL2_asimddiff_l_1()
     {
-        
-        {
-            var raw = PMULL2(V0.T_1Q, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.1Q, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_1Q, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.1Q, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_1Q, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.1Q, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_1Q, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.1Q, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_1Q, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.1Q, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_1Q, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.1Q, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V0.T_1Q, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V0.1Q, V31.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = PMULL2(V30.T_1Q, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PMULL2_asimddiff_l, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PMULL2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PMULL2 V30.1Q, V31.2D, V0.2D", asm);
-        }
+        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V2.2D");
+        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V2.2D");
+        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V2.2D");
+        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V2.2D");
+        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V0.2D");
+        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V0.2D");
+        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V0.2D");
+        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V0.2D");
     }
 }

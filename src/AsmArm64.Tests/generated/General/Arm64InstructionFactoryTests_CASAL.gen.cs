@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CASAL_General
+public class Arm64InstructionFactoryTests_CASAL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_CASAL_General
     [TestMethod]
     public void Test_CASAL_c32_comswap_0()
     {
-        
-        {
-            var raw = CASAL(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL WZR, WZR, [X3]", asm);
-        }
+        TestInst(CASAL(W0, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W1, [X3]");
+        TestInst(CASAL(W15, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W1, [X3]");
+        TestInst(CASAL(WZR, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W1, [X3]");
+        TestInst(CASAL(W0, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W16, [X3]");
+        TestInst(CASAL(W15, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W16, [X3]");
+        TestInst(CASAL(WZR, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W16, [X3]");
+        TestInst(CASAL(W0, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, WZR, [X3]");
+        TestInst(CASAL(W15, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, WZR, [X3]");
+        TestInst(CASAL(WZR, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_CASAL_General
     [TestMethod]
     public void Test_CASAL_c64_comswap_1()
     {
-        
-        {
-            var raw = CASAL(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAL(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAL_c64_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAL XZR, XZR, [X3]", asm);
-        }
+        TestInst(CASAL(X0, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X1, [X3]");
+        TestInst(CASAL(X15, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X1, [X3]");
+        TestInst(CASAL(XZR, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X1, [X3]");
+        TestInst(CASAL(X0, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X16, [X3]");
+        TestInst(CASAL(X15, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X16, [X3]");
+        TestInst(CASAL(XZR, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X16, [X3]");
+        TestInst(CASAL(X0, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, XZR, [X3]");
+        TestInst(CASAL(X15, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, XZR, [X3]");
+        TestInst(CASAL(XZR, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, XZR, [X3]");
     }
 }

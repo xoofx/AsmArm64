@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GCSSS1_System
+public class Arm64InstructionFactoryTests_GCSSS1_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_GCSSS1_System
     [TestMethod]
     public void Test_GCSSS1_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = GCSSS1(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS1 X0", asm);
-        }
-        
-        {
-            var raw = GCSSS1(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS1 X15", asm);
-        }
-        
-        {
-            var raw = GCSSS1(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS1 XZR", asm);
-        }
+        TestInst(GCSSS1(X0), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X0");
+        TestInst(GCSSS1(X15), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X15");
+        TestInst(GCSSS1(XZR), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 XZR");
     }
 }

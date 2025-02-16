@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STLUR_General
+public class Arm64InstructionFactoryTests_STLUR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STLUR_General
     [TestMethod]
     public void Test_STLUR_32_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = STLUR(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLUR(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLUR(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR WZR, [X2, #5]", asm);
-        }
+        TestInst(STLUR(W0, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W0, [X2, #5]");
+        TestInst(STLUR(W15, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W15, [X2, #5]");
+        TestInst(STLUR(WZR, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STLUR_General
     [TestMethod]
     public void Test_STLUR_64_ldapstl_unscaled_1()
     {
-        
-        {
-            var raw = STLUR(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLUR(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLUR(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLUR_64_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLUR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLUR XZR, [X2, #5]", asm);
-        }
+        TestInst(STLUR(X0, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X0, [X2, #5]");
+        TestInst(STLUR(X15, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X15, [X2, #5]");
+        TestInst(STLUR(XZR, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR XZR, [X2, #5]");
     }
 }

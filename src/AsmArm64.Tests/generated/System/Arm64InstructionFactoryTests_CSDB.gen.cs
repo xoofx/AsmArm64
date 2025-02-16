@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CSDB_System
+public class Arm64InstructionFactoryTests_CSDB_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_CSDB_System
     [TestMethod]
     public void Test_CSDB_hi_hints_0()
     {
-        
-        {
-            var raw = CSDB();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CSDB_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CSDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CSDB", asm);
-        }
+        TestInst(CSDB(), Arm64InstructionId.CSDB_hi_hints, Arm64Mnemonic.CSDB, "CSDB");
     }
 }

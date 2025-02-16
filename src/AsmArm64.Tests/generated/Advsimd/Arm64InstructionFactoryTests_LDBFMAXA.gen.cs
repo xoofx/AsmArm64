@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDBFMAXA_Advsimd
+public class Arm64InstructionFactoryTests_LDBFMAXA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDBFMAXA_Advsimd
     [TestMethod]
     public void Test_LDBFMAXA_16_0()
     {
-        
-        {
-            var raw = LDBFMAXA(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMAXA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMAXA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMAXA H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMAXA(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMAXA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMAXA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMAXA H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMAXA(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMAXA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMAXA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMAXA H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMAXA(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMAXA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMAXA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMAXA H31, H31, [X3]", asm);
-        }
+        TestInst(LDBFMAXA(H0, H1, _[X3]), Arm64InstructionId.LDBFMAXA_16, Arm64Mnemonic.LDBFMAXA, "LDBFMAXA H0, H1, [X3]");
+        TestInst(LDBFMAXA(H31, H1, _[X3]), Arm64InstructionId.LDBFMAXA_16, Arm64Mnemonic.LDBFMAXA, "LDBFMAXA H31, H1, [X3]");
+        TestInst(LDBFMAXA(H0, H31, _[X3]), Arm64InstructionId.LDBFMAXA_16, Arm64Mnemonic.LDBFMAXA, "LDBFMAXA H0, H31, [X3]");
+        TestInst(LDBFMAXA(H31, H31, _[X3]), Arm64InstructionId.LDBFMAXA_16, Arm64Mnemonic.LDBFMAXA, "LDBFMAXA H31, H31, [X3]");
     }
 }

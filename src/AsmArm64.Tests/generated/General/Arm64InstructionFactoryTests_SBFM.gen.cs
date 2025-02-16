@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SBFM_General
+public class Arm64InstructionFactoryTests_SBFM_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_SBFM_General
     [TestMethod]
     public void Test_SBFM_32m_bitfield_0()
     {
-        
-        {
-            var raw = SBFM(W0, W1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W0, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(W15, W1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W15, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(WZR, W1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX WZR, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(W0, W16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W0, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(W15, W16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W15, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(WZR, W16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX WZR, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(W0, WZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W0, WZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(W15, WZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX W15, WZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(WZR, WZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX WZR, WZR, #5, #1", asm);
-        }
+        TestInst(SBFM(W0, W1, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W1, #5, #1");
+        TestInst(SBFM(W15, W1, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W1, #5, #1");
+        TestInst(SBFM(WZR, W1, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W1, #5, #1");
+        TestInst(SBFM(W0, W16, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W16, #5, #1");
+        TestInst(SBFM(W15, W16, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W16, #5, #1");
+        TestInst(SBFM(WZR, W16, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W16, #5, #1");
+        TestInst(SBFM(W0, WZR, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, WZR, #5, #1");
+        TestInst(SBFM(W15, WZR, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, WZR, #5, #1");
+        TestInst(SBFM(WZR, WZR, 5, 5), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, WZR, #5, #1");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_SBFM_General
     [TestMethod]
     public void Test_SBFM_64m_bitfield_1()
     {
-        
-        {
-            var raw = SBFM(X0, X1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X0, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(X15, X1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X15, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(XZR, X1, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX XZR, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(X0, X16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X0, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(X15, X16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X15, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(XZR, X16, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX XZR, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(X0, XZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X0, XZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(X15, XZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX X15, XZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFM(XZR, XZR, 5, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFX_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFX XZR, XZR, #5, #1", asm);
-        }
+        TestInst(SBFM(X0, X1, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X1, #5, #1");
+        TestInst(SBFM(X15, X1, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X1, #5, #1");
+        TestInst(SBFM(XZR, X1, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X1, #5, #1");
+        TestInst(SBFM(X0, X16, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X16, #5, #1");
+        TestInst(SBFM(X15, X16, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X16, #5, #1");
+        TestInst(SBFM(XZR, X16, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X16, #5, #1");
+        TestInst(SBFM(X0, XZR, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, XZR, #5, #1");
+        TestInst(SBFM(X15, XZR, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, XZR, #5, #1");
+        TestInst(SBFM(XZR, XZR, 5, 5), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, XZR, #5, #1");
     }
 }

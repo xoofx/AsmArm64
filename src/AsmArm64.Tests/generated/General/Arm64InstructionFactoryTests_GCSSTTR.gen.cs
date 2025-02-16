@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GCSSTTR_General
+public class Arm64InstructionFactoryTests_GCSSTTR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_GCSSTTR_General
     [TestMethod]
     public void Test_GCSSTTR_64_ldst_gcs_0()
     {
-        
-        {
-            var raw = GCSSTTR(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSTTR X0, [X2]", asm);
-        }
-        
-        {
-            var raw = GCSSTTR(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSTTR X15, [X2]", asm);
-        }
-        
-        {
-            var raw = GCSSTTR(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSTTR XZR, [X2]", asm);
-        }
+        TestInst(GCSSTTR(X0, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X0, [X2]");
+        TestInst(GCSSTTR(X15, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X15, [X2]");
+        TestInst(GCSSTTR(XZR, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR XZR, [X2]");
     }
 }

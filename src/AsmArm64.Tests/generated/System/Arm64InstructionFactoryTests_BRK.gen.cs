@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BRK_System
+public class Arm64InstructionFactoryTests_BRK_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_BRK_System
     [TestMethod]
     public void Test_BRK_ex_exception_0()
     {
-        
-        {
-            var raw = BRK(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRK_ex_exception, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRK, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRK #5", asm);
-        }
+        TestInst(BRK(5), Arm64InstructionId.BRK_ex_exception, Arm64Mnemonic.BRK, "BRK #5");
     }
 }

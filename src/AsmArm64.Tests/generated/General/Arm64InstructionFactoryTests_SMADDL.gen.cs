@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SMADDL_General
+public class Arm64InstructionFactoryTests_SMADDL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,734 +24,86 @@ public class Arm64InstructionFactoryTests_SMADDL_General
     [TestMethod]
     public void Test_SMADDL_64wa_dp_3src_0()
     {
-        
-        {
-            var raw = SMADDL(X0, W1, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W2, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, W2, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W17, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, W17, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, WZR, X3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, WZR, X3", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W2, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, W2, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W17, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, W17, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W1, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W1, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W1, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, W16, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, W16, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, W16, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X0, WZR, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL X15, WZR, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, WZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMADDL_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMADDL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMADDL XZR, WZR, WZR, X18", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W1, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W16, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W2, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, WZR, W2", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W1, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W16, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, W17, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, WZR, W17", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W1, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W1, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W1, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W1, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, W16, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, W16, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, W16, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, W16, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(X0, WZR, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X0, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(X15, WZR, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL X15, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = SMADDL(XZR, WZR, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULL XZR, WZR, WZR", asm);
-        }
+        TestInst(SMADDL(X0, W1, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, W2, X3");
+        TestInst(SMADDL(X15, W1, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, W2, X3");
+        TestInst(SMADDL(XZR, W1, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, W2, X3");
+        TestInst(SMADDL(X0, W16, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, W2, X3");
+        TestInst(SMADDL(X15, W16, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, W2, X3");
+        TestInst(SMADDL(XZR, W16, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, W2, X3");
+        TestInst(SMADDL(X0, WZR, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, W2, X3");
+        TestInst(SMADDL(X15, WZR, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, W2, X3");
+        TestInst(SMADDL(XZR, WZR, W2, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, W2, X3");
+        TestInst(SMADDL(X0, W1, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, W17, X3");
+        TestInst(SMADDL(X15, W1, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, W17, X3");
+        TestInst(SMADDL(XZR, W1, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, W17, X3");
+        TestInst(SMADDL(X0, W16, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, W17, X3");
+        TestInst(SMADDL(X15, W16, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, W17, X3");
+        TestInst(SMADDL(XZR, W16, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, W17, X3");
+        TestInst(SMADDL(X0, WZR, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, W17, X3");
+        TestInst(SMADDL(X15, WZR, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, W17, X3");
+        TestInst(SMADDL(XZR, WZR, W17, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, W17, X3");
+        TestInst(SMADDL(X0, W1, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, WZR, X3");
+        TestInst(SMADDL(X15, W1, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, WZR, X3");
+        TestInst(SMADDL(XZR, W1, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, WZR, X3");
+        TestInst(SMADDL(X0, W16, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, WZR, X3");
+        TestInst(SMADDL(X15, W16, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, WZR, X3");
+        TestInst(SMADDL(XZR, W16, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, WZR, X3");
+        TestInst(SMADDL(X0, WZR, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, WZR, X3");
+        TestInst(SMADDL(X15, WZR, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, WZR, X3");
+        TestInst(SMADDL(XZR, WZR, WZR, X3), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, WZR, X3");
+        TestInst(SMADDL(X0, W1, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, W2, X18");
+        TestInst(SMADDL(X15, W1, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, W2, X18");
+        TestInst(SMADDL(XZR, W1, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, W2, X18");
+        TestInst(SMADDL(X0, W16, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, W2, X18");
+        TestInst(SMADDL(X15, W16, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, W2, X18");
+        TestInst(SMADDL(XZR, W16, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, W2, X18");
+        TestInst(SMADDL(X0, WZR, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, W2, X18");
+        TestInst(SMADDL(X15, WZR, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, W2, X18");
+        TestInst(SMADDL(XZR, WZR, W2, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, W2, X18");
+        TestInst(SMADDL(X0, W1, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, W17, X18");
+        TestInst(SMADDL(X15, W1, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, W17, X18");
+        TestInst(SMADDL(XZR, W1, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, W17, X18");
+        TestInst(SMADDL(X0, W16, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, W17, X18");
+        TestInst(SMADDL(X15, W16, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, W17, X18");
+        TestInst(SMADDL(XZR, W16, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, W17, X18");
+        TestInst(SMADDL(X0, WZR, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, W17, X18");
+        TestInst(SMADDL(X15, WZR, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, W17, X18");
+        TestInst(SMADDL(XZR, WZR, W17, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, W17, X18");
+        TestInst(SMADDL(X0, W1, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W1, WZR, X18");
+        TestInst(SMADDL(X15, W1, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W1, WZR, X18");
+        TestInst(SMADDL(XZR, W1, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W1, WZR, X18");
+        TestInst(SMADDL(X0, W16, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, W16, WZR, X18");
+        TestInst(SMADDL(X15, W16, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, W16, WZR, X18");
+        TestInst(SMADDL(XZR, W16, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, W16, WZR, X18");
+        TestInst(SMADDL(X0, WZR, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X0, WZR, WZR, X18");
+        TestInst(SMADDL(X15, WZR, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL X15, WZR, WZR, X18");
+        TestInst(SMADDL(XZR, WZR, WZR, X18), Arm64InstructionId.SMADDL_64wa_dp_3src, Arm64Mnemonic.SMADDL, "SMADDL XZR, WZR, WZR, X18");
+        TestInst(SMADDL(X0, W1, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W1, W2");
+        TestInst(SMADDL(X15, W1, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W1, W2");
+        TestInst(SMADDL(XZR, W1, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W1, W2");
+        TestInst(SMADDL(X0, W16, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W16, W2");
+        TestInst(SMADDL(X15, W16, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W16, W2");
+        TestInst(SMADDL(XZR, W16, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W16, W2");
+        TestInst(SMADDL(X0, WZR, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, WZR, W2");
+        TestInst(SMADDL(X15, WZR, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, WZR, W2");
+        TestInst(SMADDL(XZR, WZR, W2, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, WZR, W2");
+        TestInst(SMADDL(X0, W1, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W1, W17");
+        TestInst(SMADDL(X15, W1, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W1, W17");
+        TestInst(SMADDL(XZR, W1, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W1, W17");
+        TestInst(SMADDL(X0, W16, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W16, W17");
+        TestInst(SMADDL(X15, W16, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W16, W17");
+        TestInst(SMADDL(XZR, W16, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W16, W17");
+        TestInst(SMADDL(X0, WZR, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, WZR, W17");
+        TestInst(SMADDL(X15, WZR, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, WZR, W17");
+        TestInst(SMADDL(XZR, WZR, W17, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, WZR, W17");
+        TestInst(SMADDL(X0, W1, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W1, WZR");
+        TestInst(SMADDL(X15, W1, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W1, WZR");
+        TestInst(SMADDL(XZR, W1, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W1, WZR");
+        TestInst(SMADDL(X0, W16, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, W16, WZR");
+        TestInst(SMADDL(X15, W16, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, W16, WZR");
+        TestInst(SMADDL(XZR, W16, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, W16, WZR");
+        TestInst(SMADDL(X0, WZR, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X0, WZR, WZR");
+        TestInst(SMADDL(X15, WZR, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL X15, WZR, WZR");
+        TestInst(SMADDL(XZR, WZR, WZR, XZR), Arm64InstructionId.SMULL_smaddl_64wa_dp_3src, Arm64Mnemonic.SMULL, "SMULL XZR, WZR, WZR");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_WFIT_System
+public class Arm64InstructionFactoryTests_WFIT_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_WFIT_System
     [TestMethod]
     public void Test_WFIT_only_systeminstrswithreg_0()
     {
-        
-        {
-            var raw = WFIT(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFIT_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFIT X0", asm);
-        }
-        
-        {
-            var raw = WFIT(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFIT_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFIT X15", asm);
-        }
-        
-        {
-            var raw = WFIT(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFIT_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFIT XZR", asm);
-        }
+        TestInst(WFIT(X0), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X0");
+        TestInst(WFIT(X15), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X15");
+        TestInst(WFIT(XZR), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT XZR");
     }
 }

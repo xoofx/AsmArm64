@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SETF8_General
+public class Arm64InstructionFactoryTests_SETF8_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_SETF8_General
     [TestMethod]
     public void Test_SETF8_only_setf_0()
     {
-        
-        {
-            var raw = SETF8(W0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETF8_only_setf, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETF8, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETF8 W0", asm);
-        }
-        
-        {
-            var raw = SETF8(W15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETF8_only_setf, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETF8, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETF8 W15", asm);
-        }
-        
-        {
-            var raw = SETF8(WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETF8_only_setf, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETF8, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETF8 WZR", asm);
-        }
+        TestInst(SETF8(W0), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W0");
+        TestInst(SETF8(W15), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W15");
+        TestInst(SETF8(WZR), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 WZR");
     }
 }

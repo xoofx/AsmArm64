@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ADCS_General
+public class Arm64InstructionFactoryTests_ADCS_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,249 +24,33 @@ public class Arm64InstructionFactoryTests_ADCS_General
     [TestMethod]
     public void Test_ADCS_32_addsub_carry_0()
     {
-        
-        {
-            var raw = ADCS(W0, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W1, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W1, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W1, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W1, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W16, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W16, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W16, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W16, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, WZR, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, WZR, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, WZR, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, WZR, W2", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W1, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W1, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W1, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W1, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W16, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W16, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W16, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W16, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, WZR, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, WZR, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, WZR, W17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, WZR, W17", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W1, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W1, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W1, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W1, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, W16, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, W16, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, W16, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, W16, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(W0, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W0, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(W15, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS W15, WZR, WZR", asm);
-        }
-        
-        {
-            var raw = ADCS(WZR, WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS WZR, WZR, WZR", asm);
-        }
+        TestInst(ADCS(W0, W1, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W1, W2");
+        TestInst(ADCS(W15, W1, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W1, W2");
+        TestInst(ADCS(WZR, W1, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W1, W2");
+        TestInst(ADCS(W0, W16, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W16, W2");
+        TestInst(ADCS(W15, W16, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W16, W2");
+        TestInst(ADCS(WZR, W16, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W16, W2");
+        TestInst(ADCS(W0, WZR, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, WZR, W2");
+        TestInst(ADCS(W15, WZR, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, WZR, W2");
+        TestInst(ADCS(WZR, WZR, W2), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, WZR, W2");
+        TestInst(ADCS(W0, W1, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W1, W17");
+        TestInst(ADCS(W15, W1, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W1, W17");
+        TestInst(ADCS(WZR, W1, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W1, W17");
+        TestInst(ADCS(W0, W16, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W16, W17");
+        TestInst(ADCS(W15, W16, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W16, W17");
+        TestInst(ADCS(WZR, W16, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W16, W17");
+        TestInst(ADCS(W0, WZR, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, WZR, W17");
+        TestInst(ADCS(W15, WZR, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, WZR, W17");
+        TestInst(ADCS(WZR, WZR, W17), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, WZR, W17");
+        TestInst(ADCS(W0, W1, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W1, WZR");
+        TestInst(ADCS(W15, W1, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W1, WZR");
+        TestInst(ADCS(WZR, W1, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W1, WZR");
+        TestInst(ADCS(W0, W16, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, W16, WZR");
+        TestInst(ADCS(W15, W16, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, W16, WZR");
+        TestInst(ADCS(WZR, W16, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, W16, WZR");
+        TestInst(ADCS(W0, WZR, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W0, WZR, WZR");
+        TestInst(ADCS(W15, WZR, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS W15, WZR, WZR");
+        TestInst(ADCS(WZR, WZR, WZR), Arm64InstructionId.ADCS_32_addsub_carry, Arm64Mnemonic.ADCS, "ADCS WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -275,248 +59,32 @@ public class Arm64InstructionFactoryTests_ADCS_General
     [TestMethod]
     public void Test_ADCS_64_addsub_carry_1()
     {
-        
-        {
-            var raw = ADCS(X0, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X1, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X1, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X1, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X16, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X16, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X16, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, XZR, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, XZR, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, XZR, X2", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X1, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X1, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X1, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X16, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X16, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X16, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, XZR, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, XZR, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, XZR, X17", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X1, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X1, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X1, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, X16, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, X16, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, X16, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(X0, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X0, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(X15, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS X15, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = ADCS(XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADCS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADCS XZR, XZR, XZR", asm);
-        }
+        TestInst(ADCS(X0, X1, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X1, X2");
+        TestInst(ADCS(X15, X1, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X1, X2");
+        TestInst(ADCS(XZR, X1, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X1, X2");
+        TestInst(ADCS(X0, X16, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X16, X2");
+        TestInst(ADCS(X15, X16, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X16, X2");
+        TestInst(ADCS(XZR, X16, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X16, X2");
+        TestInst(ADCS(X0, XZR, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, XZR, X2");
+        TestInst(ADCS(X15, XZR, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, XZR, X2");
+        TestInst(ADCS(XZR, XZR, X2), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, XZR, X2");
+        TestInst(ADCS(X0, X1, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X1, X17");
+        TestInst(ADCS(X15, X1, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X1, X17");
+        TestInst(ADCS(XZR, X1, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X1, X17");
+        TestInst(ADCS(X0, X16, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X16, X17");
+        TestInst(ADCS(X15, X16, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X16, X17");
+        TestInst(ADCS(XZR, X16, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X16, X17");
+        TestInst(ADCS(X0, XZR, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, XZR, X17");
+        TestInst(ADCS(X15, XZR, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, XZR, X17");
+        TestInst(ADCS(XZR, XZR, X17), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, XZR, X17");
+        TestInst(ADCS(X0, X1, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X1, XZR");
+        TestInst(ADCS(X15, X1, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X1, XZR");
+        TestInst(ADCS(XZR, X1, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X1, XZR");
+        TestInst(ADCS(X0, X16, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, X16, XZR");
+        TestInst(ADCS(X15, X16, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, X16, XZR");
+        TestInst(ADCS(XZR, X16, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, X16, XZR");
+        TestInst(ADCS(X0, XZR, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X0, XZR, XZR");
+        TestInst(ADCS(X15, XZR, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS X15, XZR, XZR");
+        TestInst(ADCS(XZR, XZR, XZR), Arm64InstructionId.ADCS_64_addsub_carry, Arm64Mnemonic.ADCS, "ADCS XZR, XZR, XZR");
     }
 }

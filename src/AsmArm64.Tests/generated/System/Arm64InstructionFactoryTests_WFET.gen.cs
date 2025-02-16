@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_WFET_System
+public class Arm64InstructionFactoryTests_WFET_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_WFET_System
     [TestMethod]
     public void Test_WFET_only_systeminstrswithreg_0()
     {
-        
-        {
-            var raw = WFET(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFET_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFET X0", asm);
-        }
-        
-        {
-            var raw = WFET(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFET_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFET X15", asm);
-        }
-        
-        {
-            var raw = WFET(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.WFET_only_systeminstrswithreg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.WFET, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("WFET XZR", asm);
-        }
+        TestInst(WFET(X0), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X0");
+        TestInst(WFET(X15), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X15");
+        TestInst(WFET(XZR), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET XZR");
     }
 }

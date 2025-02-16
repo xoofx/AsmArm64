@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BC_General
+public class Arm64InstructionFactoryTests_BC_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_BC_General
     [TestMethod]
     public void Test_BC_only_condbranch_0()
     {
-        
-        {
-            var raw = BC(NE, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BC_only_condbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BC.NE #32", asm);
-        }
-        
-        {
-            var raw = BC(HS, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BC_only_condbranch, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BC.HS #32", asm);
-        }
+        TestInst(BC(NE, 32), Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.NE #32");
+        TestInst(BC(HS, 32), Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.HS #32");
     }
 }

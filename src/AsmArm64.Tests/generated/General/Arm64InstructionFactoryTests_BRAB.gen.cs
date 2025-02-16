@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BRAB_General
+public class Arm64InstructionFactoryTests_BRAB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_BRAB_General
     [TestMethod]
     public void Test_BRAB_64p_branch_reg_0()
     {
-        
-        {
-            var raw = BRAB(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X0, X2", asm);
-        }
-        
-        {
-            var raw = BRAB(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X15, X2", asm);
-        }
-        
-        {
-            var raw = BRAB(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB XZR, X2", asm);
-        }
-        
-        {
-            var raw = BRAB(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X0, X18", asm);
-        }
-        
-        {
-            var raw = BRAB(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X15, X18", asm);
-        }
-        
-        {
-            var raw = BRAB(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB XZR, X18", asm);
-        }
-        
-        {
-            var raw = BRAB(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X0, SP", asm);
-        }
-        
-        {
-            var raw = BRAB(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB X15, SP", asm);
-        }
-        
-        {
-            var raw = BRAB(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BRAB_64p_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BRAB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BRAB XZR, SP", asm);
-        }
+        TestInst(BRAB(X0, X2), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X0, X2");
+        TestInst(BRAB(X15, X2), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X15, X2");
+        TestInst(BRAB(XZR, X2), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB XZR, X2");
+        TestInst(BRAB(X0, X18), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X0, X18");
+        TestInst(BRAB(X15, X18), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X15, X18");
+        TestInst(BRAB(XZR, X18), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB XZR, X18");
+        TestInst(BRAB(X0, SP), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X0, SP");
+        TestInst(BRAB(X15, SP), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB X15, SP");
+        TestInst(BRAB(XZR, SP), Arm64InstructionId.BRAB_64p_branch_reg, Arm64Mnemonic.BRAB, "BRAB XZR, SP");
     }
 }

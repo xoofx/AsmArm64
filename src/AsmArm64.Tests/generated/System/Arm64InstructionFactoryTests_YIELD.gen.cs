@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_YIELD_System
+public class Arm64InstructionFactoryTests_YIELD_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_YIELD_System
     [TestMethod]
     public void Test_YIELD_hi_hints_0()
     {
-        
-        {
-            var raw = YIELD();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.YIELD_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.YIELD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("YIELD", asm);
-        }
+        TestInst(YIELD(), Arm64InstructionId.YIELD_hi_hints, Arm64Mnemonic.YIELD, "YIELD");
     }
 }

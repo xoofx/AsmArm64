@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CRC32CX_General
+public class Arm64InstructionFactoryTests_CRC32CX_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,248 +24,32 @@ public class Arm64InstructionFactoryTests_CRC32CX_General
     [TestMethod]
     public void Test_CRC32CX_64c_dp_2src_0()
     {
-        
-        {
-            var raw = CRC32CX(W0, W1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W1, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W1, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W1, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, W16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W16, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W16, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W16, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, WZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, WZR, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, WZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, WZR, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, WZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, WZR, X2", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, W1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W1, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W1, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W1, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, W16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W16, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W16, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W16, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, WZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, WZR, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, WZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, WZR, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, WZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, WZR, X17", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, W1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W1, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W1, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W1, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, W16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, W16, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, W16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, W16, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, W16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, W16, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W0, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W0, WZR, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(W15, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX W15, WZR, XZR", asm);
-        }
-        
-        {
-            var raw = CRC32CX(WZR, WZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CRC32CX_64c_dp_2src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CRC32CX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CRC32CX WZR, WZR, XZR", asm);
-        }
+        TestInst(CRC32CX(W0, W1, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W1, X2");
+        TestInst(CRC32CX(W15, W1, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W1, X2");
+        TestInst(CRC32CX(WZR, W1, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W1, X2");
+        TestInst(CRC32CX(W0, W16, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W16, X2");
+        TestInst(CRC32CX(W15, W16, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W16, X2");
+        TestInst(CRC32CX(WZR, W16, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W16, X2");
+        TestInst(CRC32CX(W0, WZR, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, WZR, X2");
+        TestInst(CRC32CX(W15, WZR, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, WZR, X2");
+        TestInst(CRC32CX(WZR, WZR, X2), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, WZR, X2");
+        TestInst(CRC32CX(W0, W1, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W1, X17");
+        TestInst(CRC32CX(W15, W1, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W1, X17");
+        TestInst(CRC32CX(WZR, W1, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W1, X17");
+        TestInst(CRC32CX(W0, W16, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W16, X17");
+        TestInst(CRC32CX(W15, W16, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W16, X17");
+        TestInst(CRC32CX(WZR, W16, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W16, X17");
+        TestInst(CRC32CX(W0, WZR, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, WZR, X17");
+        TestInst(CRC32CX(W15, WZR, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, WZR, X17");
+        TestInst(CRC32CX(WZR, WZR, X17), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, WZR, X17");
+        TestInst(CRC32CX(W0, W1, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W1, XZR");
+        TestInst(CRC32CX(W15, W1, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W1, XZR");
+        TestInst(CRC32CX(WZR, W1, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W1, XZR");
+        TestInst(CRC32CX(W0, W16, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, W16, XZR");
+        TestInst(CRC32CX(W15, W16, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, W16, XZR");
+        TestInst(CRC32CX(WZR, W16, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, W16, XZR");
+        TestInst(CRC32CX(W0, WZR, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W0, WZR, XZR");
+        TestInst(CRC32CX(W15, WZR, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX W15, WZR, XZR");
+        TestInst(CRC32CX(WZR, WZR, XZR), Arm64InstructionId.CRC32CX_64c_dp_2src, Arm64Mnemonic.CRC32CX, "CRC32CX WZR, WZR, XZR");
     }
 }

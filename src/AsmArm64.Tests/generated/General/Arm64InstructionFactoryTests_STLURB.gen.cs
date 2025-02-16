@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STLURB_General
+public class Arm64InstructionFactoryTests_STLURB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STLURB_General
     [TestMethod]
     public void Test_STLURB_32_ldapstl_unscaled_0()
     {
-        
-        {
-            var raw = STLURB(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURB W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLURB(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURB W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = STLURB(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLURB_32_ldapstl_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLURB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLURB WZR, [X2, #5]", asm);
-        }
+        TestInst(STLURB(W0, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W0, [X2, #5]");
+        TestInst(STLURB(W15, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W15, [X2, #5]");
+        TestInst(STLURB(WZR, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB WZR, [X2, #5]");
     }
 }

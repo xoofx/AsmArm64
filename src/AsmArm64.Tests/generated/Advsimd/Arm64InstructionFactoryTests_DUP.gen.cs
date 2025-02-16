@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DUP_Advsimd
+public class Arm64InstructionFactoryTests_DUP_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asisdone_only_0()
     {
-        
-        {
-            var raw = DUP(B1, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B1, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(B31, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B31, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(B1, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B1, V31.B[1]", asm);
-        }
-        
-        {
-            var raw = DUP(B31, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV B31, V31.B[1]", asm);
-        }
+        TestInst(DUP(B1, V1.B[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B1, V1.B[0]");
+        TestInst(DUP(B31, V1.B[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B31, V1.B[0]");
+        TestInst(DUP(B1, V31.B[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B1, V31.B[1]");
+        TestInst(DUP(B31, V31.B[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV B31, V31.B[1]");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asisdone_only_1()
     {
-        
-        {
-            var raw = DUP(H1, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H1, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(H31, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H31, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(H1, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H1, V31.H[1]", asm);
-        }
-        
-        {
-            var raw = DUP(H31, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV H31, V31.H[1]", asm);
-        }
+        TestInst(DUP(H1, V1.H[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H1, V1.H[0]");
+        TestInst(DUP(H31, V1.H[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H31, V1.H[0]");
+        TestInst(DUP(H1, V31.H[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H1, V31.H[1]");
+        TestInst(DUP(H31, V31.H[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV H31, V31.H[1]");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asisdone_only_2()
     {
-        
-        {
-            var raw = DUP(S1, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S1, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(S31, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S31, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(S1, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S1, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = DUP(S31, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV S31, V31.S[1]", asm);
-        }
+        TestInst(DUP(S1, V1.S[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S1, V1.S[0]");
+        TestInst(DUP(S31, V1.S[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S31, V1.S[0]");
+        TestInst(DUP(S1, V31.S[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S1, V31.S[1]");
+        TestInst(DUP(S31, V31.S[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV S31, V31.S[1]");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asisdone_only_3()
     {
-        
-        {
-            var raw = DUP(D1, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D1, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = DUP(D31, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D31, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = DUP(D1, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D1, V31.D[1]", asm);
-        }
-        
-        {
-            var raw = DUP(D31, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MOV D31, V31.D[1]", asm);
-        }
+        TestInst(DUP(D1, V1.D[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D1, V1.D[0]");
+        TestInst(DUP(D31, V1.D[0]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D31, V1.D[0]");
+        TestInst(DUP(D1, V31.D[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D1, V31.D[1]");
+        TestInst(DUP(D31, V31.D[1]), Arm64InstructionId.MOV_dup_asisdone_only, Arm64Mnemonic.MOV, "MOV D31, V31.D[1]");
     }
     
     /// <summary>
@@ -200,42 +72,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_4()
     {
-        
-        {
-            var raw = DUP(V0.T_8B, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8B, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8B, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8B, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_8B, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8B, V31.B[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8B, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8B, V31.B[1]", asm);
-        }
+        TestInst(DUP(V0.T_8B, V1.B[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.8B, V1.B[0]");
+        TestInst(DUP(V30.T_8B, V1.B[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.8B, V1.B[0]");
+        TestInst(DUP(V0.T_8B, V31.B[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.8B, V31.B[1]");
+        TestInst(DUP(V30.T_8B, V31.B[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.8B, V31.B[1]");
     }
     
     /// <summary>
@@ -244,42 +84,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_5()
     {
-        
-        {
-            var raw = DUP(V0.T_16B, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.16B, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_16B, V1.B[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.16B, V1.B[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_16B, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.16B, V31.B[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_16B, V31.B[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.16B, V31.B[1]", asm);
-        }
+        TestInst(DUP(V0.T_16B, V1.B[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.16B, V1.B[0]");
+        TestInst(DUP(V30.T_16B, V1.B[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.16B, V1.B[0]");
+        TestInst(DUP(V0.T_16B, V31.B[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.16B, V31.B[1]");
+        TestInst(DUP(V30.T_16B, V31.B[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.16B, V31.B[1]");
     }
     
     /// <summary>
@@ -288,42 +96,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_6()
     {
-        
-        {
-            var raw = DUP(V0.T_4H, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4H, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4H, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4H, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_4H, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4H, V31.H[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4H, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4H, V31.H[1]", asm);
-        }
+        TestInst(DUP(V0.T_4H, V1.H[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.4H, V1.H[0]");
+        TestInst(DUP(V30.T_4H, V1.H[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.4H, V1.H[0]");
+        TestInst(DUP(V0.T_4H, V31.H[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.4H, V31.H[1]");
+        TestInst(DUP(V30.T_4H, V31.H[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.4H, V31.H[1]");
     }
     
     /// <summary>
@@ -332,42 +108,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_7()
     {
-        
-        {
-            var raw = DUP(V0.T_8H, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8H, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8H, V1.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8H, V1.H[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_8H, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8H, V31.H[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8H, V31.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8H, V31.H[1]", asm);
-        }
+        TestInst(DUP(V0.T_8H, V1.H[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.8H, V1.H[0]");
+        TestInst(DUP(V30.T_8H, V1.H[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.8H, V1.H[0]");
+        TestInst(DUP(V0.T_8H, V31.H[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.8H, V31.H[1]");
+        TestInst(DUP(V30.T_8H, V31.H[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.8H, V31.H[1]");
     }
     
     /// <summary>
@@ -376,42 +120,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_8()
     {
-        
-        {
-            var raw = DUP(V0.T_2S, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2S, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2S, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2S, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_2S, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2S, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2S, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2S, V31.S[1]", asm);
-        }
+        TestInst(DUP(V0.T_2S, V1.S[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.2S, V1.S[0]");
+        TestInst(DUP(V30.T_2S, V1.S[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.2S, V1.S[0]");
+        TestInst(DUP(V0.T_2S, V31.S[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.2S, V31.S[1]");
+        TestInst(DUP(V30.T_2S, V31.S[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.2S, V31.S[1]");
     }
     
     /// <summary>
@@ -420,42 +132,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_9()
     {
-        
-        {
-            var raw = DUP(V0.T_4S, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4S, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4S, V1.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4S, V1.S[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_4S, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4S, V31.S[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4S, V31.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4S, V31.S[1]", asm);
-        }
+        TestInst(DUP(V0.T_4S, V1.S[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.4S, V1.S[0]");
+        TestInst(DUP(V30.T_4S, V1.S[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.4S, V1.S[0]");
+        TestInst(DUP(V0.T_4S, V31.S[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.4S, V31.S[1]");
+        TestInst(DUP(V30.T_4S, V31.S[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.4S, V31.S[1]");
     }
     
     /// <summary>
@@ -464,42 +144,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dv_v_10()
     {
-        
-        {
-            var raw = DUP(V0.T_2D, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2D, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2D, V1.D[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2D, V1.D[0]", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_2D, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2D, V31.D[1]", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2D, V31.D[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dv_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2D, V31.D[1]", asm);
-        }
+        TestInst(DUP(V0.T_2D, V1.D[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.2D, V1.D[0]");
+        TestInst(DUP(V30.T_2D, V1.D[0]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.2D, V1.D[0]");
+        TestInst(DUP(V0.T_2D, V31.D[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V0.2D, V31.D[1]");
+        TestInst(DUP(V30.T_2D, V31.D[1]), Arm64InstructionId.DUP_asimdins_dv_v, Arm64Mnemonic.DUP, "DUP V30.2D, V31.D[1]");
     }
     
     /// <summary>
@@ -508,42 +156,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_11()
     {
-        
-        {
-            var raw = DUP(V0.T_8B, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8B, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8B, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8B, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_8B, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8B, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8B, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8B, WZR", asm);
-        }
+        TestInst(DUP(V0.T_8B, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.8B, W2");
+        TestInst(DUP(V30.T_8B, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.8B, W2");
+        TestInst(DUP(V0.T_8B, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.8B, WZR");
+        TestInst(DUP(V30.T_8B, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.8B, WZR");
     }
     
     /// <summary>
@@ -552,42 +168,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_12()
     {
-        
-        {
-            var raw = DUP(V0.T_16B, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.16B, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_16B, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.16B, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_16B, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.16B, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_16B, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.16B, WZR", asm);
-        }
+        TestInst(DUP(V0.T_16B, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.16B, W2");
+        TestInst(DUP(V30.T_16B, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.16B, W2");
+        TestInst(DUP(V0.T_16B, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.16B, WZR");
+        TestInst(DUP(V30.T_16B, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.16B, WZR");
     }
     
     /// <summary>
@@ -596,42 +180,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_13()
     {
-        
-        {
-            var raw = DUP(V0.T_4H, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4H, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4H, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4H, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_4H, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4H, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4H, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4H, WZR", asm);
-        }
+        TestInst(DUP(V0.T_4H, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.4H, W2");
+        TestInst(DUP(V30.T_4H, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.4H, W2");
+        TestInst(DUP(V0.T_4H, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.4H, WZR");
+        TestInst(DUP(V30.T_4H, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.4H, WZR");
     }
     
     /// <summary>
@@ -640,42 +192,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_14()
     {
-        
-        {
-            var raw = DUP(V0.T_8H, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8H, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8H, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8H, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_8H, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.8H, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_8H, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.8H, WZR", asm);
-        }
+        TestInst(DUP(V0.T_8H, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.8H, W2");
+        TestInst(DUP(V30.T_8H, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.8H, W2");
+        TestInst(DUP(V0.T_8H, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.8H, WZR");
+        TestInst(DUP(V30.T_8H, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.8H, WZR");
     }
     
     /// <summary>
@@ -684,42 +204,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_15()
     {
-        
-        {
-            var raw = DUP(V0.T_2S, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2S, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2S, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2S, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_2S, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2S, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2S, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2S, WZR", asm);
-        }
+        TestInst(DUP(V0.T_2S, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.2S, W2");
+        TestInst(DUP(V30.T_2S, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.2S, W2");
+        TestInst(DUP(V0.T_2S, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.2S, WZR");
+        TestInst(DUP(V30.T_2S, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.2S, WZR");
     }
     
     /// <summary>
@@ -728,42 +216,10 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_16()
     {
-        
-        {
-            var raw = DUP(V0.T_4S, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4S, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4S, W2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4S, W2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_4S, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.4S, WZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_4S, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.4S, WZR", asm);
-        }
+        TestInst(DUP(V0.T_4S, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.4S, W2");
+        TestInst(DUP(V30.T_4S, W2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.4S, W2");
+        TestInst(DUP(V0.T_4S, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.4S, WZR");
+        TestInst(DUP(V30.T_4S, WZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.4S, WZR");
     }
     
     /// <summary>
@@ -772,41 +228,9 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     [TestMethod]
     public void Test_DUP_asimdins_dr_r_17()
     {
-        
-        {
-            var raw = DUP(V0.T_2D, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2D, X2", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2D, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2D, X2", asm);
-        }
-        
-        {
-            var raw = DUP(V0.T_2D, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V0.2D, XZR", asm);
-        }
-        
-        {
-            var raw = DUP(V30.T_2D, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DUP_asimdins_dr_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DUP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DUP V30.2D, XZR", asm);
-        }
+        TestInst(DUP(V0.T_2D, X2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.2D, X2");
+        TestInst(DUP(V30.T_2D, X2), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.2D, X2");
+        TestInst(DUP(V0.T_2D, XZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V0.2D, XZR");
+        TestInst(DUP(V30.T_2D, XZR), Arm64InstructionId.DUP_asimdins_dr_r, Arm64Mnemonic.DUP, "DUP V30.2D, XZR");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RETAA_General
+public class Arm64InstructionFactoryTests_RETAA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_RETAA_General
     [TestMethod]
     public void Test_RETAA_64e_branch_reg_0()
     {
-        
-        {
-            var raw = RETAA();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RETAA_64e_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RETAA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RETAA", asm);
-        }
+        TestInst(RETAA(), Arm64InstructionId.RETAA_64e_branch_reg, Arm64Mnemonic.RETAA, "RETAA");
     }
 }

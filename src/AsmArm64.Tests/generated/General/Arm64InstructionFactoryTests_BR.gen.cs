@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BR_General
+public class Arm64InstructionFactoryTests_BR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_BR_General
     [TestMethod]
     public void Test_BR_64_branch_reg_0()
     {
-        
-        {
-            var raw = BR(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BR_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BR X0", asm);
-        }
-        
-        {
-            var raw = BR(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BR_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BR X15", asm);
-        }
-        
-        {
-            var raw = BR(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BR_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BR XZR", asm);
-        }
+        TestInst(BR(X0), Arm64InstructionId.BR_64_branch_reg, Arm64Mnemonic.BR, "BR X0");
+        TestInst(BR(X15), Arm64InstructionId.BR_64_branch_reg, Arm64Mnemonic.BR, "BR X15");
+        TestInst(BR(XZR), Arm64InstructionId.BR_64_branch_reg, Arm64Mnemonic.BR, "BR XZR");
     }
 }

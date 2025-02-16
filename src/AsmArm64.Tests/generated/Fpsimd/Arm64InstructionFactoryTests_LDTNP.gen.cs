@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDTNP_Fpsimd
+public class Arm64InstructionFactoryTests_LDTNP_Fpsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDTNP_Fpsimd
     [TestMethod]
     public void Test_LDTNP_q_ldstnapair_offs_0()
     {
-        
-        {
-            var raw = LDTNP(Q0, Q1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTNP_q_ldstnapair_offs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTNP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTNP Q0, Q1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTNP(Q31, Q1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTNP_q_ldstnapair_offs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTNP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTNP Q31, Q1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTNP(Q0, Q31, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTNP_q_ldstnapair_offs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTNP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTNP Q0, Q31, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTNP(Q31, Q31, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTNP_q_ldstnapair_offs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTNP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTNP Q31, Q31, [X3, #5]", asm);
-        }
+        TestInst(LDTNP(Q0, Q1, _[X3, 5]), Arm64InstructionId.LDTNP_q_ldstnapair_offs, Arm64Mnemonic.LDTNP, "LDTNP Q0, Q1, [X3, #5]");
+        TestInst(LDTNP(Q31, Q1, _[X3, 5]), Arm64InstructionId.LDTNP_q_ldstnapair_offs, Arm64Mnemonic.LDTNP, "LDTNP Q31, Q1, [X3, #5]");
+        TestInst(LDTNP(Q0, Q31, _[X3, 5]), Arm64InstructionId.LDTNP_q_ldstnapair_offs, Arm64Mnemonic.LDTNP, "LDTNP Q0, Q31, [X3, #5]");
+        TestInst(LDTNP(Q31, Q31, _[X3, 5]), Arm64InstructionId.LDTNP_q_ldstnapair_offs, Arm64Mnemonic.LDTNP, "LDTNP Q31, Q31, [X3, #5]");
     }
 }

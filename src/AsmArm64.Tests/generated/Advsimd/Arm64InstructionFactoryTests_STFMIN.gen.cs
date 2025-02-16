@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STFMIN_Advsimd
+public class Arm64InstructionFactoryTests_STFMIN_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_16_0()
     {
-        
-        {
-            var raw = STFMIN(H0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN H0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMIN(H31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN H31, [X2]", asm);
-        }
+        TestInst(STFMIN(H0, _[X2]), Arm64InstructionId.STFMIN_16, Arm64Mnemonic.STFMIN, "STFMIN H0, [X2]");
+        TestInst(STFMIN(H31, _[X2]), Arm64InstructionId.STFMIN_16, Arm64Mnemonic.STFMIN, "STFMIN H31, [X2]");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_32_1()
     {
-        
-        {
-            var raw = STFMIN(S0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN S0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMIN(S31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN S31, [X2]", asm);
-        }
+        TestInst(STFMIN(S0, _[X2]), Arm64InstructionId.STFMIN_32, Arm64Mnemonic.STFMIN, "STFMIN S0, [X2]");
+        TestInst(STFMIN(S31, _[X2]), Arm64InstructionId.STFMIN_32, Arm64Mnemonic.STFMIN, "STFMIN S31, [X2]");
     }
     
     /// <summary>
@@ -76,23 +44,7 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_64_2()
     {
-        
-        {
-            var raw = STFMIN(D0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN D0, [X2]", asm);
-        }
-        
-        {
-            var raw = STFMIN(D31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STFMIN_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STFMIN D31, [X2]", asm);
-        }
+        TestInst(STFMIN(D0, _[X2]), Arm64InstructionId.STFMIN_64, Arm64Mnemonic.STFMIN, "STFMIN D0, [X2]");
+        TestInst(STFMIN(D31, _[X2]), Arm64InstructionId.STFMIN_64, Arm64Mnemonic.STFMIN, "STFMIN D31, [X2]");
     }
 }

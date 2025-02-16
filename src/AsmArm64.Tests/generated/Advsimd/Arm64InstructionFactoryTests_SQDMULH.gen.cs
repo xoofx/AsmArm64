@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
+public class Arm64InstructionFactoryTests_SQDMULH_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asisdelem_r_0()
     {
-        
-        {
-            var raw = SQDMULH(H1, H2, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H2, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H2, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H2, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H0, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H0, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H0, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H0, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H2, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H2, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H2, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H2, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H0, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H0, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H0, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H0, V0.H[1]", asm);
-        }
+        TestInst(SQDMULH(H1, H2, V2.H[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H2, V2.H[0]");
+        TestInst(SQDMULH(H31, H2, V2.H[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H2, V2.H[0]");
+        TestInst(SQDMULH(H1, H0, V2.H[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H0, V2.H[0]");
+        TestInst(SQDMULH(H31, H0, V2.H[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H0, V2.H[0]");
+        TestInst(SQDMULH(H1, H2, V0.H[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H2, V0.H[1]");
+        TestInst(SQDMULH(H31, H2, V0.H[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H2, V0.H[1]");
+        TestInst(SQDMULH(H1, H0, V0.H[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H0, V0.H[1]");
+        TestInst(SQDMULH(H31, H0, V0.H[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H0, V0.H[1]");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asisdelem_r_1()
     {
-        
-        {
-            var raw = SQDMULH(S1, S2, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S2, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S2, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S2, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S0, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S0, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S0, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S0, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S2, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S2, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S2, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S2, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S0, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S0, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S0, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S0, V0.S[1]", asm);
-        }
+        TestInst(SQDMULH(S1, S2, V2.S[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S2, V2.S[0]");
+        TestInst(SQDMULH(S31, S2, V2.S[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S2, V2.S[0]");
+        TestInst(SQDMULH(S1, S0, V2.S[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S0, V2.S[0]");
+        TestInst(SQDMULH(S31, S0, V2.S[0]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S0, V2.S[0]");
+        TestInst(SQDMULH(S1, S2, V0.S[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S2, V0.S[1]");
+        TestInst(SQDMULH(S31, S2, V0.S[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S2, V0.S[1]");
+        TestInst(SQDMULH(S1, S0, V0.S[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S0, V0.S[1]");
+        TestInst(SQDMULH(S31, S0, V0.S[1]), Arm64InstructionId.SQDMULH_asisdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S0, V0.S[1]");
     }
     
     /// <summary>
@@ -184,78 +56,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdelem_r_2()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V1.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V1.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V1.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V1.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V31.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V31.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V31.T_4H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V31.4H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V1.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V1.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V31.4H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V31.T_4H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V31.4H, V0.H[1]", asm);
-        }
+        TestInst(SQDMULH(V0.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V1.4H, V2.H[0]");
+        TestInst(SQDMULH(V30.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V1.4H, V2.H[0]");
+        TestInst(SQDMULH(V0.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V31.4H, V2.H[0]");
+        TestInst(SQDMULH(V30.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V31.4H, V2.H[0]");
+        TestInst(SQDMULH(V0.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V1.4H, V0.H[1]");
+        TestInst(SQDMULH(V30.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V1.4H, V0.H[1]");
+        TestInst(SQDMULH(V0.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V31.4H, V0.H[1]");
+        TestInst(SQDMULH(V30.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V31.4H, V0.H[1]");
     }
     
     /// <summary>
@@ -264,78 +72,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdelem_r_3()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V1.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V1.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V1.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V1.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V31.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V31.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V31.T_8H, V2.H[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V31.8H, V2.H[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V1.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V1.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V31.8H, V0.H[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V31.T_8H, V0.H[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V31.8H, V0.H[1]", asm);
-        }
+        TestInst(SQDMULH(V0.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V1.8H, V2.H[0]");
+        TestInst(SQDMULH(V30.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V1.8H, V2.H[0]");
+        TestInst(SQDMULH(V0.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V31.8H, V2.H[0]");
+        TestInst(SQDMULH(V30.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V31.8H, V2.H[0]");
+        TestInst(SQDMULH(V0.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V1.8H, V0.H[1]");
+        TestInst(SQDMULH(V30.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V1.8H, V0.H[1]");
+        TestInst(SQDMULH(V0.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V31.8H, V0.H[1]");
+        TestInst(SQDMULH(V30.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -344,78 +88,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdelem_r_4()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V1.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V1.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V31.T_2S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V31.2S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V1.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V1.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V31.2S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V31.T_2S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V31.2S, V0.S[1]", asm);
-        }
+        TestInst(SQDMULH(V0.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V1.2S, V2.S[0]");
+        TestInst(SQDMULH(V30.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V1.2S, V2.S[0]");
+        TestInst(SQDMULH(V0.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V31.2S, V2.S[0]");
+        TestInst(SQDMULH(V30.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V31.2S, V2.S[0]");
+        TestInst(SQDMULH(V0.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V1.2S, V0.S[1]");
+        TestInst(SQDMULH(V30.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V1.2S, V0.S[1]");
+        TestInst(SQDMULH(V0.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V31.2S, V0.S[1]");
+        TestInst(SQDMULH(V30.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V31.2S, V0.S[1]");
     }
     
     /// <summary>
@@ -424,78 +104,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdelem_r_5()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V1.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V1.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V31.T_4S, V2.S[0]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V31.4S, V2.S[0]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V31.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdelem_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V31.4S, V0.S[1]", asm);
-        }
+        TestInst(SQDMULH(V0.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V1.4S, V2.S[0]");
+        TestInst(SQDMULH(V30.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V1.4S, V2.S[0]");
+        TestInst(SQDMULH(V0.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V31.4S, V2.S[0]");
+        TestInst(SQDMULH(V30.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V31.4S, V2.S[0]");
+        TestInst(SQDMULH(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V1.4S, V0.S[1]");
+        TestInst(SQDMULH(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V1.4S, V0.S[1]");
+        TestInst(SQDMULH(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V31.4S, V0.S[1]");
+        TestInst(SQDMULH(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULH_asimdelem_r, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V31.4S, V0.S[1]");
     }
     
     /// <summary>
@@ -504,78 +120,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asisdsame_only_6()
     {
-        
-        {
-            var raw = SQDMULH(H1, H2, H3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H2, H3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H2, H3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H2, H3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H0, H3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H0, H3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H0, H3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H0, H3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H2, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H2, H1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H2, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H2, H1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H1, H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H1, H0, H1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(H31, H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH H31, H0, H1", asm);
-        }
+        TestInst(SQDMULH(H1, H2, H3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H2, H3");
+        TestInst(SQDMULH(H31, H2, H3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H2, H3");
+        TestInst(SQDMULH(H1, H0, H3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H0, H3");
+        TestInst(SQDMULH(H31, H0, H3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H0, H3");
+        TestInst(SQDMULH(H1, H2, H1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H2, H1");
+        TestInst(SQDMULH(H31, H2, H1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H2, H1");
+        TestInst(SQDMULH(H1, H0, H1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H1, H0, H1");
+        TestInst(SQDMULH(H31, H0, H1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH H31, H0, H1");
     }
     
     /// <summary>
@@ -584,78 +136,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asisdsame_only_7()
     {
-        
-        {
-            var raw = SQDMULH(S1, S2, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S2, S3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S2, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S2, S3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S0, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S0, S3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S0, S3);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S0, S3", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S2, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S2, S1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S2, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S2, S1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S1, S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S1, S0, S1", asm);
-        }
-        
-        {
-            var raw = SQDMULH(S31, S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asisdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH S31, S0, S1", asm);
-        }
+        TestInst(SQDMULH(S1, S2, S3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S2, S3");
+        TestInst(SQDMULH(S31, S2, S3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S2, S3");
+        TestInst(SQDMULH(S1, S0, S3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S0, S3");
+        TestInst(SQDMULH(S31, S0, S3), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S0, S3");
+        TestInst(SQDMULH(S1, S2, S1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S2, S1");
+        TestInst(SQDMULH(S31, S2, S1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S2, S1");
+        TestInst(SQDMULH(S1, S0, S1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S1, S0, S1");
+        TestInst(SQDMULH(S31, S0, S1), Arm64InstructionId.SQDMULH_asisdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH S31, S0, S1");
     }
     
     /// <summary>
@@ -664,78 +152,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdsame_only_8()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V1.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V1.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V31.T_4H, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V31.4H, V2.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V1.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V1.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4H, V31.4H, V0.4H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4H, V31.T_4H, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4H, V31.4H, V0.4H", asm);
-        }
+        TestInst(SQDMULH(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V1.4H, V2.4H");
+        TestInst(SQDMULH(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V1.4H, V2.4H");
+        TestInst(SQDMULH(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V31.4H, V2.4H");
+        TestInst(SQDMULH(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V31.4H, V2.4H");
+        TestInst(SQDMULH(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V1.4H, V0.4H");
+        TestInst(SQDMULH(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V1.4H, V0.4H");
+        TestInst(SQDMULH(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4H, V31.4H, V0.4H");
+        TestInst(SQDMULH(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -744,78 +168,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdsame_only_9()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V1.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V1.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V31.T_8H, V2.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V31.8H, V2.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V1.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V1.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.8H, V31.8H, V0.8H", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_8H, V31.T_8H, V0.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.8H, V31.8H, V0.8H", asm);
-        }
+        TestInst(SQDMULH(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V1.8H, V2.8H");
+        TestInst(SQDMULH(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V1.8H, V2.8H");
+        TestInst(SQDMULH(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V31.8H, V2.8H");
+        TestInst(SQDMULH(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V31.8H, V2.8H");
+        TestInst(SQDMULH(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V1.8H, V0.8H");
+        TestInst(SQDMULH(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V1.8H, V0.8H");
+        TestInst(SQDMULH(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.8H, V31.8H, V0.8H");
+        TestInst(SQDMULH(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -824,78 +184,14 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdsame_only_10()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V1.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V1.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V31.T_2S, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V31.2S, V2.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V1.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V1.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.2S, V31.2S, V0.2S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_2S, V31.T_2S, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.2S, V31.2S, V0.2S", asm);
-        }
+        TestInst(SQDMULH(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V1.2S, V2.2S");
+        TestInst(SQDMULH(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V1.2S, V2.2S");
+        TestInst(SQDMULH(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V31.2S, V2.2S");
+        TestInst(SQDMULH(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V31.2S, V2.2S");
+        TestInst(SQDMULH(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V1.2S, V0.2S");
+        TestInst(SQDMULH(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V1.2S, V0.2S");
+        TestInst(SQDMULH(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.2S, V31.2S, V0.2S");
+        TestInst(SQDMULH(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -904,77 +200,13 @@ public class Arm64InstructionFactoryTests_SQDMULH_Advsimd
     [TestMethod]
     public void Test_SQDMULH_asimdsame_only_11()
     {
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V1.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V1.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V31.T_4S, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V31.4S, V2.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V1.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V1.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V0.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V0.4S, V31.4S, V0.4S", asm);
-        }
-        
-        {
-            var raw = SQDMULH(V30.T_4S, V31.T_4S, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SQDMULH_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SQDMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SQDMULH V30.4S, V31.4S, V0.4S", asm);
-        }
+        TestInst(SQDMULH(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V1.4S, V2.4S");
+        TestInst(SQDMULH(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V1.4S, V2.4S");
+        TestInst(SQDMULH(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V31.4S, V2.4S");
+        TestInst(SQDMULH(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V31.4S, V2.4S");
+        TestInst(SQDMULH(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V1.4S, V0.4S");
+        TestInst(SQDMULH(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V1.4S, V0.4S");
+        TestInst(SQDMULH(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V0.4S, V31.4S, V0.4S");
+        TestInst(SQDMULH(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULH_asimdsame_only, Arm64Mnemonic.SQDMULH, "SQDMULH V30.4S, V31.4S, V0.4S");
     }
 }

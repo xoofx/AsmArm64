@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STBFMINL_Advsimd
+public class Arm64InstructionFactoryTests_STBFMINL_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_STBFMINL_Advsimd
     [TestMethod]
     public void Test_STBFMINL_16_0()
     {
-        
-        {
-            var raw = STBFMINL(H0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STBFMINL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STBFMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STBFMINL H0, [X2]", asm);
-        }
-        
-        {
-            var raw = STBFMINL(H31, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STBFMINL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STBFMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STBFMINL H31, [X2]", asm);
-        }
+        TestInst(STBFMINL(H0, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H0, [X2]");
+        TestInst(STBFMINL(H31, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H31, [X2]");
     }
 }

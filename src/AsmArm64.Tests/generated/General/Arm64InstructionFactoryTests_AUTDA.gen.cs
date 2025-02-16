@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTDA_General
+public class Arm64InstructionFactoryTests_AUTDA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_AUTDA_General
     [TestMethod]
     public void Test_AUTDA_64p_dp_1src_0()
     {
-        
-        {
-            var raw = AUTDA(X0, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X0, X2", asm);
-        }
-        
-        {
-            var raw = AUTDA(X15, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X15, X2", asm);
-        }
-        
-        {
-            var raw = AUTDA(XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA XZR, X2", asm);
-        }
-        
-        {
-            var raw = AUTDA(X0, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X0, X18", asm);
-        }
-        
-        {
-            var raw = AUTDA(X15, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X15, X18", asm);
-        }
-        
-        {
-            var raw = AUTDA(XZR, X18);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA XZR, X18", asm);
-        }
-        
-        {
-            var raw = AUTDA(X0, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X0, SP", asm);
-        }
-        
-        {
-            var raw = AUTDA(X15, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA X15, SP", asm);
-        }
-        
-        {
-            var raw = AUTDA(XZR, SP);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTDA_64p_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTDA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTDA XZR, SP", asm);
-        }
+        TestInst(AUTDA(X0, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X2");
+        TestInst(AUTDA(X15, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X2");
+        TestInst(AUTDA(XZR, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X2");
+        TestInst(AUTDA(X0, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X18");
+        TestInst(AUTDA(X15, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X18");
+        TestInst(AUTDA(XZR, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X18");
+        TestInst(AUTDA(X0, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, SP");
+        TestInst(AUTDA(X15, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, SP");
+        TestInst(AUTDA(XZR, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, SP");
     }
 }

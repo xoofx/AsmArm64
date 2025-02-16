@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CLREX_System
+public class Arm64InstructionFactoryTests_CLREX_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_CLREX_System
     [TestMethod]
     public void Test_CLREX_bn_barriers_0()
     {
-        
-        {
-            var raw = CLREX(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLREX_bn_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLREX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLREX #5", asm);
-        }
+        TestInst(CLREX(5), Arm64InstructionId.CLREX_bn_barriers, Arm64Mnemonic.CLREX, "CLREX #5");
     }
 }

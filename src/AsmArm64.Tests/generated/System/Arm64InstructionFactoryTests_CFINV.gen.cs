@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CFINV_System
+public class Arm64InstructionFactoryTests_CFINV_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_CFINV_System
     [TestMethod]
     public void Test_CFINV_m_pstate_0()
     {
-        
-        {
-            var raw = CFINV();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CFINV_m_pstate, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CFINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CFINV", asm);
-        }
+        TestInst(CFINV(), Arm64InstructionId.CFINV_m_pstate, Arm64Mnemonic.CFINV, "CFINV");
     }
 }

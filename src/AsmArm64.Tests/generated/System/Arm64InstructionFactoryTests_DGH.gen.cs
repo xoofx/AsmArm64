@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DGH_System
+public class Arm64InstructionFactoryTests_DGH_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_DGH_System
     [TestMethod]
     public void Test_DGH_hi_hints_0()
     {
-        
-        {
-            var raw = DGH();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DGH_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DGH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DGH", asm);
-        }
+        TestInst(DGH(), Arm64InstructionId.DGH_hi_hints, Arm64Mnemonic.DGH, "DGH");
     }
 }

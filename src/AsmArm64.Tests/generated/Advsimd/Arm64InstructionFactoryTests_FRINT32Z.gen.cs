@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FRINT32Z_Advsimd
+public class Arm64InstructionFactoryTests_FRINT32Z_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FRINT32Z_Advsimd
     [TestMethod]
     public void Test_FRINT32Z_asimdmisc_r_0()
     {
-        
-        {
-            var raw = FRINT32Z(V0.T_2S, V1.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.2S, V1.2S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_2S, V1.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.2S, V1.2S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V0.T_2S, V31.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.2S, V31.2S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_2S, V31.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.2S, V31.2S", asm);
-        }
+        TestInst(FRINT32Z(V0.T_2S, V1.T_2S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.2S, V1.2S");
+        TestInst(FRINT32Z(V30.T_2S, V1.T_2S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.2S, V1.2S");
+        TestInst(FRINT32Z(V0.T_2S, V31.T_2S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.2S, V31.2S");
+        TestInst(FRINT32Z(V30.T_2S, V31.T_2S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FRINT32Z_Advsimd
     [TestMethod]
     public void Test_FRINT32Z_asimdmisc_r_1()
     {
-        
-        {
-            var raw = FRINT32Z(V0.T_4S, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.4S, V1.4S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_4S, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.4S, V1.4S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V0.T_4S, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.4S, V31.4S", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_4S, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.4S, V31.4S", asm);
-        }
+        TestInst(FRINT32Z(V0.T_4S, V1.T_4S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.4S, V1.4S");
+        TestInst(FRINT32Z(V30.T_4S, V1.T_4S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.4S, V1.4S");
+        TestInst(FRINT32Z(V0.T_4S, V31.T_4S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.4S, V31.4S");
+        TestInst(FRINT32Z(V30.T_4S, V31.T_4S), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.4S, V31.4S");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FRINT32Z_Advsimd
     [TestMethod]
     public void Test_FRINT32Z_asimdmisc_r_2()
     {
-        
-        {
-            var raw = FRINT32Z(V0.T_2D, V1.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.2D, V1.2D", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_2D, V1.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.2D, V1.2D", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V0.T_2D, V31.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V0.2D, V31.2D", asm);
-        }
-        
-        {
-            var raw = FRINT32Z(V30.T_2D, V31.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINT32Z_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINT32Z, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINT32Z V30.2D, V31.2D", asm);
-        }
+        TestInst(FRINT32Z(V0.T_2D, V1.T_2D), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.2D, V1.2D");
+        TestInst(FRINT32Z(V30.T_2D, V1.T_2D), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.2D, V1.2D");
+        TestInst(FRINT32Z(V0.T_2D, V31.T_2D), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V0.2D, V31.2D");
+        TestInst(FRINT32Z(V30.T_2D, V31.T_2D), Arm64InstructionId.FRINT32Z_asimdmisc_r, Arm64Mnemonic.FRINT32Z, "FRINT32Z V30.2D, V31.2D");
     }
 }

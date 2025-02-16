@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RCWSCASAL_General
+public class Arm64InstructionFactoryTests_RCWSCASAL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_RCWSCASAL_General
     [TestMethod]
     public void Test_RCWSCASAL_c64_rcwcomswap_0()
     {
-        
-        {
-            var raw = RCWSCASAL(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = RCWSCASAL(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RCWSCASAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RCWSCASAL XZR, XZR, [X3]", asm);
-        }
+        TestInst(RCWSCASAL(X0, X1, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X0, X1, [X3]");
+        TestInst(RCWSCASAL(X15, X1, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X15, X1, [X3]");
+        TestInst(RCWSCASAL(XZR, X1, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL XZR, X1, [X3]");
+        TestInst(RCWSCASAL(X0, X16, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X0, X16, [X3]");
+        TestInst(RCWSCASAL(X15, X16, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X15, X16, [X3]");
+        TestInst(RCWSCASAL(XZR, X16, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL XZR, X16, [X3]");
+        TestInst(RCWSCASAL(X0, XZR, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X0, XZR, [X3]");
+        TestInst(RCWSCASAL(X15, XZR, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL X15, XZR, [X3]");
+        TestInst(RCWSCASAL(XZR, XZR, _[X3]), Arm64InstructionId.RCWSCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWSCASAL, "RCWSCASAL XZR, XZR, [X3]");
     }
 }

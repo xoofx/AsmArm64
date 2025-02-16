@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDSETPA_General
+public class Arm64InstructionFactoryTests_LDSETPA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_LDSETPA_General
     [TestMethod]
     public void Test_LDSETPA_128_memop_128_0()
     {
-        
-        {
-            var raw = LDSETPA(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSETPA(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSETPA_128_memop_128, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSETPA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSETPA XZR, XZR, [X3]", asm);
-        }
+        TestInst(LDSETPA(X0, X1, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X0, X1, [X3]");
+        TestInst(LDSETPA(X15, X1, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X15, X1, [X3]");
+        TestInst(LDSETPA(XZR, X1, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA XZR, X1, [X3]");
+        TestInst(LDSETPA(X0, X16, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X0, X16, [X3]");
+        TestInst(LDSETPA(X15, X16, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X15, X16, [X3]");
+        TestInst(LDSETPA(XZR, X16, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA XZR, X16, [X3]");
+        TestInst(LDSETPA(X0, XZR, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X0, XZR, [X3]");
+        TestInst(LDSETPA(X15, XZR, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA X15, XZR, [X3]");
+        TestInst(LDSETPA(XZR, XZR, _[X3]), Arm64InstructionId.LDSETPA_128_memop_128, Arm64Mnemonic.LDSETPA, "LDSETPA XZR, XZR, [X3]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_DRPS_System
+public class Arm64InstructionFactoryTests_DRPS_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_DRPS_System
     [TestMethod]
     public void Test_DRPS_64e_branch_reg_0()
     {
-        
-        {
-            var raw = DRPS();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.DRPS_64e_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.DRPS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("DRPS", asm);
-        }
+        TestInst(DRPS(), Arm64InstructionId.DRPS_64e_branch_reg, Arm64Mnemonic.DRPS, "DRPS");
     }
 }

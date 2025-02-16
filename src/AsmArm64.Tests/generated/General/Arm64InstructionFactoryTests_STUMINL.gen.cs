@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STUMINL_General
+public class Arm64InstructionFactoryTests_STUMINL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STUMINL_General
     [TestMethod]
     public void Test_STUMINL_lduminl_32_memop_0()
     {
-        
-        {
-            var raw = STUMINL(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINL(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINL(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL WZR, [X2]", asm);
-        }
+        TestInst(STUMINL(W0, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W0, [X2]");
+        TestInst(STUMINL(W15, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W15, [X2]");
+        TestInst(STUMINL(WZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STUMINL_General
     [TestMethod]
     public void Test_STUMINL_lduminl_64_memop_1()
     {
-        
-        {
-            var raw = STUMINL(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINL(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STUMINL(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STUMINL_lduminl_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STUMINL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STUMINL XZR, [X2]", asm);
-        }
+        TestInst(STUMINL(X0, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X0, [X2]");
+        TestInst(STUMINL(X15, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X15, [X2]");
+        TestInst(STUMINL(XZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL XZR, [X2]");
     }
 }

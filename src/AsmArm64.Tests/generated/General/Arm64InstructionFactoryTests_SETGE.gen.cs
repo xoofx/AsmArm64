@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SETGE_General
+public class Arm64InstructionFactoryTests_SETGE_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_SETGE_General
     [TestMethod]
     public void Test_SETGE_set_memcms_0()
     {
-        
-        {
-            var raw = SETGE(_[X1].Pre, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X1, X2", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X16, X2", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X1, X17", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X16, X17", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SETGE(_[X1].Pre, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SETGE_set_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SETGE, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SETGE [X1]!, XZR, XZR", asm);
-        }
+        TestInst(SETGE(_[X1].Pre, X1, X2), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X1, X2");
+        TestInst(SETGE(_[X1].Pre, X16, X2), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X16, X2");
+        TestInst(SETGE(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, XZR, X2");
+        TestInst(SETGE(_[X1].Pre, X1, X17), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X1, X17");
+        TestInst(SETGE(_[X1].Pre, X16, X17), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X16, X17");
+        TestInst(SETGE(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, XZR, X17");
+        TestInst(SETGE(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X1, XZR");
+        TestInst(SETGE(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, X16, XZR");
+        TestInst(SETGE(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGE_set_memcms, Arm64Mnemonic.SETGE, "SETGE [X1]!, XZR, XZR");
     }
 }

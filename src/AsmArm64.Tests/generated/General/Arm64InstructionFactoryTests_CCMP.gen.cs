@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CCMP_General
+public class Arm64InstructionFactoryTests_CCMP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,60 +24,12 @@ public class Arm64InstructionFactoryTests_CCMP_General
     [TestMethod]
     public void Test_CCMP_32_condcmp_imm_0()
     {
-        
-        {
-            var raw = CCMP(W0, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, #5, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, #5, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, #5, #5, HS", asm);
-        }
+        TestInst(CCMP(W0, 5, 5, NE), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP W0, #5, #5, NE");
+        TestInst(CCMP(W15, 5, 5, NE), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP W15, #5, #5, NE");
+        TestInst(CCMP(WZR, 5, 5, NE), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP WZR, #5, #5, NE");
+        TestInst(CCMP(W0, 5, 5, HS), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP W0, #5, #5, HS");
+        TestInst(CCMP(W15, 5, 5, HS), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP W15, #5, #5, HS");
+        TestInst(CCMP(WZR, 5, 5, HS), Arm64InstructionId.CCMP_32_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP WZR, #5, #5, HS");
     }
     
     /// <summary>
@@ -86,60 +38,12 @@ public class Arm64InstructionFactoryTests_CCMP_General
     [TestMethod]
     public void Test_CCMP_64_condcmp_imm_1()
     {
-        
-        {
-            var raw = CCMP(X0, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, 5, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, #5, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, #5, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, #5, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, 5, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, #5, #5, HS", asm);
-        }
+        TestInst(CCMP(X0, 5, 5, NE), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP X0, #5, #5, NE");
+        TestInst(CCMP(X15, 5, 5, NE), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP X15, #5, #5, NE");
+        TestInst(CCMP(XZR, 5, 5, NE), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP XZR, #5, #5, NE");
+        TestInst(CCMP(X0, 5, 5, HS), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP X0, #5, #5, HS");
+        TestInst(CCMP(X15, 5, 5, HS), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP X15, #5, #5, HS");
+        TestInst(CCMP(XZR, 5, 5, HS), Arm64InstructionId.CCMP_64_condcmp_imm, Arm64Mnemonic.CCMP, "CCMP XZR, #5, #5, HS");
     }
     
     /// <summary>
@@ -148,168 +52,24 @@ public class Arm64InstructionFactoryTests_CCMP_General
     [TestMethod]
     public void Test_CCMP_32_condcmp_reg_2()
     {
-        
-        {
-            var raw = CCMP(W0, W1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, W1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, W1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, W1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, W1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, W1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, W16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, W16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, W16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, W16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, W16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, W16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, WZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, WZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, WZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, WZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, WZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, WZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, W1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, W1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, W1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, W1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, W1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, W1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, W16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, W16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, W16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, W16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, W16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, W16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W0, WZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W0, WZR, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(W15, WZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP W15, WZR, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(WZR, WZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_32_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP WZR, WZR, #5, HS", asm);
-        }
+        TestInst(CCMP(W0, W1, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, W1, #5, NE");
+        TestInst(CCMP(W15, W1, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, W1, #5, NE");
+        TestInst(CCMP(WZR, W1, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, W1, #5, NE");
+        TestInst(CCMP(W0, W16, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, W16, #5, NE");
+        TestInst(CCMP(W15, W16, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, W16, #5, NE");
+        TestInst(CCMP(WZR, W16, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, W16, #5, NE");
+        TestInst(CCMP(W0, WZR, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, WZR, #5, NE");
+        TestInst(CCMP(W15, WZR, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, WZR, #5, NE");
+        TestInst(CCMP(WZR, WZR, 5, NE), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, WZR, #5, NE");
+        TestInst(CCMP(W0, W1, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, W1, #5, HS");
+        TestInst(CCMP(W15, W1, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, W1, #5, HS");
+        TestInst(CCMP(WZR, W1, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, W1, #5, HS");
+        TestInst(CCMP(W0, W16, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, W16, #5, HS");
+        TestInst(CCMP(W15, W16, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, W16, #5, HS");
+        TestInst(CCMP(WZR, W16, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, W16, #5, HS");
+        TestInst(CCMP(W0, WZR, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W0, WZR, #5, HS");
+        TestInst(CCMP(W15, WZR, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP W15, WZR, #5, HS");
+        TestInst(CCMP(WZR, WZR, 5, HS), Arm64InstructionId.CCMP_32_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP WZR, WZR, #5, HS");
     }
     
     /// <summary>
@@ -318,167 +78,23 @@ public class Arm64InstructionFactoryTests_CCMP_General
     [TestMethod]
     public void Test_CCMP_64_condcmp_reg_3()
     {
-        
-        {
-            var raw = CCMP(X0, X1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, X1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, X1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, X1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, X1, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, X1, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, X16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, X16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, X16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, X16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, X16, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, X16, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, XZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, XZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, XZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, XZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, XZR, 5, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, XZR, #5, NE", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, X1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, X1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, X1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, X1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, X1, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, X1, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, X16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, X16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, X16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, X16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, X16, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, X16, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X0, XZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X0, XZR, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(X15, XZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP X15, XZR, #5, HS", asm);
-        }
-        
-        {
-            var raw = CCMP(XZR, XZR, 5, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CCMP_64_condcmp_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CCMP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CCMP XZR, XZR, #5, HS", asm);
-        }
+        TestInst(CCMP(X0, X1, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, X1, #5, NE");
+        TestInst(CCMP(X15, X1, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, X1, #5, NE");
+        TestInst(CCMP(XZR, X1, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, X1, #5, NE");
+        TestInst(CCMP(X0, X16, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, X16, #5, NE");
+        TestInst(CCMP(X15, X16, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, X16, #5, NE");
+        TestInst(CCMP(XZR, X16, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, X16, #5, NE");
+        TestInst(CCMP(X0, XZR, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, XZR, #5, NE");
+        TestInst(CCMP(X15, XZR, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, XZR, #5, NE");
+        TestInst(CCMP(XZR, XZR, 5, NE), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, XZR, #5, NE");
+        TestInst(CCMP(X0, X1, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, X1, #5, HS");
+        TestInst(CCMP(X15, X1, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, X1, #5, HS");
+        TestInst(CCMP(XZR, X1, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, X1, #5, HS");
+        TestInst(CCMP(X0, X16, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, X16, #5, HS");
+        TestInst(CCMP(X15, X16, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, X16, #5, HS");
+        TestInst(CCMP(XZR, X16, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, X16, #5, HS");
+        TestInst(CCMP(X0, XZR, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X0, XZR, #5, HS");
+        TestInst(CCMP(X15, XZR, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP X15, XZR, #5, HS");
+        TestInst(CCMP(XZR, XZR, 5, HS), Arm64InstructionId.CCMP_64_condcmp_reg, Arm64Mnemonic.CCMP, "CCMP XZR, XZR, #5, HS");
     }
 }

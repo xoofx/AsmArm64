@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd
+public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd
     [TestMethod]
     public void Test_LDFMINAL_16_0()
     {
-        
-        {
-            var raw = LDFMINAL(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL H31, H31, [X3]", asm);
-        }
+        TestInst(LDFMINAL(H0, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H1, [X3]");
+        TestInst(LDFMINAL(H31, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H1, [X3]");
+        TestInst(LDFMINAL(H0, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H31, [X3]");
+        TestInst(LDFMINAL(H31, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H31, [X3]");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd
     [TestMethod]
     public void Test_LDFMINAL_32_1()
     {
-        
-        {
-            var raw = LDFMINAL(S0, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL S0, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(S31, S1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL S31, S1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(S0, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL S0, S31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(S31, S31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_32, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL S31, S31, [X3]", asm);
-        }
+        TestInst(LDFMINAL(S0, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S1, [X3]");
+        TestInst(LDFMINAL(S31, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S1, [X3]");
+        TestInst(LDFMINAL(S0, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S31, [X3]");
+        TestInst(LDFMINAL(S31, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S31, [X3]");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd
     [TestMethod]
     public void Test_LDFMINAL_64_2()
     {
-        
-        {
-            var raw = LDFMINAL(D0, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL D0, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(D31, D1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL D31, D1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(D0, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL D0, D31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDFMINAL(D31, D31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDFMINAL_64, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDFMINAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDFMINAL D31, D31, [X3]", asm);
-        }
+        TestInst(LDFMINAL(D0, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D1, [X3]");
+        TestInst(LDFMINAL(D31, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D1, [X3]");
+        TestInst(LDFMINAL(D0, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D31, [X3]");
+        TestInst(LDFMINAL(D31, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D31, [X3]");
     }
 }

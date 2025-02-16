@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ISB_System
+public class Arm64InstructionFactoryTests_ISB_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_ISB_System
     [TestMethod]
     public void Test_ISB_bi_barriers_0()
     {
-        
-        {
-            var raw = ISB(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ISB_bi_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ISB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ISB #5", asm);
-        }
+        TestInst(ISB(5), Arm64InstructionId.ISB_bi_barriers, Arm64Mnemonic.ISB, "ISB #5");
     }
 }

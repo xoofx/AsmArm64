@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GCSSS2_System
+public class Arm64InstructionFactoryTests_GCSSS2_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_GCSSS2_System
     [TestMethod]
     public void Test_GCSSS2_sysl_rc_systeminstrs_0()
     {
-        
-        {
-            var raw = GCSSS2(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS2 X0", asm);
-        }
-        
-        {
-            var raw = GCSSS2(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS2 X15", asm);
-        }
-        
-        {
-            var raw = GCSSS2(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSSS2, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSSS2 XZR", asm);
-        }
+        TestInst(GCSSS2(X0), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X0");
+        TestInst(GCSSS2(X15), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X15");
+        TestInst(GCSSS2(XZR), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 XZR");
     }
 }

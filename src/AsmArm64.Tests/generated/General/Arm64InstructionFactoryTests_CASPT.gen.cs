@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CASPT_General
+public class Arm64InstructionFactoryTests_CASPT_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CASPT_General
     [TestMethod]
     public void Test_CASPT_cp64_comswappr_unpriv_0()
     {
-        
-        {
-            var raw = CASPT(X0, X1, X2, X3, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X0, X1, X2, X3, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(X15, X16, X2, X3, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X15, X16, X2, X3, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(XZR, X0, X2, X3, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT XZR, X0, X2, X3, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(X0, X1, X17, X18, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X0, X1, X17, X18, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(X15, X16, X17, X18, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X15, X16, X17, X18, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(XZR, X0, X17, X18, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT XZR, X0, X17, X18, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(X0, X1, XZR, X0, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X0, X1, XZR, X0, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(X15, X16, XZR, X0, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT X15, X16, XZR, X0, [X5]", asm);
-        }
-        
-        {
-            var raw = CASPT(XZR, X0, XZR, X0, _[X5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASPT_cp64_comswappr_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASPT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASPT XZR, X0, XZR, X0, [X5]", asm);
-        }
+        TestInst(CASPT(X0, X1, X2, X3, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X0, X1, X2, X3, [X5]");
+        TestInst(CASPT(X15, X16, X2, X3, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X15, X16, X2, X3, [X5]");
+        TestInst(CASPT(XZR, X0, X2, X3, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT XZR, X0, X2, X3, [X5]");
+        TestInst(CASPT(X0, X1, X17, X18, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X0, X1, X17, X18, [X5]");
+        TestInst(CASPT(X15, X16, X17, X18, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X15, X16, X17, X18, [X5]");
+        TestInst(CASPT(XZR, X0, X17, X18, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT XZR, X0, X17, X18, [X5]");
+        TestInst(CASPT(X0, X1, XZR, X0, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X0, X1, XZR, X0, [X5]");
+        TestInst(CASPT(X15, X16, XZR, X0, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT X15, X16, XZR, X0, [X5]");
+        TestInst(CASPT(XZR, X0, XZR, X0, _[X5]), Arm64InstructionId.CASPT_cp64_comswappr_unpriv, Arm64Mnemonic.CASPT, "CASPT XZR, X0, XZR, X0, [X5]");
     }
 }

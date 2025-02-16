@@ -29,7 +29,6 @@ partial class Arm64Processor
             
             using var w = GetWriter(Path.Combine(instClass, $"Arm64InstructionFactoryTests_{pair.Key}.gen.cs"), isTest: true);
 
-            w.WriteLine("using System.Runtime.CompilerServices;");
             w.WriteLine("using static AsmArm64.Arm64InstructionFactory;");
             w.WriteLine("using static AsmArm64.Arm64Factory;");
 
@@ -37,7 +36,7 @@ partial class Arm64Processor
 
             w.WriteLine();
             w.WriteLine("[TestClass]");
-            w.WriteLine($"public class Arm64InstructionFactoryTests_{pair.Key}_{instClass}");
+            w.WriteLine($"public class Arm64InstructionFactoryTests_{pair.Key}_{instClass} : Arm64InstructionFactoryTests");
             w.OpenBraceBlock();
 
             for (var i = 0; i < pair.Value.Count; i++)
@@ -115,8 +114,6 @@ partial class Arm64Processor
             }
             
             var instruction = instructionVariation.Instruction;
-            w.WriteLine();
-            w.OpenBraceBlock();
             //     var raw = ADD(X0, X1, X2);
 
             for (var argIndex = 0; argIndex < testArguments.Count; argIndex++)
@@ -128,23 +125,19 @@ partial class Arm64Processor
             FindBestAlias(instructionVariation, testArguments, out var preferredInstruction, out var expectedAsm);
 
             var cSharpMnemonic = GetInstructionMnemonic(instruction);
-            w.WriteLine($"var raw = {cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
-            w.WriteLine("var instruction = Arm64Instruction.Decode(raw);");
+            w.Write($"TestInst({cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))})");
             
             // Special case for LSL instructions that are folded into a single instruction
             if (instructionVariation.ElseVariation is not null && testArguments.OfType<MemoryTestArgument>().Any(x => x.Extend == "LSL"))
             {
-                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{instructionVariation.ElseVariation.Instruction.Id}, instruction.Id);");
+                w.Write($", Arm64InstructionId.{instructionVariation.ElseVariation.Instruction.Id}");
             }
             else
             {
-                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{preferredInstruction.Id}, instruction.Id);");
+                w.Write($", Arm64InstructionId.{preferredInstruction.Id}");
             }
-            w.WriteLine($"Assert.AreEqual(Arm64Mnemonic.{preferredInstruction.Mnemonic}, instruction.Mnemonic);");
-            w.WriteLine("var asm = instruction.ToString(\"H\", null);");
-            w.WriteLine($"Assert.AreEqual(\"{expectedAsm}\", asm);");
-
-            w.CloseBraceBlock();
+            w.Write($", Arm64Mnemonic.{preferredInstruction.Mnemonic}");
+            w.WriteLine($", \"{expectedAsm}\");");
         }
     }
 

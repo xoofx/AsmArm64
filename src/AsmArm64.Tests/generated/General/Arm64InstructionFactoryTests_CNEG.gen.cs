@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CNEG_General
+public class Arm64InstructionFactoryTests_CNEG_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,168 +24,24 @@ public class Arm64InstructionFactoryTests_CNEG_General
     [TestMethod]
     public void Test_CNEG_csneg_32_condsel_0()
     {
-        
-        {
-            var raw = CNEG(W0, W1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, W1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, W1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, W1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, W1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, W1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W0, W16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, W16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, W16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, W16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, W16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, W16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W0, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, WZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, WZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(W0, W1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, W1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, W1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, W1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, W1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, W1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(W0, W16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, W16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, W16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, W16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, W16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, W16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(W0, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W0, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(W15, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG W15, WZR, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(WZR, WZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_32_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG WZR, WZR, HS", asm);
-        }
+        TestInst(CNEG(W0, W1, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, W1, NE");
+        TestInst(CNEG(W15, W1, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, W1, NE");
+        TestInst(CNEG(WZR, W1, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, W1, NE");
+        TestInst(CNEG(W0, W16, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, W16, NE");
+        TestInst(CNEG(W15, W16, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, W16, NE");
+        TestInst(CNEG(WZR, W16, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, W16, NE");
+        TestInst(CNEG(W0, WZR, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, WZR, NE");
+        TestInst(CNEG(W15, WZR, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, WZR, NE");
+        TestInst(CNEG(WZR, WZR, NE), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, WZR, NE");
+        TestInst(CNEG(W0, W1, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, W1, HS");
+        TestInst(CNEG(W15, W1, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, W1, HS");
+        TestInst(CNEG(WZR, W1, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, W1, HS");
+        TestInst(CNEG(W0, W16, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, W16, HS");
+        TestInst(CNEG(W15, W16, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, W16, HS");
+        TestInst(CNEG(WZR, W16, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, W16, HS");
+        TestInst(CNEG(W0, WZR, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W0, WZR, HS");
+        TestInst(CNEG(W15, WZR, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG W15, WZR, HS");
+        TestInst(CNEG(WZR, WZR, HS), Arm64InstructionId.CNEG_csneg_32_condsel, Arm64Mnemonic.CNEG, "CNEG WZR, WZR, HS");
     }
     
     /// <summary>
@@ -194,167 +50,23 @@ public class Arm64InstructionFactoryTests_CNEG_General
     [TestMethod]
     public void Test_CNEG_csneg_64_condsel_1()
     {
-        
-        {
-            var raw = CNEG(X0, X1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, X1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, X1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, X1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, X1, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, X1, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X0, X16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, X16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, X16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, X16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, X16, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, X16, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X0, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, XZR, NE);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, XZR, NE", asm);
-        }
-        
-        {
-            var raw = CNEG(X0, X1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, X1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, X1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, X1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, X1, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, X1, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(X0, X16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, X16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, X16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, X16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, X16, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, X16, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(X0, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X0, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(X15, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG X15, XZR, HS", asm);
-        }
-        
-        {
-            var raw = CNEG(XZR, XZR, HS);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CNEG_csneg_64_condsel, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CNEG XZR, XZR, HS", asm);
-        }
+        TestInst(CNEG(X0, X1, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, X1, NE");
+        TestInst(CNEG(X15, X1, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, X1, NE");
+        TestInst(CNEG(XZR, X1, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, X1, NE");
+        TestInst(CNEG(X0, X16, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, X16, NE");
+        TestInst(CNEG(X15, X16, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, X16, NE");
+        TestInst(CNEG(XZR, X16, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, X16, NE");
+        TestInst(CNEG(X0, XZR, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, XZR, NE");
+        TestInst(CNEG(X15, XZR, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, XZR, NE");
+        TestInst(CNEG(XZR, XZR, NE), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, XZR, NE");
+        TestInst(CNEG(X0, X1, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, X1, HS");
+        TestInst(CNEG(X15, X1, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, X1, HS");
+        TestInst(CNEG(XZR, X1, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, X1, HS");
+        TestInst(CNEG(X0, X16, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, X16, HS");
+        TestInst(CNEG(X15, X16, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, X16, HS");
+        TestInst(CNEG(XZR, X16, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, X16, HS");
+        TestInst(CNEG(X0, XZR, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X0, XZR, HS");
+        TestInst(CNEG(X15, XZR, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG X15, XZR, HS");
+        TestInst(CNEG(XZR, XZR, HS), Arm64InstructionId.CNEG_csneg_64_condsel, Arm64Mnemonic.CNEG, "CNEG XZR, XZR, HS");
     }
 }

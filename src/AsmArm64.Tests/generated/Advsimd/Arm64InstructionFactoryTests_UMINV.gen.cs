@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_UMINV_Advsimd
+public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd
     [TestMethod]
     public void Test_UMINV_asimdall_only_0()
     {
-        
-        {
-            var raw = UMINV(B1, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B1, V1.8B", asm);
-        }
-        
-        {
-            var raw = UMINV(B31, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B31, V1.8B", asm);
-        }
-        
-        {
-            var raw = UMINV(B1, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B1, V31.8B", asm);
-        }
-        
-        {
-            var raw = UMINV(B31, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B31, V31.8B", asm);
-        }
+        TestInst(UMINV(B1, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.8B");
+        TestInst(UMINV(B31, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.8B");
+        TestInst(UMINV(B1, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.8B");
+        TestInst(UMINV(B31, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.8B");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd
     [TestMethod]
     public void Test_UMINV_asimdall_only_1()
     {
-        
-        {
-            var raw = UMINV(B1, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B1, V1.16B", asm);
-        }
-        
-        {
-            var raw = UMINV(B31, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B31, V1.16B", asm);
-        }
-        
-        {
-            var raw = UMINV(B1, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B1, V31.16B", asm);
-        }
-        
-        {
-            var raw = UMINV(B31, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV B31, V31.16B", asm);
-        }
+        TestInst(UMINV(B1, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.16B");
+        TestInst(UMINV(B31, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.16B");
+        TestInst(UMINV(B1, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.16B");
+        TestInst(UMINV(B31, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.16B");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd
     [TestMethod]
     public void Test_UMINV_asimdall_only_2()
     {
-        
-        {
-            var raw = UMINV(H1, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H1, V1.4H", asm);
-        }
-        
-        {
-            var raw = UMINV(H31, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H31, V1.4H", asm);
-        }
-        
-        {
-            var raw = UMINV(H1, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H1, V31.4H", asm);
-        }
-        
-        {
-            var raw = UMINV(H31, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H31, V31.4H", asm);
-        }
+        TestInst(UMINV(H1, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.4H");
+        TestInst(UMINV(H31, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.4H");
+        TestInst(UMINV(H1, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.4H");
+        TestInst(UMINV(H31, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.4H");
     }
     
     /// <summary>
@@ -156,42 +60,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd
     [TestMethod]
     public void Test_UMINV_asimdall_only_3()
     {
-        
-        {
-            var raw = UMINV(H1, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H1, V1.8H", asm);
-        }
-        
-        {
-            var raw = UMINV(H31, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H31, V1.8H", asm);
-        }
-        
-        {
-            var raw = UMINV(H1, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H1, V31.8H", asm);
-        }
-        
-        {
-            var raw = UMINV(H31, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV H31, V31.8H", asm);
-        }
+        TestInst(UMINV(H1, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.8H");
+        TestInst(UMINV(H31, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.8H");
+        TestInst(UMINV(H1, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.8H");
+        TestInst(UMINV(H31, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.8H");
     }
     
     /// <summary>
@@ -200,41 +72,9 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd
     [TestMethod]
     public void Test_UMINV_asimdall_only_4()
     {
-        
-        {
-            var raw = UMINV(S1, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV S1, V1.4S", asm);
-        }
-        
-        {
-            var raw = UMINV(S31, V1.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV S31, V1.4S", asm);
-        }
-        
-        {
-            var raw = UMINV(S1, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV S1, V31.4S", asm);
-        }
-        
-        {
-            var raw = UMINV(S31, V31.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UMINV_asimdall_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UMINV, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UMINV S31, V31.4S", asm);
-        }
+        TestInst(UMINV(S1, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V1.4S");
+        TestInst(UMINV(S31, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V1.4S");
+        TestInst(UMINV(S1, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V31.4S");
+        TestInst(UMINV(S31, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V31.4S");
     }
 }

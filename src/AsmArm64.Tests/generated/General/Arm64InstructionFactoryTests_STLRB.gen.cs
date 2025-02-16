@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STLRB_General
+public class Arm64InstructionFactoryTests_STLRB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STLRB_General
     [TestMethod]
     public void Test_STLRB_sl32_ldstord_0()
     {
-        
-        {
-            var raw = STLRB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLRB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STLRB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLRB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STLRB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STLRB WZR, [X2]", asm);
-        }
+        TestInst(STLRB(W0, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W0, [X2]");
+        TestInst(STLRB(W15, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W15, [X2]");
+        TestInst(STLRB(WZR, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB WZR, [X2]");
     }
 }

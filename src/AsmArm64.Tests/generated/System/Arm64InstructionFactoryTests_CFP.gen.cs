@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CFP_System
+public class Arm64InstructionFactoryTests_CFP_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_CFP_System
     [TestMethod]
     public void Test_CFP_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = CFP(RCTX, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CFP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CFP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CFP RCTX, X1", asm);
-        }
-        
-        {
-            var raw = CFP(RCTX, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CFP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CFP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CFP RCTX, X16", asm);
-        }
-        
-        {
-            var raw = CFP(RCTX, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CFP_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CFP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CFP RCTX, XZR", asm);
-        }
+        TestInst(CFP(RCTX, X1), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X1");
+        TestInst(CFP(RCTX, X16), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X16");
+        TestInst(CFP(RCTX, XZR), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, XZR");
     }
 }

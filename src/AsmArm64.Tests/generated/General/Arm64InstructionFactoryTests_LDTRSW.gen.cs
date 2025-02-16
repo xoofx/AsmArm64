@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDTRSW_General
+public class Arm64InstructionFactoryTests_LDTRSW_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDTRSW_General
     [TestMethod]
     public void Test_LDTRSW_64_ldst_unpriv_0()
     {
-        
-        {
-            var raw = LDTRSW(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTRSW_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTRSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTRSW X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTRSW(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTRSW_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTRSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTRSW X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDTRSW(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTRSW_64_ldst_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTRSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTRSW XZR, [X2, #5]", asm);
-        }
+        TestInst(LDTRSW(X0, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X0, [X2, #5]");
+        TestInst(LDTRSW(X15, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X15, [X2, #5]");
+        TestInst(LDTRSW(XZR, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW XZR, [X2, #5]");
     }
 }

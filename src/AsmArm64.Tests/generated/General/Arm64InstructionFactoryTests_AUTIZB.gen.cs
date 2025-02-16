@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIZB_General
+public class Arm64InstructionFactoryTests_AUTIZB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_AUTIZB_General
     [TestMethod]
     public void Test_AUTIZB_64z_dp_1src_0()
     {
-        
-        {
-            var raw = AUTIZB(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIZB X0", asm);
-        }
-        
-        {
-            var raw = AUTIZB(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIZB X15", asm);
-        }
-        
-        {
-            var raw = AUTIZB(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIZB_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIZB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIZB XZR", asm);
-        }
+        TestInst(AUTIZB(X0), Arm64InstructionId.AUTIZB_64z_dp_1src, Arm64Mnemonic.AUTIZB, "AUTIZB X0");
+        TestInst(AUTIZB(X15), Arm64InstructionId.AUTIZB_64z_dp_1src, Arm64Mnemonic.AUTIZB, "AUTIZB X15");
+        TestInst(AUTIZB(XZR), Arm64InstructionId.AUTIZB_64z_dp_1src, Arm64Mnemonic.AUTIZB, "AUTIZB XZR");
     }
 }

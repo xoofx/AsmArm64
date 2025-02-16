@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STADDB_General
+public class Arm64InstructionFactoryTests_STADDB_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_STADDB_General
     [TestMethod]
     public void Test_STADDB_ldaddb_32_memop_0()
     {
-        
-        {
-            var raw = STADDB(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADDB_ldaddb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADDB W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STADDB(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADDB_ldaddb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADDB W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STADDB(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADDB_ldaddb_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADDB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADDB WZR, [X2]", asm);
-        }
+        TestInst(STADDB(W0, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W0, [X2]");
+        TestInst(STADDB(W15, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W15, [X2]");
+        TestInst(STADDB(WZR, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB WZR, [X2]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIB1716_System
+public class Arm64InstructionFactoryTests_AUTIB1716_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_AUTIB1716_System
     [TestMethod]
     public void Test_AUTIB1716_hi_hints_0()
     {
-        
-        {
-            var raw = AUTIB1716();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIB1716_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIB1716, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIB1716", asm);
-        }
+        TestInst(AUTIB1716(), Arm64InstructionId.AUTIB1716_hi_hints, Arm64Mnemonic.AUTIB1716, "AUTIB1716");
     }
 }

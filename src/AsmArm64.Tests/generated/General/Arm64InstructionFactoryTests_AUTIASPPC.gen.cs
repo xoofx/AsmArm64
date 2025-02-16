@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_AUTIASPPC_General
+public class Arm64InstructionFactoryTests_AUTIASPPC_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_AUTIASPPC_General
     [TestMethod]
     public void Test_AUTIASPPC_only_dp_1src_imm_0()
     {
-        
-        {
-            var raw = AUTIASPPC(-32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.AUTIASPPC, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("AUTIASPPC #-32", asm);
-        }
+        TestInst(AUTIASPPC(-32), Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, Arm64Mnemonic.AUTIASPPC, "AUTIASPPC #-32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_TBX_Advsimd
+public class Arm64InstructionFactoryTests_TBX_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l1_1_0()
     {
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group1(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group1(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group1(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group1(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group1(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group1(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group1(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group1(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B }, V0.8B", asm);
-        }
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group1(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group1(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group1(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group1(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group1(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group1(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B }, V0.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group1(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group1(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B }, V0.8B");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l1_1_1()
     {
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group1(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group1(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group1(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group1(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group1(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group1(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group1(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group1(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l1_1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B }, V0.16B", asm);
-        }
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group1(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group1(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group1(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group1(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group1(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group1(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B }, V0.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group1(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group1(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l1_1, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B }, V0.16B");
     }
     
     /// <summary>
@@ -184,78 +56,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l2_2_2()
     {
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group2(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group2(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group2(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group2(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group2(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group2(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group2(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group2(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B }, V0.8B", asm);
-        }
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group2(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group2(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group2(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group2(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group2(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group2(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B }, V0.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group2(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group2(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B }, V0.8B");
     }
     
     /// <summary>
@@ -264,78 +72,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l2_2_3()
     {
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group2(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group2(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group2(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group2(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group2(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group2(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group2(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group2(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l2_2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B }, V0.16B", asm);
-        }
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group2(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group2(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group2(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group2(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group2(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group2(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B }, V0.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group2(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group2(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l2_2, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B }, V0.16B");
     }
     
     /// <summary>
@@ -344,78 +88,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l3_3_4()
     {
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group3(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B, V3.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group3(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B, V3.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group3(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B, V1.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group3(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B, V1.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group3(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B, V3.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group3(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B, V3.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group3(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B, V1.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group3(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B, V1.16B }, V0.8B", asm);
-        }
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group3(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B, V3.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group3(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B, V3.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group3(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B, V1.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group3(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B, V1.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group3(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B, V3.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group3(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B, V3.16B }, V0.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group3(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B, V1.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group3(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B, V1.16B }, V0.8B");
     }
     
     /// <summary>
@@ -424,78 +104,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l3_3_5()
     {
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group3(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B, V3.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group3(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B, V3.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group3(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B, V1.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group3(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B, V1.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group3(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B, V3.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group3(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B, V3.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group3(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B, V1.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group3(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l3_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B, V1.16B }, V0.16B", asm);
-        }
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group3(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B, V3.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group3(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B, V3.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group3(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B, V1.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group3(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B, V1.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group3(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B, V3.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group3(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B, V3.16B }, V0.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group3(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B, V1.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group3(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l3_3, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B, V1.16B }, V0.16B");
     }
     
     /// <summary>
@@ -504,78 +120,14 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l4_4_6()
     {
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group4(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group4(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group4(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group4(), V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V1.T_16B.Group4(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V1.T_16B.Group4(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_8B, V31.T_16B.Group4(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.8B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_8B, V31.T_16B.Group4(), V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.8B", asm);
-        }
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group4(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group4(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group4(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group4(), V2.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.8B");
+        TestInst(TBX(V0.T_8B, V1.T_16B.Group4(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V1.T_16B.Group4(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.8B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.8B");
+        TestInst(TBX(V0.T_8B, V31.T_16B.Group4(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.8B");
+        TestInst(TBX(V30.T_8B, V31.T_16B.Group4(), V0.T_8B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.8B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.8B");
     }
     
     /// <summary>
@@ -584,77 +136,13 @@ public class Arm64InstructionFactoryTests_TBX_Advsimd
     [TestMethod]
     public void Test_TBX_asimdtbl_l4_4_7()
     {
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group4(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group4(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group4(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group4(), V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V1.T_16B.Group4(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V1.T_16B.Group4(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V0.T_16B, V31.T_16B.Group4(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V0.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.16B", asm);
-        }
-        
-        {
-            var raw = TBX(V30.T_16B, V31.T_16B.Group4(), V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TBX_asimdtbl_l4_4, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TBX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TBX V30.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.16B", asm);
-        }
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group4(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group4(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group4(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group4(), V2.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V2.16B");
+        TestInst(TBX(V0.T_16B, V1.T_16B.Group4(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V1.T_16B.Group4(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.16B, { V1.16B, V2.16B, V3.16B, V4.16B }, V0.16B");
+        TestInst(TBX(V0.T_16B, V31.T_16B.Group4(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V0.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.16B");
+        TestInst(TBX(V30.T_16B, V31.T_16B.Group4(), V0.T_16B), Arm64InstructionId.TBX_asimdtbl_l4_4, Arm64Mnemonic.TBX, "TBX V30.16B, { V31.16B, V0.16B, V1.16B, V2.16B }, V0.16B");
     }
 }

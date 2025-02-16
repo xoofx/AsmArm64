@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LD1R_Advsimd
+public class Arm64InstructionFactoryTests_LD1R_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_0()
     {
-        
-        {
-            var raw = LD1R(V0.T_8B.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8B }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8B.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8B }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.8B }, [X2]");
+        TestInst(LD1R(V30.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.8B }, [X2]");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_1()
     {
-        
-        {
-            var raw = LD1R(V0.T_16B.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.16B }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_16B.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.16B }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.16B }, [X2]");
+        TestInst(LD1R(V30.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.16B }, [X2]");
     }
     
     /// <summary>
@@ -76,24 +44,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_2()
     {
-        
-        {
-            var raw = LD1R(V0.T_4H.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4H }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4H.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4H }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.4H }, [X2]");
+        TestInst(LD1R(V30.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.4H }, [X2]");
     }
     
     /// <summary>
@@ -102,24 +54,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_3()
     {
-        
-        {
-            var raw = LD1R(V0.T_8H.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8H }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8H.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8H }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.8H }, [X2]");
+        TestInst(LD1R(V30.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.8H }, [X2]");
     }
     
     /// <summary>
@@ -128,24 +64,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_4()
     {
-        
-        {
-            var raw = LD1R(V0.T_2S.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2S }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2S.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2S }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.2S }, [X2]");
+        TestInst(LD1R(V30.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.2S }, [X2]");
     }
     
     /// <summary>
@@ -154,24 +74,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_5()
     {
-        
-        {
-            var raw = LD1R(V0.T_4S.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4S }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4S.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4S }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.4S }, [X2]");
+        TestInst(LD1R(V30.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.4S }, [X2]");
     }
     
     /// <summary>
@@ -180,24 +84,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_6()
     {
-        
-        {
-            var raw = LD1R(V0.T_1D.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.1D }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_1D.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.1D }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.1D }, [X2]");
+        TestInst(LD1R(V30.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.1D }, [X2]");
     }
     
     /// <summary>
@@ -206,24 +94,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlso_r1_7()
     {
-        
-        {
-            var raw = LD1R(V0.T_2D.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2D }, [X2]", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2D.Group1(), _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlso_r1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2D }, [X2]", asm);
-        }
+        TestInst(LD1R(V0.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V0.2D }, [X2]");
+        TestInst(LD1R(V30.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1R_asisdlso_r1, Arm64Mnemonic.LD1R, "LD1R { V30.2D }, [X2]");
     }
     
     /// <summary>
@@ -232,24 +104,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_8()
     {
-        
-        {
-            var raw = LD1R(V0.T_8B.Group1(), _[X2], 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8B }, [X2], #1", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8B.Group1(), _[X2], 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8B }, [X2], #1", asm);
-        }
+        TestInst(LD1R(V0.T_8B.Group1(), _[X2], 1), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.8B }, [X2], #1");
+        TestInst(LD1R(V30.T_8B.Group1(), _[X2], 1), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.8B }, [X2], #1");
     }
     
     /// <summary>
@@ -258,24 +114,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_9()
     {
-        
-        {
-            var raw = LD1R(V0.T_16B.Group1(), _[X2], 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.16B }, [X2], #1", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_16B.Group1(), _[X2], 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.16B }, [X2], #1", asm);
-        }
+        TestInst(LD1R(V0.T_16B.Group1(), _[X2], 1), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.16B }, [X2], #1");
+        TestInst(LD1R(V30.T_16B.Group1(), _[X2], 1), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.16B }, [X2], #1");
     }
     
     /// <summary>
@@ -284,24 +124,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_10()
     {
-        
-        {
-            var raw = LD1R(V0.T_4H.Group1(), _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4H }, [X2], #2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4H.Group1(), _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4H }, [X2], #2", asm);
-        }
+        TestInst(LD1R(V0.T_4H.Group1(), _[X2], 2), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.4H }, [X2], #2");
+        TestInst(LD1R(V30.T_4H.Group1(), _[X2], 2), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.4H }, [X2], #2");
     }
     
     /// <summary>
@@ -310,24 +134,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_11()
     {
-        
-        {
-            var raw = LD1R(V0.T_8H.Group1(), _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8H }, [X2], #2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8H.Group1(), _[X2], 2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8H }, [X2], #2", asm);
-        }
+        TestInst(LD1R(V0.T_8H.Group1(), _[X2], 2), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.8H }, [X2], #2");
+        TestInst(LD1R(V30.T_8H.Group1(), _[X2], 2), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.8H }, [X2], #2");
     }
     
     /// <summary>
@@ -336,24 +144,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_12()
     {
-        
-        {
-            var raw = LD1R(V0.T_2S.Group1(), _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2S }, [X2], #4", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2S.Group1(), _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2S }, [X2], #4", asm);
-        }
+        TestInst(LD1R(V0.T_2S.Group1(), _[X2], 4), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.2S }, [X2], #4");
+        TestInst(LD1R(V30.T_2S.Group1(), _[X2], 4), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.2S }, [X2], #4");
     }
     
     /// <summary>
@@ -362,24 +154,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_13()
     {
-        
-        {
-            var raw = LD1R(V0.T_4S.Group1(), _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4S }, [X2], #4", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4S.Group1(), _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4S }, [X2], #4", asm);
-        }
+        TestInst(LD1R(V0.T_4S.Group1(), _[X2], 4), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.4S }, [X2], #4");
+        TestInst(LD1R(V30.T_4S.Group1(), _[X2], 4), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.4S }, [X2], #4");
     }
     
     /// <summary>
@@ -388,24 +164,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_14()
     {
-        
-        {
-            var raw = LD1R(V0.T_1D.Group1(), _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.1D }, [X2], #8", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_1D.Group1(), _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.1D }, [X2], #8", asm);
-        }
+        TestInst(LD1R(V0.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.1D }, [X2], #8");
+        TestInst(LD1R(V30.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.1D }, [X2], #8");
     }
     
     /// <summary>
@@ -414,24 +174,8 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_r1_i_15()
     {
-        
-        {
-            var raw = LD1R(V0.T_2D.Group1(), _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2D }, [X2], #8", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2D.Group1(), _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_r1_i, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2D }, [X2], #8", asm);
-        }
+        TestInst(LD1R(V0.T_2D.Group1(), _[X2], 8), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V0.2D }, [X2], #8");
+        TestInst(LD1R(V30.T_2D.Group1(), _[X2], 8), Arm64InstructionId.LD1R_asisdlsop_r1_i, Arm64Mnemonic.LD1R, "LD1R { V30.2D }, [X2], #8");
     }
     
     /// <summary>
@@ -440,42 +184,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_16()
     {
-        
-        {
-            var raw = LD1R(V0.T_8B.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8B.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_8B.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8B }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8B.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8B }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.8B }, [X2], X2");
+        TestInst(LD1R(V30.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.8B }, [X2], X2");
+        TestInst(LD1R(V0.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.8B }, [X2], X17");
+        TestInst(LD1R(V30.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -484,42 +196,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_17()
     {
-        
-        {
-            var raw = LD1R(V0.T_16B.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.16B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_16B.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.16B }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_16B.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.16B }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_16B.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.16B }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.16B }, [X2], X2");
+        TestInst(LD1R(V30.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.16B }, [X2], X2");
+        TestInst(LD1R(V0.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.16B }, [X2], X17");
+        TestInst(LD1R(V30.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -528,42 +208,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_18()
     {
-        
-        {
-            var raw = LD1R(V0.T_4H.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4H.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_4H.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4H }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4H.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4H }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.4H }, [X2], X2");
+        TestInst(LD1R(V30.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.4H }, [X2], X2");
+        TestInst(LD1R(V0.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.4H }, [X2], X17");
+        TestInst(LD1R(V30.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -572,42 +220,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_19()
     {
-        
-        {
-            var raw = LD1R(V0.T_8H.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8H.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8H }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_8H.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.8H }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_8H.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.8H }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.8H }, [X2], X2");
+        TestInst(LD1R(V30.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.8H }, [X2], X2");
+        TestInst(LD1R(V0.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.8H }, [X2], X17");
+        TestInst(LD1R(V30.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -616,42 +232,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_20()
     {
-        
-        {
-            var raw = LD1R(V0.T_2S.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2S.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_2S.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2S }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2S.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2S }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.2S }, [X2], X2");
+        TestInst(LD1R(V30.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.2S }, [X2], X2");
+        TestInst(LD1R(V0.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.2S }, [X2], X17");
+        TestInst(LD1R(V30.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -660,42 +244,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_21()
     {
-        
-        {
-            var raw = LD1R(V0.T_4S.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4S.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4S }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_4S.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.4S }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_4S.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.4S }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.4S }, [X2], X2");
+        TestInst(LD1R(V30.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.4S }, [X2], X2");
+        TestInst(LD1R(V0.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.4S }, [X2], X17");
+        TestInst(LD1R(V30.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -704,42 +256,10 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_22()
     {
-        
-        {
-            var raw = LD1R(V0.T_1D.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.1D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_1D.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.1D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_1D.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.1D }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_1D.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.1D }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.1D }, [X2], X2");
+        TestInst(LD1R(V30.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.1D }, [X2], X2");
+        TestInst(LD1R(V0.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.1D }, [X2], X17");
+        TestInst(LD1R(V30.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.1D }, [X2], X17");
     }
     
     /// <summary>
@@ -748,41 +268,9 @@ public class Arm64InstructionFactoryTests_LD1R_Advsimd
     [TestMethod]
     public void Test_LD1R_asisdlsop_rx1_r_23()
     {
-        
-        {
-            var raw = LD1R(V0.T_2D.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2D.Group1(), _[X2], X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2D }, [X2], X2", asm);
-        }
-        
-        {
-            var raw = LD1R(V0.T_2D.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V0.2D }, [X2], X17", asm);
-        }
-        
-        {
-            var raw = LD1R(V30.T_2D.Group1(), _[X2], X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LD1R_asisdlsop_rx1_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LD1R, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LD1R { V30.2D }, [X2], X17", asm);
-        }
+        TestInst(LD1R(V0.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.2D }, [X2], X2");
+        TestInst(LD1R(V30.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.2D }, [X2], X2");
+        TestInst(LD1R(V0.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V0.2D }, [X2], X17");
+        TestInst(LD1R(V30.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1R_asisdlsop_rx1_r, Arm64Mnemonic.LD1R, "LD1R { V30.2D }, [X2], X17");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CLZ_General
+public class Arm64InstructionFactoryTests_CLZ_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_CLZ_General
     [TestMethod]
     public void Test_CLZ_32_dp_1src_0()
     {
-        
-        {
-            var raw = CLZ(W0, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W0, W1", asm);
-        }
-        
-        {
-            var raw = CLZ(W15, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W15, W1", asm);
-        }
-        
-        {
-            var raw = CLZ(WZR, W1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ WZR, W1", asm);
-        }
-        
-        {
-            var raw = CLZ(W0, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W0, W16", asm);
-        }
-        
-        {
-            var raw = CLZ(W15, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W15, W16", asm);
-        }
-        
-        {
-            var raw = CLZ(WZR, W16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ WZR, W16", asm);
-        }
-        
-        {
-            var raw = CLZ(W0, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W0, WZR", asm);
-        }
-        
-        {
-            var raw = CLZ(W15, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ W15, WZR", asm);
-        }
-        
-        {
-            var raw = CLZ(WZR, WZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_32_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ WZR, WZR", asm);
-        }
+        TestInst(CLZ(W0, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W1");
+        TestInst(CLZ(W15, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W1");
+        TestInst(CLZ(WZR, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W1");
+        TestInst(CLZ(W0, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W16");
+        TestInst(CLZ(W15, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W16");
+        TestInst(CLZ(WZR, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W16");
+        TestInst(CLZ(W0, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, WZR");
+        TestInst(CLZ(W15, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, WZR");
+        TestInst(CLZ(WZR, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, WZR");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_CLZ_General
     [TestMethod]
     public void Test_CLZ_64_dp_1src_1()
     {
-        
-        {
-            var raw = CLZ(X0, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X0, X1", asm);
-        }
-        
-        {
-            var raw = CLZ(X15, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X15, X1", asm);
-        }
-        
-        {
-            var raw = CLZ(XZR, X1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ XZR, X1", asm);
-        }
-        
-        {
-            var raw = CLZ(X0, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X0, X16", asm);
-        }
-        
-        {
-            var raw = CLZ(X15, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X15, X16", asm);
-        }
-        
-        {
-            var raw = CLZ(XZR, X16);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ XZR, X16", asm);
-        }
-        
-        {
-            var raw = CLZ(X0, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X0, XZR", asm);
-        }
-        
-        {
-            var raw = CLZ(X15, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ X15, XZR", asm);
-        }
-        
-        {
-            var raw = CLZ(XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLZ_64_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLZ XZR, XZR", asm);
-        }
+        TestInst(CLZ(X0, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X1");
+        TestInst(CLZ(X15, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X1");
+        TestInst(CLZ(XZR, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X1");
+        TestInst(CLZ(X0, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X16");
+        TestInst(CLZ(X15, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X16");
+        TestInst(CLZ(XZR, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X16");
+        TestInst(CLZ(X0, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, XZR");
+        TestInst(CLZ(X15, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, XZR");
+        TestInst(CLZ(XZR, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, XZR");
     }
 }

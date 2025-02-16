@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CBBLO_General
+public class Arm64InstructionFactoryTests_CBBLO_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CBBLO_General
     [TestMethod]
     public void Test_CBBLO_cbbhi_8_regs_0()
     {
-        
-        {
-            var raw = CBBLO(W0, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W1, W0, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(W15, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W1, W15, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(WZR, W1, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W1, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(W0, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W16, W0, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(W15, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W16, W15, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(WZR, W16, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI W16, WZR, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(W0, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI WZR, W0, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(W15, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI WZR, W15, #32", asm);
-        }
-        
-        {
-            var raw = CBBLO(WZR, WZR, 32);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CBBHI_8_regs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CBBHI, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CBBHI WZR, WZR, #32", asm);
-        }
+        TestInst(CBBLO(W0, W1, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W1, W0, #32");
+        TestInst(CBBLO(W15, W1, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W1, W15, #32");
+        TestInst(CBBLO(WZR, W1, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W1, WZR, #32");
+        TestInst(CBBLO(W0, W16, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W16, W0, #32");
+        TestInst(CBBLO(W15, W16, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W16, W15, #32");
+        TestInst(CBBLO(WZR, W16, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI W16, WZR, #32");
+        TestInst(CBBLO(W0, WZR, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI WZR, W0, #32");
+        TestInst(CBBLO(W15, WZR, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI WZR, W15, #32");
+        TestInst(CBBLO(WZR, WZR, 32), Arm64InstructionId.CBBHI_8_regs, Arm64Mnemonic.CBBHI, "CBBHI WZR, WZR, #32");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ORR_Advsimd
+public class Arm64InstructionFactoryTests_ORR_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,24 +24,8 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdimm_l_hl_0()
     {
-        
-        {
-            var raw = ORR(V0.T_4H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.4H, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_4H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.4H, #5, LSL #8", asm);
-        }
+        TestInst(ORR(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_hl, Arm64Mnemonic.ORR, "ORR V0.4H, #5, LSL #8");
+        TestInst(ORR(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_hl, Arm64Mnemonic.ORR, "ORR V30.4H, #5, LSL #8");
     }
     
     /// <summary>
@@ -50,24 +34,8 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdimm_l_hl_1()
     {
-        
-        {
-            var raw = ORR(V0.T_8H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.8H, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_8H, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_hl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.8H, #5, LSL #8", asm);
-        }
+        TestInst(ORR(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_hl, Arm64Mnemonic.ORR, "ORR V0.8H, #5, LSL #8");
+        TestInst(ORR(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_hl, Arm64Mnemonic.ORR, "ORR V30.8H, #5, LSL #8");
     }
     
     /// <summary>
@@ -76,24 +44,8 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdimm_l_sl_2()
     {
-        
-        {
-            var raw = ORR(V0.T_2S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.2S, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_2S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.2S, #5, LSL #8", asm);
-        }
+        TestInst(ORR(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_sl, Arm64Mnemonic.ORR, "ORR V0.2S, #5, LSL #8");
+        TestInst(ORR(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_sl, Arm64Mnemonic.ORR, "ORR V30.2S, #5, LSL #8");
     }
     
     /// <summary>
@@ -102,24 +54,8 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdimm_l_sl_3()
     {
-        
-        {
-            var raw = ORR(V0.T_4S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.4S, #5, LSL #8", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_4S, 5, _LSL, 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdimm_l_sl, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.4S, #5, LSL #8", asm);
-        }
+        TestInst(ORR(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_sl, Arm64Mnemonic.ORR, "ORR V0.4S, #5, LSL #8");
+        TestInst(ORR(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.ORR_asimdimm_l_sl, Arm64Mnemonic.ORR, "ORR V30.4S, #5, LSL #8");
     }
     
     /// <summary>
@@ -128,78 +64,14 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdsame_only_4()
     {
-        
-        {
-            var raw = ORR(V0.T_8B, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.8B, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_8B, V1.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.8B, V1.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_8B, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.8B, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_8B, V31.T_8B, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.8B, V31.8B, V2.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_8B, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.8B, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_8B, V1.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.8B, V1.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_8B, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.8B, V31.8B, V0.8B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_8B, V31.T_8B, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.8B, V31.8B, V0.8B", asm);
-        }
+        TestInst(ORR(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.8B, V1.8B, V2.8B");
+        TestInst(ORR(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.8B, V1.8B, V2.8B");
+        TestInst(ORR(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.8B, V31.8B, V2.8B");
+        TestInst(ORR(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.8B, V31.8B, V2.8B");
+        TestInst(ORR(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.8B, V1.8B, V0.8B");
+        TestInst(ORR(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.8B, V1.8B, V0.8B");
+        TestInst(ORR(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.8B, V31.8B, V0.8B");
+        TestInst(ORR(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.8B, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -208,77 +80,13 @@ public class Arm64InstructionFactoryTests_ORR_Advsimd
     [TestMethod]
     public void Test_ORR_asimdsame_only_5()
     {
-        
-        {
-            var raw = ORR(V0.T_16B, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.16B, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_16B, V1.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.16B, V1.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_16B, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.16B, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_16B, V31.T_16B, V2.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.16B, V31.16B, V2.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_16B, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.16B, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_16B, V1.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.16B, V1.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V0.T_16B, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V0.16B, V31.16B, V0.16B", asm);
-        }
-        
-        {
-            var raw = ORR(V30.T_16B, V31.T_16B, V0.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ORR_asimdsame_only, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ORR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ORR V30.16B, V31.16B, V0.16B", asm);
-        }
+        TestInst(ORR(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.16B, V1.16B, V2.16B");
+        TestInst(ORR(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.16B, V1.16B, V2.16B");
+        TestInst(ORR(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.16B, V31.16B, V2.16B");
+        TestInst(ORR(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.16B, V31.16B, V2.16B");
+        TestInst(ORR(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.16B, V1.16B, V0.16B");
+        TestInst(ORR(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.16B, V1.16B, V0.16B");
+        TestInst(ORR(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V0.16B, V31.16B, V0.16B");
+        TestInst(ORR(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.ORR_asimdsame_only, Arm64Mnemonic.ORR, "ORR V30.16B, V31.16B, V0.16B");
     }
 }

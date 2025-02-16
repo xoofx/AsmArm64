@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CPYMWTWN_General
+public class Arm64InstructionFactoryTests_CPYMWTWN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_CPYMWTWN_General
     [TestMethod]
     public void Test_CPYMWTWN_cpy_memcms_0()
     {
-        
-        {
-            var raw = CPYMWTWN(_[X1].Pre, _[X2].Pre, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYMWTWN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYMWTWN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYMWTWN [X1]!, [X2]!, X2", asm);
-        }
-        
-        {
-            var raw = CPYMWTWN(_[X1].Pre, _[X2].Pre, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYMWTWN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYMWTWN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYMWTWN [X1]!, [X2]!, X17", asm);
-        }
-        
-        {
-            var raw = CPYMWTWN(_[X1].Pre, _[X2].Pre, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYMWTWN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYMWTWN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYMWTWN [X1]!, [X2]!, XZR", asm);
-        }
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X2");
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X17");
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, XZR");
     }
 }

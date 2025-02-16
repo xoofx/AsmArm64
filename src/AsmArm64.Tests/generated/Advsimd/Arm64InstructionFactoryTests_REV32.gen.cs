@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_REV32_Advsimd
+public class Arm64InstructionFactoryTests_REV32_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_REV32_Advsimd
     [TestMethod]
     public void Test_REV32_asimdmisc_r_0()
     {
-        
-        {
-            var raw = REV32(V0.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_8B, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.8B, V1.8B", asm);
-        }
-        
-        {
-            var raw = REV32(V0.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.8B, V31.8B", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_8B, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.8B, V31.8B", asm);
-        }
+        TestInst(REV32(V0.T_8B, V1.T_8B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.8B, V1.8B");
+        TestInst(REV32(V30.T_8B, V1.T_8B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.8B, V1.8B");
+        TestInst(REV32(V0.T_8B, V31.T_8B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.8B, V31.8B");
+        TestInst(REV32(V30.T_8B, V31.T_8B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_REV32_Advsimd
     [TestMethod]
     public void Test_REV32_asimdmisc_r_1()
     {
-        
-        {
-            var raw = REV32(V0.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_16B, V1.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.16B, V1.16B", asm);
-        }
-        
-        {
-            var raw = REV32(V0.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.16B, V31.16B", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_16B, V31.T_16B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.16B, V31.16B", asm);
-        }
+        TestInst(REV32(V0.T_16B, V1.T_16B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.16B, V1.16B");
+        TestInst(REV32(V30.T_16B, V1.T_16B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.16B, V1.16B");
+        TestInst(REV32(V0.T_16B, V31.T_16B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.16B, V31.16B");
+        TestInst(REV32(V30.T_16B, V31.T_16B), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.16B, V31.16B");
     }
     
     /// <summary>
@@ -112,42 +48,10 @@ public class Arm64InstructionFactoryTests_REV32_Advsimd
     [TestMethod]
     public void Test_REV32_asimdmisc_r_2()
     {
-        
-        {
-            var raw = REV32(V0.T_4H, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.4H, V1.4H", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_4H, V1.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.4H, V1.4H", asm);
-        }
-        
-        {
-            var raw = REV32(V0.T_4H, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.4H, V31.4H", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_4H, V31.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.4H, V31.4H", asm);
-        }
+        TestInst(REV32(V0.T_4H, V1.T_4H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.4H, V1.4H");
+        TestInst(REV32(V30.T_4H, V1.T_4H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.4H, V1.4H");
+        TestInst(REV32(V0.T_4H, V31.T_4H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.4H, V31.4H");
+        TestInst(REV32(V30.T_4H, V31.T_4H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.4H, V31.4H");
     }
     
     /// <summary>
@@ -156,41 +60,9 @@ public class Arm64InstructionFactoryTests_REV32_Advsimd
     [TestMethod]
     public void Test_REV32_asimdmisc_r_3()
     {
-        
-        {
-            var raw = REV32(V0.T_8H, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.8H, V1.8H", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_8H, V1.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.8H, V1.8H", asm);
-        }
-        
-        {
-            var raw = REV32(V0.T_8H, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V0.8H, V31.8H", asm);
-        }
-        
-        {
-            var raw = REV32(V30.T_8H, V31.T_8H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.REV32_asimdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.REV32, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("REV32 V30.8H, V31.8H", asm);
-        }
+        TestInst(REV32(V0.T_8H, V1.T_8H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.8H, V1.8H");
+        TestInst(REV32(V30.T_8H, V1.T_8H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.8H, V1.8H");
+        TestInst(REV32(V0.T_8H, V31.T_8H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V0.8H, V31.8H");
+        TestInst(REV32(V30.T_8H, V31.T_8H), Arm64InstructionId.REV32_asimdmisc_r, Arm64Mnemonic.REV32, "REV32 V30.8H, V31.8H");
     }
 }

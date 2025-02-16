@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SSUBW_Advsimd
+public class Arm64InstructionFactoryTests_SSUBW_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,78 +24,14 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_0()
     {
-        
-        {
-            var raw = SSUBW(V0.T_8H, V1.T_8H, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.8H, V1.8H, V2.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_8H, V1.T_8H, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.8H, V1.8H, V2.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_8H, V31.T_8H, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.8H, V31.8H, V2.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_8H, V31.T_8H, V2.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.8H, V31.8H, V2.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_8H, V1.T_8H, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.8H, V1.8H, V0.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_8H, V1.T_8H, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.8H, V1.8H, V0.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_8H, V31.T_8H, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.8H, V31.8H, V0.8B", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_8H, V31.T_8H, V0.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.8H, V31.8H, V0.8B", asm);
-        }
+        TestInst(SSUBW(V0.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V2.8B");
+        TestInst(SSUBW(V30.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V2.8B");
+        TestInst(SSUBW(V0.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V2.8B");
+        TestInst(SSUBW(V30.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V2.8B");
+        TestInst(SSUBW(V0.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V0.8B");
+        TestInst(SSUBW(V30.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V0.8B");
+        TestInst(SSUBW(V0.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V0.8B");
+        TestInst(SSUBW(V30.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V0.8B");
     }
     
     /// <summary>
@@ -104,78 +40,14 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_1()
     {
-        
-        {
-            var raw = SSUBW(V0.T_4S, V1.T_4S, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.4S, V1.4S, V2.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_4S, V1.T_4S, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.4S, V1.4S, V2.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_4S, V31.T_4S, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.4S, V31.4S, V2.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_4S, V31.T_4S, V2.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.4S, V31.4S, V2.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_4S, V1.T_4S, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.4S, V1.4S, V0.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_4S, V1.T_4S, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.4S, V1.4S, V0.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_4S, V31.T_4S, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.4S, V31.4S, V0.4H", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_4S, V31.T_4S, V0.T_4H);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.4S, V31.4S, V0.4H", asm);
-        }
+        TestInst(SSUBW(V0.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V2.4H");
+        TestInst(SSUBW(V30.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V2.4H");
+        TestInst(SSUBW(V0.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V2.4H");
+        TestInst(SSUBW(V30.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V2.4H");
+        TestInst(SSUBW(V0.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V0.4H");
+        TestInst(SSUBW(V30.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V0.4H");
+        TestInst(SSUBW(V0.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V0.4H");
+        TestInst(SSUBW(V30.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V0.4H");
     }
     
     /// <summary>
@@ -184,77 +56,13 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_2()
     {
-        
-        {
-            var raw = SSUBW(V0.T_2D, V1.T_2D, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.2D, V1.2D, V2.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_2D, V1.T_2D, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.2D, V1.2D, V2.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_2D, V31.T_2D, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.2D, V31.2D, V2.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_2D, V31.T_2D, V2.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.2D, V31.2D, V2.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_2D, V1.T_2D, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.2D, V1.2D, V0.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_2D, V1.T_2D, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.2D, V1.2D, V0.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V0.T_2D, V31.T_2D, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V0.2D, V31.2D, V0.2S", asm);
-        }
-        
-        {
-            var raw = SSUBW(V30.T_2D, V31.T_2D, V0.T_2S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SSUBW_asimddiff_w, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SSUBW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SSUBW V30.2D, V31.2D, V0.2S", asm);
-        }
+        TestInst(SSUBW(V0.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V2.2S");
+        TestInst(SSUBW(V30.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V2.2S");
+        TestInst(SSUBW(V0.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V2.2S");
+        TestInst(SSUBW(V30.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V2.2S");
+        TestInst(SSUBW(V0.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V0.2S");
+        TestInst(SSUBW(V30.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V0.2S");
+        TestInst(SSUBW(V0.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V0.2S");
+        TestInst(SSUBW(V30.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V0.2S");
     }
 }

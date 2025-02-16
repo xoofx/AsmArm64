@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RETABSPPCR_General
+public class Arm64InstructionFactoryTests_RETABSPPCR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,23 +24,7 @@ public class Arm64InstructionFactoryTests_RETABSPPCR_General
     [TestMethod]
     public void Test_RETABSPPCR_64m_branch_reg_0()
     {
-        
-        {
-            var raw = RETABSPPCR(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RETABSPPCR_64m_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RETABSPPCR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RETABSPPCR X0", asm);
-        }
-        
-        {
-            var raw = RETABSPPCR(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RETABSPPCR_64m_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RETABSPPCR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RETABSPPCR X15", asm);
-        }
+        TestInst(RETABSPPCR(X0), Arm64InstructionId.RETABSPPCR_64m_branch_reg, Arm64Mnemonic.RETABSPPCR, "RETABSPPCR X0");
+        TestInst(RETABSPPCR(X15), Arm64InstructionId.RETABSPPCR_64m_branch_reg, Arm64Mnemonic.RETABSPPCR, "RETABSPPCR X15");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STXRH_General
+public class Arm64InstructionFactoryTests_STXRH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_STXRH_General
     [TestMethod]
     public void Test_STXRH_sr32_ldstexclr_0()
     {
-        
-        {
-            var raw = STXRH(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = STXRH(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STXRH_sr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STXRH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STXRH WZR, WZR, [X3]", asm);
-        }
+        TestInst(STXRH(W0, W1, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W0, W1, [X3]");
+        TestInst(STXRH(W15, W1, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W15, W1, [X3]");
+        TestInst(STXRH(WZR, W1, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH WZR, W1, [X3]");
+        TestInst(STXRH(W0, W16, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W0, W16, [X3]");
+        TestInst(STXRH(W15, W16, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W15, W16, [X3]");
+        TestInst(STXRH(WZR, W16, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH WZR, W16, [X3]");
+        TestInst(STXRH(W0, WZR, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W0, WZR, [X3]");
+        TestInst(STXRH(W15, WZR, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH W15, WZR, [X3]");
+        TestInst(STXRH(WZR, WZR, _[X3]), Arm64InstructionId.STXRH_sr32_ldstexclr, Arm64Mnemonic.STXRH, "STXRH WZR, WZR, [X3]");
     }
 }

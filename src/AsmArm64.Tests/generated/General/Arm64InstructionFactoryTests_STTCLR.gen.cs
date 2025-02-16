@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STTCLR_General
+public class Arm64InstructionFactoryTests_STTCLR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STTCLR_General
     [TestMethod]
     public void Test_STTCLR_ldtclr_32_memop_unpriv_0()
     {
-        
-        {
-            var raw = STTCLR(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STTCLR(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STTCLR(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR WZR, [X2]", asm);
-        }
+        TestInst(STTCLR(W0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W0, [X2]");
+        TestInst(STTCLR(W15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W15, [X2]");
+        TestInst(STTCLR(WZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STTCLR_General
     [TestMethod]
     public void Test_STTCLR_ldtclr_64_memop_unpriv_1()
     {
-        
-        {
-            var raw = STTCLR(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STTCLR(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STTCLR(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STTCLR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STTCLR XZR, [X2]", asm);
-        }
+        TestInst(STTCLR(X0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X0, [X2]");
+        TestInst(STTCLR(X15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X15, [X2]");
+        TestInst(STTCLR(XZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR XZR, [X2]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SWPTA_General
+public class Arm64InstructionFactoryTests_SWPTA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_SWPTA_General
     [TestMethod]
     public void Test_SWPTA_32_memop_unpriv_0()
     {
-        
-        {
-            var raw = SWPTA(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA WZR, WZR, [X3]", asm);
-        }
+        TestInst(SWPTA(W0, W1, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W0, W1, [X3]");
+        TestInst(SWPTA(W15, W1, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W15, W1, [X3]");
+        TestInst(SWPTA(WZR, W1, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA WZR, W1, [X3]");
+        TestInst(SWPTA(W0, W16, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W0, W16, [X3]");
+        TestInst(SWPTA(W15, W16, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W15, W16, [X3]");
+        TestInst(SWPTA(WZR, W16, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA WZR, W16, [X3]");
+        TestInst(SWPTA(W0, WZR, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W0, WZR, [X3]");
+        TestInst(SWPTA(W15, WZR, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA W15, WZR, [X3]");
+        TestInst(SWPTA(WZR, WZR, _[X3]), Arm64InstructionId.SWPTA_32_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_SWPTA_General
     [TestMethod]
     public void Test_SWPTA_64_memop_unpriv_1()
     {
-        
-        {
-            var raw = SWPTA(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = SWPTA(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SWPTA_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SWPTA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SWPTA XZR, XZR, [X3]", asm);
-        }
+        TestInst(SWPTA(X0, X1, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X0, X1, [X3]");
+        TestInst(SWPTA(X15, X1, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X15, X1, [X3]");
+        TestInst(SWPTA(XZR, X1, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA XZR, X1, [X3]");
+        TestInst(SWPTA(X0, X16, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X0, X16, [X3]");
+        TestInst(SWPTA(X15, X16, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X15, X16, [X3]");
+        TestInst(SWPTA(XZR, X16, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA XZR, X16, [X3]");
+        TestInst(SWPTA(X0, XZR, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X0, XZR, [X3]");
+        TestInst(SWPTA(X15, XZR, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA X15, XZR, [X3]");
+        TestInst(SWPTA(XZR, XZR, _[X3]), Arm64InstructionId.SWPTA_64_memop_unpriv, Arm64Mnemonic.SWPTA, "SWPTA XZR, XZR, [X3]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_ADRP_General
+public class Arm64InstructionFactoryTests_ADRP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_ADRP_General
     [TestMethod]
     public void Test_ADRP_only_pcreladdr_0()
     {
-        
-        {
-            var raw = ADRP(X0, 12288);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADRP_only_pcreladdr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADRP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADRP X0, #12288", asm);
-        }
-        
-        {
-            var raw = ADRP(X15, 12288);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADRP_only_pcreladdr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADRP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADRP X15, #12288", asm);
-        }
-        
-        {
-            var raw = ADRP(XZR, 12288);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.ADRP_only_pcreladdr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.ADRP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("ADRP XZR, #12288", asm);
-        }
+        TestInst(ADRP(X0, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X0, #12288");
+        TestInst(ADRP(X15, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X15, #12288");
+        TestInst(ADRP(XZR, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP XZR, #12288");
     }
 }

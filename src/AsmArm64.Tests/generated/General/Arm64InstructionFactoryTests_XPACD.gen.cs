@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_XPACD_General
+public class Arm64InstructionFactoryTests_XPACD_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_XPACD_General
     [TestMethod]
     public void Test_XPACD_64z_dp_1src_0()
     {
-        
-        {
-            var raw = XPACD(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACD_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACD X0", asm);
-        }
-        
-        {
-            var raw = XPACD(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACD_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACD X15", asm);
-        }
-        
-        {
-            var raw = XPACD(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.XPACD_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.XPACD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("XPACD XZR", asm);
-        }
+        TestInst(XPACD(X0), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X0");
+        TestInst(XPACD(X15), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X15");
+        TestInst(XPACD(XZR), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD XZR");
     }
 }

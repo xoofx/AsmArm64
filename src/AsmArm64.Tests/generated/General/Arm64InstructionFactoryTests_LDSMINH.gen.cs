@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDSMINH_General
+public class Arm64InstructionFactoryTests_LDSMINH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_LDSMINH_General
     [TestMethod]
     public void Test_LDSMINH_32_memop_0()
     {
-        
-        {
-            var raw = LDSMINH(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDSMINH_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDSMINH WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH W0, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH W15, [X3]", asm);
-        }
-        
-        {
-            var raw = LDSMINH(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STSMINH_ldsminh_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STSMINH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STSMINH WZR, [X3]", asm);
-        }
+        TestInst(LDSMINH(W0, W1, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH W0, W1, [X3]");
+        TestInst(LDSMINH(W15, W1, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH W15, W1, [X3]");
+        TestInst(LDSMINH(WZR, W1, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH WZR, W1, [X3]");
+        TestInst(LDSMINH(W0, W16, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH W0, W16, [X3]");
+        TestInst(LDSMINH(W15, W16, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH W15, W16, [X3]");
+        TestInst(LDSMINH(WZR, W16, _[X3]), Arm64InstructionId.LDSMINH_32_memop, Arm64Mnemonic.LDSMINH, "LDSMINH WZR, W16, [X3]");
+        TestInst(LDSMINH(W0, WZR, _[X3]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH W0, [X3]");
+        TestInst(LDSMINH(W15, WZR, _[X3]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH W15, [X3]");
+        TestInst(LDSMINH(WZR, WZR, _[X3]), Arm64InstructionId.STSMINH_ldsminh_32_memop, Arm64Mnemonic.STSMINH, "STSMINH WZR, [X3]");
     }
 }

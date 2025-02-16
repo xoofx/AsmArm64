@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STGP_General
+public class Arm64InstructionFactoryTests_STGP_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_STGP_General
     [TestMethod]
     public void Test_STGP_64_ldstpair_post_0()
     {
-        
-        {
-            var raw = STGP(X0, X1, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X1, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X1, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X1, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X1, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X1, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(X0, X16, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X16, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X16, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X16, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X16, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X16, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(X0, XZR, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, XZR, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(X15, XZR, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, XZR, [X3], #80", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, XZR, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, XZR, [X3], #80", asm);
-        }
+        TestInst(STGP(X0, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X1, [X3], #80");
+        TestInst(STGP(X15, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X1, [X3], #80");
+        TestInst(STGP(XZR, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3], #80");
+        TestInst(STGP(X0, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X16, [X3], #80");
+        TestInst(STGP(X15, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X16, [X3], #80");
+        TestInst(STGP(XZR, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3], #80");
+        TestInst(STGP(X0, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3], #80");
+        TestInst(STGP(X15, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3], #80");
+        TestInst(STGP(XZR, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3], #80");
     }
     
     /// <summary>
@@ -113,87 +41,15 @@ public class Arm64InstructionFactoryTests_STGP_General
     [TestMethod]
     public void Test_STGP_64_ldstpair_pre_1()
     {
-        
-        {
-            var raw = STGP(X0, X1, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X1, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X1, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X1, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X1, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X1, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(X0, X16, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X16, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X16, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X16, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X16, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X16, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(X0, XZR, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, XZR, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(X15, XZR, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, XZR, [X3, #80]!", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, XZR, _[X3, 80].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, XZR, [X3, #80]!", asm);
-        }
+        TestInst(STGP(X0, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]!");
+        TestInst(STGP(X15, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]!");
+        TestInst(STGP(XZR, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]!");
+        TestInst(STGP(X0, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]!");
+        TestInst(STGP(X15, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]!");
+        TestInst(STGP(XZR, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]!");
+        TestInst(STGP(X0, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]!");
+        TestInst(STGP(X15, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]!");
+        TestInst(STGP(XZR, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]!");
     }
     
     /// <summary>
@@ -202,86 +58,14 @@ public class Arm64InstructionFactoryTests_STGP_General
     [TestMethod]
     public void Test_STGP_64_ldstpair_off_2()
     {
-        
-        {
-            var raw = STGP(X0, X1, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X1, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X1, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X1, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X1, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X1, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(X0, X16, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, X16, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(X15, X16, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, X16, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, X16, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, X16, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(X0, XZR, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X0, XZR, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(X15, XZR, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP X15, XZR, [X3, #80]", asm);
-        }
-        
-        {
-            var raw = STGP(XZR, XZR, _[X3, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STGP_64_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STGP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STGP XZR, XZR, [X3, #80]", asm);
-        }
+        TestInst(STGP(X0, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]");
+        TestInst(STGP(X15, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]");
+        TestInst(STGP(XZR, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]");
+        TestInst(STGP(X0, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]");
+        TestInst(STGP(X15, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]");
+        TestInst(STGP(XZR, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]");
+        TestInst(STGP(X0, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]");
+        TestInst(STGP(X15, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]");
+        TestInst(STGP(XZR, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]");
     }
 }

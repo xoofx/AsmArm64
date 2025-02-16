@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CASLH_General
+public class Arm64InstructionFactoryTests_CASLH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CASLH_General
     [TestMethod]
     public void Test_CASLH_c32_comswap_0()
     {
-        
-        {
-            var raw = CASLH(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASLH(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASLH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASLH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASLH WZR, WZR, [X3]", asm);
-        }
+        TestInst(CASLH(W0, W1, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W0, W1, [X3]");
+        TestInst(CASLH(W15, W1, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W15, W1, [X3]");
+        TestInst(CASLH(WZR, W1, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH WZR, W1, [X3]");
+        TestInst(CASLH(W0, W16, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W0, W16, [X3]");
+        TestInst(CASLH(W15, W16, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W15, W16, [X3]");
+        TestInst(CASLH(WZR, W16, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH WZR, W16, [X3]");
+        TestInst(CASLH(W0, WZR, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W0, WZR, [X3]");
+        TestInst(CASLH(W15, WZR, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH W15, WZR, [X3]");
+        TestInst(CASLH(WZR, WZR, _[X3]), Arm64InstructionId.CASLH_c32_comswap, Arm64Mnemonic.CASLH, "CASLH WZR, WZR, [X3]");
     }
 }

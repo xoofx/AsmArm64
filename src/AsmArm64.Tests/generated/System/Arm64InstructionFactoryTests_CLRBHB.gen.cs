@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CLRBHB_System
+public class Arm64InstructionFactoryTests_CLRBHB_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_CLRBHB_System
     [TestMethod]
     public void Test_CLRBHB_hi_hints_0()
     {
-        
-        {
-            var raw = CLRBHB();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CLRBHB_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CLRBHB, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CLRBHB", asm);
-        }
+        TestInst(CLRBHB(), Arm64InstructionId.CLRBHB_hi_hints, Arm64Mnemonic.CLRBHB, "CLRBHB");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SMULH_General
+public class Arm64InstructionFactoryTests_SMULH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,248 +24,32 @@ public class Arm64InstructionFactoryTests_SMULH_General
     [TestMethod]
     public void Test_SMULH_64_dp_3src_0()
     {
-        
-        {
-            var raw = SMULH(X0, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X1, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X1, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X16, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X16, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, XZR, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, XZR, X2", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X1, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X1, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X16, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X16, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, XZR, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, XZR, X17", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X1, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X1, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, X16, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, X16, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(X0, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X0, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(X15, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH X15, XZR, XZR", asm);
-        }
-        
-        {
-            var raw = SMULH(XZR, XZR, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SMULH_64_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SMULH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SMULH XZR, XZR, XZR", asm);
-        }
+        TestInst(SMULH(X0, X1, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X1, X2");
+        TestInst(SMULH(X15, X1, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X1, X2");
+        TestInst(SMULH(XZR, X1, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X1, X2");
+        TestInst(SMULH(X0, X16, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X16, X2");
+        TestInst(SMULH(X15, X16, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X16, X2");
+        TestInst(SMULH(XZR, X16, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X16, X2");
+        TestInst(SMULH(X0, XZR, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, XZR, X2");
+        TestInst(SMULH(X15, XZR, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, XZR, X2");
+        TestInst(SMULH(XZR, XZR, X2), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, XZR, X2");
+        TestInst(SMULH(X0, X1, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X1, X17");
+        TestInst(SMULH(X15, X1, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X1, X17");
+        TestInst(SMULH(XZR, X1, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X1, X17");
+        TestInst(SMULH(X0, X16, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X16, X17");
+        TestInst(SMULH(X15, X16, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X16, X17");
+        TestInst(SMULH(XZR, X16, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X16, X17");
+        TestInst(SMULH(X0, XZR, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, XZR, X17");
+        TestInst(SMULH(X15, XZR, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, XZR, X17");
+        TestInst(SMULH(XZR, XZR, X17), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, XZR, X17");
+        TestInst(SMULH(X0, X1, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X1, XZR");
+        TestInst(SMULH(X15, X1, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X1, XZR");
+        TestInst(SMULH(XZR, X1, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X1, XZR");
+        TestInst(SMULH(X0, X16, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, X16, XZR");
+        TestInst(SMULH(X15, X16, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, X16, XZR");
+        TestInst(SMULH(XZR, X16, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, X16, XZR");
+        TestInst(SMULH(X0, XZR, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X0, XZR, XZR");
+        TestInst(SMULH(X15, XZR, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH X15, XZR, XZR");
+        TestInst(SMULH(XZR, XZR, XZR), Arm64InstructionId.SMULH_64_dp_3src, Arm64Mnemonic.SMULH, "SMULH XZR, XZR, XZR");
     }
 }

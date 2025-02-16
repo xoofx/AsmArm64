@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SBFIZ_General
+public class Arm64InstructionFactoryTests_SBFIZ_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_SBFIZ_General
     [TestMethod]
     public void Test_SBFIZ_sbfm_32m_bitfield_0()
     {
-        
-        {
-            var raw = SBFIZ(W0, W1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W0, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(W15, W1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W15, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(WZR, W1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ WZR, W1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(W0, W16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W0, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(W15, W16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W15, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(WZR, W16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ WZR, W16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(W0, WZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W0, WZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(W15, WZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ W15, WZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(WZR, WZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ WZR, WZR, #5, #1", asm);
-        }
+        TestInst(SBFIZ(W0, W1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W0, W1, #5, #1");
+        TestInst(SBFIZ(W15, W1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W15, W1, #5, #1");
+        TestInst(SBFIZ(WZR, W1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ WZR, W1, #5, #1");
+        TestInst(SBFIZ(W0, W16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W0, W16, #5, #1");
+        TestInst(SBFIZ(W15, W16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W15, W16, #5, #1");
+        TestInst(SBFIZ(WZR, W16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ WZR, W16, #5, #1");
+        TestInst(SBFIZ(W0, WZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W0, WZR, #5, #1");
+        TestInst(SBFIZ(W15, WZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ W15, WZR, #5, #1");
+        TestInst(SBFIZ(WZR, WZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_32m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ WZR, WZR, #5, #1");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_SBFIZ_General
     [TestMethod]
     public void Test_SBFIZ_sbfm_64m_bitfield_1()
     {
-        
-        {
-            var raw = SBFIZ(X0, X1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X0, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(X15, X1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X15, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(XZR, X1, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ XZR, X1, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(X0, X16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X0, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(X15, X16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X15, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(XZR, X16, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ XZR, X16, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(X0, XZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X0, XZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(X15, XZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ X15, XZR, #5, #1", asm);
-        }
-        
-        {
-            var raw = SBFIZ(XZR, XZR, 5, 1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBFIZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBFIZ XZR, XZR, #5, #1", asm);
-        }
+        TestInst(SBFIZ(X0, X1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X0, X1, #5, #1");
+        TestInst(SBFIZ(X15, X1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X15, X1, #5, #1");
+        TestInst(SBFIZ(XZR, X1, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ XZR, X1, #5, #1");
+        TestInst(SBFIZ(X0, X16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X0, X16, #5, #1");
+        TestInst(SBFIZ(X15, X16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X15, X16, #5, #1");
+        TestInst(SBFIZ(XZR, X16, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ XZR, X16, #5, #1");
+        TestInst(SBFIZ(X0, XZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X0, XZR, #5, #1");
+        TestInst(SBFIZ(X15, XZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ X15, XZR, #5, #1");
+        TestInst(SBFIZ(XZR, XZR, 5, 1), Arm64InstructionId.SBFIZ_sbfm_64m_bitfield, Arm64Mnemonic.SBFIZ, "SBFIZ XZR, XZR, #5, #1");
     }
 }

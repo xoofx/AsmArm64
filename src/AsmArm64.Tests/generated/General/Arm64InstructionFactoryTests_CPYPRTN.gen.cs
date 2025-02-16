@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CPYPRTN_General
+public class Arm64InstructionFactoryTests_CPYPRTN_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_CPYPRTN_General
     [TestMethod]
     public void Test_CPYPRTN_cpy_memcms_0()
     {
-        
-        {
-            var raw = CPYPRTN(_[X1].Pre, _[X2].Pre, X2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPRTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPRTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPRTN [X1]!, [X2]!, X2", asm);
-        }
-        
-        {
-            var raw = CPYPRTN(_[X1].Pre, _[X2].Pre, X17);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPRTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPRTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPRTN [X1]!, [X2]!, X17", asm);
-        }
-        
-        {
-            var raw = CPYPRTN(_[X1].Pre, _[X2].Pre, XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CPYPRTN_cpy_memcms, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CPYPRTN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CPYPRTN [X1]!, [X2]!, XZR", asm);
-        }
+        TestInst(CPYPRTN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYPRTN_cpy_memcms, Arm64Mnemonic.CPYPRTN, "CPYPRTN [X1]!, [X2]!, X2");
+        TestInst(CPYPRTN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYPRTN_cpy_memcms, Arm64Mnemonic.CPYPRTN, "CPYPRTN [X1]!, [X2]!, X17");
+        TestInst(CPYPRTN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYPRTN_cpy_memcms, Arm64Mnemonic.CPYPRTN, "CPYPRTN [X1]!, [X2]!, XZR");
     }
 }

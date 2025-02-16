@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_STADD_General
+public class Arm64InstructionFactoryTests_STADD_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_STADD_General
     [TestMethod]
     public void Test_STADD_ldadd_32_memop_0()
     {
-        
-        {
-            var raw = STADD(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD W0, [X2]", asm);
-        }
-        
-        {
-            var raw = STADD(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD W15, [X2]", asm);
-        }
-        
-        {
-            var raw = STADD(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_32_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD WZR, [X2]", asm);
-        }
+        TestInst(STADD(W0, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W0, [X2]");
+        TestInst(STADD(W15, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W15, [X2]");
+        TestInst(STADD(WZR, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_STADD_General
     [TestMethod]
     public void Test_STADD_ldadd_64_memop_1()
     {
-        
-        {
-            var raw = STADD(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD X0, [X2]", asm);
-        }
-        
-        {
-            var raw = STADD(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD X15, [X2]", asm);
-        }
-        
-        {
-            var raw = STADD(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.STADD_ldadd_64_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.STADD, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("STADD XZR, [X2]", asm);
-        }
+        TestInst(STADD(X0, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X0, [X2]");
+        TestInst(STADD(X15, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X15, [X2]");
+        TestInst(STADD(XZR, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD XZR, [X2]");
     }
 }

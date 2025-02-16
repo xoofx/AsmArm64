@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_GCSPOPCX_System
+public class Arm64InstructionFactoryTests_GCSPOPCX_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_GCSPOPCX_System
     [TestMethod]
     public void Test_GCSPOPCX_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = GCSPOPCX();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.GCSPOPCX_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.GCSPOPCX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("GCSPOPCX", asm);
-        }
+        TestInst(GCSPOPCX(), Arm64InstructionId.GCSPOPCX_sys_cr_systeminstrs, Arm64Mnemonic.GCSPOPCX, "GCSPOPCX");
     }
 }

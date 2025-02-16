@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SEVL_System
+public class Arm64InstructionFactoryTests_SEVL_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_SEVL_System
     [TestMethod]
     public void Test_SEVL_hi_hints_0()
     {
-        
-        {
-            var raw = SEVL();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SEVL_hi_hints, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SEVL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SEVL", asm);
-        }
+        TestInst(SEVL(), Arm64InstructionId.SEVL_hi_hints, Arm64Mnemonic.SEVL, "SEVL");
     }
 }

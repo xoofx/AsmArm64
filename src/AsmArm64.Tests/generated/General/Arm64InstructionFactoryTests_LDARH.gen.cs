@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDARH_General
+public class Arm64InstructionFactoryTests_LDARH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDARH_General
     [TestMethod]
     public void Test_LDARH_lr32_ldstord_0()
     {
-        
-        {
-            var raw = LDARH(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDARH W0, [X2]", asm);
-        }
-        
-        {
-            var raw = LDARH(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDARH W15, [X2]", asm);
-        }
-        
-        {
-            var raw = LDARH(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDARH WZR, [X2]", asm);
-        }
+        TestInst(LDARH(W0, _[X2]), Arm64InstructionId.LDARH_lr32_ldstord, Arm64Mnemonic.LDARH, "LDARH W0, [X2]");
+        TestInst(LDARH(W15, _[X2]), Arm64InstructionId.LDARH_lr32_ldstord, Arm64Mnemonic.LDARH, "LDARH W15, [X2]");
+        TestInst(LDARH(WZR, _[X2]), Arm64InstructionId.LDARH_lr32_ldstord, Arm64Mnemonic.LDARH, "LDARH WZR, [X2]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SHA1H_Advsimd
+public class Arm64InstructionFactoryTests_SHA1H_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_SHA1H_Advsimd
     [TestMethod]
     public void Test_SHA1H_ss_cryptosha2_0()
     {
-        
-        {
-            var raw = SHA1H(S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1H_ss_cryptosha2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1H S0, S1", asm);
-        }
-        
-        {
-            var raw = SHA1H(S31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1H_ss_cryptosha2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1H S31, S1", asm);
-        }
-        
-        {
-            var raw = SHA1H(S0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1H_ss_cryptosha2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1H S0, S31", asm);
-        }
-        
-        {
-            var raw = SHA1H(S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1H_ss_cryptosha2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1H, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1H S31, S31", asm);
-        }
+        TestInst(SHA1H(S0, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S1");
+        TestInst(SHA1H(S31, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S1");
+        TestInst(SHA1H(S0, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S31");
+        TestInst(SHA1H(S31, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S31");
     }
 }

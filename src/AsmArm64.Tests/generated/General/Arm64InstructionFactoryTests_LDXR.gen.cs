@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDXR_General
+public class Arm64InstructionFactoryTests_LDXR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_LDXR_General
     [TestMethod]
     public void Test_LDXR_lr32_ldstexclr_0()
     {
-        
-        {
-            var raw = LDXR(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR W0, [X2]", asm);
-        }
-        
-        {
-            var raw = LDXR(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR W15, [X2]", asm);
-        }
-        
-        {
-            var raw = LDXR(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr32_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR WZR, [X2]", asm);
-        }
+        TestInst(LDXR(W0, _[X2]), Arm64InstructionId.LDXR_lr32_ldstexclr, Arm64Mnemonic.LDXR, "LDXR W0, [X2]");
+        TestInst(LDXR(W15, _[X2]), Arm64InstructionId.LDXR_lr32_ldstexclr, Arm64Mnemonic.LDXR, "LDXR W15, [X2]");
+        TestInst(LDXR(WZR, _[X2]), Arm64InstructionId.LDXR_lr32_ldstexclr, Arm64Mnemonic.LDXR, "LDXR WZR, [X2]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_LDXR_General
     [TestMethod]
     public void Test_LDXR_lr64_ldstexclr_1()
     {
-        
-        {
-            var raw = LDXR(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr64_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR X0, [X2]", asm);
-        }
-        
-        {
-            var raw = LDXR(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr64_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR X15, [X2]", asm);
-        }
-        
-        {
-            var raw = LDXR(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDXR_lr64_ldstexclr, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDXR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDXR XZR, [X2]", asm);
-        }
+        TestInst(LDXR(X0, _[X2]), Arm64InstructionId.LDXR_lr64_ldstexclr, Arm64Mnemonic.LDXR, "LDXR X0, [X2]");
+        TestInst(LDXR(X15, _[X2]), Arm64InstructionId.LDXR_lr64_ldstexclr, Arm64Mnemonic.LDXR, "LDXR X15, [X2]");
+        TestInst(LDXR(XZR, _[X2]), Arm64InstructionId.LDXR_lr64_ldstexclr, Arm64Mnemonic.LDXR, "LDXR XZR, [X2]");
     }
 }

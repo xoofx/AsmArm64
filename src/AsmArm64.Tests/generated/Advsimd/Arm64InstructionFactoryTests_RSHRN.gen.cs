@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RSHRN_Advsimd
+public class Arm64InstructionFactoryTests_RSHRN_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_RSHRN_Advsimd
     [TestMethod]
     public void Test_RSHRN_asimdshf_n_0()
     {
-        
-        {
-            var raw = RSHRN(V0.T_8B, V1.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.8B, V1.8H, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_8B, V1.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.8B, V1.8H, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V0.T_8B, V31.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.8B, V31.8H, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_8B, V31.T_8H, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.8B, V31.8H, #5", asm);
-        }
+        TestInst(RSHRN(V0.T_8B, V1.T_8H, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.8B, V1.8H, #5");
+        TestInst(RSHRN(V30.T_8B, V1.T_8H, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.8B, V1.8H, #5");
+        TestInst(RSHRN(V0.T_8B, V31.T_8H, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.8B, V31.8H, #5");
+        TestInst(RSHRN(V30.T_8B, V31.T_8H, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.8B, V31.8H, #5");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_RSHRN_Advsimd
     [TestMethod]
     public void Test_RSHRN_asimdshf_n_1()
     {
-        
-        {
-            var raw = RSHRN(V0.T_4H, V1.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.4H, V1.4S, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_4H, V1.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.4H, V1.4S, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V0.T_4H, V31.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.4H, V31.4S, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_4H, V31.T_4S, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.4H, V31.4S, #5", asm);
-        }
+        TestInst(RSHRN(V0.T_4H, V1.T_4S, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.4H, V1.4S, #5");
+        TestInst(RSHRN(V30.T_4H, V1.T_4S, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.4H, V1.4S, #5");
+        TestInst(RSHRN(V0.T_4H, V31.T_4S, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.4H, V31.4S, #5");
+        TestInst(RSHRN(V30.T_4H, V31.T_4S, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.4H, V31.4S, #5");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_RSHRN_Advsimd
     [TestMethod]
     public void Test_RSHRN_asimdshf_n_2()
     {
-        
-        {
-            var raw = RSHRN(V0.T_2S, V1.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.2S, V1.2D, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_2S, V1.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.2S, V1.2D, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V0.T_2S, V31.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V0.2S, V31.2D, #5", asm);
-        }
-        
-        {
-            var raw = RSHRN(V30.T_2S, V31.T_2D, 5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RSHRN_asimdshf_n, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RSHRN, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RSHRN V30.2S, V31.2D, #5", asm);
-        }
+        TestInst(RSHRN(V0.T_2S, V1.T_2D, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.2S, V1.2D, #5");
+        TestInst(RSHRN(V30.T_2S, V1.T_2D, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.2S, V1.2D, #5");
+        TestInst(RSHRN(V0.T_2S, V31.T_2D, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V0.2S, V31.2D, #5");
+        TestInst(RSHRN(V30.T_2S, V31.T_2D, 5), Arm64InstructionId.RSHRN_asimdshf_n, Arm64Mnemonic.RSHRN, "RSHRN V30.2S, V31.2D, #5");
     }
 }

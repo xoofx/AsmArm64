@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SHA1P_Advsimd
+public class Arm64InstructionFactoryTests_SHA1P_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SHA1P_Advsimd
     [TestMethod]
     public void Test_SHA1P_qsv_cryptosha3_0()
     {
-        
-        {
-            var raw = SHA1P(Q0, S1, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q0, S1, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q31, S1, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q31, S1, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q0, S31, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q0, S31, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q31, S31, V2.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q31, S31, V2.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q0, S1, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q0, S1, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q31, S1, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q31, S1, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q0, S31, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q0, S31, V0.4S", asm);
-        }
-        
-        {
-            var raw = SHA1P(Q31, S31, V0.T_4S);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SHA1P_qsv_cryptosha3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SHA1P, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SHA1P Q31, S31, V0.4S", asm);
-        }
+        TestInst(SHA1P(Q0, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V2.4S");
+        TestInst(SHA1P(Q31, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V2.4S");
+        TestInst(SHA1P(Q0, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V2.4S");
+        TestInst(SHA1P(Q31, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V2.4S");
+        TestInst(SHA1P(Q0, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V0.4S");
+        TestInst(SHA1P(Q31, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V0.4S");
+        TestInst(SHA1P(Q0, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V0.4S");
+        TestInst(SHA1P(Q31, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V0.4S");
     }
 }

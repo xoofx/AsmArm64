@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_PACIZA_General
+public class Arm64InstructionFactoryTests_PACIZA_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_PACIZA_General
     [TestMethod]
     public void Test_PACIZA_64z_dp_1src_0()
     {
-        
-        {
-            var raw = PACIZA(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIZA_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIZA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIZA X0", asm);
-        }
-        
-        {
-            var raw = PACIZA(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIZA_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIZA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIZA X15", asm);
-        }
-        
-        {
-            var raw = PACIZA(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.PACIZA_64z_dp_1src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.PACIZA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("PACIZA XZR", asm);
-        }
+        TestInst(PACIZA(X0), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X0");
+        TestInst(PACIZA(X15), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X15");
+        TestInst(PACIZA(XZR), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA XZR");
     }
 }

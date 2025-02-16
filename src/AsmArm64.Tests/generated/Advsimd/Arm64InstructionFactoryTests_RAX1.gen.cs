@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_RAX1_Advsimd
+public class Arm64InstructionFactoryTests_RAX1_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_RAX1_Advsimd
     [TestMethod]
     public void Test_RAX1_vvv2_cryptosha512_3_0()
     {
-        
-        {
-            var raw = RAX1(V0.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V0.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V30.T_2D, V1.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V30.2D, V1.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V0.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V0.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V30.T_2D, V31.T_2D, V2.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V30.2D, V31.2D, V2.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V0.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V0.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V30.T_2D, V1.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V30.2D, V1.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V0.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V0.2D, V31.2D, V0.2D", asm);
-        }
-        
-        {
-            var raw = RAX1(V30.T_2D, V31.T_2D, V0.T_2D);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.RAX1_vvv2_cryptosha512_3, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.RAX1, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("RAX1 V30.2D, V31.2D, V0.2D", asm);
-        }
+        TestInst(RAX1(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V0.2D, V1.2D, V2.2D");
+        TestInst(RAX1(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V30.2D, V1.2D, V2.2D");
+        TestInst(RAX1(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V0.2D, V31.2D, V2.2D");
+        TestInst(RAX1(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V30.2D, V31.2D, V2.2D");
+        TestInst(RAX1(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V0.2D, V1.2D, V0.2D");
+        TestInst(RAX1(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V30.2D, V1.2D, V0.2D");
+        TestInst(RAX1(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V0.2D, V31.2D, V0.2D");
+        TestInst(RAX1(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.RAX1_vvv2_cryptosha512_3, Arm64Mnemonic.RAX1, "RAX1 V30.2D, V31.2D, V0.2D");
     }
 }

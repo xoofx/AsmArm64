@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FNEG_Float
+public class Arm64InstructionFactoryTests_FNEG_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FNEG_Float
     [TestMethod]
     public void Test_FNEG_h_floatdp1_0()
     {
-        
-        {
-            var raw = FNEG(H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG H0, H1", asm);
-        }
-        
-        {
-            var raw = FNEG(H31, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG H31, H1", asm);
-        }
-        
-        {
-            var raw = FNEG(H0, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG H0, H31", asm);
-        }
-        
-        {
-            var raw = FNEG(H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG H31, H31", asm);
-        }
+        TestInst(FNEG(H0, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H1");
+        TestInst(FNEG(H31, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H1");
+        TestInst(FNEG(H0, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H31");
+        TestInst(FNEG(H31, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H31");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FNEG_Float
     [TestMethod]
     public void Test_FNEG_s_floatdp1_1()
     {
-        
-        {
-            var raw = FNEG(S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG S0, S1", asm);
-        }
-        
-        {
-            var raw = FNEG(S31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG S31, S1", asm);
-        }
-        
-        {
-            var raw = FNEG(S0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG S0, S31", asm);
-        }
-        
-        {
-            var raw = FNEG(S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG S31, S31", asm);
-        }
+        TestInst(FNEG(S0, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S1");
+        TestInst(FNEG(S31, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S1");
+        TestInst(FNEG(S0, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S31");
+        TestInst(FNEG(S31, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S31");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FNEG_Float
     [TestMethod]
     public void Test_FNEG_d_floatdp1_2()
     {
-        
-        {
-            var raw = FNEG(D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG D0, D1", asm);
-        }
-        
-        {
-            var raw = FNEG(D31, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG D31, D1", asm);
-        }
-        
-        {
-            var raw = FNEG(D0, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG D0, D31", asm);
-        }
-        
-        {
-            var raw = FNEG(D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FNEG_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FNEG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FNEG D31, D31", asm);
-        }
+        TestInst(FNEG(D0, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D1");
+        TestInst(FNEG(D31, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D1");
+        TestInst(FNEG(D0, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D31");
+        TestInst(FNEG(D31, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D31");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FJCVTZS_Float
+public class Arm64InstructionFactoryTests_FJCVTZS_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,59 +24,11 @@ public class Arm64InstructionFactoryTests_FJCVTZS_Float
     [TestMethod]
     public void Test_FJCVTZS_32d_float2int_0()
     {
-        
-        {
-            var raw = FJCVTZS(W0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS W0, D1", asm);
-        }
-        
-        {
-            var raw = FJCVTZS(W15, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS W15, D1", asm);
-        }
-        
-        {
-            var raw = FJCVTZS(WZR, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS WZR, D1", asm);
-        }
-        
-        {
-            var raw = FJCVTZS(W0, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS W0, D31", asm);
-        }
-        
-        {
-            var raw = FJCVTZS(W15, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS W15, D31", asm);
-        }
-        
-        {
-            var raw = FJCVTZS(WZR, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FJCVTZS_32d_float2int, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FJCVTZS, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FJCVTZS WZR, D31", asm);
-        }
+        TestInst(FJCVTZS(W0, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D1");
+        TestInst(FJCVTZS(W15, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D1");
+        TestInst(FJCVTZS(WZR, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D1");
+        TestInst(FJCVTZS(W0, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D31");
+        TestInst(FJCVTZS(W15, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D31");
+        TestInst(FJCVTZS(WZR, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D31");
     }
 }

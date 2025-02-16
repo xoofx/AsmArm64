@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDAPR_General
+public class Arm64InstructionFactoryTests_LDAPR_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_LDAPR_General
     [TestMethod]
     public void Test_LDAPR_32l_ldapstl_writeback_0()
     {
-        
-        {
-            var raw = LDAPR(W0, _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR W0, [X2], #4", asm);
-        }
-        
-        {
-            var raw = LDAPR(W15, _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR W15, [X2], #4", asm);
-        }
-        
-        {
-            var raw = LDAPR(WZR, _[X2], 4);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR WZR, [X2], #4", asm);
-        }
+        TestInst(LDAPR(W0, _[X2], 4), Arm64InstructionId.LDAPR_32l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR W0, [X2], #4");
+        TestInst(LDAPR(W15, _[X2], 4), Arm64InstructionId.LDAPR_32l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR W15, [X2], #4");
+        TestInst(LDAPR(WZR, _[X2], 4), Arm64InstructionId.LDAPR_32l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR WZR, [X2], #4");
     }
     
     /// <summary>
@@ -59,33 +35,9 @@ public class Arm64InstructionFactoryTests_LDAPR_General
     [TestMethod]
     public void Test_LDAPR_64l_ldapstl_writeback_1()
     {
-        
-        {
-            var raw = LDAPR(X0, _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR X0, [X2], #8", asm);
-        }
-        
-        {
-            var raw = LDAPR(X15, _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR X15, [X2], #8", asm);
-        }
-        
-        {
-            var raw = LDAPR(XZR, _[X2], 8);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_ldapstl_writeback, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR XZR, [X2], #8", asm);
-        }
+        TestInst(LDAPR(X0, _[X2], 8), Arm64InstructionId.LDAPR_64l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR X0, [X2], #8");
+        TestInst(LDAPR(X15, _[X2], 8), Arm64InstructionId.LDAPR_64l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR X15, [X2], #8");
+        TestInst(LDAPR(XZR, _[X2], 8), Arm64InstructionId.LDAPR_64l_ldapstl_writeback, Arm64Mnemonic.LDAPR, "LDAPR XZR, [X2], #8");
     }
     
     /// <summary>
@@ -94,33 +46,9 @@ public class Arm64InstructionFactoryTests_LDAPR_General
     [TestMethod]
     public void Test_LDAPR_32l_memop_2()
     {
-        
-        {
-            var raw = LDAPR(W0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR W0, [X2]", asm);
-        }
-        
-        {
-            var raw = LDAPR(W15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR W15, [X2]", asm);
-        }
-        
-        {
-            var raw = LDAPR(WZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_32l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR WZR, [X2]", asm);
-        }
+        TestInst(LDAPR(W0, _[X2]), Arm64InstructionId.LDAPR_32l_memop, Arm64Mnemonic.LDAPR, "LDAPR W0, [X2]");
+        TestInst(LDAPR(W15, _[X2]), Arm64InstructionId.LDAPR_32l_memop, Arm64Mnemonic.LDAPR, "LDAPR W15, [X2]");
+        TestInst(LDAPR(WZR, _[X2]), Arm64InstructionId.LDAPR_32l_memop, Arm64Mnemonic.LDAPR, "LDAPR WZR, [X2]");
     }
     
     /// <summary>
@@ -129,32 +57,8 @@ public class Arm64InstructionFactoryTests_LDAPR_General
     [TestMethod]
     public void Test_LDAPR_64l_memop_3()
     {
-        
-        {
-            var raw = LDAPR(X0, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR X0, [X2]", asm);
-        }
-        
-        {
-            var raw = LDAPR(X15, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR X15, [X2]", asm);
-        }
-        
-        {
-            var raw = LDAPR(XZR, _[X2]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDAPR_64l_memop, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDAPR, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDAPR XZR, [X2]", asm);
-        }
+        TestInst(LDAPR(X0, _[X2]), Arm64InstructionId.LDAPR_64l_memop, Arm64Mnemonic.LDAPR, "LDAPR X0, [X2]");
+        TestInst(LDAPR(X15, _[X2]), Arm64InstructionId.LDAPR_64l_memop, Arm64Mnemonic.LDAPR, "LDAPR X15, [X2]");
+        TestInst(LDAPR(XZR, _[X2]), Arm64InstructionId.LDAPR_64l_memop, Arm64Mnemonic.LDAPR, "LDAPR XZR, [X2]");
     }
 }

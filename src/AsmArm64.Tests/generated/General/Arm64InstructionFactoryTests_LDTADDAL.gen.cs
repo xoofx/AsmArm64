@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDTADDAL_General
+public class Arm64InstructionFactoryTests_LDTADDAL_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,87 +24,15 @@ public class Arm64InstructionFactoryTests_LDTADDAL_General
     [TestMethod]
     public void Test_LDTADDAL_32_memop_unpriv_0()
     {
-        
-        {
-            var raw = LDTADDAL(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_32_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL WZR, WZR, [X3]", asm);
-        }
+        TestInst(LDTADDAL(W0, W1, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W0, W1, [X3]");
+        TestInst(LDTADDAL(W15, W1, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W15, W1, [X3]");
+        TestInst(LDTADDAL(WZR, W1, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL WZR, W1, [X3]");
+        TestInst(LDTADDAL(W0, W16, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W0, W16, [X3]");
+        TestInst(LDTADDAL(W15, W16, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W15, W16, [X3]");
+        TestInst(LDTADDAL(WZR, W16, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL WZR, W16, [X3]");
+        TestInst(LDTADDAL(W0, WZR, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W0, WZR, [X3]");
+        TestInst(LDTADDAL(W15, WZR, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL W15, WZR, [X3]");
+        TestInst(LDTADDAL(WZR, WZR, _[X3]), Arm64InstructionId.LDTADDAL_32_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -113,86 +41,14 @@ public class Arm64InstructionFactoryTests_LDTADDAL_General
     [TestMethod]
     public void Test_LDTADDAL_64_memop_unpriv_1()
     {
-        
-        {
-            var raw = LDTADDAL(X0, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X0, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(X15, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X15, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(XZR, X1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL XZR, X1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(X0, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X0, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(X15, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X15, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(XZR, X16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL XZR, X16, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(X0, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X0, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(X15, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL X15, XZR, [X3]", asm);
-        }
-        
-        {
-            var raw = LDTADDAL(XZR, XZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTADDAL_64_memop_unpriv, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTADDAL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTADDAL XZR, XZR, [X3]", asm);
-        }
+        TestInst(LDTADDAL(X0, X1, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X0, X1, [X3]");
+        TestInst(LDTADDAL(X15, X1, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X15, X1, [X3]");
+        TestInst(LDTADDAL(XZR, X1, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL XZR, X1, [X3]");
+        TestInst(LDTADDAL(X0, X16, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X0, X16, [X3]");
+        TestInst(LDTADDAL(X15, X16, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X15, X16, [X3]");
+        TestInst(LDTADDAL(XZR, X16, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL XZR, X16, [X3]");
+        TestInst(LDTADDAL(X0, XZR, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X0, XZR, [X3]");
+        TestInst(LDTADDAL(X15, XZR, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL X15, XZR, [X3]");
+        TestInst(LDTADDAL(XZR, XZR, _[X3]), Arm64InstructionId.LDTADDAL_64_memop_unpriv, Arm64Mnemonic.LDTADDAL, "LDTADDAL XZR, XZR, [X3]");
     }
 }

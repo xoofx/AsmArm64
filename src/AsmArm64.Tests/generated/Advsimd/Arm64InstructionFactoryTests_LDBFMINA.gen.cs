@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDBFMINA_Advsimd
+public class Arm64InstructionFactoryTests_LDBFMINA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDBFMINA_Advsimd
     [TestMethod]
     public void Test_LDBFMINA_16_0()
     {
-        
-        {
-            var raw = LDBFMINA(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINA H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINA(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINA H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINA(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINA H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINA(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINA H31, H31, [X3]", asm);
-        }
+        TestInst(LDBFMINA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H1, [X3]");
+        TestInst(LDBFMINA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H1, [X3]");
+        TestInst(LDBFMINA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H31, [X3]");
+        TestInst(LDBFMINA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H31, [X3]");
     }
 }

@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_TCOMMIT_System
+public class Arm64InstructionFactoryTests_TCOMMIT_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_TCOMMIT_System
     [TestMethod]
     public void Test_TCOMMIT_only_barriers_0()
     {
-        
-        {
-            var raw = TCOMMIT();
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TCOMMIT_only_barriers, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TCOMMIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TCOMMIT", asm);
-        }
+        TestInst(TCOMMIT(), Arm64InstructionId.TCOMMIT_only_barriers, Arm64Mnemonic.TCOMMIT, "TCOMMIT");
     }
 }

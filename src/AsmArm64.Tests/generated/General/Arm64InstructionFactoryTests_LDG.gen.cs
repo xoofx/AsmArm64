@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDG_General
+public class Arm64InstructionFactoryTests_LDG_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDG_General
     [TestMethod]
     public void Test_LDG_64loffset_ldsttags_0()
     {
-        
-        {
-            var raw = LDG(X0, _[X2, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDG_64loffset_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDG X0, [X2, #80]", asm);
-        }
-        
-        {
-            var raw = LDG(X15, _[X2, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDG_64loffset_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDG X15, [X2, #80]", asm);
-        }
-        
-        {
-            var raw = LDG(XZR, _[X2, 80]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDG_64loffset_ldsttags, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDG, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDG XZR, [X2, #80]", asm);
-        }
+        TestInst(LDG(X0, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X0, [X2, #80]");
+        TestInst(LDG(X15, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X15, [X2, #80]");
+        TestInst(LDG(XZR, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG XZR, [X2, #80]");
     }
 }

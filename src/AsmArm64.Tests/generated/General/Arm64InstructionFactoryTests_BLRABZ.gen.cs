@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BLRABZ_General
+public class Arm64InstructionFactoryTests_BLRABZ_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_BLRABZ_General
     [TestMethod]
     public void Test_BLRABZ_64_branch_reg_0()
     {
-        
-        {
-            var raw = BLRABZ(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRABZ_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRABZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRABZ X0", asm);
-        }
-        
-        {
-            var raw = BLRABZ(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRABZ_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRABZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRABZ X15", asm);
-        }
-        
-        {
-            var raw = BLRABZ(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.BLRABZ_64_branch_reg, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.BLRABZ, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BLRABZ XZR", asm);
-        }
+        TestInst(BLRABZ(X0), Arm64InstructionId.BLRABZ_64_branch_reg, Arm64Mnemonic.BLRABZ, "BLRABZ X0");
+        TestInst(BLRABZ(X15), Arm64InstructionId.BLRABZ_64_branch_reg, Arm64Mnemonic.BLRABZ, "BLRABZ X15");
+        TestInst(BLRABZ(XZR), Arm64InstructionId.BLRABZ_64_branch_reg, Arm64Mnemonic.BLRABZ, "BLRABZ XZR");
     }
 }

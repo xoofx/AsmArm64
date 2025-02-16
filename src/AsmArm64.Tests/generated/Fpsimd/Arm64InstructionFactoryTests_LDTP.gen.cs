@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDTP_Fpsimd
+public class Arm64InstructionFactoryTests_LDTP_Fpsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_LDTP_Fpsimd
     [TestMethod]
     public void Test_LDTP_q_ldstpair_post_0()
     {
-        
-        {
-            var raw = LDTP(Q0, Q1, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q1, [X3], #80", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q1, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q1, [X3], #80", asm);
-        }
-        
-        {
-            var raw = LDTP(Q0, Q31, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q31, [X3], #80", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q31, _[X3], 80);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_post, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q31, [X3], #80", asm);
-        }
+        TestInst(LDTP(Q0, Q1, _[X3], 80), Arm64InstructionId.LDTP_q_ldstpair_post, Arm64Mnemonic.LDTP, "LDTP Q0, Q1, [X3], #80");
+        TestInst(LDTP(Q31, Q1, _[X3], 80), Arm64InstructionId.LDTP_q_ldstpair_post, Arm64Mnemonic.LDTP, "LDTP Q31, Q1, [X3], #80");
+        TestInst(LDTP(Q0, Q31, _[X3], 80), Arm64InstructionId.LDTP_q_ldstpair_post, Arm64Mnemonic.LDTP, "LDTP Q0, Q31, [X3], #80");
+        TestInst(LDTP(Q31, Q31, _[X3], 80), Arm64InstructionId.LDTP_q_ldstpair_post, Arm64Mnemonic.LDTP, "LDTP Q31, Q31, [X3], #80");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_LDTP_Fpsimd
     [TestMethod]
     public void Test_LDTP_q_ldstpair_pre_1()
     {
-        
-        {
-            var raw = LDTP(Q0, Q1, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q1, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q1, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q1, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = LDTP(Q0, Q31, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q31, [X3, #5]!", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q31, _[X3, 5].Pre);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_pre, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q31, [X3, #5]!", asm);
-        }
+        TestInst(LDTP(Q0, Q1, _[X3, 5].Pre), Arm64InstructionId.LDTP_q_ldstpair_pre, Arm64Mnemonic.LDTP, "LDTP Q0, Q1, [X3, #5]!");
+        TestInst(LDTP(Q31, Q1, _[X3, 5].Pre), Arm64InstructionId.LDTP_q_ldstpair_pre, Arm64Mnemonic.LDTP, "LDTP Q31, Q1, [X3, #5]!");
+        TestInst(LDTP(Q0, Q31, _[X3, 5].Pre), Arm64InstructionId.LDTP_q_ldstpair_pre, Arm64Mnemonic.LDTP, "LDTP Q0, Q31, [X3, #5]!");
+        TestInst(LDTP(Q31, Q31, _[X3, 5].Pre), Arm64InstructionId.LDTP_q_ldstpair_pre, Arm64Mnemonic.LDTP, "LDTP Q31, Q31, [X3, #5]!");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_LDTP_Fpsimd
     [TestMethod]
     public void Test_LDTP_q_ldstpair_off_2()
     {
-        
-        {
-            var raw = LDTP(Q0, Q1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q1, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q1, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTP(Q0, Q31, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q0, Q31, [X3, #5]", asm);
-        }
-        
-        {
-            var raw = LDTP(Q31, Q31, _[X3, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDTP_q_ldstpair_off, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDTP, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDTP Q31, Q31, [X3, #5]", asm);
-        }
+        TestInst(LDTP(Q0, Q1, _[X3, 5]), Arm64InstructionId.LDTP_q_ldstpair_off, Arm64Mnemonic.LDTP, "LDTP Q0, Q1, [X3, #5]");
+        TestInst(LDTP(Q31, Q1, _[X3, 5]), Arm64InstructionId.LDTP_q_ldstpair_off, Arm64Mnemonic.LDTP, "LDTP Q31, Q1, [X3, #5]");
+        TestInst(LDTP(Q0, Q31, _[X3, 5]), Arm64InstructionId.LDTP_q_ldstpair_off, Arm64Mnemonic.LDTP, "LDTP Q0, Q31, [X3, #5]");
+        TestInst(LDTP(Q31, Q31, _[X3, 5]), Arm64InstructionId.LDTP_q_ldstpair_off, Arm64Mnemonic.LDTP, "LDTP Q31, Q31, [X3, #5]");
     }
 }

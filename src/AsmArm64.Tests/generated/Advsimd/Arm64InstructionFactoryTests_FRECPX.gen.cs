@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FRECPX_Advsimd
+public class Arm64InstructionFactoryTests_FRECPX_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FRECPX_Advsimd
     [TestMethod]
     public void Test_FRECPX_asisdmiscfp16_r_0()
     {
-        
-        {
-            var raw = FRECPX(H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmiscfp16_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX H0, H1", asm);
-        }
-        
-        {
-            var raw = FRECPX(H31, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmiscfp16_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX H31, H1", asm);
-        }
-        
-        {
-            var raw = FRECPX(H0, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmiscfp16_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX H0, H31", asm);
-        }
-        
-        {
-            var raw = FRECPX(H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmiscfp16_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX H31, H31", asm);
-        }
+        TestInst(FRECPX(H0, H1), Arm64InstructionId.FRECPX_asisdmiscfp16_r, Arm64Mnemonic.FRECPX, "FRECPX H0, H1");
+        TestInst(FRECPX(H31, H1), Arm64InstructionId.FRECPX_asisdmiscfp16_r, Arm64Mnemonic.FRECPX, "FRECPX H31, H1");
+        TestInst(FRECPX(H0, H31), Arm64InstructionId.FRECPX_asisdmiscfp16_r, Arm64Mnemonic.FRECPX, "FRECPX H0, H31");
+        TestInst(FRECPX(H31, H31), Arm64InstructionId.FRECPX_asisdmiscfp16_r, Arm64Mnemonic.FRECPX, "FRECPX H31, H31");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FRECPX_Advsimd
     [TestMethod]
     public void Test_FRECPX_asisdmisc_r_1()
     {
-        
-        {
-            var raw = FRECPX(S1, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX S1, S2", asm);
-        }
-        
-        {
-            var raw = FRECPX(S31, S2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX S31, S2", asm);
-        }
-        
-        {
-            var raw = FRECPX(S1, S0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX S1, S0", asm);
-        }
-        
-        {
-            var raw = FRECPX(S31, S0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX S31, S0", asm);
-        }
+        TestInst(FRECPX(S1, S2), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX S1, S2");
+        TestInst(FRECPX(S31, S2), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX S31, S2");
+        TestInst(FRECPX(S1, S0), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX S1, S0");
+        TestInst(FRECPX(S31, S0), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX S31, S0");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FRECPX_Advsimd
     [TestMethod]
     public void Test_FRECPX_asisdmisc_r_2()
     {
-        
-        {
-            var raw = FRECPX(D1, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX D1, D2", asm);
-        }
-        
-        {
-            var raw = FRECPX(D31, D2);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX D31, D2", asm);
-        }
-        
-        {
-            var raw = FRECPX(D1, D0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX D1, D0", asm);
-        }
-        
-        {
-            var raw = FRECPX(D31, D0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRECPX_asisdmisc_r, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRECPX, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRECPX D31, D0", asm);
-        }
+        TestInst(FRECPX(D1, D2), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX D1, D2");
+        TestInst(FRECPX(D31, D2), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX D31, D2");
+        TestInst(FRECPX(D1, D0), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX D1, D0");
+        TestInst(FRECPX(D31, D0), Arm64InstructionId.FRECPX_asisdmisc_r, Arm64Mnemonic.FRECPX, "FRECPX D31, D0");
     }
 }

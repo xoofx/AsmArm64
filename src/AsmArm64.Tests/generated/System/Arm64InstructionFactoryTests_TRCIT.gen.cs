@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_TRCIT_System
+public class Arm64InstructionFactoryTests_TRCIT_System : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_TRCIT_System
     [TestMethod]
     public void Test_TRCIT_sys_cr_systeminstrs_0()
     {
-        
-        {
-            var raw = TRCIT(X0);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TRCIT_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TRCIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TRCIT X0", asm);
-        }
-        
-        {
-            var raw = TRCIT(X15);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TRCIT_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TRCIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TRCIT X15", asm);
-        }
-        
-        {
-            var raw = TRCIT(XZR);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.TRCIT_sys_cr_systeminstrs, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.TRCIT, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("TRCIT XZR", asm);
-        }
+        TestInst(TRCIT(X0), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X0");
+        TestInst(TRCIT(X15), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X15");
+        TestInst(TRCIT(XZR), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT XZR");
     }
 }

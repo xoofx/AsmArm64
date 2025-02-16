@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_F1CVTL_Advsimd
+public class Arm64InstructionFactoryTests_F1CVTL_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_F1CVTL_Advsimd
     [TestMethod]
     public void Test_F1CVTL_asimdmisc_v_0()
     {
-        
-        {
-            var raw = F1CVTL(V0.T_8H, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.F1CVTL_asimdmisc_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.F1CVTL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("F1CVTL V0.8H, V1.8B", asm);
-        }
-        
-        {
-            var raw = F1CVTL(V30.T_8H, V1.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.F1CVTL_asimdmisc_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.F1CVTL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("F1CVTL V30.8H, V1.8B", asm);
-        }
-        
-        {
-            var raw = F1CVTL(V0.T_8H, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.F1CVTL_asimdmisc_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.F1CVTL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("F1CVTL V0.8H, V31.8B", asm);
-        }
-        
-        {
-            var raw = F1CVTL(V30.T_8H, V31.T_8B);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.F1CVTL_asimdmisc_v, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.F1CVTL, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("F1CVTL V30.8H, V31.8B", asm);
-        }
+        TestInst(F1CVTL(V0.T_8H, V1.T_8B), Arm64InstructionId.F1CVTL_asimdmisc_v, Arm64Mnemonic.F1CVTL, "F1CVTL V0.8H, V1.8B");
+        TestInst(F1CVTL(V30.T_8H, V1.T_8B), Arm64InstructionId.F1CVTL_asimdmisc_v, Arm64Mnemonic.F1CVTL, "F1CVTL V30.8H, V1.8B");
+        TestInst(F1CVTL(V0.T_8H, V31.T_8B), Arm64InstructionId.F1CVTL_asimdmisc_v, Arm64Mnemonic.F1CVTL, "F1CVTL V0.8H, V31.8B");
+        TestInst(F1CVTL(V30.T_8H, V31.T_8B), Arm64InstructionId.F1CVTL_asimdmisc_v, Arm64Mnemonic.F1CVTL, "F1CVTL V30.8H, V31.8B");
     }
 }

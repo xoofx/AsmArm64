@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_SM3TT2B_Advsimd
+public class Arm64InstructionFactoryTests_SM3TT2B_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,77 +24,13 @@ public class Arm64InstructionFactoryTests_SM3TT2B_Advsimd
     [TestMethod]
     public void Test_SM3TT2B_vvv_crypto3_imm2_0()
     {
-        
-        {
-            var raw = SM3TT2B(V0.T_4S, V1.T_4S, V2.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V0.4S, V1.4S, V2.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V30.T_4S, V1.T_4S, V2.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V30.4S, V1.4S, V2.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V0.T_4S, V31.T_4S, V2.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V0.4S, V31.4S, V2.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V30.T_4S, V31.T_4S, V2.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V30.4S, V31.4S, V2.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V0.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V0.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V30.T_4S, V1.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V30.4S, V1.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V0.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V0.4S, V31.4S, V0.S[1]", asm);
-        }
-        
-        {
-            var raw = SM3TT2B(V30.T_4S, V31.T_4S, V0.S[1]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SM3TT2B, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SM3TT2B V30.4S, V31.4S, V0.S[1]", asm);
-        }
+        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V2.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V2.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V2.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V2.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V0.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V0.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V0.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V0.S[1]");
     }
 }

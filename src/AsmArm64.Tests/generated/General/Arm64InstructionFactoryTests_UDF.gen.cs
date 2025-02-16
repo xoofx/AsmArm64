@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_UDF_General
+public class Arm64InstructionFactoryTests_UDF_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,14 +24,6 @@ public class Arm64InstructionFactoryTests_UDF_General
     [TestMethod]
     public void Test_UDF_only_perm_undef_0()
     {
-        
-        {
-            var raw = UDF(5);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.UDF_only_perm_undef, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.UDF, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("UDF #5", asm);
-        }
+        TestInst(UDF(5), Arm64InstructionId.UDF_only_perm_undef, Arm64Mnemonic.UDF, "UDF #5");
     }
 }

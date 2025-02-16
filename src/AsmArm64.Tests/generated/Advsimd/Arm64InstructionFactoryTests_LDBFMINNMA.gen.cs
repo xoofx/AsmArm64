@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDBFMINNMA_Advsimd
+public class Arm64InstructionFactoryTests_LDBFMINNMA_Advsimd : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,41 +24,9 @@ public class Arm64InstructionFactoryTests_LDBFMINNMA_Advsimd
     [TestMethod]
     public void Test_LDBFMINNMA_16_0()
     {
-        
-        {
-            var raw = LDBFMINNMA(H0, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINNMA H0, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINNMA(H31, H1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINNMA H31, H1, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINNMA(H0, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINNMA H0, H31, [X3]", asm);
-        }
-        
-        {
-            var raw = LDBFMINNMA(H31, H31, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDBFMINNMA_16, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDBFMINNMA, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDBFMINNMA H31, H31, [X3]", asm);
-        }
+        TestInst(LDBFMINNMA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H1, [X3]");
+        TestInst(LDBFMINNMA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H1, [X3]");
+        TestInst(LDBFMINNMA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H31, [X3]");
+        TestInst(LDBFMINNMA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H31, [X3]");
     }
 }

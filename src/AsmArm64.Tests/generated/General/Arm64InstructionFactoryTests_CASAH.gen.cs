@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_CASAH_General
+public class Arm64InstructionFactoryTests_CASAH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,86 +24,14 @@ public class Arm64InstructionFactoryTests_CASAH_General
     [TestMethod]
     public void Test_CASAH_c32_comswap_0()
     {
-        
-        {
-            var raw = CASAH(W0, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W0, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(W15, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W15, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(WZR, W1, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH WZR, W1, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(W0, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W0, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(W15, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W15, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(WZR, W16, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH WZR, W16, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(W0, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W0, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(W15, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH W15, WZR, [X3]", asm);
-        }
-        
-        {
-            var raw = CASAH(WZR, WZR, _[X3]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.CASAH_c32_comswap, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.CASAH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("CASAH WZR, WZR, [X3]", asm);
-        }
+        TestInst(CASAH(W0, W1, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W0, W1, [X3]");
+        TestInst(CASAH(W15, W1, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W15, W1, [X3]");
+        TestInst(CASAH(WZR, W1, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH WZR, W1, [X3]");
+        TestInst(CASAH(W0, W16, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W0, W16, [X3]");
+        TestInst(CASAH(W15, W16, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W15, W16, [X3]");
+        TestInst(CASAH(WZR, W16, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH WZR, W16, [X3]");
+        TestInst(CASAH(W0, WZR, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W0, WZR, [X3]");
+        TestInst(CASAH(W15, WZR, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH W15, WZR, [X3]");
+        TestInst(CASAH(WZR, WZR, _[X3]), Arm64InstructionId.CASAH_c32_comswap, Arm64Mnemonic.CASAH, "CASAH WZR, WZR, [X3]");
     }
 }

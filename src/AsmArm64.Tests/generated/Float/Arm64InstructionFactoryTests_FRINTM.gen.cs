@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_FRINTM_Float
+public class Arm64InstructionFactoryTests_FRINTM_Float : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,42 +24,10 @@ public class Arm64InstructionFactoryTests_FRINTM_Float
     [TestMethod]
     public void Test_FRINTM_h_floatdp1_0()
     {
-        
-        {
-            var raw = FRINTM(H0, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM H0, H1", asm);
-        }
-        
-        {
-            var raw = FRINTM(H31, H1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM H31, H1", asm);
-        }
-        
-        {
-            var raw = FRINTM(H0, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM H0, H31", asm);
-        }
-        
-        {
-            var raw = FRINTM(H31, H31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_h_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM H31, H31", asm);
-        }
+        TestInst(FRINTM(H0, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H1");
+        TestInst(FRINTM(H31, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H1");
+        TestInst(FRINTM(H0, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H31");
+        TestInst(FRINTM(H31, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H31");
     }
     
     /// <summary>
@@ -68,42 +36,10 @@ public class Arm64InstructionFactoryTests_FRINTM_Float
     [TestMethod]
     public void Test_FRINTM_s_floatdp1_1()
     {
-        
-        {
-            var raw = FRINTM(S0, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM S0, S1", asm);
-        }
-        
-        {
-            var raw = FRINTM(S31, S1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM S31, S1", asm);
-        }
-        
-        {
-            var raw = FRINTM(S0, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM S0, S31", asm);
-        }
-        
-        {
-            var raw = FRINTM(S31, S31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_s_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM S31, S31", asm);
-        }
+        TestInst(FRINTM(S0, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S1");
+        TestInst(FRINTM(S31, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S1");
+        TestInst(FRINTM(S0, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S31");
+        TestInst(FRINTM(S31, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S31");
     }
     
     /// <summary>
@@ -112,41 +48,9 @@ public class Arm64InstructionFactoryTests_FRINTM_Float
     [TestMethod]
     public void Test_FRINTM_d_floatdp1_2()
     {
-        
-        {
-            var raw = FRINTM(D0, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM D0, D1", asm);
-        }
-        
-        {
-            var raw = FRINTM(D31, D1);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM D31, D1", asm);
-        }
-        
-        {
-            var raw = FRINTM(D0, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM D0, D31", asm);
-        }
-        
-        {
-            var raw = FRINTM(D31, D31);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.FRINTM_d_floatdp1, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.FRINTM, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FRINTM D31, D31", asm);
-        }
+        TestInst(FRINTM(D0, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D1");
+        TestInst(FRINTM(D31, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D1");
+        TestInst(FRINTM(D0, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D31");
+        TestInst(FRINTM(D31, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D31");
     }
 }

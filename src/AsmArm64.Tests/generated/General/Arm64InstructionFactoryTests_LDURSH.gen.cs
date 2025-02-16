@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDURSH_General
+public class Arm64InstructionFactoryTests_LDURSH_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,33 +24,9 @@ public class Arm64InstructionFactoryTests_LDURSH_General
     [TestMethod]
     public void Test_LDURSH_32_ldst_unscaled_0()
     {
-        
-        {
-            var raw = LDURSH(W0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_32_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH W0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSH(W15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_32_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH W15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSH(WZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_32_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH WZR, [X2, #5]", asm);
-        }
+        TestInst(LDURSH(W0, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W0, [X2, #5]");
+        TestInst(LDURSH(W15, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W15, [X2, #5]");
+        TestInst(LDURSH(WZR, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -59,32 +35,8 @@ public class Arm64InstructionFactoryTests_LDURSH_General
     [TestMethod]
     public void Test_LDURSH_64_ldst_unscaled_1()
     {
-        
-        {
-            var raw = LDURSH(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSH(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSH(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSH_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSH, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSH XZR, [X2, #5]", asm);
-        }
+        TestInst(LDURSH(X0, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X0, [X2, #5]");
+        TestInst(LDURSH(X15, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X15, [X2, #5]");
+        TestInst(LDURSH(XZR, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH XZR, [X2, #5]");
     }
 }

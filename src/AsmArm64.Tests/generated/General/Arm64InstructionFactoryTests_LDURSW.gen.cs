@@ -15,7 +15,7 @@ using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_LDURSW_General
+public class Arm64InstructionFactoryTests_LDURSW_General : Arm64InstructionFactoryTests
 {
     
     /// <summary>
@@ -24,32 +24,8 @@ public class Arm64InstructionFactoryTests_LDURSW_General
     [TestMethod]
     public void Test_LDURSW_64_ldst_unscaled_0()
     {
-        
-        {
-            var raw = LDURSW(X0, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSW_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSW X0, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSW(X15, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSW_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSW X15, [X2, #5]", asm);
-        }
-        
-        {
-            var raw = LDURSW(XZR, _[X2, 5]);
-            var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.LDURSW_64_ldst_unscaled, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.LDURSW, instruction.Mnemonic);
-            var asm = instruction.ToString("H", null);
-            Assert.AreEqual("LDURSW XZR, [X2, #5]", asm);
-        }
+        TestInst(LDURSW(X0, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X0, [X2, #5]");
+        TestInst(LDURSW(X15, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X15, [X2, #5]");
+        TestInst(LDURSW(XZR, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW XZR, [X2, #5]");
     }
 }
