@@ -119,7 +119,7 @@ partial class Arm64Processor
         w.WriteLine("Invalid,");
         foreach (var instruction in _instructions)
         {
-            w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {instruction.Summary}.");
+            w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {EscapeHtmlEntities(instruction.Summary)}.");
             w.WriteLine($"{instruction.Id} = {instruction.Index},");
         }
         w.CloseBraceBlock();
@@ -158,7 +158,7 @@ partial class Arm64Processor
             w.WriteLine("Invalid,");
             foreach (var arch in variants)
             {
-                w.WriteSummary($"Architecture `{arch}`.");
+                w.WriteSummary($"Architecture `{EscapeHtmlEntities(arch)}`.");
                 w.WriteLine($"{arch},");
             }
             w.CloseBraceBlock();
@@ -182,7 +182,7 @@ partial class Arm64Processor
                     var major = int.Parse(match.Groups["Major"].Value);
                     var minor = int.Parse(match.Groups["Minor"].Value);
                     var profile = match.Groups["Profile"].Value;
-                    w.WriteSummary($"Architecture {variant}.");
+                    w.WriteSummary($"Architecture {EscapeHtmlEntities(variant)}.");
                     w.WriteLine($"public static readonly Arm64Architecture {variant} = new(Arm64ArchitectureId.{variant}, {major}, {minor}, Arm64ArchitectureProfile.{profile});");
                 }
                 
@@ -1091,7 +1091,7 @@ partial class Arm64Processor
                 // ------------------------------------------------------------------------------
                 // ReSharper disable All
                 // ------------------------------------------------------------------------------
-
+                #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
                 """
             );
         }

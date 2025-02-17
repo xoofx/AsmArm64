@@ -6,6 +6,9 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents an 8-bit immediate bitmask that can be used to encode a 64-bit mask.
+/// </summary>
 public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
 {
     /// <summary>
@@ -98,6 +101,9 @@ public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
         return imm8;
     }
 
+    /// <summary>
+    /// Converts a 64-bit mask to a 8-bit immediate bitmask.
+    /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Arm64BitMaskImmediate64(ulong value)
         => Encode(value);

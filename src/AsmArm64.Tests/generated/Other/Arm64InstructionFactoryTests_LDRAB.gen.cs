@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 // ReSharper disable All
 // ------------------------------------------------------------------------------
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Other;

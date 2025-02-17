@@ -138,6 +138,9 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
 
+    /// <summary>
+    /// Tries to format the value of the current instance into the provided span of characters.
+    /// </summary>
     public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         isDefaultValue = false;

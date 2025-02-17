@@ -320,7 +320,7 @@ partial class Arm64Processor
         for (var i = 0; i < InstructionSet.SystemRegisters.Count; i++)
         {
             var register = InstructionSet.SystemRegisters[i];
-            w.WriteSummary(register.Description);
+            w.WriteSummary(EscapeHtmlEntities(register.Description));
             w.WriteLine($"{register.Name} = {i + 1},"); // TODO: fix the numbers
         }
 
@@ -415,7 +415,7 @@ partial class Arm64Processor
         for (var i = 0; i < InstructionSet.SystemRegisters.Count; i++)
         {
             var register = InstructionSet.SystemRegisters[i];
-            w.WriteSummary(register.Description);
+            w.WriteSummary(EscapeHtmlEntities(register.Description));
             var registerKind = $"{string.Join(" | ", register.UsageKinds.Select(x => $"Arm64SystemRegisterKind.{x}"))}";
             var prefix = SystemRegistersAlsoProcessStates.Contains(register.Name) ? "_" : "";
             w.WriteLine($"public static Arm64SystemRegister {prefix}{register.Name} => new(Arm64SystemRegisterKnownId.{register.Name}, 0x{register.Value:X4}, {registerKind});");

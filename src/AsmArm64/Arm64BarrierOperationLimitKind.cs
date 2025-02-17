@@ -2,6 +2,8 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable IdentifierTypo
 namespace AsmArm64;
 
 /// <summary>
@@ -77,12 +79,36 @@ public enum Arm64BarrierOperationLimitKind : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.OSHLD"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind OSHLD => Arm64BarrierOperationLimitKind.OSHLD;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.OSHST"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind OSHST => Arm64BarrierOperationLimitKind.OSHST;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.NSHLD"/>. 
+    /// </summary>
     public static Arm64BarrierOperationLimitKind NSHLD => Arm64BarrierOperationLimitKind.NSHLD;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.NSHST"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind NSHST => Arm64BarrierOperationLimitKind.NSHST;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.ISHLD"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind ISHLD => Arm64BarrierOperationLimitKind.ISHLD;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.ISHST"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind ISHST => Arm64BarrierOperationLimitKind.ISHST;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.LD"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind LD => Arm64BarrierOperationLimitKind.LD;
+    /// <summary>
+    /// See <see cref="Arm64BarrierOperationLimitKind.ST"/>.
+    /// </summary>
     public static Arm64BarrierOperationLimitKind ST => Arm64BarrierOperationLimitKind.ST;
 }

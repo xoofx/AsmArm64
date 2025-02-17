@@ -55,6 +55,10 @@ public readonly record struct Arm64LogicalImmediate64 : ISpanFormattable
     public static Arm64LogicalImmediate64 Encode(ulong value)
         => Unsafe.BitCast<int, Arm64LogicalImmediate64>(Arm64LogicalImmediateHelper.EncodeLogicalImmediate64(value));
 
+    /// <summary>
+    /// Converts a 64-bit logical immediate to an 8-bit mask representation.
+    /// </summary>
+    /// <param name="value"></param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Arm64LogicalImmediate64(ulong value)
         => Unsafe.BitCast<int, Arm64LogicalImmediate64>(Arm64LogicalImmediateHelper.EncodeLogicalImmediate64(value));

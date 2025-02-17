@@ -37,6 +37,9 @@ public readonly record struct Arm64RegisterGroup1<TReg> : IArm64RegisterGroup wh
     /// <inheritdoc />
     public int ElementIndex => 0;
 
+    /// <summary>
+    /// Gets the index of the base register in the group.
+    /// </summary>
     public int Index => BaseRegister.Index;
 
     /// <summary>
@@ -145,6 +148,9 @@ public readonly record struct Arm64RegisterGroup2<TReg> : IArm64RegisterGroup wh
     /// <inheritdoc />
     public int ElementIndex => 0;
 
+    /// <summary>
+    /// Gets the index of the base register in the group.
+    /// </summary>
     public int Index => BaseRegister.Index;
 
     /// <summary>
@@ -253,6 +259,9 @@ public readonly record struct Arm64RegisterGroup3<TReg> : IArm64RegisterGroup wh
     /// <inheritdoc />
     public int ElementIndex => 0;
 
+    /// <summary>
+    /// Gets the index of the base register in the group.
+    /// </summary>
     public int Index => BaseRegister.Index;
 
     /// <summary>
@@ -361,6 +370,9 @@ public readonly record struct Arm64RegisterGroup4<TReg> : IArm64RegisterGroup wh
     /// <inheritdoc />
     public int ElementIndex => 0;
 
+    /// <summary>
+    /// Gets the index of the base register in the group.
+    /// </summary>
     public int Index => BaseRegister.Index;
 
     /// <summary>

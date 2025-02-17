@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 // ReSharper disable All
 // ------------------------------------------------------------------------------
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace AsmArm64;
 
 /// <summary>
@@ -2545,19 +2545,19 @@ public enum Arm64SystemRegisterKnownId : ushort
     /// </summary>
     MDSTEPOP_EL1 = 631,
     /// <summary>
-    /// Alternate MECID for EL2 and EL2&0 translation regimes
+    /// Alternate MECID for EL2 and EL2&amp;0 translation regimes
     /// </summary>
     MECID_A0_EL2 = 632,
     /// <summary>
-    /// Alternate MECID for EL2&0 translation regimes.
+    /// Alternate MECID for EL2&amp;0 translation regimes.
     /// </summary>
     MECID_A1_EL2 = 633,
     /// <summary>
-    /// Primary MECID for EL2 and EL2&0 translation regimes
+    /// Primary MECID for EL2 and EL2&amp;0 translation regimes
     /// </summary>
     MECID_P0_EL2 = 634,
     /// <summary>
-    /// Primary MECID for EL2&0 translation regimes
+    /// Primary MECID for EL2&amp;0 translation regimes
     /// </summary>
     MECID_P1_EL2 = 635,
     /// <summary>
@@ -5421,35 +5421,35 @@ public enum Arm64SystemRegisterKnownId : ushort
     /// </summary>
     VMALLS12E1OSNXS = 1350,
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0
     /// </summary>
     VMALLWS2E1 = 1351,
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0, Inner Shareable
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0, Inner Shareable
     /// </summary>
     VMALLWS2E1IS = 1352,
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0, Inner Shareable
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0, Inner Shareable
     /// </summary>
     VMALLWS2E1ISNXS = 1353,
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0
     /// </summary>
     VMALLWS2E1NXS = 1354,
     /// <summary>
-    /// TLB Invalidate stage 2 write permission by VMID, EL1&0, Outer Shareable
+    /// TLB Invalidate stage 2 write permission by VMID, EL1&amp;0, Outer Shareable
     /// </summary>
     VMALLWS2E1OS = 1355,
     /// <summary>
-    /// TLB Invalidate stage 2 write permission by VMID, EL1&0, Outer Shareable
+    /// TLB Invalidate stage 2 write permission by VMID, EL1&amp;0, Outer Shareable
     /// </summary>
     VMALLWS2E1OSNXS = 1356,
     /// <summary>
-    /// Alternate MECID for EL1&0 stage 2 translation regime
+    /// Alternate MECID for EL1&amp;0 stage 2 translation regime
     /// </summary>
     VMECID_A_EL2 = 1357,
     /// <summary>
-    /// Primary MECID for EL1&0 stage 2 translation regime
+    /// Primary MECID for EL1&amp;0 stage 2 translation regime
     /// </summary>
     VMECID_P_EL2 = 1358,
     /// <summary>

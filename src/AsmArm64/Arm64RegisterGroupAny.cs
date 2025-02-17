@@ -199,11 +199,31 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
 
 partial class Arm64Extensions
 {
+    /// <summary>
+    /// A group of 1 register.
+    /// </summary>
+    /// <typeparam name="TReg">The type of the register</typeparam>
+    /// <param name="reg">The first register of the group</param>
     public static Arm64RegisterGroup1<TReg> Group1<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
 
+    /// <summary>
+    /// A group of 2 registers.
+    /// </summary>
+    /// <typeparam name="TReg">The type of the register</typeparam>
+    /// <param name="reg">The first register of the group</param>
     public static Arm64RegisterGroup2<TReg> Group2<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
 
+    /// <summary>
+    /// A group of 3 registers
+    /// </summary>
+    /// <typeparam name="TReg">The type of the register</typeparam>
+    /// <param name="reg">The first register of the group</param>
     public static Arm64RegisterGroup3<TReg> Group3<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
 
+    /// <summary>
+    /// A group of 4 registers
+    /// </summary>
+    /// <typeparam name="TReg">The type of the register</typeparam>
+    /// <param name="reg">The first register of the group</param>
     public static Arm64RegisterGroup4<TReg> Group4<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
 }

@@ -2,6 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System.Runtime.CompilerServices;
 
 namespace AsmArm64;

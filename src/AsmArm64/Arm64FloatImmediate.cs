@@ -117,6 +117,9 @@ public readonly record struct Arm64FloatImmediate : ISpanFormattable
         return imm8;
     }
 
+    /// <summary>
+    /// Converts the specified floating-point value to an 8-bit immediate value.
+    /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Arm64FloatImmediate(float value)
         => Encode(value);

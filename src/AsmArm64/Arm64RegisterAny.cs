@@ -55,6 +55,9 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     /// </summary>
     public bool IsEmpty => _value == 0;
 
+    /// <summary>
+    /// Gets the next register in the same category/kind (index + 1).
+    /// </summary>
     public Arm64RegisterAny Next()
     {
         var index = (Index + 1) & 0b11111;
@@ -103,6 +106,9 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
 
 partial class Arm64Extensions
 {
+    /// <summary>
+    /// Converts the specified <see cref="Arm64RegisterAny"/> to a string.
+    /// </summary>
     public static string ToText(this Arm64RegisterAny register, bool upper = false)
     {
         return register.Kind switch

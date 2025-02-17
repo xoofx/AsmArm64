@@ -21,9 +21,9 @@ partial class Arm64Processor
     private readonly string _isaTarGzUrl;
     private readonly string _systemRegistersTarGzUrl;
     private readonly string _capstoneSourceTarGzUrl;
-    private string _isaBaseSpecsFolder;
-    private string _registerSpecsFolder;
-    private string _capstoneArchiveFile;
+    private string _isaBaseSpecsFolder = string.Empty;
+    private string _registerSpecsFolder = string.Empty;
+    private string _capstoneArchiveFile = string.Empty;
     private readonly string _basedRootFolder;
     private readonly string _basedOutputFolder;
     private readonly string _basedOutputTestFolder;

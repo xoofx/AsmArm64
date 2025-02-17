@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 // ReSharper disable All
 // ------------------------------------------------------------------------------
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace AsmArm64;
 
 /// <summary>
@@ -5341,19 +5341,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVT_sd_floatdp1 = 1330,
     /// <summary>
-    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAS_sisd_32h = 1331,
     /// <summary>
-    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAS_sisd_64h = 1332,
     /// <summary>
-    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAS_sisd_64s = 1333,
     /// <summary>
-    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAS_sisd_32d = 1334,
     /// <summary>
@@ -5397,19 +5397,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTAS_asimdmisc_r = 1344,
     /// <summary>
-    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAU_sisd_32h = 1345,
     /// <summary>
-    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAU_sisd_64h = 1346,
     /// <summary>
-    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAU_sisd_64s = 1347,
     /// <summary>
-    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
+    /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     FCVTAU_sisd_32d = 1348,
     /// <summary>
@@ -5461,19 +5461,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTL2_asimdmisc_l = 1360,
     /// <summary>
-    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMS_sisd_32h = 1361,
     /// <summary>
-    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMS_sisd_64h = 1362,
     /// <summary>
-    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMS_sisd_64s = 1363,
     /// <summary>
-    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMS_sisd_32d = 1364,
     /// <summary>
@@ -5517,19 +5517,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTMS_asimdmisc_r = 1374,
     /// <summary>
-    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMU_sisd_32h = 1375,
     /// <summary>
-    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMU_sisd_64h = 1376,
     /// <summary>
-    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMU_sisd_64s = 1377,
     /// <summary>
-    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTMU_sisd_32d = 1378,
     /// <summary>
@@ -5593,19 +5593,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTN2_asimdsame2_h = 1393,
     /// <summary>
-    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNS_sisd_32h = 1394,
     /// <summary>
-    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNS_sisd_64h = 1395,
     /// <summary>
-    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNS_sisd_64s = 1396,
     /// <summary>
-    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNS_sisd_32d = 1397,
     /// <summary>
@@ -5649,19 +5649,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTNS_asimdmisc_r = 1407,
     /// <summary>
-    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNU_sisd_32h = 1408,
     /// <summary>
-    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNU_sisd_64h = 1409,
     /// <summary>
-    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNU_sisd_64s = 1410,
     /// <summary>
-    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
+    /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     FCVTNU_sisd_32d = 1411,
     /// <summary>
@@ -5705,19 +5705,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTNU_asimdmisc_r = 1421,
     /// <summary>
-    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPS_sisd_32h = 1422,
     /// <summary>
-    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPS_sisd_64h = 1423,
     /// <summary>
-    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPS_sisd_64s = 1424,
     /// <summary>
-    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPS_sisd_32d = 1425,
     /// <summary>
@@ -5761,19 +5761,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTPS_asimdmisc_r = 1435,
     /// <summary>
-    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPU_sisd_32h = 1436,
     /// <summary>
-    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPU_sisd_64h = 1437,
     /// <summary>
-    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPU_sisd_64s = 1438,
     /// <summary>
-    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
+    /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     FCVTPU_sisd_32d = 1439,
     /// <summary>
@@ -5829,19 +5829,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTXN2_asimdmisc_n = 1452,
     /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZS_sisd_32h = 1453,
     /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZS_sisd_64h = 1454,
     /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZS_sisd_64s = 1455,
     /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZS_sisd_32d = 1456,
     /// <summary>
@@ -5917,19 +5917,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTZS_asimdmisc_r = 1474,
     /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZU_sisd_32h = 1475,
     /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZU_sisd_64h = 1476,
     /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZU_sisd_64s = 1477,
     /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
+    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     FCVTZU_sisd_32d = 1478,
     /// <summary>
@@ -7225,23 +7225,23 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDAP1_asisdlso_d1 = 1801,
     /// <summary>
-    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
+    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDAPUR_b_ldapstl_simd = 1802,
     /// <summary>
-    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
+    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDAPUR_h_ldapstl_simd = 1803,
     /// <summary>
-    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
+    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDAPUR_s_ldapstl_simd = 1804,
     /// <summary>
-    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
+    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDAPUR_d_ldapstl_simd = 1805,
     /// <summary>
-    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
+    /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDAPUR_q_ldapstl_simd = 1806,
     /// <summary>
@@ -7565,183 +7565,183 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDFMINNML_64 = 1886,
     /// <summary>
-    /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `LDNP` - Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     LDNP_s_ldstnapair_offs = 1887,
     /// <summary>
-    /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `LDNP` - Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     LDNP_d_ldstnapair_offs = 1888,
     /// <summary>
-    /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `LDNP` - Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     LDNP_q_ldstnapair_offs = 1889,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_s_ldstpair_post = 1890,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_d_ldstpair_post = 1891,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_q_ldstpair_post = 1892,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_s_ldstpair_pre = 1893,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_d_ldstpair_pre = 1894,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_q_ldstpair_pre = 1895,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_s_ldstpair_off = 1896,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_d_ldstpair_off = 1897,
     /// <summary>
-    /// Instruction `LDP` - Load pair of SIMD&FP registers.
+    /// Instruction `LDP` - Load pair of SIMD&amp;FP registers.
     /// </summary>
     LDP_q_ldstpair_off = 1898,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_b_ldst_immpost = 1899,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_h_ldst_immpost = 1900,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_s_ldst_immpost = 1901,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_d_ldst_immpost = 1902,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_q_ldst_immpost = 1903,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_b_ldst_immpre = 1904,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_h_ldst_immpre = 1905,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_s_ldst_immpre = 1906,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_d_ldst_immpre = 1907,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_q_ldst_immpre = 1908,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_b_ldst_pos = 1909,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_h_ldst_pos = 1910,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_s_ldst_pos = 1911,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_d_ldst_pos = 1912,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     LDR_q_ldst_pos = 1913,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     LDR_s_loadlit = 1914,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     LDR_d_loadlit = 1915,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     LDR_q_loadlit = 1916,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_b_ldst_regoff = 1917,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_bl_ldst_regoff = 1918,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_h_ldst_regoff = 1919,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_s_ldst_regoff = 1920,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_d_ldst_regoff = 1921,
     /// <summary>
-    /// Instruction `LDR` - Load SIMD&FP register (register offset).
+    /// Instruction `LDR` - Load SIMD&amp;FP register (register offset).
     /// </summary>
     LDR_q_ldst_regoff = 1922,
     /// <summary>
-    /// Instruction `LDTNP` - Load unprivileged pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `LDTNP` - Load unprivileged pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     LDTNP_q_ldstnapair_offs = 1923,
     /// <summary>
-    /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
+    /// Instruction `LDTP` - Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     LDTP_q_ldstpair_post = 1924,
     /// <summary>
-    /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
+    /// Instruction `LDTP` - Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     LDTP_q_ldstpair_pre = 1925,
     /// <summary>
-    /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
+    /// Instruction `LDTP` - Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     LDTP_q_ldstpair_off = 1926,
     /// <summary>
-    /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
+    /// Instruction `LDUR` - Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDUR_b_ldst_unscaled = 1927,
     /// <summary>
-    /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
+    /// Instruction `LDUR` - Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDUR_h_ldst_unscaled = 1928,
     /// <summary>
-    /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
+    /// Instruction `LDUR` - Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDUR_s_ldst_unscaled = 1929,
     /// <summary>
-    /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
+    /// Instruction `LDUR` - Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDUR_d_ldst_unscaled = 1930,
     /// <summary>
-    /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
+    /// Instruction `LDUR` - Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     LDUR_q_ldst_unscaled = 1931,
     /// <summary>
@@ -7985,19 +7985,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SADDW2_asimddiff_w = 1991,
     /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     SCVTF_sisd_32h = 1992,
     /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     SCVTF_sisd_32d = 1993,
     /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     SCVTF_sisd_64h = 1994,
     /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     SCVTF_sisd_64s = 1995,
     /// <summary>
@@ -9093,191 +9093,191 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     STL1_asisdlso_d1 = 2268,
     /// <summary>
-    /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
+    /// Instruction `STLUR` - Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STLUR_b_ldapstl_simd = 2269,
     /// <summary>
-    /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
+    /// Instruction `STLUR` - Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STLUR_h_ldapstl_simd = 2270,
     /// <summary>
-    /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
+    /// Instruction `STLUR` - Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STLUR_s_ldapstl_simd = 2271,
     /// <summary>
-    /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
+    /// Instruction `STLUR` - Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STLUR_d_ldapstl_simd = 2272,
     /// <summary>
-    /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
+    /// Instruction `STLUR` - Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STLUR_q_ldapstl_simd = 2273,
     /// <summary>
-    /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `STNP` - Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     STNP_s_ldstnapair_offs = 2274,
     /// <summary>
-    /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `STNP` - Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     STNP_d_ldstnapair_offs = 2275,
     /// <summary>
-    /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `STNP` - Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     STNP_q_ldstnapair_offs = 2276,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_s_ldstpair_post = 2277,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_d_ldstpair_post = 2278,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_q_ldstpair_post = 2279,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_s_ldstpair_pre = 2280,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_d_ldstpair_pre = 2281,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_q_ldstpair_pre = 2282,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_s_ldstpair_off = 2283,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_d_ldstpair_off = 2284,
     /// <summary>
-    /// Instruction `STP` - Store pair of SIMD&FP registers.
+    /// Instruction `STP` - Store pair of SIMD&amp;FP registers.
     /// </summary>
     STP_q_ldstpair_off = 2285,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_b_ldst_immpost = 2286,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_h_ldst_immpost = 2287,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_s_ldst_immpost = 2288,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_d_ldst_immpost = 2289,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_q_ldst_immpost = 2290,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_b_ldst_immpre = 2291,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_h_ldst_immpre = 2292,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_s_ldst_immpre = 2293,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_d_ldst_immpre = 2294,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_q_ldst_immpre = 2295,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_b_ldst_pos = 2296,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_h_ldst_pos = 2297,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_s_ldst_pos = 2298,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_d_ldst_pos = 2299,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (immediate offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     STR_q_ldst_pos = 2300,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_b_ldst_regoff = 2301,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_bl_ldst_regoff = 2302,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_h_ldst_regoff = 2303,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_s_ldst_regoff = 2304,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_d_ldst_regoff = 2305,
     /// <summary>
-    /// Instruction `STR` - Store SIMD&FP register (register offset).
+    /// Instruction `STR` - Store SIMD&amp;FP register (register offset).
     /// </summary>
     STR_q_ldst_regoff = 2306,
     /// <summary>
-    /// Instruction `STTNP` - Store unprivileged pair of SIMD&FP registers, with non-temporal hint.
+    /// Instruction `STTNP` - Store unprivileged pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     STTNP_q_ldstnapair_offs = 2307,
     /// <summary>
-    /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
+    /// Instruction `STTP` - Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     STTP_q_ldstpair_post = 2308,
     /// <summary>
-    /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
+    /// Instruction `STTP` - Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     STTP_q_ldstpair_pre = 2309,
     /// <summary>
-    /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
+    /// Instruction `STTP` - Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     STTP_q_ldstpair_off = 2310,
     /// <summary>
-    /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
+    /// Instruction `STUR` - Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STUR_b_ldst_unscaled = 2311,
     /// <summary>
-    /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
+    /// Instruction `STUR` - Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STUR_h_ldst_unscaled = 2312,
     /// <summary>
-    /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
+    /// Instruction `STUR` - Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STUR_s_ldst_unscaled = 2313,
     /// <summary>
-    /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
+    /// Instruction `STUR` - Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STUR_d_ldst_unscaled = 2314,
     /// <summary>
-    /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
+    /// Instruction `STUR` - Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     STUR_q_ldst_unscaled = 2315,
     /// <summary>
@@ -9409,19 +9409,19 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UADDW2_asimddiff_w = 2347,
     /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     UCVTF_sisd_32h = 2348,
     /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     UCVTF_sisd_32d = 2349,
     /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     UCVTF_sisd_64h = 2350,
     /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
+    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     UCVTF_sisd_64s = 2351,
     /// <summary>

@@ -44,6 +44,9 @@ public readonly record struct Arm64RegisterGroup<#= i #><TReg> : IArm64RegisterG
     /// <inheritdoc />
     public int ElementIndex => 0;
 
+    /// <summary>
+    /// Gets the index of the base register in the group.
+    /// </summary>
     public int Index => BaseRegister.Index;
 
     /// <summary>

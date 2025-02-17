@@ -2,6 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+// ReSharper disable InconsistentNaming
 namespace AsmArm64;
 
 /// <summary>
@@ -97,25 +98,73 @@ public enum Arm64ConditionalKind : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.EQ"/>.
+    /// </summary>
     public static Arm64ConditionalKind EQ => Arm64ConditionalKind.EQ;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.NE"/>.
+    /// </summary>
     public static Arm64ConditionalKind NE => Arm64ConditionalKind.NE;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.HS"/>.
+    /// </summary>
     public static Arm64ConditionalKind HS => Arm64ConditionalKind.HS;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.LO"/>.
+    /// </summary>
     public static Arm64ConditionalKind LO => Arm64ConditionalKind.LO;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.MI"/>.
+    /// </summary>
     public static Arm64ConditionalKind MI => Arm64ConditionalKind.MI;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.PL"/>.
+    /// </summary>
     public static Arm64ConditionalKind PL => Arm64ConditionalKind.PL;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.VS"/>.
+    /// </summary>
     public static Arm64ConditionalKind VS => Arm64ConditionalKind.VS;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.VC"/>.
+    /// </summary>
     public static Arm64ConditionalKind VC => Arm64ConditionalKind.VC;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.HI"/>.
+    /// </summary>
     public static Arm64ConditionalKind HI => Arm64ConditionalKind.HI;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.LS"/>.
+    /// </summary>
     public static Arm64ConditionalKind LS => Arm64ConditionalKind.LS;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.GE"/>.
+    /// </summary>
     public static Arm64ConditionalKind GE => Arm64ConditionalKind.GE;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.LT"/>.
+    /// </summary>
     public static Arm64ConditionalKind LT => Arm64ConditionalKind.LT;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.GT"/>.
+    /// </summary>
     public static Arm64ConditionalKind GT => Arm64ConditionalKind.GT;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.LE"/>.
+    /// </summary>
     public static Arm64ConditionalKind LE => Arm64ConditionalKind.LE;
+    /// <summary>
+    /// See <see cref="Arm64ConditionalKind.AL"/>.
+    /// </summary>
     public static Arm64ConditionalKind AL => Arm64ConditionalKind.AL;
 }
 
 partial class Arm64Extensions
 {
+    /// <summary>
+    /// Inverts the conditional kind.
+    /// </summary>
     public static Arm64ConditionalKind Invert(this Arm64ConditionalKind kind)
     {
         return kind switch

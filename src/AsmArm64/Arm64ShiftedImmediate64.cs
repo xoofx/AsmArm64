@@ -4,6 +4,9 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a 64-bit shifted immediate value.
+/// </summary>
 public readonly record struct Arm64ShiftedImmediate64 : ISpanFormattable
 {
     /// <summary>

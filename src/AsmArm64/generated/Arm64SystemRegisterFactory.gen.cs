@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 // ReSharper disable All
 // ------------------------------------------------------------------------------
-
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace AsmArm64;
 
 partial class Arm64Factory
@@ -2538,19 +2538,19 @@ partial class Arm64Factory
     /// </summary>
     public static Arm64SystemRegister MDSTEPOP_EL1 => new(Arm64SystemRegisterKnownId.MDSTEPOP_EL1, 0x802A, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
-    /// Alternate MECID for EL2 and EL2&0 translation regimes
+    /// Alternate MECID for EL2 and EL2&amp;0 translation regimes
     /// </summary>
     public static Arm64SystemRegister MECID_A0_EL2 => new(Arm64SystemRegisterKnownId.MECID_A0_EL2, 0xE541, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
-    /// Alternate MECID for EL2&0 translation regimes.
+    /// Alternate MECID for EL2&amp;0 translation regimes.
     /// </summary>
     public static Arm64SystemRegister MECID_A1_EL2 => new(Arm64SystemRegisterKnownId.MECID_A1_EL2, 0xE543, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
-    /// Primary MECID for EL2 and EL2&0 translation regimes
+    /// Primary MECID for EL2 and EL2&amp;0 translation regimes
     /// </summary>
     public static Arm64SystemRegister MECID_P0_EL2 => new(Arm64SystemRegisterKnownId.MECID_P0_EL2, 0xE540, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
-    /// Primary MECID for EL2&0 translation regimes
+    /// Primary MECID for EL2&amp;0 translation regimes
     /// </summary>
     public static Arm64SystemRegister MECID_P1_EL2 => new(Arm64SystemRegisterKnownId.MECID_P1_EL2, 0xE542, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
@@ -5414,35 +5414,35 @@ partial class Arm64Factory
     /// </summary>
     public static Arm64SystemRegister VMALLS12E1OSNXS => new(Arm64SystemRegisterKnownId.VMALLS12E1OSNXS, 0x648E, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1 => new(Arm64SystemRegisterKnownId.VMALLWS2E1, 0x6432, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0, Inner Shareable
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0, Inner Shareable
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1IS => new(Arm64SystemRegisterKnownId.VMALLWS2E1IS, 0x6412, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0, Inner Shareable
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0, Inner Shareable
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1ISNXS => new(Arm64SystemRegisterKnownId.VMALLWS2E1ISNXS, 0x6492, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 dirty state by VMID, EL1&0
+    /// TLB Invalidate stage 2 dirty state by VMID, EL1&amp;0
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1NXS => new(Arm64SystemRegisterKnownId.VMALLWS2E1NXS, 0x64B2, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 write permission by VMID, EL1&0, Outer Shareable
+    /// TLB Invalidate stage 2 write permission by VMID, EL1&amp;0, Outer Shareable
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1OS => new(Arm64SystemRegisterKnownId.VMALLWS2E1OS, 0x642A, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// TLB Invalidate stage 2 write permission by VMID, EL1&0, Outer Shareable
+    /// TLB Invalidate stage 2 write permission by VMID, EL1&amp;0, Outer Shareable
     /// </summary>
     public static Arm64SystemRegister VMALLWS2E1OSNXS => new(Arm64SystemRegisterKnownId.VMALLWS2E1OSNXS, 0x64AA, Arm64SystemRegisterKind.TLBI);
     /// <summary>
-    /// Alternate MECID for EL1&0 stage 2 translation regime
+    /// Alternate MECID for EL1&amp;0 stage 2 translation regime
     /// </summary>
     public static Arm64SystemRegister VMECID_A_EL2 => new(Arm64SystemRegisterKnownId.VMECID_A_EL2, 0xE549, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>
-    /// Primary MECID for EL1&0 stage 2 translation regime
+    /// Primary MECID for EL1&amp;0 stage 2 translation regime
     /// </summary>
     public static Arm64SystemRegister VMECID_P_EL2 => new(Arm64SystemRegisterKnownId.VMECID_P_EL2, 0xE548, Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR);
     /// <summary>

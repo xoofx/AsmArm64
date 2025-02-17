@@ -132,6 +132,20 @@ public class Arm64DisassemblerOptions
 }
 
 
+/// <summary>
+/// A delegate used to print a text before/after an instruction.
+/// </summary>
+/// <param name="offset">The offset relative to the beginning of the buffer.</param>
+/// <param name="instruction">The instruction being decoded.</param>
+/// <param name="writer">The text writer to write the text.</param>
 public delegate void Arm64InstructionPrinterDelegate(long offset, Arm64Instruction instruction, TextWriter writer);
 
+/// <summary>
+/// A delegate used to format the comment of an instruction.
+/// </summary>
+/// <param name="offset">The offset relative to the beginning of the buffer.</param>
+/// <param name="instruction">The instruction being decoded.</param>
+/// <param name="destination">The destination buffer receiving the comment.</param>
+/// <param name="charsWritten">The number of character written.</param>
+/// <returns><c>true</c> if formatting the comment was successful.</returns>
 public delegate bool Arm64TryFormatInstructionCommentDelegate(long offset, Arm64Instruction instruction, Span<char> destination, out int charsWritten);
