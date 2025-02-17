@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsmArm64", "AsmArm64\AsmArm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsmArm64.Tests", "AsmArm64.Tests\AsmArm64.Tests.csproj", "{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBC4B16D-083F-47E6-BFAE-9064E600F230}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-General", "01-General", "{BBC4B16D-083F-47E6-BFAE-9064E600F230}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
 		..\.gitattributes = ..\.gitattributes
@@ -24,6 +24,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.CodeGen", "AsmArm64.CodeGen\AsmArm64.CodeGen.csproj", "{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.Bench", "AsmArm64.Bench\AsmArm64.Bench.csproj", "{6F0668E8-4F4F-4A95-9100-07EE3D1EED3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Doc", "02-Doc", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\doc\readme.md = ..\doc\readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
