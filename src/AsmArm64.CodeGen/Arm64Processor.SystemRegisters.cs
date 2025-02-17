@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using AsmArm64.CodeGen.Model;
 using Microsoft.Win32;
+using Spectre.Console;
 
 namespace AsmArm64.CodeGen;
 
@@ -63,6 +64,7 @@ partial class Arm64Processor
     
     private void ProcessSystemRegisters()
     {
+        AnsiConsole.WriteLine("Processing System Registers");
         foreach (var xmlFile in Directory.EnumerateFiles(_registerSpecsFolder, "*.xml"))
         {
             var doc = XDocument.Load(xmlFile, LoadOptions.PreserveWhitespace);
@@ -250,10 +252,10 @@ partial class Arm64Processor
 
             if (!hasErrors)
             {
-                Console.WriteLine("// Unknown kinds to add to Arm64Processor.SystemRegisters.cs / _registeredKinds");
+                AnsiConsole.WriteLine("// Unknown kinds to add to Arm64Processor.SystemRegisters.cs / _registeredKinds");
             }
             kindIndex++;
-            Console.WriteLine($"  [\"{kind}\"] = {kindIndex},");
+            AnsiConsole.WriteLine($"  [\"{kind}\"] = {kindIndex},");
             hasErrors = true;
         }
 
@@ -270,8 +272,7 @@ partial class Arm64Processor
         //        }
         //    }
         //}
-
-        Console.WriteLine($"Number of system registers: {InstructionSet.SystemRegisters.Count}");
+        AnsiConsole.WriteLine($"System registers processed: {InstructionSet.SystemRegisters.Count}");
 
         if (hasErrors)
         {

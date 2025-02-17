@@ -100,8 +100,7 @@ partial class Arm64Processor
         InstructionSet.WriteJson("instructions.json");
 
         GenerateCode();
-
-
+        
         BuildTrie();
 
         GenerateDecoderTables();
@@ -114,6 +113,8 @@ partial class Arm64Processor
             var generator = new McInstructionTestsGen();
             generator.ProcessFilesFromTar(_capstoneArchiveFile);
             generator.GenerateTests();
+            AnsiConsole.WriteLine();
+            AnsiConsole.WriteLine($"Generated {generator.TestCount} tests from Capstone {_capstoneArchiveFile}");
             return Task.CompletedTask;
         });
     }
@@ -168,6 +169,7 @@ partial class Arm64Processor
     
     private void ProcessInstructions()
     {
+        AnsiConsole.WriteLine($"Processing {_instructions.Count} Instructions");
         _instructionProcessor.DumpAllOperands();
 
         ExtractArchitecture();
@@ -177,6 +179,7 @@ partial class Arm64Processor
 
     private void LoadInstructions()
     {
+        AnsiConsole.WriteLine("Loading Instructions");
         bool hasErrors = false;
         foreach (var index in new string[]
                  {
@@ -369,6 +372,7 @@ partial class Arm64Processor
     
     private void BuildTrie()
     {
+        AnsiConsole.WriteLine("Building Instruction Decoding Table");
         var rootTrie = new InstructionTrieNode();
         _allNodes.Add(rootTrie);
         for (int i = 0; i < _instructions.Count; i++)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using AsmArm64.CodeGen.Model;
+using Spectre.Console;
 
 namespace AsmArm64.CodeGen;
 
@@ -20,6 +21,8 @@ partial class Arm64Processor
 
     private void GenerateCode()
     {
+        AnsiConsole.WriteLine("Generating C# code");
+
         // Generate system registers
         GenerateSystemRegistersCode();
 
@@ -48,6 +51,8 @@ partial class Arm64Processor
 
     private void GenerateDecoderTables()
     {
+        AnsiConsole.WriteLine("Generating Instruction Decoding Table C# code");
+
         GenerateInstructionIdDecoderTable();
         GenerateInstructionDecoderTable();
     }
