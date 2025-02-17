@@ -2,8 +2,11 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System;
 using System.Diagnostics;
+using System.Formats.Tar;
 using System.Globalization;
+using System.IO.Compression;
 using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,15 +16,18 @@ using Spectre.Console;
 
 namespace AsmArm64.CodeGen;
 
-// Feature
-// Docvars ideas
-// https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
 partial class Arm64Processor
 {
-    private readonly string _isaBaseSpecsFolder;
-    private readonly string _registerSpecsFolder;
+    private readonly string _isaTarGzUrl;
+    private readonly string _systemRegistersTarGzUrl;
+    private readonly string _capstoneSourceTarGzUrl;
+    private string _isaBaseSpecsFolder;
+    private string _registerSpecsFolder;
+    private string _capstoneArchiveFile;
+    private readonly string _basedRootFolder;
     private readonly string _basedOutputFolder;
     private readonly string _basedOutputTestFolder;
+    private readonly string _tmpFolder;
 
     public readonly InstructionSet InstructionSet = new();
 
@@ -37,10 +43,11 @@ partial class Arm64Processor
     private readonly TableGenEncoder _tableGenEncoder;
     private readonly Dictionary<uint, List<Instruction>> _instructionsWithSameBitValue;
     
-    public Arm64Processor(string isaBaseSpecsFolder, string registerSpecsFolder)
+    public Arm64Processor(string isaTarGzURL, string systemRegistersTarGzUrl, string capstoneSourceTarGzUrl)
     {
-        _isaBaseSpecsFolder = isaBaseSpecsFolder;
-        _registerSpecsFolder = registerSpecsFolder;
+        _isaTarGzUrl = isaTarGzURL;
+        _systemRegistersTarGzUrl = systemRegistersTarGzUrl;
+        _capstoneSourceTarGzUrl = capstoneSourceTarGzUrl;
         _instructions = InstructionSet.Instructions;
         _instructionsWithSameBitValue = new();
         _instructionProcessor = new(InstructionSet, _systemRegisterUsageKinds);
@@ -51,16 +58,18 @@ partial class Arm64Processor
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen
         basePath = Path.GetDirectoryName(basePath); // src
+        _basedRootFolder = Path.GetDirectoryName(basePath)!;
         _basedOutputFolder = Path.Combine(basePath!, "AsmArm64");
-        if (!Directory.Exists(_isaBaseSpecsFolder))
-        {
-            throw new ArgumentException($"Generated folder `{_isaBaseSpecsFolder}` doesn't exist");
-        }
-
         _basedOutputTestFolder = Path.Combine(basePath!, "AsmArm64.Tests");
         if (!Directory.Exists(_basedOutputTestFolder))
         {
             throw new ArgumentException($"Tests folder `{_basedOutputTestFolder}` doesn't exist");
+        }
+
+        _tmpFolder = Path.Combine(_basedRootFolder, "tmp");
+        if (!Directory.Exists(_tmpFolder))
+        {
+            Directory.CreateDirectory(_tmpFolder);
         }
     }
 
@@ -69,8 +78,12 @@ partial class Arm64Processor
     /// </summary>
     internal Dictionary<string, Instruction> MapIdToInstruction { get; } = new();
 
-    public void Run()
+    public async Task Run()
     {
+        await DownloadFiles();
+
+        await GenerateCapstoneTests();
+
         ProcessSystemRegisters();
 
         ProcessSysOp_For_DC_and_AT();
@@ -88,9 +101,69 @@ partial class Arm64Processor
 
         GenerateCode();
 
+
         BuildTrie();
 
         GenerateDecoderTables();
+    }
+
+    private async Task GenerateCapstoneTests()
+    {
+        await AnsiConsole.Status().StartAsync($"Generating tests from Capstone {_capstoneArchiveFile}", ctx =>
+        {
+            var generator = new McInstructionTestsGen();
+            generator.ProcessFilesFromTar(_capstoneArchiveFile);
+            generator.GenerateTests();
+            return Task.CompletedTask;
+        });
+    }
+
+    private async Task DownloadFiles()
+    {
+        _isaBaseSpecsFolder = await DownloadAndExtractTarGz(_isaTarGzUrl, true);
+        _registerSpecsFolder = await DownloadAndExtractTarGz(_systemRegistersTarGzUrl, true);
+        _capstoneArchiveFile = await DownloadAndExtractTarGz(_capstoneSourceTarGzUrl, false);
+    }
+
+    private async Task<string> DownloadAndExtractTarGz(string url, bool extract, string? localFileName = null)
+    {
+        localFileName ??= Path.GetFileName(url);
+        var downloadFile = Path.Combine(_tmpFolder, localFileName);
+        if (!File.Exists(downloadFile))
+        {
+            await AnsiConsole.Status().StartAsync($"Downloading {url} to {downloadFile}", async ctx =>
+            {
+                using var client = new HttpClient();
+                using var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                response.EnsureSuccessStatusCode();
+                await using var fileStream = File.Create(downloadFile);
+                await response.Content.CopyToAsync(fileStream);
+            });
+        }
+
+        if (!extract)
+        {
+            return downloadFile;
+        }
+
+        var extractFolder = Path.GetFileNameWithoutExtension(localFileName);
+        if (extractFolder.EndsWith("tar"))
+        {
+            extractFolder = Path.GetFileNameWithoutExtension(extractFolder);
+        }
+        extractFolder = Path.Combine(_tmpFolder, extractFolder);
+
+        if (!Directory.Exists(extractFolder))
+        {
+            await AnsiConsole.Status().StartAsync($"Extracting {downloadFile} to {extractFolder}", async ctx =>
+            {
+                var fileStream = File.OpenRead(downloadFile);
+                await using var gzStream = new GZipStream(fileStream, CompressionMode.Decompress, false);
+                await TarFile.ExtractToDirectoryAsync(gzStream, _tmpFolder, true);
+            });
+        }
+
+        return extractFolder;
     }
     
     private void ProcessInstructions()

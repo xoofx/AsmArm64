@@ -6,9 +6,13 @@ namespace AsmArm64.CodeGen;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        var processor = new Arm64Processor(@"C:\code\AsmArm64\tmp\ISA_A64_xml_A_profile-2024-12", @"C:\code\AsmArm64\tmp\SysReg_xml_A_profile-2024-12");
-        processor.Run();
+        var isaTarGzUrl = "https://developer.arm.com/-/cdn-downloads/permalink/Exploration-Tools-A64-ISA/ISA_A64/ISA_A64_xml_A_profile-2024-12.tar.gz";
+        var systemRegisterTarGzUrl = "https://developer.arm.com/-/cdn-downloads/permalink/Exploration-Tools-Arm-Architecture-System-Registers/SysReg/SysReg_xml_A_profile-2024-12.tar.gz";
+        var capstoneTarGzUrl = "https://github.com/capstone-engine/capstone/archive/refs/tags/6.0.0-Alpha3.tar.gz";
+
+        var processor = new Arm64Processor(isaTarGzUrl, systemRegisterTarGzUrl, capstoneTarGzUrl);
+        await processor.Run();
     }
 }

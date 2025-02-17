@@ -5,11 +5,9 @@
 using System.Diagnostics;
 using System.Formats.Tar;
 using System.IO.Compression;
-using System.Reflection.Metadata.Ecma335;
 using System.Text.RegularExpressions;
-using AsmArm64.CodeGen;
 
-namespace AsmArm64.Tests.CodeGen;
+namespace AsmArm64.CodeGen;
 
 public partial class McInstructionTestsGen
 {
