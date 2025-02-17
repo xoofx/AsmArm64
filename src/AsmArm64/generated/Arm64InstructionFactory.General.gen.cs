@@ -11380,6 +11380,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Signed multiply-subtract long.
+    /// </summary>
+    /// <remarks><code>SMSUBL Xd, Wn, Wm, Xa</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSUBL_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SMSUBL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterX Xa)
+    {
+        uint raw = 0x9B208000U; // Encoding for: SMSUBL_64wa_dp_3src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Xa.Index << 10;
+        return raw;
+    }
+    /// <summary>
     /// Signed multiply high.
     /// </summary>
     /// <remarks><code>SMULH Xd, Xn, Xm</code></remarks>

@@ -6670,10 +6670,10 @@ partial class Arm64InstructionDecoderTable
         17,19,0,16,                         // Wm       - r
         // SMSTART_msr_si_pstate          - SMSTART     {option}
         127,3,106,3,6,69,0,1,
-        153,0,0,0,                          // option?  - r
+        153,13,9,2,                         // option?  - r
         // SMSTOP_msr_si_pstate           - SMSTOP      {option}
         128,3,107,3,6,69,0,1,
-        153,0,0,0,                          // option?  - r
+        153,13,9,2,                         // option?  - r
         // SMSUBL_64wa_dp_3src            - SMSUBL      Xd, Wn, Wm, Xa
         129,3,108,3,4,0,0,4,
         33,17,0,0,                          // Xd       - w

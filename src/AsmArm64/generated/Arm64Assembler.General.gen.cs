@@ -5873,6 +5873,13 @@ partial class Arm64Assembler
     public void SMNEGL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm)
          => AddInstruction(Arm64InstructionFactory.SMNEGL(Xd, Wn, Wm));
     /// <summary>
+    /// Signed multiply-subtract long.
+    /// </summary>
+    /// <remarks><code>SMSUBL Xd, Wn, Wm, Xa</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSUBL_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SMSUBL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterX Xa)
+         => AddInstruction(Arm64InstructionFactory.SMSUBL(Xd, Wn, Wm, Xa));
+    /// <summary>
     /// Signed multiply high.
     /// </summary>
     /// <remarks><code>SMULH Xd, Xn, Xm</code></remarks>

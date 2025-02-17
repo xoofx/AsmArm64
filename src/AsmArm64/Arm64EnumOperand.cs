@@ -118,6 +118,8 @@ public readonly struct Arm64EnumOperand : IArm64Operand
 
     public Arm64RestrictionByContextKind AsRestrictionByContext => EnumKind == Arm64EnumKind.RestrictionByContext ? Arm64RestrictionByContextKind.RCTX : Arm64RestrictionByContextKind.Undefined;
 
+    public Arm64StreamingMode AsStreamingMode => EnumKind == Arm64EnumKind.StreamingMode ? (Arm64StreamingMode)Value : Arm64StreamingMode.Reserved;
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -186,6 +188,9 @@ public readonly struct Arm64EnumOperand : IArm64Operand
                 break;
             case Arm64EnumKind.RestrictionByContext:
                 result = Enum.TryFormat(AsRestrictionByContext, destination, out charsWritten);
+                break;
+            case Arm64EnumKind.StreamingMode:
+                result = Enum.TryFormat(AsStreamingMode, destination, out charsWritten);
                 break;
             default:
                 result = false;

@@ -767,6 +767,28 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Enables access to Streaming SVE mode and SME architectural state.
+    /// </summary>
+    /// <remarks><code>SMSTART {option}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSTART_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SMSTART(Arm64StreamingMode option = Arm64StreamingMode.Absent)
+    {
+        uint raw = 0xD503417FU; // Encoding for: SMSTART_msr_si_pstate
+        raw |= (uint)((byte)option & (byte)0x3) << 9;
+        return raw;
+    }
+    /// <summary>
+    /// Disables access to Streaming SVE mode and SME architectural state.
+    /// </summary>
+    /// <remarks><code>SMSTOP {option}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSTOP_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SMSTOP(Arm64StreamingMode option = Arm64StreamingMode.Absent)
+    {
+        uint raw = 0xD503407FU; // Encoding for: SMSTOP_msr_si_pstate
+        raw |= (uint)((byte)option & (byte)0x3) << 9;
+        return raw;
+    }
+    /// <summary>
     /// Speculative store bypass barrier.
     /// </summary>
     /// <remarks><code>SSBB </code></remarks>

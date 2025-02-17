@@ -629,6 +629,14 @@ partial class Arm64Processor
                     localArguments.RemoveAt(3);
                 }
                 break;
+            case "SMSUBL_64wa_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["SMNEGL_smsubl_64wa_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
             case "MOV_add_32_addsub_imm":
                 // Revert the change from auto-detection above
                 if (!IsWZR(localArguments[0]) && !IsWZR(localArguments[1]))

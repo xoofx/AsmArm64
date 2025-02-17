@@ -554,15 +554,19 @@ internal sealed class InstructionProcessor
         {
             if ((instruction.Id == "SMSTART_msr_si_pstate" || instruction.Id == "SMSTOP_msr_si_pstate") && name0 == "option")
             {
+                Debug.Assert(symbol0 is not null);
+                Debug.Assert(symbol0.BitRanges.Count == 1);
+
                 var desc = new EnumOperandDescriptor()
                 {
-                    EnumKind = Arm64EnumKind.None,
+                    EnumKind = Arm64EnumKind.StreamingMode,
                     Name = name0,
                     Description = GetDescription(elt0),
                     IsOptional = true,
+                    EnumEncoding = symbol0.BitRanges[0],
+                    BitSize = symbol0.BitRanges[0].Width,
                 };
 
-                Console.WriteLine($"TODO support {{option}} for {instruction.Id}");
                 return desc;
             }
             if (name0 == "shift")

@@ -462,6 +462,20 @@ partial class Arm64Assembler
     public void SMC(ushort imm)
          => AddInstruction(Arm64InstructionFactory.SMC(imm));
     /// <summary>
+    /// Enables access to Streaming SVE mode and SME architectural state.
+    /// </summary>
+    /// <remarks><code>SMSTART {option}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSTART_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SMSTART(Arm64StreamingMode option = Arm64StreamingMode.Absent)
+         => AddInstruction(Arm64InstructionFactory.SMSTART(option));
+    /// <summary>
+    /// Disables access to Streaming SVE mode and SME architectural state.
+    /// </summary>
+    /// <remarks><code>SMSTOP {option}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SMSTOP_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SMSTOP(Arm64StreamingMode option = Arm64StreamingMode.Absent)
+         => AddInstruction(Arm64InstructionFactory.SMSTOP(option));
+    /// <summary>
     /// Speculative store bypass barrier.
     /// </summary>
     /// <remarks><code>SSBB </code></remarks>

@@ -90,8 +90,6 @@ partial class Arm64Processor
             var mapMnemonicToInstructions = new Dictionary<string, List<Instruction>>();
             foreach (var instruction in instructions)
             {
-                if (instruction.Id.StartsWith("SMS")) continue; // TODO: skip SMSTART/SMSTOP
-
                 var mnemonic = GetInstructionMnemonic(instruction);
                 if (!mapMnemonicToInstructions.TryGetValue(mnemonic, out var list))
                 {
@@ -1054,6 +1052,7 @@ partial class Arm64Processor
         string enumType;
         string? fixedValue = null;
         var rawArguments = new List<RawTestArgument>();
+        string? defaultValue = null;
         switch (descriptor.EnumKind)
         {
             case Arm64EnumKind.Conditional:
@@ -1106,6 +1105,12 @@ partial class Arm64Processor
                 fixedValue = "Arm64RestrictionByContextKind.RCTX";
                 rawArguments.Add(new("RCTX", "RCTX"));
                 break;
+            case Arm64EnumKind.StreamingMode:
+                enumType = "Arm64StreamingMode";
+                defaultValue = "Arm64StreamingMode.Absent";
+                rawArguments.Add(new("SM", "SM"));
+                rawArguments.Add(new("ZA", "ZA"));
+                break;
             default:
                 throw new ArgumentOutOfRangeException($"Invalid enum kind  {descriptor.EnumKind}");
         }
@@ -1119,6 +1124,7 @@ partial class Arm64Processor
             Descriptor = descriptor,
             OperandName = name,
             OperandType = enumType,
+            DefaultValue = defaultValue
         };
         operandVariation.TestArguments.AddRange(rawArguments);
 

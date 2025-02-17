@@ -63,5 +63,9 @@ public enum Arm64EnumKind : byte
     /// <summary>
     /// Restriction by context (RCTX).
     /// </summary>
-    RestrictionByContext
+    RestrictionByContext,
+    /// <summary>
+    /// Streaming SVE mode and SME architectural state
+    /// </summary>
+    StreamingMode
 }
