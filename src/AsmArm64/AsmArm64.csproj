@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>This is a default project description</Description>
+    <Description>The most powerful ARM 64 (v8, v9) Assembler / Disassembler for .NET</Description>
     <Copyright>Alexandre Mutel</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Alexandre Mutel</Authors>
-    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <PackageTags>arm64;aarch64;assembler;disassembler;ARM</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageIcon>AsmArm64.png</PackageIcon>
     <PackageProjectUrl>https://github.com/xoofx/AsmArm64</PackageProjectUrl>
