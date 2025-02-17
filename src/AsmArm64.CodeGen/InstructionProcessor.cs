@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using AsmArm64.CodeGen.Model;
+using Microsoft.Win32;
 
 namespace AsmArm64.CodeGen;
 
@@ -49,8 +50,6 @@ internal sealed class InstructionProcessor
         _registerIndex = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.RegisterIndex);
         _extendExtracts = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Extend);
     }
-
-    public List<int> InstructionEncodingOffsets { get; } = new();
 
     public MemoryStream InstructionEncodingBuffer { get; }
 
@@ -135,7 +134,6 @@ internal sealed class InstructionProcessor
         buffer.Clear();
 
         // First instruction (index) is null
-        RecordInstructionBufferOffset();
         Write(buffer);
 
         foreach (var instruction in _instructions)
@@ -151,7 +149,7 @@ internal sealed class InstructionProcessor
             //        Console.WriteLine($"SYSTEM {instruction.Id} - {instruction.FullSyntax}");
             //    }
             //}
-            
+
             //bool hasMemory = instruction.Operands.Any(x => x.Kind == OperandKind.Memory);
             //if (hasMemory)
             //{
@@ -169,35 +167,35 @@ internal sealed class InstructionProcessor
                             operand.Descriptor = ProcessRegister(instruction, (RegisterOperandItem)operand.Items[0]);
                             break;
                         case OperandKind.RegisterGroup:
-                            {
-                                Debug.Assert(operand.Items.Count == 1);
-                                operand.Descriptor = ProcessRegisterGroup(instruction, (RegisterGroupOperandItem)operand.Items[0]);
-                                break;
-                            }
+                        {
+                            Debug.Assert(operand.Items.Count == 1);
+                            operand.Descriptor = ProcessRegisterGroup(instruction, (RegisterGroupOperandItem)operand.Items[0]);
+                            break;
+                        }
                         case OperandKind.ConstAndImmediate:
-                            {
-                                Debug.Assert(operand.Items.Count == 1);
-                                operand.Descriptor = ProcessConstAndImmediate(instruction, (ConstAndImmediateOperandItem)operand.Items[0]);
-                                break;
-                            }
+                        {
+                            Debug.Assert(operand.Items.Count == 1);
+                            operand.Descriptor = ProcessConstAndImmediate(instruction, (ConstAndImmediateOperandItem)operand.Items[0]);
+                            break;
+                        }
                         case OperandKind.Immediate:
-                            {
-                                Debug.Assert(operand.Items.Count == 1);
-                                operand.Descriptor = ProcessImmediate(instruction, (ImmediateOperandItem)operand.Items[0]);
-                                break;
-                            }
+                        {
+                            Debug.Assert(operand.Items.Count == 1);
+                            operand.Descriptor = ProcessImmediate(instruction, (ImmediateOperandItem)operand.Items[0]);
+                            break;
+                        }
                         case OperandKind.Memory:
-                            {
-                                operand.Descriptor = ProcessMemory(instruction, operand, operandIndex);
-                                break;
-                            }
+                        {
+                            operand.Descriptor = ProcessMemory(instruction, operand, operandIndex);
+                            break;
+                        }
                         case OperandKind.Select:
-                            {
-                                Debug.Assert(operand.Items.Count == 1);
-                                var selectOperand = (SelectOperandItem)operand.Items[0];
-                                operand.Descriptor = ProcessSelectOperand(instruction, selectOperand);
-                                break;
-                            }
+                        {
+                            Debug.Assert(operand.Items.Count == 1);
+                            var selectOperand = (SelectOperandItem)operand.Items[0];
+                            operand.Descriptor = ProcessSelectOperand(instruction, selectOperand);
+                            break;
+                        }
                         case OperandKind.Value:
                             Debug.Assert(operand.Items.Count == 1);
                             var selectedValue = (ValueOperandItem)operand.Items[0];
@@ -230,6 +228,15 @@ internal sealed class InstructionProcessor
                 }
             }
 
+            // Detect the operand flags after all operands have been processed
+            int memoryOperandCount = instruction.Operands.Count(x => x.Descriptor is MemoryOperandDescriptor);
+            for (var operandIndex = 0; operandIndex < instruction.Operands.Count; operandIndex++)
+            {
+                var operand = instruction.Operands[operandIndex];
+
+                // Detect the operand flags
+                DetectOperandFlags(instruction, operand, operandIndex, memoryOperandCount);
+            }
         }
 
         // Sort the indexers at the end and order them by their id to make them easier to read
@@ -297,7 +304,9 @@ internal sealed class InstructionProcessor
             }
 
             // Encode the instruction decoding
-            RecordInstructionBufferOffset();
+            // Position of an instruction is always at least a multiple of 4
+            Debug.Assert(InstructionEncodingBuffer.Position % 4 == 0);
+            instruction.TableEncodingOffset = (int)InstructionEncodingBuffer.Position;
             buffer.Clear();
             instruction.Encode(buffer);
             Write(buffer);
@@ -310,7 +319,7 @@ internal sealed class InstructionProcessor
                 var descriptor = instruction.Operands[i].Descriptor;
                 if (descriptor is not null)
                 {
-                    descriptor.TableEncodingOffset = (uint)InstructionEncodingBuffer.Position;
+                    descriptor.TableEncodingOffset = (int)InstructionEncodingBuffer.Position;
                 }
                 Write(allOperands.Slice(i * 8, encodingSize));
             }
@@ -323,13 +332,6 @@ internal sealed class InstructionProcessor
         InstructionEncodingBuffer.Write(buffer);
     }
 
-    private void RecordInstructionBufferOffset()
-    {
-        // Position of an instruction is always at least a multiple of 4
-        Debug.Assert(InstructionEncodingBuffer.Position % 4 == 0);
-        InstructionEncodingOffsets.Add((int)InstructionEncodingBuffer.Position);
-    }
-
     private OperandDescriptor ProcessConst(Instruction instruction, ConstOperandItem constOperand)
     {
         var text = constOperand.TextElements[0].Text;
@@ -338,6 +340,7 @@ internal sealed class InstructionProcessor
             var registerDescriptor = new RegisterOperandDescriptor()
             {
                 Name = text,
+                Description = GetDescription(constOperand.TextElements[0]),
                 RegisterKind = Arm64RegisterEncodingKind.X,
                 RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.Fixed,
                 FixedRegisterIndex = 16,
@@ -348,6 +351,7 @@ internal sealed class InstructionProcessor
         var enumDescriptor = new EnumOperandDescriptor()
         {
             Name = text,
+            Description = GetDescription(constOperand.TextElements[0]),
         };
         switch (text)
         {
@@ -367,6 +371,8 @@ internal sealed class InstructionProcessor
         return enumDescriptor;
     }
 
+    private static string GetDescription(OperandText operandText) => operandText.Symbol?.Description ?? string.Empty;
+
     private OperandDescriptor? ProcessConstAndImmediate(Instruction instruction, ConstAndImmediateOperandItem operandItem)
     {
         var name0 = operandItem.TextElements[0].Text;
@@ -378,6 +384,7 @@ internal sealed class InstructionProcessor
             var shiftOperandDescriptor = new ShiftOperandDescriptor()
             {
                 Name = name0,
+                Description = GetDescription(operandItem.TextElements[0]),
                 ShiftKind = Arm64ShiftEncodingKind.Msl,
             };
 
@@ -410,6 +417,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.Conditional,
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 BitSize = symbol0.BitSize,
             };
 
@@ -425,6 +433,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.InvertedConditional,
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 BitSize = symbol0.BitSize,
             };
 
@@ -440,6 +449,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.DataSynchronizationOption,
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 BitSize = symbol0.BitSize,
             };
             Debug.Assert(symbol0.BitSize == 2);
@@ -454,6 +464,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.StoredSharedHintPolicy,
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 BitSize = symbol0.BitSize,
             };
             Debug.Assert(symbol0.BitSize == 1);
@@ -467,6 +478,7 @@ internal sealed class InstructionProcessor
             var enumOperandDescriptor = new EnumOperandDescriptor()
             {
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 EnumKind = Arm64EnumKind.ProcessStateField,
             };
             enumOperandDescriptor.BitMapExtract = _processStateFields.GetOrCreateExtract<EncodingSymbolExtract>(symbol0);
@@ -480,6 +492,7 @@ internal sealed class InstructionProcessor
             var systemRegisterDesc = new SystemRegisterOperandDescriptor()
             {
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
             };
             
             Debug.Assert(instruction.Alias is not null);
@@ -500,6 +513,7 @@ internal sealed class InstructionProcessor
             var enumOperandDescriptor = new EnumOperandDescriptor()
             {
                 Name = name0,
+                Description = GetDescription(enumOperand.TextElements[0]),
                 EnumKind = Arm64EnumKind.None,
             };
 
@@ -544,6 +558,7 @@ internal sealed class InstructionProcessor
                 {
                     EnumKind = Arm64EnumKind.None,
                     Name = name0,
+                    Description = GetDescription(elt0),
                     IsOptional = true,
                 };
 
@@ -557,6 +572,7 @@ internal sealed class InstructionProcessor
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
                     Name = name0,
+                    Description = GetDescription(elt0),
                     ShiftKind = Arm64ShiftEncodingKind.Lsl0Or12,
                     IsOptional = true,
                 };
@@ -572,6 +588,7 @@ internal sealed class InstructionProcessor
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
                     Name = name0,
+                    Description = GetDescription(elt0),
                     ShiftKind = Arm64ShiftEncodingKind.Lsl,
                     IsOptional = true,
                 };
@@ -637,6 +654,7 @@ internal sealed class InstructionProcessor
                 {
                     EnumKind = Arm64EnumKind.BranchTargetIdentification,
                     Name = name0,
+                    Description = GetDescription(elt0),
                     IsOptional = true,
                     EnumEncoding = symbol0.BitRanges[0],
                     BitSize = 2,
@@ -667,6 +685,7 @@ internal sealed class InstructionProcessor
                 var extend = new ExtendOperandDescriptor()
                 {
                     Name = name0,
+                    Description = GetDescription(elt0),
                     IsOptional = true,
                 };
 
@@ -702,6 +721,7 @@ internal sealed class InstructionProcessor
                 {
                     ShiftKind = Arm64ShiftEncodingKind.Shift3,
                     Name = name0,
+                    Description = GetDescription(elt0),
                     IsOptional = true,
                 };
 
@@ -728,6 +748,7 @@ internal sealed class InstructionProcessor
                 {
                     ImmediateKind = Arm64ImmediateEncodingKind.IsbOption,
                     Name = name0,
+                    Description = GetDescription(elt0),
                     IsOptional = true,
                 };
 
@@ -861,6 +882,7 @@ internal sealed class InstructionProcessor
             {
                 LabelKind = labelOffsetKind,
                 Name = name,
+                Description = GetDescription(selectedValue.TextElements[0]),
                 BitSize = immediate.BitSize
             };
 
@@ -897,6 +919,7 @@ internal sealed class InstructionProcessor
             var systemRegister = new SystemRegisterOperandDescriptor()
             {
                 Name = name.Text,
+                Description = GetDescription(item0.TextElements[0]),
             };
 
             var lookupResult = Arm64Processor.RegisteredSystemRegisterUsageKinds.TryGetValue(instruction.Mnemonic, out var kindIndex);
@@ -918,6 +941,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.BarrierOperationLimit,
                 Name = name.Text,
+                Description = GetDescription(item0.TextElements[0]),
                 AllowImmediate = true,
             };
 
@@ -937,6 +961,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.PrefetchOperation,
                 Name = name.Text,
+                Description = GetDescription(item0.TextElements[0]),
                 AllowImmediate = true,
             };
 
@@ -955,6 +980,7 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumKind.RangePrefetchOperation,
                 Name = name.Text,
+                Description = GetDescription(item0.TextElements[0]),
                 AllowImmediate = true,
             };
 
@@ -1083,8 +1109,8 @@ internal sealed class InstructionProcessor
             registerNameBuilder.Append(textElement.Text);
         }
         descriptor.Name = registerNameBuilder.ToString();
-
-
+        descriptor.Description = GetDescription(register.TextElements[0]);
+        
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
         if (symbol is not null && symbol.BitNames.Count > 0)
         {
@@ -1273,6 +1299,7 @@ internal sealed class InstructionProcessor
             Register = descriptors[0],
             Count = group.Items.Count,
             Name = descriptors[0].Name,
+            Description = descriptors[0].Description,
         };
 
         registerGroup.IndexerExtract = ProcessIndexer(instruction, group);
@@ -1301,6 +1328,7 @@ internal sealed class InstructionProcessor
         var immediate = new ImmediateOperandDescriptor()
         {
             Name = item.GetName(),
+            Description = GetDescription(item.TextElements[0]),
         };
 
         // TODO: can we handle it better than by name?
@@ -1592,6 +1620,68 @@ internal sealed class InstructionProcessor
         return extendKind;
     }
 
+    private void DetectOperandFlags(Instruction instruction, Operand operand, int operandIndex, int memoryOperandCount)
+    {
+        var descriptor = operand.Descriptor;
+        if (descriptor is not null)
+        {
+            // Comparison/tests instructions are always read-only. Enum/Label/Shift/Extend/Immediate are always read-only
+            if (IsTestComparisonInstruction(instruction) || descriptor.Kind == Arm64OperandKind.Enum || descriptor.Kind == Arm64OperandKind.Label || descriptor.Kind == Arm64OperandKind.Shift || descriptor.Kind == Arm64OperandKind.Extend || descriptor.Kind == Arm64OperandKind.Immediate)
+            {
+                descriptor.Flags |= Arm64OperandFlags.Read;
+                return;
+            }
+            
+            if (operand.Descriptor is MemoryOperandDescriptor memoryDescriptor)
+            {
+                if (memoryDescriptor.Name == "dst")
+                {
+                    descriptor.Flags |= Arm64OperandFlags.Write;
+                }
+                else if (memoryDescriptor.Name == "mem")
+                {
+                    descriptor.Flags |= Arm64OperandFlags.ReadWrite;
+                }
+                else
+                {
+                    descriptor.Flags |= Arm64OperandFlags.Read;
+                }
+            }
+            else
+            {
+                // destination / target
+                if ((descriptor.Name.Contains('d') || descriptor.Name.Contains('t')) && !instruction.Mnemonic.StartsWith("ST", StringComparison.OrdinalIgnoreCase))
+                {
+                    descriptor.Flags |= Arm64OperandFlags.Write;
+                }
+                else
+                {
+                    //if (!descriptor.Description.Contains("source"))
+                    //{
+                    //    Console.WriteLine($"Check {instruction.Id} - {instruction.FullSyntax}, operand {operandIndex} - Read? - {descriptor.Description}");
+                    //}
+                    descriptor.Flags |= Arm64OperandFlags.Read;
+                }
+            }
+        }
+    }
+
+    private static bool IsTestComparisonInstruction(Instruction instruction)
+    {
+        switch (instruction.Mnemonic)
+        {
+            case "CMP":
+            case "CMN":
+            case "TST":
+            case "CCMP":
+            case "CCMN":
+            case "FCMP":
+            case "FCMPE":
+                return true;
+        }
+
+        return false;
+    }
 
     private void CollectEnumValues(EncodingSymbol symbol, Dictionary<string, int> enumToInt)
     {

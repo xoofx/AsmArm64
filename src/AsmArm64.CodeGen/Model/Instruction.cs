@@ -115,6 +115,8 @@ class Instruction : IJsonOnDeserialized
 
     public bool UseOperandEncoding8Bytes { get; set; }
 
+    public int TableEncodingOffset { get; set; }
+
     public void Encode(Span<byte> buffer)
     {
         MemoryMarshal.Write(buffer, (ushort)Index);

@@ -496,6 +496,8 @@ partial class Arm64Processor
             var symbolElement = (XElement)explanation.Elements("symbol").First();
             var accountElement = explanation.Elements("account").FirstOrDefault() ?? explanation.Elements("definition").First();
 
+            var introPart = accountElement.Element("intro");
+            
             var link = symbolElement.Attribute("link")!.Value;
             var name = symbolElement.Value.Trim();
             var encodingSymbol = new EncodingSymbol
@@ -506,6 +508,7 @@ partial class Arm64Processor
             _allParameterNames.Add(name);
             // 
             encodingSymbol.EncodedInText = accountElement.Attribute("encodedin")!.Value;
+            encodingSymbol.Description = introPart!.Value.Trim();
 
             var enclist = explanation.Attribute("enclist")!.Value.Split(",").Select(x => x.Trim()).ToList();
 

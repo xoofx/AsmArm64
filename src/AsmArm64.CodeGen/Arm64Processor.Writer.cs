@@ -16,6 +16,8 @@ namespace AsmArm64.CodeGen;
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
 partial class Arm64Processor
 {
+    private readonly StringBuilder _bytesStringBuilder = new();
+
     private void GenerateCode()
     {
         // Generate system registers
@@ -363,68 +365,71 @@ partial class Arm64Processor
         w.WriteLine("partial class Arm64InstructionDecoderTable");
         w.OpenBraceBlock();
         {
-            var offsets = _instructionProcessor.InstructionEncodingOffsets;
-            w.WriteLine($"public static ReadOnlySpan<ushort> InstructionIdToBufferOffset => new ushort[{_instructionProcessor.InstructionEncodingOffsets.Count}]");
+            w.WriteLine($"public static ReadOnlySpan<ushort> InstructionIdToBufferOffset => new ushort[{_instructions.Count + 1}]");
             w.OpenBraceBlock();
-            for (var i = 0; i < offsets.Count; i++)
+            w.WriteLine("0, // Undefined");
+            for (var i = 0; i < _instructions.Count; i++)
             {
-                var offset = offsets[i];
+                var offset = _instructions[i].TableEncodingOffset;
                 Debug.Assert(offset % 4 == 0);
                 Debug.Assert(offset / 4 <= ushort.MaxValue);
-                w.WriteLine($"{offset/4}, // {(i == 0 ? "Undefined" : _instructions[i - 1].Id)}");
+                w.WriteLine($"{offset / 4}, // {(_instructions[i].Id)}");
             }
             w.CloseBraceBlockStatement();
 
-            var buffer = _instructionProcessor.InstructionEncodingBuffer.ToArray();
-            int indexInOffset = 0;
+            var buffer = _instructionProcessor.InstructionEncodingBuffer.ToArray().AsSpan();
 
             w.WriteSummary("Decoder table to get the instruction details");
             w.WriteLine($"public static ReadOnlySpan<byte> Buffer => new byte[{buffer.Length}]");
             w.OpenBraceBlock();
 
-            int wrapping = 8;
-            var nextWrapping = new Stack<int>();
-            int startingOffset = 0;
-            for (var i = 0; i < buffer.Length; i++)
+            w.WriteLine($"// Undefined");
+            w.WriteLine(GetBytesAsString(new byte[8]));
+
+            for (var i = 0; i < _instructions.Count; i++)
             {
-                if (indexInOffset < offsets.Count && i == offsets[indexInOffset])
+                Instruction instruction = _instructions[i];
+                w.WriteLine($"// {instruction.Id,-30} - {instruction.Mnemonic,-11}{(instruction.OperandsSyntax.Length > 0 ? $" {instruction.OperandsSyntax}" : string.Empty)}");
+                w.WriteLine(GetBytesAsString(buffer.Slice(instruction.TableEncodingOffset, 8)));
+
+                var operandSize = instruction.UseOperandEncoding8Bytes ? 8 : 4;
+
+                foreach (var operand in instruction.Operands)
                 {
-                    startingOffset = 0;
-                    wrapping = 8;
-                    nextWrapping.Clear();
-                    if (indexInOffset == 0)
-                    {
-                        w.WriteLine($"// Undefined");
-                    }
-                    else
-                    {
-                        var instruction = _instructions[indexInOffset - 1];
-                        w.WriteLine($"// {instruction.Id,-30} - {instruction.Mnemonic,-11}{(instruction.OperandsSyntax.Length > 0 ? $" {instruction.OperandsSyntax}" : string.Empty)}");
-                        nextWrapping.Push(instruction.UseOperandEncoding8Bytes ? 8 : 4);
-                    }
-                    indexInOffset++;
+                    var operandBytes = GetBytesAsString(buffer.Slice((int)operand.Descriptor!.TableEncodingOffset, operandSize));
+                    w.WriteLine($"{operandBytes,-35} // {GetOperandInfo(operand.Descriptor)}");
                 }
-
-                w.Write($"{buffer[i]},");
-                if (startingOffset % wrapping == (wrapping - 1))
-                {
-                    w.WriteLine();
-                    if (nextWrapping.Count > 0)
-                    {
-                        wrapping = nextWrapping.Pop();
-                    }
-                }
-
-                startingOffset++;
-            }
-
-            if (buffer.Length % wrapping != 0)
-            {
-                w.WriteLine();
             }
             w.CloseBraceBlockStatement();
         }
         w.CloseBraceBlock();
+    }
+
+    private string GetOperandInfo(OperandDescriptor descriptor)
+    {
+        var flags = new StringBuilder();
+        if ((descriptor.Flags & Arm64OperandFlags.Read) != 0)
+        {
+            flags.Append("r");
+        }
+        if ((descriptor.Flags & Arm64OperandFlags.Write) != 0)
+        {
+            flags.Append("w");
+        }
+
+        var optional = (descriptor.Flags & Arm64OperandFlags.Optional) != 0 ? "?" : "";
+        return $"{(descriptor.Name + optional),-8} - {flags}";
+    }
+
+    private string GetBytesAsString(Span<byte> bytes)
+    {
+        _bytesStringBuilder.Clear();
+        for (var i = 0; i < bytes.Length; i++)
+        {
+            _bytesStringBuilder.Append($"{bytes[i]},");
+        }
+
+        return _bytesStringBuilder.ToString();
     }
 
     private void WriteBuffer(CodeWriter w, ReadOnlySpan<byte> buffer, string name, string summary, int wrapping = 16)

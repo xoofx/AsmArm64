@@ -33,7 +33,10 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
 
 
     public string Name { get; set; } = string.Empty;
-    public uint TableEncodingOffset { get; set; }
+
+    public int TableEncodingOffset { get; set; }
+
+    public string Description { get; set; } = string.Empty;
 
     public void Encode(Span<byte> buffer)
     {

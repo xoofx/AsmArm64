@@ -346,9 +346,9 @@ partial class Arm64Processor
         AnsiConsole.MarkupLine($"[green]Generated InstructionIdDecoder Table[/]: {_tableGenEncoder.Buffer.Length} bytes");
         AnsiConsole.MarkupLine($"[green]Generated InstructionIdDecoder Table Size / Instruction[/]: {((double)_tableGenEncoder.Buffer.Length/_instructions.Count):0.00} bytes");
         AnsiConsole.MarkupLine($"[green]Generated InstructionDecoder Table[/]: {_instructionProcessor.InstructionEncodingBuffer.Length} bytes");
-        AnsiConsole.MarkupLine($"[green]Generated InstructionDecoder Offsets Table[/]: {_instructionProcessor.InstructionEncodingOffsets.Count * 2} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated InstructionDecoder Offsets Table[/]: {_instructions.Count * 2} bytes");
 
-        var totalMemory = _tableGenEncoder.Buffer.Length + _instructionProcessor.InstructionEncodingBuffer.Length + _instructionProcessor.InstructionEncodingOffsets.Count * 2;
+        var totalMemory = _tableGenEncoder.Buffer.Length + _instructionProcessor.InstructionEncodingBuffer.Length + _instructions.Count * 2;
         double totalMemoryPerInstruction = (double)totalMemory / (_instructions.Count + 1);
         AnsiConsole.MarkupLine($"[green]Average Instruction Decoder Size / Instruction [/]: {totalMemoryPerInstruction:0.00} bytes");
         
