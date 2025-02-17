@@ -8,6 +8,9 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a ARM64 label operand.
+/// </summary>
 public readonly struct Arm64LabelOperand : IArm64Operand
 {
     internal Arm64LabelOperand(Arm64Operand operand)
@@ -87,10 +90,19 @@ public readonly struct Arm64LabelOperand : IArm64Operand
         }
     }
 
+    /// <summary>
+    /// Gets the kind of this operand.
+    /// </summary>
     public Arm64OperandKind Kind => Arm64OperandKind.Label;
 
+    /// <summary>
+    /// Gets the flags of this operand.
+    /// </summary>
     public Arm64OperandFlags Flags { get; }
 
+    /// <summary>
+    /// Gets the relative offset of this operand.
+    /// </summary>
     public long Offset { get; }
 
     /// <inheritdoc />
@@ -110,7 +122,8 @@ public readonly struct Arm64LabelOperand : IArm64Operand
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
-    
+
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         isDefaultValue = false;
@@ -135,6 +148,10 @@ public readonly struct Arm64LabelOperand : IArm64Operand
         return true;
     }
 
+    /// <summary>
+    /// Explicit conversion from <see cref="Arm64Operand"/> to <see cref="Arm64LabelOperand"/>.
+    /// </summary>
+    /// <param name="operand">The operand to convert from.</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator Arm64LabelOperand(Arm64Operand operand)
     {

@@ -4,6 +4,9 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal helper for decoding immediate values.
+/// </summary>
 internal static class Arm64ImmediateValueHelper
 {
     public static long DecodeMsrImmediateValue(uint rawValue, int value)

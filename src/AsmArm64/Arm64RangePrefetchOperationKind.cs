@@ -40,8 +40,20 @@ public enum Arm64RangePrefetchOperationKind : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// Prefetch Load, keep in cache.
+    /// </summary>
     public static Arm64RangePrefetchOperationKind PLDKEEP => Arm64RangePrefetchOperationKind.PLDKEEP;
+    /// <summary>
+    /// Prefetch Store, keep in cache.
+    /// </summary>
     public static Arm64RangePrefetchOperationKind PSTKEEP => Arm64RangePrefetchOperationKind.PSTKEEP;
+    /// <summary>
+    /// Prefetch Load, stream (do not retain in cache).
+    /// </summary>
     public static Arm64RangePrefetchOperationKind PLDSTRM => Arm64RangePrefetchOperationKind.PLDSTRM;
+    /// <summary>
+    /// Prefetch Store, stream (do not retain in cache).
+    /// </summary>
     public static Arm64RangePrefetchOperationKind PSTSTRM => Arm64RangePrefetchOperationKind.PSTSTRM;
 }

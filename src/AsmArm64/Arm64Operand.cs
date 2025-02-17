@@ -6,21 +6,38 @@ using System.Diagnostics;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents an ARM64 operand.
+/// </summary>
 public readonly struct Arm64Operand : IArm64Operand
 {
     internal readonly ulong Descriptor;
     internal readonly Arm64RawInstruction RawValue;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64Operand"/> struct.
+    /// </summary>
+    /// <param name="descriptor">The descriptor of the operand.</param>
+    /// <param name="rawValue">The raw instruction value.</param>
     internal Arm64Operand(ulong descriptor, Arm64RawInstruction rawValue)
     {
         Descriptor = descriptor;
         RawValue = rawValue;
     }
 
+    /// <summary>
+    /// Gets the kind of the operand.
+    /// </summary>
     public Arm64OperandKind Kind => (Arm64OperandKind)(byte)(Descriptor & 0xF);
 
+    /// <summary>
+    /// Gets a value indicating whether the operand is optional.
+    /// </summary>
     public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
 
+    /// <summary>
+    /// Gets the flags of the operand.
+    /// </summary>
     public Arm64OperandFlags Flags => (Arm64OperandFlags)((byte)Descriptor >> 4);
 
     /// <inheritdoc />
@@ -39,7 +56,8 @@ public readonly struct Arm64Operand : IArm64Operand
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
-    
+
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         switch (Kind)

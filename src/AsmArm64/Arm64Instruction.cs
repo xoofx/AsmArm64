@@ -3,7 +3,6 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -20,6 +19,12 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     internal readonly byte* OperandsPtr;
     internal readonly Arm64RawInstruction RawValue;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64Instruction"/> struct.
+    /// </summary>
+    /// <param name="descriptor">The descriptor.</param>
+    /// <param name="operandsPtr">The pointer to the operands.</param>
+    /// <param name="rawValue">The raw instruction value.</param>
     private Arm64Instruction(ulong descriptor, byte* operandsPtr, Arm64RawInstruction rawValue)
     {
         // MemoryMarshal.Write(buffer, (ushort)IdIndex);
@@ -33,30 +38,67 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         RawValue = rawValue;
     }
 
+    /// <summary>
+    /// Gets the instruction ID.
+    /// </summary>
     public Arm64InstructionId Id => (Arm64InstructionId)(ushort)Descriptor;
 
-    public Arm64Mnemonic Mnemonic => (Arm64Mnemonic) (ushort) (Descriptor >> 16);
+    /// <summary>
+    /// Gets the mnemonic of the instruction.
+    /// </summary>
+    public Arm64Mnemonic Mnemonic => (Arm64Mnemonic)(ushort)(Descriptor >> 16);
 
-    public Arm64InstructionClass Class => (Arm64InstructionClass) (byte) (Descriptor >> 32);
+    /// <summary>
+    /// Gets the class of the instruction.
+    /// </summary>
+    public Arm64InstructionClass Class => (Arm64InstructionClass)(byte)(Descriptor >> 32);
 
+    /// <summary>
+    /// Gets the flags of the instruction.
+    /// </summary>
     public Arm64InstructionFlags Flags => (Arm64InstructionFlags)((byte)(Descriptor >> 48) & 0x7F); // Don't expose bit 7 (flags encoding as 8 bytes)
 
+    /// <summary>
+    /// Gets the feature expression ID of the instruction.
+    /// </summary>
     public Arm64FeatureExpressionId FeatureExpressionId => (Arm64FeatureExpressionId)(byte)(Descriptor >> 40);
 
+    /// <summary>
+    /// Gets the number of operands.
+    /// </summary>
     public int OperandCount => (byte)(Descriptor >> 56);
 
+    /// <summary>
+    /// Gets the operands of the instruction.
+    /// </summary>
     public Arm64Operands Operands => new(this);
 
+    /// <summary>
+    /// Gets a value indicating whether the operand encoding size is 4 bytes.
+    /// </summary>
     internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> (48 + 7)) & 1) == 0;
-    
+
+    /// <summary>
+    /// Gets the operand at the specified index.
+    /// </summary>
+    /// <param name="index">The index of the operand.</param>
+    /// <returns>The operand at the specified index.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     public Arm64Operand GetOperand(int index)
     {
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
         return IsOperandEncodingSize4Bytes ? new Arm64Operand(*((uint*)OperandsPtr + index), RawValue) : new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue);
     }
 
+    /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
+    /// <summary>
+    /// Converts the instruction to a string representation.
+    /// </summary>
+    /// <param name="format">The format string.</param>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>The string representation of the instruction.</returns>
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
         Span<char> buffer = stackalloc char[256];
@@ -65,9 +107,26 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         return buffer.Slice(0, charsWritten).ToString();
     }
 
+    /// <summary>
+    /// Tries to format the instruction into the provided span.
+    /// </summary>
+    /// <param name="destination">The destination span.</param>
+    /// <param name="charsWritten">The number of characters written.</param>
+    /// <param name="format">The format string.</param>
+    /// <param name="provider">The format provider.</param>
+    /// <returns><c>true</c> if the formatting was successful; otherwise, <c>false</c>.</returns>
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, format, provider, null);
 
+    /// <summary>
+    /// Tries to format the instruction into the provided span.
+    /// </summary>
+    /// <param name="destination">The destination span.</param>
+    /// <param name="charsWritten">The number of characters written.</param>
+    /// <param name="format">The format string.</param>
+    /// <param name="provider">The format provider.</param>
+    /// <param name="tryResolveLabel">The delegate to resolve labels.</param>
+    /// <returns><c>true</c> if the formatting was successful; otherwise, <c>false</c>.</returns>
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryResolveLabel)
     {
         var mnemonic = this.Mnemonic.ToText(format.Length == 1 && format[0] == 'H');
@@ -133,20 +192,34 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         return true;
     }
 
-
+    /// <summary>
+    /// Decodes the specified raw instruction.
+    /// </summary>
+    /// <param name="rawInstruction">The raw instruction.</param>
+    /// <returns>The decoded instruction.</returns>
     public static Arm64Instruction Decode(Arm64RawInstruction rawInstruction)
     {
         var id = DecodeId(rawInstruction);
-        var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int) id];
+        var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int)id];
         var buffer = (byte*)Unsafe.AsPointer(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset * 4));
-        var descriptor = (ulong*) buffer;
+        var descriptor = (ulong*)buffer;
         var operands = buffer + sizeof(ulong);
         return new Arm64Instruction(*descriptor, operands, rawInstruction);
     }
 
+    /// <summary>
+    /// Gets the operand descriptor at the specified offset.
+    /// </summary>
+    /// <param name="offset">The offset.</param>
+    /// <returns>The operand descriptor.</returns>
     internal static ulong GetOperandDescriptor(nint offset)
         => Unsafe.As<byte, ulong>(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset));
-    
+
+    /// <summary>
+    /// Decodes the instruction ID from the specified raw instruction.
+    /// </summary>
+    /// <param name="rawInstruction">The raw instruction.</param>
+    /// <returns>The decoded instruction ID.</returns>
     public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction rawInstruction)
     {
         ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionIdDecoderTable.Buffer);
@@ -155,7 +228,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
 
         while (true)
         {
-            nextHeader:
+        nextHeader:
             ref var header = ref Unsafe.As<byte, EntryHeader>(ref Unsafe.Add(ref buffer, offset));
 
             var kind = header.TrieTableKind;
@@ -230,7 +303,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
 
         return Arm64InstructionId.Invalid;
 
-        return_offset:
+    return_offset:
         {
             uint id = unchecked((uint)offset) & ~0x8000_0000U;
             if ((id & 0x4000_0000U) != 0)
@@ -269,7 +342,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         {
             get => _mask;
         }
-        
+
         public ushort ArrayLength
         {
             get => _arrayLength;

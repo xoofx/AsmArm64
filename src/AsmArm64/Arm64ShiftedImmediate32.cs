@@ -5,43 +5,42 @@
 namespace AsmArm64;
 
 /// <summary>
-/// Represents a 64-bit inverted shifted immediate value.
+/// Represents a 32-bit shifted immediate value.
 /// </summary>
-public readonly record struct Arm64InvertedShiftedImmediate64 : ISpanFormattable
+public readonly record struct Arm64ShiftedImmediate32 : ISpanFormattable
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Arm64InvertedShiftedImmediate64"/> struct.
+    /// Initializes a new instance of the <see cref="Arm64ShiftedImmediate32"/> struct.
     /// </summary>
     /// <param name="value">The immediate value.</param>
-    /// <param name="shift">The shift amount. Must be 0, 16, 32, or 48.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the shift value is not 0, 16, 32, or 48.</exception>
-    public Arm64InvertedShiftedImmediate64(ushort value, int shift)
+    /// <param name="shift">The shift amount, which must be either 0 or 16.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the shift value is not 0 or 16.</exception>
+    public Arm64ShiftedImmediate32(ushort value, int shift)
     {
-        if (shift != 0 && shift != 16 && shift != 32 && shift != 48) throw new ArgumentOutOfRangeException(nameof(shift), shift, "Invalid shifted immediate value. Should be a shift-able to 0 or 16/32/48.");
-
+        if (shift != 0 && shift != 16) throw new ArgumentOutOfRangeException(nameof(shift), shift, "Invalid shifted immediate value. Should be a shift-able to 0, 16.");
         EncodedValue = (value << 2) | (shift >> 4);
     }
 
     /// <summary>
-    /// Gets the encoded value.
+    /// Gets the encoded value of the shifted immediate.
     /// </summary>
     public int EncodedValue { get; }
 
     /// <summary>
-    /// Gets the immediate value.
+    /// Gets the immediate value by decoding the encoded value.
     /// </summary>
     public int Immediate => EncodedValue >> 2;
 
     /// <summary>
-    /// Gets the shift left value.
+    /// Gets the shift left amount by decoding the encoded value.
     /// </summary>
     public int ShiftLeft => (EncodedValue & 3) << 4;
 
     /// <summary>
-    /// Gets the inverted shifted immediate value.
+    /// Gets the final value after applying the shift.
     /// </summary>
-    /// <returns>The inverted shifted immediate value.</returns>
-    public long Value() => ~(Immediate << ShiftLeft);
+    /// <returns>The shifted immediate value.</returns>
+    public int Value() => (int)Immediate << ShiftLeft;
 
     /// <inheritdoc/>
     public override string ToString() => ToString(null, null);

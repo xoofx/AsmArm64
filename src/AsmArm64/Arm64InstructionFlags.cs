@@ -5,29 +5,21 @@
 namespace AsmArm64;
 
 /// <summary>
-/// Represents the flags of an ARM64 operand.
+/// Flags of an <see cref="Arm64Instruction"/>.
 /// </summary>
 [Flags]
-public enum Arm64OperandFlags : byte
+public enum Arm64InstructionFlags : byte
 {
     /// <summary>
     /// No flags.
     /// </summary>
     None = 0,
     /// <summary>
-    /// The operand is read.
+    /// The instruction has a label.
     /// </summary>
-    Read = 1,
+    HasLabel = 1,
     /// <summary>
-    /// The operand is written.
+    /// The instruction updates arithmetic CPU flags.
     /// </summary>
-    Write = 2,
-    /// <summary>
-    /// The operand is read and written.
-    /// </summary>
-    ReadWrite = Read | Write,
-    /// <summary>
-    /// The operand is optional.
-    /// </summary>
-    Optional = 8,
+    HasSetFlags = 2,
 }

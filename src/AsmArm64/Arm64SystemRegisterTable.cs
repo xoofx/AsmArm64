@@ -4,6 +4,9 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal class to provide information about ARM64 system registers.
+/// </summary>
 internal static partial class Arm64SystemRegisterTable
 {
     public static string GetNameById(Arm64SystemRegisterKnownId id) => NamesOrderedById[(int)id];

@@ -7,6 +7,9 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents an ARM64 register operand.
+/// </summary>
 public readonly struct Arm64RegisterOperand : IArm64Operand
 {
     internal Arm64RegisterOperand(Arm64Operand operand)
@@ -163,16 +166,34 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         Value = Arm64RegisterAny.Create(registerKind, registerIndex, vKind, elementCount, elementIndex);
     }
 
+    /// <summary>
+    /// Gets the kind of the operand.
+    /// </summary>
     public Arm64OperandKind Kind => Arm64OperandKind.Register;
 
+    /// <summary>
+    /// Gets the value of the register.
+    /// </summary>
     public Arm64RegisterAny Value { get; }
 
+    /// <summary>
+    /// Gets a value indicating whether the operand is optional.
+    /// </summary>
     public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
 
+    /// <summary>
+    /// Gets the flags of the operand.
+    /// </summary>
     public Arm64OperandFlags Flags { get; }
 
+    /// <summary>
+    /// Gets a value indicating whether the register is paired with the previous operand.
+    /// </summary>
     public bool IsPaired { get; }
 
+    /// <summary>
+    /// Gets a value indicating whether the register is the zero register (WZR or XZR).
+    /// </summary>
     public bool IsZeroRegister => (Value.Kind == Arm64RegisterKind.X || Value.Kind == Arm64RegisterKind.W) && Value.Index == 31;
 
     /// <inheritdoc />
@@ -186,18 +207,23 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         isDefaultValue = (IsOptional && IsZeroRegister) || (instruction.Id == Arm64InstructionId.RET_64r_branch_reg && Value.Index == 30);
         return Value.TryFormat(destination, out charsWritten, format, provider);
     }
 
+    /// <summary>
+    /// Explicitly converts an <see cref="Arm64Operand"/> to an <see cref="Arm64RegisterOperand"/>.
+    /// </summary>
+    /// <param name="operand">The operand to convert.</param>
     public static explicit operator Arm64RegisterOperand(Arm64Operand operand)
     {
         if (operand.Kind != Arm64OperandKind.Register) ThrowInvalidCast(operand.Kind);
         return new Arm64RegisterOperand(operand);
     }
-    
+
     [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowInvalidCast(Arm64OperandKind kind) => throw new InvalidCastException($"Cannot cast Operand `{kind}` to {nameof(Arm64RegisterOperand)}");
 }

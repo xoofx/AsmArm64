@@ -32,7 +32,13 @@ public enum Arm64StreamingMode : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// Maps to <see cref="Arm64StreamingMode.SM"/>
+    /// </summary>
     public static Arm64StreamingMode SM => Arm64StreamingMode.SM;
 
+    /// <summary>
+    /// Maps to <see cref="Arm64StreamingMode.ZA"/>
+    /// </summary>
     public static Arm64StreamingMode ZA => Arm64StreamingMode.ZA;
 }

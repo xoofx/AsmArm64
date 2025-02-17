@@ -37,8 +37,20 @@ public enum Arm64DataSynchronizationKind : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// Outer Shareable. Ensures the completion of memory accesses in the outer shareable domain.
+    /// </summary>
     public static Arm64DataSynchronizationKind OSH => Arm64DataSynchronizationKind.OSH;
+    /// <summary>
+    /// Non-Shareable. Ensures the completion of memory accesses in the non-shareable domain.
+    /// </summary>
     public static Arm64DataSynchronizationKind NSH => Arm64DataSynchronizationKind.NSH;
+    /// <summary>
+    /// Inner Shareable. Ensures the completion of memory accesses in the inner shareable domain.
+    /// </summary>
     public static Arm64DataSynchronizationKind ISH => Arm64DataSynchronizationKind.ISH;
+    /// <summary>
+    /// Full system scope. Ensures the completion of memory accesses across all domains.
+    /// </summary>
     public static Arm64DataSynchronizationKind SY => Arm64DataSynchronizationKind.SY;
 }

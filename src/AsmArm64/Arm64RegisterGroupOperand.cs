@@ -7,8 +7,15 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents an ARM64 register group operand.
+/// </summary>
 public readonly struct Arm64RegisterGroupOperand : IArm64Operand
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64RegisterGroupOperand"/> struct.
+    /// </summary>
+    /// <param name="operand">The operand.</param>
     internal Arm64RegisterGroupOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
@@ -37,10 +44,19 @@ public readonly struct Arm64RegisterGroupOperand : IArm64Operand
         }
     }
 
+    /// <summary>
+    /// Gets the kind of the operand.
+    /// </summary>
     public Arm64OperandKind Kind => Arm64OperandKind.RegisterGroup;
 
+    /// <summary>
+    /// Gets the flags of the operand.
+    /// </summary>
     public Arm64OperandFlags Flags { get; }
 
+    /// <summary>
+    /// Gets the value of the register group.
+    /// </summary>
     public Arm64RegisterGroupAny Value { get; }
 
     /// <inheritdoc />
@@ -52,20 +68,27 @@ public readonly struct Arm64RegisterGroupOperand : IArm64Operand
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
-        => TryFormat(default, destination, out charsWritten,  out _, format, provider, null);
+        => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         isDefaultValue = false;
         return Value.TryFormat(destination, out charsWritten, format, provider);
     }
 
+    /// <summary>
+    /// Explicitly converts an <see cref="Arm64Operand"/> to an <see cref="Arm64RegisterGroupOperand"/>.
+    /// </summary>
+    /// <param name="operand">The operand to convert.</param>
+    /// <returns>The converted register group operand.</returns>
+    /// <exception cref="InvalidCastException">Thrown when the operand kind is not a register group.</exception>
     public static explicit operator Arm64RegisterGroupOperand(Arm64Operand operand)
     {
         if (operand.Kind != Arm64OperandKind.RegisterGroup) ThrowInvalidCast(operand.Kind);
         return new Arm64RegisterGroupOperand(operand);
     }
-    
+
     [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowInvalidCast(Arm64OperandKind kind) => throw new InvalidCastException($"Cannot cast Operand `{kind}` to {nameof(Arm64RegisterGroupOperand)}");
 }

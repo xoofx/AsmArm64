@@ -4,6 +4,9 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal flags used to encode an instruction.
+/// </summary>
 [Flags]
 internal enum Arm64InstructionEncodingFlags : byte
 {
@@ -11,12 +14,4 @@ internal enum Arm64InstructionEncodingFlags : byte
     HasLabel = Arm64InstructionFlags.HasLabel,
     HasSetFlags = Arm64InstructionFlags.HasSetFlags,
     Encoding8Bytes = 1 << 7,
-}
-
-[Flags]
-public enum Arm64InstructionFlags : byte
-{
-    None = 0,
-    HasLabel = 1,
-    HasSetFlags = 2,
 }

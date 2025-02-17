@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal enum used to specify the kind of encoding for an Arm64Extend instruction.
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 enum Arm64ExtendEncodingKind : byte
 {

@@ -37,9 +37,18 @@ public enum Arm64BranchTargetIdentificationKind : byte
 
 partial class Arm64Factory
 {
+    /// <summary>
+    /// BTI with the "C" tag. Indicates a target address for indirect calls.
+    /// </summary>
     public static Arm64BranchTargetIdentificationKind C => Arm64BranchTargetIdentificationKind.C;
 
+    /// <summary>
+    /// BTI with the "J" tag. Indicates a target address for indirect jumps.
+    /// </summary>
     public static Arm64BranchTargetIdentificationKind J => Arm64BranchTargetIdentificationKind.J;
 
+    /// <summary>
+    /// BTI with the "JC" tag. Indicates a target address for both indirect jumps and calls.
+    /// </summary>
     public static Arm64BranchTargetIdentificationKind JC => Arm64BranchTargetIdentificationKind.JC;
 }

@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace AsmArm64;
 
 /// <summary>
-/// Encoding fits within 4 bits
+/// Internal enum used to encode the kind of register for ARM64.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 internal enum Arm64RegisterEncodingKind : byte

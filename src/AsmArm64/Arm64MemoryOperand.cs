@@ -8,6 +8,9 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a memory operand for ARM64.
+/// </summary>
 public readonly struct Arm64MemoryOperand : IArm64Operand
 {
     private readonly Arm64MemoryAccessorAny _accessor;
@@ -192,10 +195,19 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         }
     }
 
+    /// <summary>
+    /// Gets the kind of this operand.
+    /// </summary>
     public Arm64OperandKind Kind => Arm64OperandKind.Memory;
 
+    /// <summary>
+    /// Gets the flags of this operand.
+    /// </summary>
     public Arm64OperandFlags Flags { get; }
 
+    /// <summary>
+    /// Gets the accessor for this memory operand.
+    /// </summary>
     public Arm64MemoryAccessorAny Accessor => _accessor;
 
     /// <inheritdoc />
@@ -215,9 +227,13 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
         => _accessor.TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
 
+    /// <summary>
+    /// Performs an explicit conversion from <see cref="Arm64Operand"/> to <see cref="Arm64MemoryOperand"/>.
+    /// </summary>
     public static explicit operator Arm64MemoryOperand(Arm64Operand operand)
     {
         if (operand.Kind != Arm64OperandKind.Memory) ThrowInvalidCast(operand.Kind);

@@ -4,8 +4,15 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Attribute to link a method to an ARM64 instruction id.
+/// </summary>
+/// <param name="instructionId"></param>
 [AttributeUsage(AttributeTargets.Method)]
 public class Arm64LinkInstructionIdAttribute(Arm64InstructionId instructionId) : Attribute
 {
+    /// <summary>
+    /// Gets the instruction id.
+    /// </summary>
     public Arm64InstructionId InstructionId { get; } = instructionId;
 }

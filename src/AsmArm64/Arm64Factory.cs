@@ -7,6 +7,4 @@ namespace AsmArm64;
 /// <summary>
 /// Factory for creating ARM64 registers and operands.
 /// </summary>
-public static partial class Arm64Factory
-{
-}
+public static partial class Arm64Factory;

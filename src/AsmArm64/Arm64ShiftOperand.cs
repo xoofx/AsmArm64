@@ -8,8 +8,15 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents an ARM64 shift operand.
+/// </summary>
 public readonly struct Arm64ShiftOperand : IArm64Operand
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64ShiftOperand"/> struct.
+    /// </summary>
+    /// <param name="operand">The ARM64 operand.</param>
     internal Arm64ShiftOperand(Arm64Operand operand)
     {
         // buffer[1] = (byte)ShiftKind;
@@ -60,14 +67,25 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         Amount = amount;
     }
 
+    /// <inheritdoc />
     public Arm64OperandKind Kind => Arm64OperandKind.Shift;
 
+    /// <inheritdoc />
     public Arm64OperandFlags Flags { get; }
 
+    /// <summary>
+    /// Gets the kind of shift.
+    /// </summary>
     public Arm64ShiftKind ShiftKind { get; }
 
+    /// <summary>
+    /// Gets the amount of shift.
+    /// </summary>
     public byte Amount { get; }
 
+    /// <summary>
+    /// Gets a value indicating whether this operand is the default shift operand.
+    /// </summary>
     public bool IsDefault => Amount == 0 && ShiftKind == Arm64ShiftKind.LSL;
 
     /// <inheritdoc />
@@ -87,11 +105,12 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
-    
+
+    /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         isDefaultValue = IsDefault;
-        
+
         var shiftText = ShiftKind.ToText(format.Length >= 1 && format[0] == 'H');
         if (destination.Length < shiftText.Length)
         {
@@ -115,18 +134,26 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
             return false;
         }
         written += digitWritten;
-        
+
         charsWritten = written;
         return true;
     }
 
+    /// <summary>
+    /// Explicitly converts an <see cref="Arm64Operand"/> to an <see cref="Arm64ShiftOperand"/>.
+    /// </summary>
+    /// <param name="operand">The operand to convert.</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator Arm64ShiftOperand(Arm64Operand operand)
     {
         if (operand.Kind != Arm64OperandKind.Shift) ThrowInvalidCast(operand.Kind);
         return new Arm64ShiftOperand(operand);
     }
-    
+
+    /// <summary>
+    /// Throws an <see cref="InvalidCastException"/> when an invalid cast is attempted.
+    /// </summary>
+    /// <param name="kind">The kind of the operand.</param>
     [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowInvalidCast(Arm64OperandKind kind) => throw new InvalidCastException($"Cannot cast Operand `{kind}` to {nameof(Arm64ShiftOperand)}");
 }

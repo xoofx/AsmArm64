@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal enum for encoding an immediate value.
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 enum Arm64ImmediateValueEncodingKind : byte
 {

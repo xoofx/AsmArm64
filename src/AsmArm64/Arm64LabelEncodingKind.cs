@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace AsmArm64;
 
 /// <summary>
-/// Can be encoded in 2 bits
+/// Internal enum used to encode a label.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 enum Arm64LabelEncodingKind : byte

@@ -7,22 +7,44 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a group of ARM64 registers.
+/// </summary>
 public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
 {
     private readonly ulong _baseRegisterCountAndIndexer; // Store it in one ulong to avoid stack spilling when extracting base register / indices
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64RegisterGroupAny"/> struct.
+    /// </summary>
+    /// <param name="baseRegister">The base register.</param>
+    /// <param name="countAndIndexer">The count and indexer.</param>
     internal Arm64RegisterGroupAny(Arm64RegisterAny baseRegister, uint countAndIndexer)
     {
         Debug.Assert(Unsafe.SizeOf<Arm64RegisterAny>() == sizeof(uint));
-        this._baseRegisterCountAndIndexer =  (ulong)countAndIndexer << 32 | (ulong)Unsafe.BitCast<Arm64RegisterAny, uint>(baseRegister);
+        this._baseRegisterCountAndIndexer = (ulong)countAndIndexer << 32 | (ulong)Unsafe.BitCast<Arm64RegisterAny, uint>(baseRegister);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64RegisterGroupAny"/> struct.
+    /// </summary>
+    /// <param name="baseRegister">The base register.</param>
+    /// <param name="count">The count.</param>
+    /// <param name="index">The index.</param>
     internal Arm64RegisterGroupAny(Arm64RegisterAny baseRegister, uint count, uint index)
     {
         Debug.Assert(Unsafe.SizeOf<Arm64RegisterAny>() == sizeof(uint));
-        this._baseRegisterCountAndIndexer =  ((ulong)(index | 0x8000_0000U)  << 40) | ((ulong)count << 32) | (ulong)Unsafe.BitCast<Arm64RegisterAny, uint>(baseRegister);
+        this._baseRegisterCountAndIndexer = ((ulong)(index | 0x8000_0000U) << 40) | ((ulong)count << 32) | (ulong)Unsafe.BitCast<Arm64RegisterAny, uint>(baseRegister);
     }
 
+    /// <summary>
+    /// Creates a new <see cref="Arm64RegisterGroupAny"/> instance.
+    /// </summary>
+    /// <param name="baseRegister">The base register.</param>
+    /// <param name="count">The count.</param>
+    /// <returns>A new <see cref="Arm64RegisterGroupAny"/> instance.</returns>
+    /// <exception cref="ArgumentException">Thrown when count is 0 and baseRegister is not empty.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when count is less than 0 or greater than 4.</exception>
     public static Arm64RegisterGroupAny Create(Arm64RegisterAny baseRegister, int count)
     {
         if (count == 0 && !baseRegister.IsEmpty)
@@ -38,6 +60,15 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
         return new(baseRegister, (uint)count);
     }
 
+    /// <summary>
+    /// Creates a new <see cref="Arm64RegisterGroupAny"/> instance with an indexer.
+    /// </summary>
+    /// <param name="baseRegister">The base register.</param>
+    /// <param name="count">The count.</param>
+    /// <param name="index">The index.</param>
+    /// <returns>A new <see cref="Arm64RegisterGroupAny"/> instance.</returns>
+    /// <exception cref="ArgumentException">Thrown when count is 0 and baseRegister is not empty.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when count is less than 0 or greater than 4.</exception>
     public static Arm64RegisterGroupAny CreateWithIndexer(Arm64RegisterAny baseRegister, int count, int index)
     {
         if (count == 0 && !baseRegister.IsEmpty)
@@ -55,16 +86,22 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
         return new(baseRegister, 0x8000_0000U | ((uint)index << 8) | (uint)count);
     }
     
+    /// <inheritdoc />
     public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
 
+    /// <inheritdoc />
     public int Count => (byte)(_baseRegisterCountAndIndexer >> 32);
 
+    /// <inheritdoc />
     public Arm64RegisterGroupAny ToAny() => this;
 
+    /// <inheritdoc />
     public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
+    /// <inheritdoc />
     public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
     
+    /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
         Span<char> buffer = stackalloc char[32];
@@ -73,6 +110,7 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
         return buffer.Slice(0, charsWritten).ToString();
     }
 
+    /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         if (format.Length != 1) format = "L";
@@ -153,7 +191,7 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
             destination[written] = ']';
             written++;
         }
-        
+
         charsWritten = written;
         return true;
     }

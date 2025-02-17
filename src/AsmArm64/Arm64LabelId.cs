@@ -4,12 +4,18 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a label id in ARM64 used by <see cref="Arm64Assembler"/>.
+/// </summary>
 public readonly record struct Arm64LabelId
 {
     internal Arm64LabelId(int index)
     {
         Index = index;
     }
-    
+
+    /// <summary>
+    /// Gets the index of this label registered to a particular <see cref="Arm64Assembler"/>.
+    /// </summary>
     public int Index { get; }
 }

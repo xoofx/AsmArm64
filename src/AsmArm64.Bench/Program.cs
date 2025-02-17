@@ -4,10 +4,6 @@ namespace AsmArm64.Bench;
 
 internal class Program
 {
-    // 10 -> 440
-    // 5 -> 372.523
-
-
     static void Main(string[] args)
     {
         int validInstructions = 0;

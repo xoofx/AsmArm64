@@ -8,7 +8,7 @@ namespace AsmArm64;
 /// Represents a label, a relative offset from the current instruction.
 /// </summary>
 /// <param name="Value">A relative offset to the current instruction</param>
-public record struct Arm64LabelOffset(int Value) : ISpanFormattable
+public readonly record struct Arm64LabelOffset(int Value) : ISpanFormattable
 {
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
@@ -22,7 +22,7 @@ public record struct Arm64LabelOffset(int Value) : ISpanFormattable
         => destination.TryWrite(provider, $"#{Value}", out charsWritten);
 
     /// <inheritdoc />
-    public readonly override string ToString() => $"#{Value}";
+    public override string ToString() => $"#{Value}";
 
     /// <summary>
     /// Converts an offset to a label.

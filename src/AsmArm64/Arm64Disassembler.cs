@@ -8,16 +8,26 @@ using System.Runtime.InteropServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Disassembles ARM64 instructions from a byte buffer.
+/// </summary>
 public class Arm64Disassembler
 {
     private readonly Dictionary<int, int> _internalLabels;
     private int _currentOffset;
     private readonly Arm64TryFormatDelegate _tryFormatLabelDelegate;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64Disassembler"/> class with default options.
+    /// </summary>
     public Arm64Disassembler() : this(new Arm64DisassemblerOptions())
     {
     }
-    
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64Disassembler"/> class with the specified options.
+    /// </summary>
+    /// <param name="options">The options to use for disassembling.</param>
     public Arm64Disassembler(Arm64DisassemblerOptions options)
     {
         _internalLabels = new();
@@ -25,8 +35,16 @@ public class Arm64Disassembler
         _tryFormatLabelDelegate = TryFormatLabel;
     }
 
+    /// <summary>
+    /// Gets the options used for disassembling.
+    /// </summary>
     public Arm64DisassemblerOptions Options { get; }
-    
+
+    /// <summary>
+    /// Disassembles the specified byte buffer and returns the disassembled instructions as a string.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <returns>A string containing the disassembled instructions.</returns>
     public string Disassemble(Span<byte> buffer)
     {
         var writer = new StringWriter();
@@ -34,6 +52,11 @@ public class Arm64Disassembler
         return writer.ToString();
     }
 
+    /// <summary>
+    /// Disassembles the specified byte buffer and writes the disassembled instructions to the specified <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
     public void Disassemble(Span<byte> buffer, TextWriter writer)
     {
         var rawInstructions = MemoryMarshal.Cast<byte, uint>(buffer);
@@ -148,7 +171,7 @@ public class Arm64Disassembler
                         charsWritten += paddingWritten;
                         runningSpan = runningSpan.Slice(paddingWritten);
                     }
-                    
+
                     if (Options.TryFormatComment is not null && TryWriteSpaces(runningSpan, 4))
                     {
                         charsWritten += 4;
@@ -222,7 +245,7 @@ public class Arm64Disassembler
         }
         return true;
     }
-    
+
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
         => writer.Write(GetIndentSpan(textSpan));
 
@@ -254,7 +277,7 @@ public class Arm64Disassembler
             }
         }
     }
-    
+
     private bool TryFormatLabelExtended(long offset, bool handleInternalLabels, Span<char> textSpan, out int charsWritten)
     {
         var absoluteOffset = _currentOffset + offset;

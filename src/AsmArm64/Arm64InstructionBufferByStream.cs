@@ -7,17 +7,29 @@ using System.Runtime.InteropServices;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a buffer of ARM64 instructions with a Stream.
+/// </summary>
 public class Arm64InstructionBufferByStream : Arm64InstructionBuffer
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="Arm64InstructionBufferByStream"/>.
+    /// </summary>
+    /// <param name="stream">The stream that contains the instructions.</param>
     public Arm64InstructionBufferByStream(Stream stream)
     {
         Stream = stream;
     }
 
+    /// <summary>
+    /// Gets or sets the stream that contains the instructions.
+    /// </summary>
     public Stream Stream { get; set; }
 
+    /// <inheritdoc />
     public override int Length => (int)Stream.Length;
 
+    /// <inheritdoc />
     public override Arm64RawInstruction ReadAt(uint offset)
     {
         Stream.Seek(offset, SeekOrigin.Begin);
@@ -29,6 +41,7 @@ public class Arm64InstructionBufferByStream : Arm64InstructionBuffer
         return rawInstruction;
     }
 
+    /// <inheritdoc />
     public override void WriteAt(uint offset, Arm64RawInstruction rawInstruction)
     {
         Stream.Seek(offset, SeekOrigin.Begin);

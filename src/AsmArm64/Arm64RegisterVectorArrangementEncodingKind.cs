@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Internal enum used to encode the kind of vector arrangement for ARM64.
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 internal enum Arm64RegisterVectorArrangementEncodingKind : byte
 {

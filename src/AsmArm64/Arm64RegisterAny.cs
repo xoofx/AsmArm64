@@ -18,8 +18,12 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Arm64RegisterAny(uint index) => _value = index;
 
+    /// <summary>
+    /// Creates a new instance of <see cref="Arm64RegisterAny"/>.
+    /// </summary>
     public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index, Arm64RegisterVKind vKind, int elementCount, int elementIndex)
     {
+        // TODO: add validation
         return new Arm64RegisterAny(
             ((uint) (byte) elementIndex << 28)
             | ((uint) ((byte) ToElementShift(elementCount)) << 24)

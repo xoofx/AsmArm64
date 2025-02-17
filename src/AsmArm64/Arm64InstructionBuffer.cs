@@ -4,6 +4,9 @@
 
 namespace AsmArm64;
 
+/// <summary>
+/// Represents a buffer of ARM64 instructions.
+/// </summary>
 public abstract class Arm64InstructionBuffer
 {
     /// <summary>
@@ -11,7 +14,17 @@ public abstract class Arm64InstructionBuffer
     /// </summary>
     public abstract int Length { get; }
 
+    /// <summary>
+    /// Reads an ARM64 instruction at the specified offset.
+    /// </summary>
+    /// <param name="offset">The offset to read an instruction from.</param>
+    /// <returns>The ARM64 instruction to read at the specified offset.</returns>
     public abstract Arm64RawInstruction ReadAt(uint offset);
 
+    /// <summary>
+    /// Writes an ARM64 instruction at the specified offset.
+    /// </summary>
+    /// <param name="offset">The offset to read an instruction from.</param>
+    /// <param name="rawInstruction">The ARM64 instruction to write at the specified offset.</param>
     public abstract void WriteAt(uint offset, Arm64RawInstruction rawInstruction);
 }
