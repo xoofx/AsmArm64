@@ -1,0 +1,18 @@
+﻿_start:
+    mov x0, #5
+    bl sum_loop
+
+    ret
+
+sum_loop:
+    mov x1, #0
+    mov x2, #0
+
+loop_start:
+    add x1, x1, x2
+    add x2, x2, #1
+    cmp x2, x0
+    b.lt loop_start
+
+    mov x0, x1
+    ret

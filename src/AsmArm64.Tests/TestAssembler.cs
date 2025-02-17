@@ -50,6 +50,39 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public async Task TestDisassemblerCustomLabels()
+    {
+        var instructionBuffer = AssembleInstructionsSample();
+        var disassembler = new Arm64Disassembler()
+        {
+            Options =
+            {
+                TryFormatLabel = (long offset, Span<char> destination, out int written) =>
+                {
+                    switch (offset)
+                    {
+                        case 0:
+                            return destination.TryWrite($"_start", out written);
+                        case 0xc:
+                            return destination.TryWrite($"sum_loop", out written);
+                        case 0x14:
+                            return destination.TryWrite($"loop_start", out written);
+                        default:
+                            written = 0;
+                            return false;
+                    }
+                }
+            }
+        };
+        var textWriter = new StringWriter();
+        disassembler.Disassemble(instructionBuffer, textWriter);
+
+        var disassembledText = textWriter.ToString();
+
+        await Verify(disassembledText);
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerDetailed()
     {
         var instructionBuffer = AssembleInstructionsSample();
