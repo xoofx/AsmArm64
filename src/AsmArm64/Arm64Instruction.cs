@@ -226,81 +226,77 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
 
         int offset = 0;
 
-        while (true)
+    nextHeader:
+        ref var header = ref Unsafe.As<byte, EntryHeader>(ref Unsafe.Add(ref buffer, offset));
+
+        var kind = header.TrieTableKind;
+        var shift = header.Shift;
+        var bitMask = header.BitMask;
+        var hasElseBranch = header.HasElseBranch;
+        var arrayLength = (uint)header.ArrayLength;
+
+        offset += sizeof(EntryHeader);
+
+        int elseBranchIndex = 0;
+        if (hasElseBranch)
         {
-        nextHeader:
-            ref var header = ref Unsafe.As<byte, EntryHeader>(ref Unsafe.Add(ref buffer, offset));
+            elseBranchIndex = Unsafe.As<byte, int>(ref Unsafe.Add(ref buffer, offset));
+            offset += sizeof(int);
+        }
 
-            var kind = header.TrieTableKind;
-            var shift = header.Shift;
-            var bitMask = header.BitMask;
-            var hasElseBranch = header.HasElseBranch;
-            var arrayLength = (uint)header.ArrayLength;
-
-            offset += sizeof(EntryHeader);
-
-            int elseBranchIndex = 0;
-            if (hasElseBranch)
+        var key = rawInstruction & bitMask;
+        if (kind == TrieTableKind.SmallArray)
+        {
+            for (int i = 0; i < arrayLength; i++)
             {
-                elseBranchIndex = Unsafe.As<byte, int>(ref Unsafe.Add(ref buffer, offset));
-                offset += sizeof(int);
-            }
-
-            var key = rawInstruction & bitMask;
-            if (kind == TrieTableKind.SmallArray)
-            {
-                for (int i = 0; i < arrayLength; i++)
-                {
-                    ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndex)));
-                    if (keyEntryIndex.Key == key)
-                    {
-                        offset = keyEntryIndex.Index;
-                        if (offset < 0) goto return_offset;
-                        if (offset > 0) goto nextHeader;
-                        break;
-                    }
-                }
-            }
-            else if (kind == TrieTableKind.Hash)
-            {
-                var hashMultiplier = Unsafe.As<byte, ulong>(ref Unsafe.Add(ref buffer, offset));
-                offset += sizeof(ulong);
-                var index = (int)(((uint)(key >> shift) * hashMultiplier) % arrayLength);
-                ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + index * sizeof(KeyEntryIndex)));
-
+                ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndex)));
                 if (keyEntryIndex.Key == key)
                 {
                     offset = keyEntryIndex.Index;
                     if (offset < 0) goto return_offset;
                     if (offset > 0) goto nextHeader;
+                    break;
                 }
             }
-            else if (kind == TrieTableKind.SmallArrayWithNotBitMask)
-            {
-                for (int i = 0; i < arrayLength; i++)
-                {
-                    ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndexWithNotBitMask>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndexWithNotBitMask)));
-                    if (keyEntryIndex.Key == key && (keyEntryIndex.NotBitMask == 0 || (rawInstruction & keyEntryIndex.NotBitMask) != keyEntryIndex.NotBitValue))
-                    {
-                        offset = keyEntryIndex.Index;
-                        if (offset < 0) goto return_offset;
-                        if (offset > 0) goto nextHeader;
-                        break;
-                    }
-                }
-            }
+        }
+        else if (kind == TrieTableKind.Hash)
+        {
+            var hashMultiplier = Unsafe.As<byte, ulong>(ref Unsafe.Add(ref buffer, offset));
+            offset += sizeof(ulong);
+            var index = (int)(((uint)(key >> shift) * hashMultiplier) % arrayLength);
+            ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + index * sizeof(KeyEntryIndex)));
 
-            if (hasElseBranch)
+            if (keyEntryIndex.Key == key)
             {
-                offset = elseBranchIndex;
-
+                offset = keyEntryIndex.Index;
                 if (offset < 0) goto return_offset;
                 if (offset > 0) goto nextHeader;
             }
-
-            break;
+        }
+        else if (kind == TrieTableKind.SmallArrayWithNotBitMask)
+        {
+            for (int i = 0; i < arrayLength; i++)
+            {
+                ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndexWithNotBitMask>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndexWithNotBitMask)));
+                if (keyEntryIndex.Key == key && (keyEntryIndex.NotBitMask == 0 || (rawInstruction & keyEntryIndex.NotBitMask) != keyEntryIndex.NotBitValue))
+                {
+                    offset = keyEntryIndex.Index;
+                    if (offset < 0) goto return_offset;
+                    if (offset > 0) goto nextHeader;
+                    break;
+                }
+            }
         }
 
+        if (hasElseBranch)
+        {
+            offset = elseBranchIndex;
+
+            if (offset < 0) goto return_offset;
+            if (offset > 0) goto nextHeader;
+        }
+
+        // Offset is 0, returning invalid
         return Arm64InstructionId.Invalid;
 
     return_offset:
