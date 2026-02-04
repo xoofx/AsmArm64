@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Internal enum used to encode the kind of vector arrangement for ARM64.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64RegisterVectorArrangementEncodingKind>))]
 internal enum Arm64RegisterVectorArrangementEncodingKind : byte
 {
     None,

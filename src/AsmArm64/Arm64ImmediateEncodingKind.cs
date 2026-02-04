@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// The encoding kind for an immediate value.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64ImmediateEncodingKind>))]
 enum Arm64ImmediateEncodingKind : byte
 {
     None,

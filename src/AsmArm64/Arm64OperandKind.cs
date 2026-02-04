@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// The kind of ARM64 operand.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64OperandKind>))]
 public enum Arm64OperandKind : byte
 {
     /// <summary>
