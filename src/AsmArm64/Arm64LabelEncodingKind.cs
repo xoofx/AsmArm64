@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Internal enum used to encode a label.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64LabelEncodingKind>))]
 enum Arm64LabelEncodingKind : byte
 {
     None,

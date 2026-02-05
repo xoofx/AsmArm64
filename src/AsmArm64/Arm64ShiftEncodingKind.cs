@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Internal enum used to encode the kind of shift for ARM64.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64ShiftEncodingKind>))]
 enum Arm64ShiftEncodingKind : byte
 {
     None,

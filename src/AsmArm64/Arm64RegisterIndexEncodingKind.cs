@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Internal enum used to encode the kind of register index for ARM64.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64RegisterIndexEncodingKind>))]
 internal enum Arm64RegisterIndexEncodingKind : byte
 {
     /// <summary>

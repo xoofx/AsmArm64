@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Can be encoded in 3 bits
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64EnumKind>))]
 public enum Arm64EnumKind : byte
 {
     /// <summary>

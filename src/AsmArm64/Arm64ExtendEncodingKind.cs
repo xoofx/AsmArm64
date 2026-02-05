@@ -9,7 +9,7 @@ namespace AsmArm64;
 /// <summary>
 /// Internal enum used to specify the kind of encoding for an Arm64Extend instruction.
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter<Arm64ExtendEncodingKind>))]
 enum Arm64ExtendEncodingKind : byte
 {
     /// <summary>
