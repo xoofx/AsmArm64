@@ -122,8 +122,8 @@ public class TestDecodingHelper
         Assert.AreEqual(16, value.ShiftLeft);
         Assert.AreEqual($"{~0x1234_0000}", value.ToString());
 
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0xFFFF, 0));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => value = new(0xFFFF, 0));
+        Assert.Throws<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
     }
 
     [TestMethod]
@@ -153,6 +153,6 @@ public class TestDecodingHelper
         Assert.AreEqual(48, value.ShiftLeft);
         Assert.AreEqual($"{0x1234_0000_0000_0000L}", value.ToString());
 
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
     }
 }
