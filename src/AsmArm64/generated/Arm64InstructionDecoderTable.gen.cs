@@ -7033,7 +7033,7 @@ partial class Arm64InstructionDecoderTable
         // STR_64_ldst_pos                - STR         Xt, [Xn|SP{, #pimm}]
         209,3,223,3,4,0,128,2,
         17,17,0,0,0,0,0,0,                  // Xt       - r
-        36,6,165,0,10,12,0,0,               // dst      - w
+        36,6,165,3,10,12,0,0,               // dst      - w
         // STR_32_ldst_regoff             - STR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         210,3,223,3,4,0,128,2,
         17,19,0,0,0,0,0,0,                  // Wt       - r

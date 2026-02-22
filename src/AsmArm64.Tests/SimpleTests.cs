@@ -19,6 +19,14 @@ public class SimpleTests
     }
 
     [TestMethod]
+    public void TestSTR_64_ldst_pos()
+    {
+        Span<byte> rawInstruction = [0xe1, 0x0b, 0x00, 0xf9];
+        var instruction = Arm64Instruction.Decode(BitConverter.ToUInt32(rawInstruction));
+        Assert.AreEqual("str x1, [sp, #16]", instruction.ToString());
+    }
+
+    [TestMethod]
     public void DecodeArm64Simple()
     {
         // add x12, x7, x1

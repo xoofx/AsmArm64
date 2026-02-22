@@ -78,9 +78,9 @@ public class Arm64InstructionFactoryTests_STR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STR_64_ldst_pos_5()
     {
-        TestInst(STR(X0, _[X2, 5]), asm => asm.STR(X0, _[X2, 5]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR X0, [X2, #5]");
-        TestInst(STR(X15, _[X2, 5]), asm => asm.STR(X15, _[X2, 5]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR X15, [X2, #5]");
-        TestInst(STR(XZR, _[X2, 5]), asm => asm.STR(XZR, _[X2, 5]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR XZR, [X2, #5]");
+        TestInst(STR(X0, _[X2, 40]), asm => asm.STR(X0, _[X2, 40]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR X0, [X2, #40]");
+        TestInst(STR(X15, _[X2, 40]), asm => asm.STR(X15, _[X2, 40]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR X15, [X2, #40]");
+        TestInst(STR(XZR, _[X2, 40]), asm => asm.STR(XZR, _[X2, 40]), Arm64InstructionId.STR_64_ldst_pos, Arm64Mnemonic.STR, "STR XZR, [X2, #40]");
     }
     
     /// <summary>

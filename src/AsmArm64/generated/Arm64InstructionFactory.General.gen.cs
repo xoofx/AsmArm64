@@ -12398,7 +12398,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF9000000U; // Encoding for: STR_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
+        raw |= (uint)((dst.Immediate >> 3) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
