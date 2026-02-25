@@ -183,8 +183,8 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_LDR_q_ldst_pos_16()
     {
-        TestInst(LDR(Q0, _[X2, 5]), asm => asm.LDR(Q0, _[X2, 5]), Arm64InstructionId.LDR_q_ldst_pos, Arm64Mnemonic.LDR, "LDR Q0, [X2, #5]");
-        TestInst(LDR(Q31, _[X2, 5]), asm => asm.LDR(Q31, _[X2, 5]), Arm64InstructionId.LDR_q_ldst_pos, Arm64Mnemonic.LDR, "LDR Q31, [X2, #5]");
+        TestInst(LDR(Q0, _[X2, 80]), asm => asm.LDR(Q0, _[X2, 80]), Arm64InstructionId.LDR_q_ldst_pos, Arm64Mnemonic.LDR, "LDR Q0, [X2, #80]");
+        TestInst(LDR(Q31, _[X2, 80]), asm => asm.LDR(Q31, _[X2, 80]), Arm64InstructionId.LDR_q_ldst_pos, Arm64Mnemonic.LDR, "LDR Q31, [X2, #80]");
     }
     
     /// <summary>

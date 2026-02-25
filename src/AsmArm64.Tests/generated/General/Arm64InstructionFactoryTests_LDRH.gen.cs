@@ -45,9 +45,9 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_pos_2()
     {
-        TestInst(LDRH(W0, _[X2, 5]), asm => asm.LDRH(W0, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #5]");
-        TestInst(LDRH(W15, _[X2, 5]), asm => asm.LDRH(W15, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #5]");
-        TestInst(LDRH(WZR, _[X2, 5]), asm => asm.LDRH(WZR, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #5]");
+        TestInst(LDRH(W0, _[X2, 10]), asm => asm.LDRH(W0, _[X2, 10]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #10]");
+        TestInst(LDRH(W15, _[X2, 10]), asm => asm.LDRH(W15, _[X2, 10]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #10]");
+        TestInst(LDRH(WZR, _[X2, 10]), asm => asm.LDRH(WZR, _[X2, 10]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #10]");
     }
     
     /// <summary>

@@ -1381,6 +1381,16 @@ internal sealed class InstructionProcessor
                 immediate.ValueEncodingKind = valueEncoding;
             }
 
+            // Detect instructions that have an offset encoded scale, but we don't have a scale registered for it
+            if (instruction.DocVars.TryGetValue("offset-type", out var offsetType) && !string.IsNullOrEmpty(offsetType) && offsetType.EndsWith("_s", StringComparison.OrdinalIgnoreCase) && valueEncoding == Arm64ImmediateValueEncodingKind.None && instruction.AsmTemplate is not null)
+            {
+                var match = Regex.Match(instruction.AsmTemplate, "multiple of (\\d+)");
+                if (match.Success)
+                {
+                    Console.WriteLine($"{{ \"{instruction.Id}\", new() {{ {{ \"{immediate.Name}\", ValueMulBy{match.Groups[1].Value} }} }}}}, // Likely missing in MappingTables");
+                }
+            }
+
             if (symbol.Selector is not null || immediate.Encoding.Count >= 3)
             {
                 immediate.ImmediateKind = Arm64ImmediateEncodingKind.BitMapExtract;

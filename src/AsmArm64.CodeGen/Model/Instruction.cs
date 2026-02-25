@@ -101,6 +101,8 @@ class Instruction : IJsonOnDeserialized
 
     public FeatureExpression? FeatureRequirement { get; set; }
 
+    public string? AsmTemplate { get; set; }
+
     [JsonIgnore]
     public int FeatureExpressionIdIndex { get; set; }
 

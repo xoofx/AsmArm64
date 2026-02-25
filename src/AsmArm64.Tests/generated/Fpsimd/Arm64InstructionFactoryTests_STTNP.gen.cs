@@ -23,9 +23,9 @@ public class Arm64InstructionFactoryTests_STTNP_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STTNP_q_ldstnapair_offs_0()
     {
-        TestInst(STTNP(Q0, Q1, _[X3, 5]), asm => asm.STTNP(Q0, Q1, _[X3, 5]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q0, Q1, [X3, #5]");
-        TestInst(STTNP(Q31, Q1, _[X3, 5]), asm => asm.STTNP(Q31, Q1, _[X3, 5]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q31, Q1, [X3, #5]");
-        TestInst(STTNP(Q0, Q31, _[X3, 5]), asm => asm.STTNP(Q0, Q31, _[X3, 5]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q0, Q31, [X3, #5]");
-        TestInst(STTNP(Q31, Q31, _[X3, 5]), asm => asm.STTNP(Q31, Q31, _[X3, 5]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q31, Q31, [X3, #5]");
+        TestInst(STTNP(Q0, Q1, _[X3, 80]), asm => asm.STTNP(Q0, Q1, _[X3, 80]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q0, Q1, [X3, #80]");
+        TestInst(STTNP(Q31, Q1, _[X3, 80]), asm => asm.STTNP(Q31, Q1, _[X3, 80]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q31, Q1, [X3, #80]");
+        TestInst(STTNP(Q0, Q31, _[X3, 80]), asm => asm.STTNP(Q0, Q31, _[X3, 80]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q0, Q31, [X3, #80]");
+        TestInst(STTNP(Q31, Q31, _[X3, 80]), asm => asm.STTNP(Q31, Q31, _[X3, 80]), Arm64InstructionId.STTNP_q_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP Q31, Q31, [X3, #80]");
     }
 }

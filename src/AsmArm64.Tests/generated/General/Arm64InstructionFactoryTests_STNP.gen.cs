@@ -40,14 +40,14 @@ public class Arm64InstructionFactoryTests_STNP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STNP_64_ldstnapair_offs_1()
     {
-        TestInst(STNP(X0, X1, _[X3, 5]), asm => asm.STNP(X0, X1, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, X1, [X3, #5]");
-        TestInst(STNP(X15, X1, _[X3, 5]), asm => asm.STNP(X15, X1, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, X1, [X3, #5]");
-        TestInst(STNP(XZR, X1, _[X3, 5]), asm => asm.STNP(XZR, X1, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, X1, [X3, #5]");
-        TestInst(STNP(X0, X16, _[X3, 5]), asm => asm.STNP(X0, X16, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, X16, [X3, #5]");
-        TestInst(STNP(X15, X16, _[X3, 5]), asm => asm.STNP(X15, X16, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, X16, [X3, #5]");
-        TestInst(STNP(XZR, X16, _[X3, 5]), asm => asm.STNP(XZR, X16, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, X16, [X3, #5]");
-        TestInst(STNP(X0, XZR, _[X3, 5]), asm => asm.STNP(X0, XZR, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, XZR, [X3, #5]");
-        TestInst(STNP(X15, XZR, _[X3, 5]), asm => asm.STNP(X15, XZR, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, XZR, [X3, #5]");
-        TestInst(STNP(XZR, XZR, _[X3, 5]), asm => asm.STNP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, XZR, [X3, #5]");
+        TestInst(STNP(X0, X1, _[X3, 40]), asm => asm.STNP(X0, X1, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, X1, [X3, #40]");
+        TestInst(STNP(X15, X1, _[X3, 40]), asm => asm.STNP(X15, X1, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, X1, [X3, #40]");
+        TestInst(STNP(XZR, X1, _[X3, 40]), asm => asm.STNP(XZR, X1, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, X1, [X3, #40]");
+        TestInst(STNP(X0, X16, _[X3, 40]), asm => asm.STNP(X0, X16, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, X16, [X3, #40]");
+        TestInst(STNP(X15, X16, _[X3, 40]), asm => asm.STNP(X15, X16, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, X16, [X3, #40]");
+        TestInst(STNP(XZR, X16, _[X3, 40]), asm => asm.STNP(XZR, X16, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, X16, [X3, #40]");
+        TestInst(STNP(X0, XZR, _[X3, 40]), asm => asm.STNP(X0, XZR, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X0, XZR, [X3, #40]");
+        TestInst(STNP(X15, XZR, _[X3, 40]), asm => asm.STNP(X15, XZR, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP X15, XZR, [X3, #40]");
+        TestInst(STNP(XZR, XZR, _[X3, 40]), asm => asm.STNP(XZR, XZR, _[X3, 40]), Arm64InstructionId.STNP_64_ldstnapair_offs, Arm64Mnemonic.STNP, "STNP XZR, XZR, [X3, #40]");
     }
 }

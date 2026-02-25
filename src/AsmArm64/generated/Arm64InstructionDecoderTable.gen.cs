@@ -4850,7 +4850,7 @@ partial class Arm64InstructionDecoderTable
         // LDRH_32_ldst_pos               - LDRH        Wt, [Xn|SP{, #pimm}]
         249,1,18,2,4,0,128,2,
         33,19,0,0,0,0,0,0,                  // Wt       - w
-        20,6,165,0,10,12,0,0,               // src      - r
+        20,6,165,1,10,12,0,0,               // src      - r
         // LDRH_32_ldst_regoff            - LDRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         250,1,18,2,4,0,128,2,
         33,19,0,0,0,0,0,0,                  // Wt       - w
@@ -5296,7 +5296,7 @@ partial class Arm64InstructionDecoderTable
         86,2,70,2,4,51,128,3,
         33,17,0,0,0,0,0,0,                  // Xt1      - w
         33,17,0,10,0,0,0,0,                 // Xt2      - w
-        20,6,165,64,15,7,0,0,               // src      - r
+        20,6,165,67,15,7,0,0,               // src      - r
         // LDTP_64_ldstpair_post          - LDTP        Xt1, Xt2, [Xn|SP], #imm
         87,2,71,2,4,51,128,4,
         33,17,0,0,0,0,0,0,                  // Xt1      - w
@@ -5307,12 +5307,12 @@ partial class Arm64InstructionDecoderTable
         88,2,71,2,4,51,128,3,
         33,17,0,0,0,0,0,0,                  // Xt1      - w
         33,17,0,10,0,0,0,0,                 // Xt2      - w
-        20,4,165,192,15,7,0,0,              // src      - r
+        20,4,165,195,15,7,0,0,              // src      - r
         // LDTP_64_ldstpair_off           - LDTP        Xt1, Xt2, [Xn|SP{, #imm}]
         89,2,71,2,4,51,128,3,
         33,17,0,0,0,0,0,0,                  // Xt1      - w
         33,17,0,10,0,0,0,0,                 // Xt2      - w
-        20,6,165,64,15,7,0,0,               // src      - r
+        20,6,165,67,15,7,0,0,               // src      - r
         // LDTR_32_ldst_unpriv            - LDTR        Wt, [Xn|SP{, #simm}]
         90,2,72,2,4,0,128,2,
         33,19,0,0,0,0,0,0,                  // Wt       - w
@@ -6975,7 +6975,7 @@ partial class Arm64InstructionDecoderTable
         197,3,221,3,4,0,128,3,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
         17,17,0,10,0,0,0,0,                 // Xt2      - r
-        36,6,165,64,15,7,0,0,               // dst      - w
+        36,6,165,67,15,7,0,0,               // dst      - w
         // STP_32_ldstpair_post           - STP         Wt1, Wt2, [Xn|SP], #imm
         198,3,222,3,4,0,128,4,
         17,19,0,0,0,0,0,0,                  // Wt1      - r
@@ -6997,7 +6997,7 @@ partial class Arm64InstructionDecoderTable
         201,3,222,3,4,0,128,3,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
         17,17,0,10,0,0,0,0,                 // Xt2      - r
-        36,4,165,192,15,7,0,0,              // dst      - w
+        36,4,165,195,15,7,0,0,              // dst      - w
         // STP_32_ldstpair_off            - STP         Wt1, Wt2, [Xn|SP{, #imm}]
         202,3,222,3,4,0,128,3,
         17,19,0,0,0,0,0,0,                  // Wt1      - r
@@ -7215,7 +7215,7 @@ partial class Arm64InstructionDecoderTable
         254,3,249,3,4,51,128,3,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
         17,17,0,10,0,0,0,0,                 // Xt2      - r
-        36,6,165,64,15,7,0,0,               // dst      - w
+        36,6,165,67,15,7,0,0,               // dst      - w
         // STTP_64_ldstpair_post          - STTP        Xt1, Xt2, [Xn|SP], #imm
         255,3,250,3,4,51,128,4,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
@@ -7226,12 +7226,12 @@ partial class Arm64InstructionDecoderTable
         0,4,250,3,4,51,128,3,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
         17,17,0,10,0,0,0,0,                 // Xt2      - r
-        36,4,165,192,15,7,0,0,              // dst      - w
+        36,4,165,195,15,7,0,0,              // dst      - w
         // STTP_64_ldstpair_off           - STTP        Xt1, Xt2, [Xn|SP{, #imm}]
         1,4,250,3,4,51,128,3,
         17,17,0,0,0,0,0,0,                  // Xt1      - r
         17,17,0,10,0,0,0,0,                 // Xt2      - r
-        36,6,165,64,15,7,0,0,               // dst      - w
+        36,6,165,67,15,7,0,0,               // dst      - w
         // STTR_32_ldst_unpriv            - STTR        Wt, [Xn|SP{, #simm}]
         2,4,251,3,4,0,128,2,
         17,19,0,0,0,0,0,0,                  // Wt       - r
@@ -11302,7 +11302,7 @@ partial class Arm64InstructionDecoderTable
         // LDR_q_ldst_pos                 - LDR         Qt, [Xn|SP{, #pimm}]
         121,7,14,2,3,25,128,2,
         33,28,0,0,0,0,0,0,                  // Qt       - w
-        20,6,165,0,10,12,0,0,               // src      - r
+        20,6,165,4,10,12,0,0,               // src      - r
         // LDR_s_loadlit                  - LDR         St, label
         122,7,14,2,3,25,129,2,
         33,25,0,0,0,0,0,0,                  // St       - w
@@ -11343,7 +11343,7 @@ partial class Arm64InstructionDecoderTable
         131,7,70,2,3,32,128,3,
         33,28,0,0,0,0,0,0,                  // Qt1      - w
         33,28,0,10,0,0,0,0,                 // Qt2      - w
-        20,6,165,64,15,7,0,0,               // src      - r
+        20,6,165,68,15,7,0,0,               // src      - r
         // LDTP_q_ldstpair_post           - LDTP        Qt1, Qt2, [Xn|SP], #imm
         132,7,71,2,3,32,128,4,
         33,28,0,0,0,0,0,0,                  // Qt1      - w
@@ -11354,12 +11354,12 @@ partial class Arm64InstructionDecoderTable
         133,7,71,2,3,32,128,3,
         33,28,0,0,0,0,0,0,                  // Qt1      - w
         33,28,0,10,0,0,0,0,                 // Qt2      - w
-        20,4,165,192,15,7,0,0,              // src      - r
+        20,4,165,196,15,7,0,0,              // src      - r
         // LDTP_q_ldstpair_off            - LDTP        Qt1, Qt2, [Xn|SP{, #imm}]
         134,7,71,2,3,32,128,3,
         33,28,0,0,0,0,0,0,                  // Qt1      - w
         33,28,0,10,0,0,0,0,                 // Qt2      - w
-        20,6,165,64,15,7,0,0,               // src      - r
+        20,6,165,68,15,7,0,0,               // src      - r
         // LDUR_b_ldst_unscaled           - LDUR        Bt, [Xn|SP{, #simm}]
         135,7,107,2,3,25,128,2,
         33,23,0,0,0,0,0,0,                  // Bt       - w
@@ -13085,15 +13085,15 @@ partial class Arm64InstructionDecoderTable
         // STR_h_ldst_pos                 - STR         Ht, [Xn|SP{, #pimm}]
         249,8,223,3,3,25,128,2,
         17,24,0,0,0,0,0,0,                  // Ht       - r
-        36,6,165,0,10,12,0,0,               // dst      - w
+        36,6,165,1,10,12,0,0,               // dst      - w
         // STR_s_ldst_pos                 - STR         St, [Xn|SP{, #pimm}]
         250,8,223,3,3,25,128,2,
         17,25,0,0,0,0,0,0,                  // St       - r
-        36,6,165,0,10,12,0,0,               // dst      - w
+        36,6,165,2,10,12,0,0,               // dst      - w
         // STR_d_ldst_pos                 - STR         Dt, [Xn|SP{, #pimm}]
         251,8,223,3,3,25,128,2,
         17,26,0,0,0,0,0,0,                  // Dt       - r
-        36,6,165,0,10,12,0,0,               // dst      - w
+        36,6,165,3,10,12,0,0,               // dst      - w
         // STR_q_ldst_pos                 - STR         Qt, [Xn|SP{, #pimm}]
         252,8,223,3,3,25,128,2,
         17,28,0,0,0,0,0,0,                  // Qt       - r
@@ -13126,7 +13126,7 @@ partial class Arm64InstructionDecoderTable
         3,9,249,3,3,32,128,3,
         17,28,0,0,0,0,0,0,                  // Qt1      - r
         17,28,0,10,0,0,0,0,                 // Qt2      - r
-        36,6,165,64,15,7,0,0,               // dst      - w
+        36,6,165,68,15,7,0,0,               // dst      - w
         // STTP_q_ldstpair_post           - STTP        Qt1, Qt2, [Xn|SP], #imm
         4,9,250,3,3,32,128,4,
         17,28,0,0,0,0,0,0,                  // Qt1      - r
@@ -13137,12 +13137,12 @@ partial class Arm64InstructionDecoderTable
         5,9,250,3,3,32,128,3,
         17,28,0,0,0,0,0,0,                  // Qt1      - r
         17,28,0,10,0,0,0,0,                 // Qt2      - r
-        36,4,165,192,15,7,0,0,              // dst      - w
+        36,4,165,196,15,7,0,0,              // dst      - w
         // STTP_q_ldstpair_off            - STTP        Qt1, Qt2, [Xn|SP{, #imm}]
         6,9,250,3,3,32,128,3,
         17,28,0,0,0,0,0,0,                  // Qt1      - r
         17,28,0,10,0,0,0,0,                 // Qt2      - r
-        36,6,165,64,15,7,0,0,               // dst      - w
+        36,6,165,68,15,7,0,0,               // dst      - w
         // STUR_b_ldst_unscaled           - STUR        Bt, [Xn|SP{, #simm}]
         7,9,13,4,3,25,128,2,
         17,23,0,0,0,0,0,0,                  // Bt       - r

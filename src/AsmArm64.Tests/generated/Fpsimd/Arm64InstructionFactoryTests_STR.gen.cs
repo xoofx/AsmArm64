@@ -153,8 +153,8 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_STR_h_ldst_pos_13()
     {
-        TestInst(STR(H0, _[X2, 5]), asm => asm.STR(H0, _[X2, 5]), Arm64InstructionId.STR_h_ldst_pos, Arm64Mnemonic.STR, "STR H0, [X2, #5]");
-        TestInst(STR(H31, _[X2, 5]), asm => asm.STR(H31, _[X2, 5]), Arm64InstructionId.STR_h_ldst_pos, Arm64Mnemonic.STR, "STR H31, [X2, #5]");
+        TestInst(STR(H0, _[X2, 10]), asm => asm.STR(H0, _[X2, 10]), Arm64InstructionId.STR_h_ldst_pos, Arm64Mnemonic.STR, "STR H0, [X2, #10]");
+        TestInst(STR(H31, _[X2, 10]), asm => asm.STR(H31, _[X2, 10]), Arm64InstructionId.STR_h_ldst_pos, Arm64Mnemonic.STR, "STR H31, [X2, #10]");
     }
     
     /// <summary>
@@ -163,8 +163,8 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_STR_s_ldst_pos_14()
     {
-        TestInst(STR(S0, _[X2, 5]), asm => asm.STR(S0, _[X2, 5]), Arm64InstructionId.STR_s_ldst_pos, Arm64Mnemonic.STR, "STR S0, [X2, #5]");
-        TestInst(STR(S31, _[X2, 5]), asm => asm.STR(S31, _[X2, 5]), Arm64InstructionId.STR_s_ldst_pos, Arm64Mnemonic.STR, "STR S31, [X2, #5]");
+        TestInst(STR(S0, _[X2, 20]), asm => asm.STR(S0, _[X2, 20]), Arm64InstructionId.STR_s_ldst_pos, Arm64Mnemonic.STR, "STR S0, [X2, #20]");
+        TestInst(STR(S31, _[X2, 20]), asm => asm.STR(S31, _[X2, 20]), Arm64InstructionId.STR_s_ldst_pos, Arm64Mnemonic.STR, "STR S31, [X2, #20]");
     }
     
     /// <summary>
@@ -173,8 +173,8 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_STR_d_ldst_pos_15()
     {
-        TestInst(STR(D0, _[X2, 5]), asm => asm.STR(D0, _[X2, 5]), Arm64InstructionId.STR_d_ldst_pos, Arm64Mnemonic.STR, "STR D0, [X2, #5]");
-        TestInst(STR(D31, _[X2, 5]), asm => asm.STR(D31, _[X2, 5]), Arm64InstructionId.STR_d_ldst_pos, Arm64Mnemonic.STR, "STR D31, [X2, #5]");
+        TestInst(STR(D0, _[X2, 40]), asm => asm.STR(D0, _[X2, 40]), Arm64InstructionId.STR_d_ldst_pos, Arm64Mnemonic.STR, "STR D0, [X2, #40]");
+        TestInst(STR(D31, _[X2, 40]), asm => asm.STR(D31, _[X2, 40]), Arm64InstructionId.STR_d_ldst_pos, Arm64Mnemonic.STR, "STR D31, [X2, #40]");
     }
     
     /// <summary>

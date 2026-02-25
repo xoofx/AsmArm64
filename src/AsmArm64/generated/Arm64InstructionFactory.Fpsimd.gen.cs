@@ -493,7 +493,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x3DC00000U; // Encoding for: LDR_q_ldst_pos
         raw |= (uint)Qt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(src.Immediate & 0xFFF) << 10;
+        raw |= (uint)((src.Immediate >> 4) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -807,7 +807,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(src.Immediate & 0x7F) << 15;
+        raw |= (uint)((src.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -835,7 +835,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(src.Immediate & 0x7F) << 15;
+        raw |= (uint)((src.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -849,7 +849,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(src.Immediate & 0x7F) << 15;
+        raw |= (uint)((src.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -1358,7 +1358,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7D000000U; // Encoding for: STR_h_ldst_pos
         raw |= (uint)Ht.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
+        raw |= (uint)((dst.Immediate >> 1) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -1371,7 +1371,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xBD000000U; // Encoding for: STR_s_ldst_pos
         raw |= (uint)St.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
+        raw |= (uint)((dst.Immediate >> 2) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -1384,7 +1384,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xFD000000U; // Encoding for: STR_d_ldst_pos
         raw |= (uint)Dt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
+        raw |= (uint)((dst.Immediate >> 3) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -1675,7 +1675,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0x7F) << 15;
+        raw |= (uint)((dst.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -1703,7 +1703,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0x7F) << 15;
+        raw |= (uint)((dst.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -1717,7 +1717,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Qt1.Index;
         raw |= (uint)Qt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0x7F) << 15;
+        raw |= (uint)((dst.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>

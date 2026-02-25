@@ -538,20 +538,26 @@ partial class Arm64Processor
                 {
                     instruction.FeatureRequirement = archVariants[0];
                 }
-
+                
+                var asmtemplate = encoding.Element("asmtemplate");
+                if (asmtemplate != null)
+                {
+                    instruction.AsmTemplate = asmtemplate.ToString();
+                }
+                
                 var equivalentToElt = encoding.Element("equivalent_to");
                 if (equivalentToElt is not null)
                 {
                     var aliasCond = equivalentToElt.Element("aliascond")!.Value!;
-                    var asmTemplate = equivalentToElt.Element("asmtemplate")!;
+                    var equivAsmTemplate = equivalentToElt.Element("asmtemplate")!;
 
-                    var asmText = asmTemplate.Value;
+                    var asmText = equivAsmTemplate.Value;
                     //if (asmText.Contains(" MOD ") || asmText.Contains("-<") || asmText.Contains(">-") || asmText.Contains("+<") || asmText.Contains(">+"))
                     //{
                     //    Console.WriteLine($"WARNING {instruction.Id} => {asmText}");
                     //}
 
-                    var href = asmTemplate.Element("a")!.Attribute("href")!.Value!;
+                    var href = equivAsmTemplate.Element("a")!.Attribute("href")!.Value!;
                     var targetId = Instruction.NormalizeId(href.Substring(href.IndexOf('#') + 1));
 
                     instruction.Alias = new(targetId, aliasCond) { IsOut = true };
