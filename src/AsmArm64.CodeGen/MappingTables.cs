@@ -129,6 +129,7 @@ static class MappingTables
         { "STNP_q_ldstnapair_offs", new() { { "imm", ValueMulBy16 } }},
         { "STNP_s_ldstnapair_offs", new() { { "imm", ValueMulBy4 } }},
         { "STP_32_ldstpair_off", new() { { "imm", ValueMulBy4 } }},
+        { "STP_64_ldstpair_off", new() { { "imm", ValueMulBy8 } }},
         { "STP_32_ldstpair_post", new() { { "imm", ValueMulBy4 } } },
         { "STP_32_ldstpair_pre", new() { { "imm", ValueMulBy4 } }},
         { "STP_64_ldstpair_post", new() { { "imm", ValueMulBy8 } } },

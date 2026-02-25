@@ -12320,7 +12320,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(dst.Immediate & 0x7F) << 15;
+        raw |= (uint)((dst.Immediate >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>

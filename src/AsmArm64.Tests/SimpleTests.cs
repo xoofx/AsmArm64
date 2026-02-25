@@ -27,6 +27,14 @@ public class SimpleTests
     }
 
     [TestMethod]
+    public void TestSTP_64_ldstpair_off()
+    {
+        Span<byte> rawInstruction = [0xFD, 0x7B, 0x01, 0xA9];
+        var instruction = Arm64Instruction.Decode(BitConverter.ToUInt32(rawInstruction));
+        Assert.AreEqual("stp x29, x30, [sp, #16]", instruction.ToString());
+    }
+
+    [TestMethod]
     public void DecodeArm64Simple()
     {
         // add x12, x7, x1
