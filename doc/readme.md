@@ -142,9 +142,9 @@ For example:
   ```
 ### Assembling a sequence of instructions
 
-The API `Arm64Assembler` is a more advanced API that can be used to assemble a sequence of instructions. The `Arm64Assembler` object can be used to assemble instructions to a given buffer.
+The API `Arm64Assembler` is a more advanced API that can be used to assemble a sequence of instructions. By default, the `Arm64Assembler` object owns a byte buffer exposed through `Buffer` and `ToArray()`.
 
-The output buffer can be:
+Advanced callers can still provide a custom instruction buffer:
 - A list of instruction via `Arm64InstructionBufferByList`
 - A stream of instruction via `Arm64InstructionBufferByStream`
 - A memory buffer via `Arm64InstructionBufferByMemory`
@@ -182,8 +182,7 @@ The same program can be encoded in a fluent API with the following code:
 ```c#
 using static Arm64Factory;
 
-var bufferList = new Arm64InstructionBufferByList();
-var asm = new Arm64Assembler(bufferList);
+using var asm = new Arm64Assembler(0x1_0000);
 // Main entry point
 // _start:
 var labelStart = asm.CreateLabelId("_start");
@@ -226,7 +225,8 @@ asm.B(LT, labelLoopStart);
 asm.MOV(X0, X1);
 //     ret                    // Return to caller
 asm.RET();
-asm.Assemble();
+asm.End();
+ReadOnlySpan<byte> code = asm.Buffer;
 ```
 
 Notice the API to create and use the labels:

@@ -20,8 +20,7 @@ AsmArm64 is a powerful ARM64 Assembler and Disassembler .NET library.
 ### Strongly Typed Assembler API
 
 ```c#
-var bufferList = new Arm64InstructionBufferByList();
-var asm = new Arm64Assembler(bufferList);
+using var asm = new Arm64Assembler(0x1_0000);
 
 // // Main entry point
 // _start:
@@ -65,13 +64,13 @@ asm.B(LT, labelLoopStart);
 asm.MOV(X0, X1);
 //     ret                    // Return to caller
 asm.RET();
-asm.Assemble();
-// Instructions available in bufferList.Instructions
+asm.End();
+// Bytes available in asm.Buffer or asm.ToArray()
 ```
 ### Disassembler API
 
 ```c#
-ReadOnlySpan<byte> instructionBuffer = ...; /// Retrieve the buffer from above
+ReadOnlySpan<byte> instructionBuffer = asm.Buffer;
 var disassembler = new Arm64Disassembler();
 var textWriter = new StringWriter();
 disassembler.Disassemble(instructionBuffer, textWriter);
