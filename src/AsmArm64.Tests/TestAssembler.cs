@@ -74,15 +74,16 @@ public class TestAssembler : VerifyBase
         {
             Options =
             {
-                TryFormatLabel = (long offset, Span<char> destination, out int written) =>
+                BaseAddress = 0x1800_0000,
+                TryFormatLabel = (long address, Span<char> destination, out int written) =>
                 {
-                    switch (offset)
+                    switch (address)
                     {
-                        case 0:
+                        case 0x1800_0000:
                             return destination.TryWrite($"_start", out written);
-                        case 0xc:
+                        case 0x1800_000C:
                             return destination.TryWrite($"sum_loop", out written);
-                        case 0x14:
+                        case 0x1800_0014:
                             return destination.TryWrite($"loop_start", out written);
                         default:
                             written = 0;

@@ -101,6 +101,8 @@ LL_03:
     ret
 ```
 
+`Arm64DisassemblerOptions.TryFormatLabel` can be used to resolve absolute addresses to label or symbol names, for example from PDB data.
+
 ## 📖 User Guide
 
 For more details on how to use AsmArm64, please visit the [user guide](https://github.com/xoofx/AsmArm64/blob/main/doc/readme.md).

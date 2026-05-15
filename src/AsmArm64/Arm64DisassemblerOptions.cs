@@ -29,7 +29,7 @@ public class Arm64DisassemblerOptions
     }
 
     /// <summary>
-    /// Gets or sets the delegate to format labels.
+    /// Gets or sets the delegate to format labels from absolute addresses.
     /// </summary>
     public Arm64TryFormatDelegate? TryFormatLabel { get; set; }
 

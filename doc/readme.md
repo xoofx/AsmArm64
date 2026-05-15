@@ -68,7 +68,7 @@ You can create an `Arm64Disassembler` with `Arm64DisassemblerOptions` to customi
 - Print the bytes of each instruction via `Arm64DisassemblerOptions.PrintBytes`
 - Add a comment to each instructions via `Arm64DisassemblerOptions.TryFormatComment`
 - Add a line before/after each instructions
-- Resolve labels offset to label names (The given offset is relative to the beginning of the buffer)
+- Resolve absolute addresses to label or symbol names, for example from PDB data, via `Arm64DisassemblerOptions.TryFormatLabel`
 - And many more... See the class [Arm64DisassemblerOptions.cs](https://github.com/xoofx/AsmArm64/blob/main/src/AsmArm64/Arm64DisassemblerOptions.cs)
 
 ## The Assembler API

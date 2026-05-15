@@ -327,7 +327,7 @@ public class Arm64Disassembler
         var absoluteOffset = _currentOffset + offset;
 
         var tryFormatLabel = Options.TryFormatLabel;
-        if (tryFormatLabel is not null && tryFormatLabel(absoluteOffset, textSpan, out charsWritten))
+        if (tryFormatLabel is not null && tryFormatLabel(Options.BaseAddress + absoluteOffset, textSpan, out charsWritten))
         {
             return true;
         }
