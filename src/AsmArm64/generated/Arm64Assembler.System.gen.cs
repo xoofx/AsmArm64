@@ -18,608 +18,608 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>APAS Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.APAS_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler APAS(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.APAS(Xt));
+    public Arm64Assembler APAS(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.APAS(Xt), Arm64InstructionId.APAS_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Address translate.
     /// </summary>
     /// <remarks><code>AT at_op, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AT_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AT(Arm64SystemRegister at_op, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.AT(at_op, Xt));
+    public Arm64Assembler AT(Arm64SystemRegister at_op, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AT(at_op, Xt), Arm64InstructionId.AT_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key A.
     /// </summary>
     /// <remarks><code>AUTIA1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIA1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIA1716()
-         => AddInstruction(Arm64InstructionFactory.AUTIA1716());
+    public Arm64Assembler AUTIA1716([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIA1716(), Arm64InstructionId.AUTIA1716_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key A.
     /// </summary>
     /// <remarks><code>AUTIASP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIASP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIASP()
-         => AddInstruction(Arm64InstructionFactory.AUTIASP());
+    public Arm64Assembler AUTIASP([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIASP(), Arm64InstructionId.AUTIASP_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key A.
     /// </summary>
     /// <remarks><code>AUTIAZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIAZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIAZ()
-         => AddInstruction(Arm64InstructionFactory.AUTIAZ());
+    public Arm64Assembler AUTIAZ([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIAZ(), Arm64InstructionId.AUTIAZ_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key B.
     /// </summary>
     /// <remarks><code>AUTIB1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIB1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIB1716()
-         => AddInstruction(Arm64InstructionFactory.AUTIB1716());
+    public Arm64Assembler AUTIB1716([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIB1716(), Arm64InstructionId.AUTIB1716_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key B.
     /// </summary>
     /// <remarks><code>AUTIBSP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIBSP()
-         => AddInstruction(Arm64InstructionFactory.AUTIBSP());
+    public Arm64Assembler AUTIBSP([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIBSP(), Arm64InstructionId.AUTIBSP_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Authenticate instruction address, using key B.
     /// </summary>
     /// <remarks><code>AUTIBZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIBZ()
-         => AddInstruction(Arm64InstructionFactory.AUTIBZ());
+    public Arm64Assembler AUTIBZ([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AUTIBZ(), Arm64InstructionId.AUTIBZ_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Convert floating-point condition flags from Arm to external format.
     /// </summary>
     /// <remarks><code>AXFLAG </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AXFLAG_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AXFLAG()
-         => AddInstruction(Arm64InstructionFactory.AXFLAG());
+    public Arm64Assembler AXFLAG([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.AXFLAG(), Arm64InstructionId.AXFLAG_m_pstate, debugFilePath, debugLineNumber);
     /// <summary>
     /// Branch record buffer.
     /// </summary>
     /// <remarks><code>BRB brb_op</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRB_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler BRB(Arm64SystemRegister brb_op)
-         => AddInstruction(Arm64InstructionFactory.BRB(brb_op));
+    public Arm64Assembler BRB(Arm64SystemRegister brb_op, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.BRB(brb_op), Arm64InstructionId.BRB_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Breakpoint instruction.
     /// </summary>
     /// <remarks><code>BRK #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRK_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler BRK(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.BRK(imm));
+    public Arm64Assembler BRK(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.BRK(imm), Arm64InstructionId.BRK_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// Branch target identification.
     /// </summary>
     /// <remarks><code>BTI {targets}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BTI_hb_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler BTI(Arm64BranchTargetIdentificationKind targets = default)
-         => AddInstruction(Arm64InstructionFactory.BTI(targets));
+         => AddInstruction(Arm64InstructionFactory.BTI(targets), Arm64InstructionId.BTI_hb_hints);
     /// <summary>
     /// Invert carry flag.
     /// </summary>
     /// <remarks><code>CFINV </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CFINV_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CFINV()
-         => AddInstruction(Arm64InstructionFactory.CFINV());
+    public Arm64Assembler CFINV([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CFINV(), Arm64InstructionId.CFINV_m_pstate, debugFilePath, debugLineNumber);
     /// <summary>
     /// Control flow prediction restriction by context.
     /// </summary>
     /// <remarks><code>CFP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CFP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.CFP(RCTX, Xt));
+    public Arm64Assembler CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CFP(RCTX, Xt), Arm64InstructionId.CFP_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Check feature status.
     /// </summary>
     /// <remarks><code>CHKFEAT X16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CHKFEAT_hf_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CHKFEAT(Arm64RegisterX X16)
-         => AddInstruction(Arm64InstructionFactory.CHKFEAT(X16));
+    public Arm64Assembler CHKFEAT(Arm64RegisterX X16, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CHKFEAT(X16), Arm64InstructionId.CHKFEAT_hf_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Clear branch history.
     /// </summary>
     /// <remarks><code>CLRBHB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLRBHB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CLRBHB()
-         => AddInstruction(Arm64InstructionFactory.CLRBHB());
+    public Arm64Assembler CLRBHB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CLRBHB(), Arm64InstructionId.CLRBHB_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Clear exclusive.
     /// </summary>
     /// <remarks><code>CLREX {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLREX_bn_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CLREX(byte imm = default)
-         => AddInstruction(Arm64InstructionFactory.CLREX(imm));
+         => AddInstruction(Arm64InstructionFactory.CLREX(imm), Arm64InstructionId.CLREX_bn_barriers);
     /// <summary>
     /// Clear other speculative prediction restriction by context.
     /// </summary>
     /// <remarks><code>COSP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.COSP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.COSP(RCTX, Xt));
+    public Arm64Assembler COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.COSP(RCTX, Xt), Arm64InstructionId.COSP_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Cache prefetch prediction restriction by context.
     /// </summary>
     /// <remarks><code>CPP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.CPP(RCTX, Xt));
+    public Arm64Assembler CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CPP(RCTX, Xt), Arm64InstructionId.CPP_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Consumption of speculative data barrier.
     /// </summary>
     /// <remarks><code>CSDB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSDB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CSDB()
-         => AddInstruction(Arm64InstructionFactory.CSDB());
+    public Arm64Assembler CSDB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.CSDB(), Arm64InstructionId.CSDB_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Data cache operation.
     /// </summary>
     /// <remarks><code>DC dc_op, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DC_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.DC(dc_op, Xt));
+    public Arm64Assembler DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DC(dc_op, Xt), Arm64InstructionId.DC_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Debug change PE state to EL1.
     /// </summary>
     /// <remarks><code>DCPS1 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS1_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler DCPS1(ushort imm = default)
-         => AddInstruction(Arm64InstructionFactory.DCPS1(imm));
+         => AddInstruction(Arm64InstructionFactory.DCPS1(imm), Arm64InstructionId.DCPS1_dc_exception);
     /// <summary>
     /// Debug change PE state to EL2.
     /// </summary>
     /// <remarks><code>DCPS2 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS2_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler DCPS2(ushort imm = default)
-         => AddInstruction(Arm64InstructionFactory.DCPS2(imm));
+         => AddInstruction(Arm64InstructionFactory.DCPS2(imm), Arm64InstructionId.DCPS2_dc_exception);
     /// <summary>
     /// Debug change PE state to EL3.
     /// </summary>
     /// <remarks><code>DCPS3 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS3_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler DCPS3(ushort imm = default)
-         => AddInstruction(Arm64InstructionFactory.DCPS3(imm));
+         => AddInstruction(Arm64InstructionFactory.DCPS3(imm), Arm64InstructionId.DCPS3_dc_exception);
     /// <summary>
     /// Data gathering hint.
     /// </summary>
     /// <remarks><code>DGH </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DGH_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DGH()
-         => AddInstruction(Arm64InstructionFactory.DGH());
+    public Arm64Assembler DGH([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DGH(), Arm64InstructionId.DGH_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Data memory barrier.
     /// </summary>
     /// <remarks><code>DMB (option|#imm)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DMB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DMB(Arm64BarrierOperationLimitKind option)
-         => AddInstruction(Arm64InstructionFactory.DMB(option));
+    public Arm64Assembler DMB(Arm64BarrierOperationLimitKind option, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DMB(option), Arm64InstructionId.DMB_bo_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Debug restore PE state.
     /// </summary>
     /// <remarks><code>DRPS </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DRPS_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DRPS()
-         => AddInstruction(Arm64InstructionFactory.DRPS());
+    public Arm64Assembler DRPS([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DRPS(), Arm64InstructionId.DRPS_64e_branch_reg, debugFilePath, debugLineNumber);
     /// <summary>
     /// Data synchronization barrier.
     /// </summary>
     /// <remarks><code>DSB (option|#imm)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DSB(Arm64BarrierOperationLimitKind option)
-         => AddInstruction(Arm64InstructionFactory.DSB(option));
+    public Arm64Assembler DSB(Arm64BarrierOperationLimitKind option, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DSB(option), Arm64InstructionId.DSB_bo_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Data synchronization barrier.
     /// </summary>
     /// <remarks><code>DSB optionnXS</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bon_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DSB(Arm64DataSynchronizationKind option)
-         => AddInstruction(Arm64InstructionFactory.DSB(option));
+    public Arm64Assembler DSB(Arm64DataSynchronizationKind option, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DSB(option), Arm64InstructionId.DSB_bon_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Data value prediction restriction by context.
     /// </summary>
     /// <remarks><code>DVP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DVP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.DVP(RCTX, Xt));
+    public Arm64Assembler DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.DVP(RCTX, Xt), Arm64InstructionId.DVP_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Exception return.
     /// </summary>
     /// <remarks><code>ERET </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ERET_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler ERET()
-         => AddInstruction(Arm64InstructionFactory.ERET());
+    public Arm64Assembler ERET([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.ERET(), Arm64InstructionId.ERET_64e_branch_reg, debugFilePath, debugLineNumber);
     /// <summary>
     /// Error synchronization barrier.
     /// </summary>
     /// <remarks><code>ESB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ESB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler ESB()
-         => AddInstruction(Arm64InstructionFactory.ESB());
+    public Arm64Assembler ESB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.ESB(), Arm64InstructionId.ESB_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack barrier.
     /// </summary>
     /// <remarks><code>GCSB DSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSB_hd_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSB(Arm64DataSyncKind DSYNC)
-         => AddInstruction(Arm64InstructionFactory.GCSB(DSYNC));
+    public Arm64Assembler GCSB(Arm64DataSyncKind DSYNC, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSB(DSYNC), Arm64InstructionId.GCSB_hd_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack pop and compare exception return record.
     /// </summary>
     /// <remarks><code>GCSPOPCX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPCX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSPOPCX()
-         => AddInstruction(Arm64InstructionFactory.GCSPOPCX());
+    public Arm64Assembler GCSPOPCX([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSPOPCX(), Arm64InstructionId.GCSPOPCX_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack pop.
     /// </summary>
     /// <remarks><code>GCSPOPM {Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler GCSPOPM(Arm64RegisterX Xt = default)
-         => AddInstruction(Arm64InstructionFactory.GCSPOPM(Xt));
+         => AddInstruction(Arm64InstructionFactory.GCSPOPM(Xt), Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs);
     /// <summary>
     /// Guarded Control Stack pop exception return record.
     /// </summary>
     /// <remarks><code>GCSPOPX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSPOPX()
-         => AddInstruction(Arm64InstructionFactory.GCSPOPX());
+    public Arm64Assembler GCSPOPX([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSPOPX(), Arm64InstructionId.GCSPOPX_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack push.
     /// </summary>
     /// <remarks><code>GCSPUSHM Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSPUSHM(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.GCSPUSHM(Xt));
+    public Arm64Assembler GCSPUSHM(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSPUSHM(Xt), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack push exception return record.
     /// </summary>
     /// <remarks><code>GCSPUSHX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSPUSHX()
-         => AddInstruction(Arm64InstructionFactory.GCSPUSHX());
+    public Arm64Assembler GCSPUSHX([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSPUSHX(), Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack switch stack 1.
     /// </summary>
     /// <remarks><code>GCSSS1 Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSS1_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSSS1(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.GCSSS1(Xt));
+    public Arm64Assembler GCSSS1(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSSS1(Xt), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Guarded Control Stack switch stack 2.
     /// </summary>
     /// <remarks><code>GCSSS2 Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler GCSSS2(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.GCSSS2(Xt));
+    public Arm64Assembler GCSSS2(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.GCSSS2(Xt), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Hint instruction.
     /// </summary>
     /// <remarks><code>HINT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HINT_hm_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler HINT(byte imm)
-         => AddInstruction(Arm64InstructionFactory.HINT(imm));
+    public Arm64Assembler HINT(byte imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.HINT(imm), Arm64InstructionId.HINT_hm_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Halt instruction.
     /// </summary>
     /// <remarks><code>HLT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HLT_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler HLT(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.HLT(imm));
+    public Arm64Assembler HLT(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.HLT(imm), Arm64InstructionId.HLT_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// Hypervisor call.
     /// </summary>
     /// <remarks><code>HVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler HVC(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.HVC(imm));
+    public Arm64Assembler HVC(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.HVC(imm), Arm64InstructionId.HVC_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// Instruction cache operation.
     /// </summary>
     /// <remarks><code>IC ic_op {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.IC_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
-         => AddInstruction(Arm64InstructionFactory.IC(ic_op, Xt));
+         => AddInstruction(Arm64InstructionFactory.IC(ic_op, Xt), Arm64InstructionId.IC_sys_cr_systeminstrs);
     /// <summary>
     /// Instruction synchronization barrier.
     /// </summary>
     /// <remarks><code>ISB {option, #imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ISB_bi_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler ISB(byte option = default)
-         => AddInstruction(Arm64InstructionFactory.ISB(option));
+         => AddInstruction(Arm64InstructionFactory.ISB(option), Arm64InstructionId.ISB_bi_barriers);
     /// <summary>
     /// Move System register to two adjacent general-purpose registers.
     /// </summary>
     /// <remarks><code>MRRS Xt, Xt+1, (systemreg|Sop0_op1_Cn_Cm_op2)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MRRS_rs_systemmovepr), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler MRRS(Arm64RegisterX Xt, Arm64RegisterX Xt_1, Arm64SystemRegister systemreg)
-         => AddInstruction(Arm64InstructionFactory.MRRS(Xt, Xt_1, systemreg));
+    public Arm64Assembler MRRS(Arm64RegisterX Xt, Arm64RegisterX Xt_1, Arm64SystemRegister systemreg, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.MRRS(Xt, Xt_1, systemreg), Arm64InstructionId.MRRS_rs_systemmovepr, debugFilePath, debugLineNumber);
     /// <summary>
     /// Move System register to general-purpose register.
     /// </summary>
     /// <remarks><code>MRS Xt, (systemreg|Sop0_op1_Cn_Cm_op2)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MRS_rs_systemmove), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler MRS(Arm64RegisterX Xt, Arm64SystemRegister systemreg)
-         => AddInstruction(Arm64InstructionFactory.MRS(Xt, systemreg));
+    public Arm64Assembler MRS(Arm64RegisterX Xt, Arm64SystemRegister systemreg, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.MRS(Xt, systemreg), Arm64InstructionId.MRS_rs_systemmove, debugFilePath, debugLineNumber);
     /// <summary>
     /// Move immediate value to special register.
     /// </summary>
     /// <remarks><code>MSR pstatefield, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler MSR(Arm64ProcessStateField pstatefield, uint imm)
-         => AddInstruction(Arm64InstructionFactory.MSR(pstatefield, imm));
+    public Arm64Assembler MSR(Arm64ProcessStateField pstatefield, uint imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.MSR(pstatefield, imm), Arm64InstructionId.MSR_si_pstate, debugFilePath, debugLineNumber);
     /// <summary>
     /// Move general-purpose register to System register.
     /// </summary>
     /// <remarks><code>MSR (systemreg|Sop0_op1_Cn_Cm_op2), Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_sr_systemmove), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.MSR(systemreg, Xt));
+    public Arm64Assembler MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.MSR(systemreg, Xt), Arm64InstructionId.MSR_sr_systemmove, debugFilePath, debugLineNumber);
     /// <summary>
     /// Move two adjacent general-purpose registers to System register.
     /// </summary>
     /// <remarks><code>MSRR (systemreg|Sop0_op1_Cn_Cm_op2), Xt, Xt+1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSRR_sr_systemmovepr), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1)
-         => AddInstruction(Arm64InstructionFactory.MSRR(systemreg, Xt, Xt_1));
+    public Arm64Assembler MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.MSRR(systemreg, Xt, Xt_1), Arm64InstructionId.MSRR_sr_systemmovepr, debugFilePath, debugLineNumber);
     /// <summary>
     /// No operation.
     /// </summary>
     /// <remarks><code>NOP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NOP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler NOP()
-         => AddInstruction(Arm64InstructionFactory.NOP());
+    public Arm64Assembler NOP([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.NOP(), Arm64InstructionId.NOP_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
     /// <remarks><code>PACIA1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIA1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIA1716()
-         => AddInstruction(Arm64InstructionFactory.PACIA1716());
+    public Arm64Assembler PACIA1716([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIA1716(), Arm64InstructionId.PACIA1716_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
     /// <remarks><code>PACIASP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIASP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIASP()
-         => AddInstruction(Arm64InstructionFactory.PACIASP());
+    public Arm64Assembler PACIASP([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIASP(), Arm64InstructionId.PACIASP_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
     /// <remarks><code>PACIAZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIAZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIAZ()
-         => AddInstruction(Arm64InstructionFactory.PACIAZ());
+    public Arm64Assembler PACIAZ([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIAZ(), Arm64InstructionId.PACIAZ_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
     /// <remarks><code>PACIB1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIB1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIB1716()
-         => AddInstruction(Arm64InstructionFactory.PACIB1716());
+    public Arm64Assembler PACIB1716([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIB1716(), Arm64InstructionId.PACIB1716_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
     /// <remarks><code>PACIBSP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIBSP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIBSP()
-         => AddInstruction(Arm64InstructionFactory.PACIBSP());
+    public Arm64Assembler PACIBSP([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIBSP(), Arm64InstructionId.PACIBSP_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
     /// <remarks><code>PACIBZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIBZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACIBZ()
-         => AddInstruction(Arm64InstructionFactory.PACIBZ());
+    public Arm64Assembler PACIBZ([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACIBZ(), Arm64InstructionId.PACIBZ_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Pointer authentication modifier.
     /// </summary>
     /// <remarks><code>PACM </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACM_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PACM()
-         => AddInstruction(Arm64InstructionFactory.PACM());
+    public Arm64Assembler PACM([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PACM(), Arm64InstructionId.PACM_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Profiling synchronization barrier.
     /// </summary>
     /// <remarks><code>PSB CSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PSB(Arm64CodeSyncKind CSYNC)
-         => AddInstruction(Arm64InstructionFactory.PSB(CSYNC));
+    public Arm64Assembler PSB(Arm64CodeSyncKind CSYNC, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PSB(CSYNC), Arm64InstructionId.PSB_hc_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Physical speculative store bypass barrier.
     /// </summary>
     /// <remarks><code>PSSBB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PSSBB_dsb_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PSSBB()
-         => AddInstruction(Arm64InstructionFactory.PSSBB());
+    public Arm64Assembler PSSBB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.PSSBB(), Arm64InstructionId.PSSBB_dsb_bo_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Speculation barrier.
     /// </summary>
     /// <remarks><code>SB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SB_only_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SB()
-         => AddInstruction(Arm64InstructionFactory.SB());
+    public Arm64Assembler SB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SB(), Arm64InstructionId.SB_only_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Send event.
     /// </summary>
     /// <remarks><code>SEV </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SEV_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SEV()
-         => AddInstruction(Arm64InstructionFactory.SEV());
+    public Arm64Assembler SEV([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SEV(), Arm64InstructionId.SEV_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Send event local.
     /// </summary>
     /// <remarks><code>SEVL </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SEVL_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SEVL()
-         => AddInstruction(Arm64InstructionFactory.SEVL());
+    public Arm64Assembler SEVL([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SEVL(), Arm64InstructionId.SEVL_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Secure monitor call.
     /// </summary>
     /// <remarks><code>SMC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SMC(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.SMC(imm));
+    public Arm64Assembler SMC(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SMC(imm), Arm64InstructionId.SMC_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// Enables access to Streaming SVE mode and SME architectural state.
     /// </summary>
     /// <remarks><code>SMSTART {option}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMSTART_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler SMSTART(Arm64StreamingMode option = Arm64StreamingMode.Absent)
-         => AddInstruction(Arm64InstructionFactory.SMSTART(option));
+         => AddInstruction(Arm64InstructionFactory.SMSTART(option), Arm64InstructionId.SMSTART_msr_si_pstate);
     /// <summary>
     /// Disables access to Streaming SVE mode and SME architectural state.
     /// </summary>
     /// <remarks><code>SMSTOP {option}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMSTOP_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler SMSTOP(Arm64StreamingMode option = Arm64StreamingMode.Absent)
-         => AddInstruction(Arm64InstructionFactory.SMSTOP(option));
+         => AddInstruction(Arm64InstructionFactory.SMSTOP(option), Arm64InstructionId.SMSTOP_msr_si_pstate);
     /// <summary>
     /// Speculative store bypass barrier.
     /// </summary>
     /// <remarks><code>SSBB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSBB_dsb_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SSBB()
-         => AddInstruction(Arm64InstructionFactory.SSBB());
+    public Arm64Assembler SSBB([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SSBB(), Arm64InstructionId.SSBB_dsb_bo_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store shared hint.
     /// </summary>
     /// <remarks><code>STSHH policy</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSHH_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STSHH(Arm64StoredSharedHintPolicyKind policy)
-         => AddInstruction(Arm64InstructionFactory.STSHH(policy));
+    public Arm64Assembler STSHH(Arm64StoredSharedHintPolicyKind policy, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STSHH(policy), Arm64InstructionId.STSHH_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Supervisor call.
     /// </summary>
     /// <remarks><code>SVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SVC(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.SVC(imm));
+    public Arm64Assembler SVC(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SVC(imm), Arm64InstructionId.SVC_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// System instruction.
     /// </summary>
     /// <remarks><code>SYS #op1, Cn, Cm, #op2 {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYS_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler SYS(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt = default)
-         => AddInstruction(Arm64InstructionFactory.SYS(op1, Cn, Cm, op2, Xt));
+         => AddInstruction(Arm64InstructionFactory.SYS(op1, Cn, Cm, op2, Xt), Arm64InstructionId.SYS_cr_systeminstrs);
     /// <summary>
     /// System instruction with result.
     /// </summary>
     /// <remarks><code>SYSL Xt, #op1, Cn, Cm, #op2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSL_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SYSL(Arm64RegisterX Xt, byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2)
-         => AddInstruction(Arm64InstructionFactory.SYSL(Xt, op1, Cn, Cm, op2));
+    public Arm64Assembler SYSL(Arm64RegisterX Xt, byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SYSL(Xt, op1, Cn, Cm, op2), Arm64InstructionId.SYSL_rc_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// 128-bit system instruction.
     /// </summary>
     /// <remarks><code>SYSP #op1, Cn, Cm, #op2 {, Xt1, Xt2}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSP_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler SYSP(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt1 = default)
-         => AddInstruction(Arm64InstructionFactory.SYSP(op1, Cn, Cm, op2, Xt1));
+         => AddInstruction(Arm64InstructionFactory.SYSP(op1, Cn, Cm, op2, Xt1), Arm64InstructionId.SYSP_cr_syspairinstrs);
     /// <summary>
     /// Cancel current transaction.
     /// </summary>
     /// <remarks><code>TCANCEL #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TCANCEL_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TCANCEL(ushort imm)
-         => AddInstruction(Arm64InstructionFactory.TCANCEL(imm));
+    public Arm64Assembler TCANCEL(ushort imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TCANCEL(imm), Arm64InstructionId.TCANCEL_ex_exception, debugFilePath, debugLineNumber);
     /// <summary>
     /// Commit current transaction.
     /// </summary>
     /// <remarks><code>TCOMMIT </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TCOMMIT_only_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TCOMMIT()
-         => AddInstruction(Arm64InstructionFactory.TCOMMIT());
+    public Arm64Assembler TCOMMIT([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TCOMMIT(), Arm64InstructionId.TCOMMIT_only_barriers, debugFilePath, debugLineNumber);
     /// <summary>
     /// TLB invalidate operation.
     /// </summary>
     /// <remarks><code>TLBI tlbi_op {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBI_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
-         => AddInstruction(Arm64InstructionFactory.TLBI(tlbi_op, Xt));
+         => AddInstruction(Arm64InstructionFactory.TLBI(tlbi_op, Xt), Arm64InstructionId.TLBI_sys_cr_systeminstrs);
     /// <summary>
     /// TLB invalidate pair operation.
     /// </summary>
     /// <remarks><code>TLBIP tlbip_op {, Xt1, Xt2}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
-         => AddInstruction(Arm64InstructionFactory.TLBIP(tlbip_op, Xt1));
+         => AddInstruction(Arm64InstructionFactory.TLBIP(tlbip_op, Xt1), Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs);
     /// <summary>
     /// Trace instrumentation.
     /// </summary>
     /// <remarks><code>TRCIT Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TRCIT_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TRCIT(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.TRCIT(Xt));
+    public Arm64Assembler TRCIT(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TRCIT(Xt), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Trace synchronization barrier.
     /// </summary>
     /// <remarks><code>TSB CSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TSB(Arm64CodeSyncKind CSYNC)
-         => AddInstruction(Arm64InstructionFactory.TSB(CSYNC));
+    public Arm64Assembler TSB(Arm64CodeSyncKind CSYNC, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TSB(CSYNC), Arm64InstructionId.TSB_hc_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Start transaction.
     /// </summary>
     /// <remarks><code>TSTART Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TSTART_br_systemresult), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TSTART(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.TSTART(Xt));
+    public Arm64Assembler TSTART(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TSTART(Xt), Arm64InstructionId.TSTART_br_systemresult, debugFilePath, debugLineNumber);
     /// <summary>
     /// Test transaction state.
     /// </summary>
     /// <remarks><code>TTEST Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TTEST_br_systemresult), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TTEST(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.TTEST(Xt));
+    public Arm64Assembler TTEST(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.TTEST(Xt), Arm64InstructionId.TTEST_br_systemresult, debugFilePath, debugLineNumber);
     /// <summary>
     /// Wait for event.
     /// </summary>
     /// <remarks><code>WFE </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFE_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler WFE()
-         => AddInstruction(Arm64InstructionFactory.WFE());
+    public Arm64Assembler WFE([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.WFE(), Arm64InstructionId.WFE_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Wait for event with timeout.
     /// </summary>
     /// <remarks><code>WFET Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFET_only_systeminstrswithreg), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler WFET(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.WFET(Xt));
+    public Arm64Assembler WFET(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.WFET(Xt), Arm64InstructionId.WFET_only_systeminstrswithreg, debugFilePath, debugLineNumber);
     /// <summary>
     /// Wait for interrupt.
     /// </summary>
     /// <remarks><code>WFI </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFI_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler WFI()
-         => AddInstruction(Arm64InstructionFactory.WFI());
+    public Arm64Assembler WFI([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.WFI(), Arm64InstructionId.WFI_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Wait for interrupt with timeout.
     /// </summary>
     /// <remarks><code>WFIT Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFIT_only_systeminstrswithreg), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler WFIT(Arm64RegisterX Xt)
-         => AddInstruction(Arm64InstructionFactory.WFIT(Xt));
+    public Arm64Assembler WFIT(Arm64RegisterX Xt, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.WFIT(Xt), Arm64InstructionId.WFIT_only_systeminstrswithreg, debugFilePath, debugLineNumber);
     /// <summary>
     /// Convert floating-point condition flags from external format to Arm format.
     /// </summary>
     /// <remarks><code>XAFLAG </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XAFLAG_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler XAFLAG()
-         => AddInstruction(Arm64InstructionFactory.XAFLAG());
+    public Arm64Assembler XAFLAG([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.XAFLAG(), Arm64InstructionId.XAFLAG_m_pstate, debugFilePath, debugLineNumber);
     /// <summary>
     /// Strip Pointer Authentication Code.
     /// </summary>
     /// <remarks><code>XPACLRI </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XPACLRI_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler XPACLRI()
-         => AddInstruction(Arm64InstructionFactory.XPACLRI());
+    public Arm64Assembler XPACLRI([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.XPACLRI(), Arm64InstructionId.XPACLRI_hi_hints, debugFilePath, debugLineNumber);
     /// <summary>
     /// Yield.
     /// </summary>
     /// <remarks><code>YIELD </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.YIELD_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler YIELD()
-         => AddInstruction(Arm64InstructionFactory.YIELD());
+    public Arm64Assembler YIELD([CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.YIELD(), Arm64InstructionId.YIELD_hi_hints, debugFilePath, debugLineNumber);
 }

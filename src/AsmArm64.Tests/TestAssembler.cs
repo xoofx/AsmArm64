@@ -2,6 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace AsmArm64.Tests;
@@ -218,6 +219,102 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestLabelBindingCoverage()
+    {
+        using var asm = new Arm64Assembler(0x8000);
+
+        asm.Label(out var start)
+           .B(out var forward)
+           .NOP()
+           .Label(forward)
+           .B(start)
+           .End();
+
+        Assert.AreEqual(0x8000UL, start.Address);
+        Assert.AreEqual(0x8008UL, forward.Address);
+
+        var instructions = MemoryMarshal.Cast<byte, uint>(asm.Buffer);
+        var forwardBranch = Arm64Instruction.Decode(instructions[0]);
+        var backwardBranch = Arm64Instruction.Decode(instructions[2]);
+
+        Assert.AreEqual(8, ((Arm64LabelOperand)forwardBranch.GetOperand(0)).Offset);
+        Assert.AreEqual(-8, ((Arm64LabelOperand)backwardBranch.GetOperand(0)).Offset);
+
+        var duplicate = Assert.Throws<InvalidOperationException>(() => asm.Label(forward));
+        StringAssert.Contains(duplicate.Message, "forward");
+
+        asm.Label(forward, force: true);
+        Assert.AreEqual(asm.CurrentAddress, forward.Address);
+    }
+
+    [TestMethod]
+    public void TestUnboundLabelDiagnostic()
+    {
+        using var asm = new Arm64Assembler(0x9000);
+
+        asm.B(out var missing);
+
+        var exception = Assert.Throws<Arm64AssemblerException>(() => asm.End());
+
+        StringAssert.Contains(exception.Message, "missing");
+        Assert.AreEqual(1, exception.Diagnostics.Count);
+        var diagnostic = exception.Diagnostics[0];
+        Assert.AreEqual(Arm64AssemblerDiagnosticSeverity.Error, diagnostic.Severity);
+        Assert.AreEqual("missing", diagnostic.LabelName);
+        Assert.AreEqual(0u, diagnostic.Offset);
+        Assert.AreEqual(0x9000UL, diagnostic.Address);
+        Assert.AreEqual(Arm64InstructionId.B_only_branch_imm, diagnostic.InstructionId);
+    }
+
+    [TestMethod]
+    public void TestOutOfRangeLabelDiagnostic()
+    {
+        using var asm = new Arm64Assembler(0xA000);
+        var far = new Arm64Label(0x2000_0000UL, "far");
+
+        var exception = Assert.Throws<Arm64AssemblerException>(() => asm.B(far));
+
+        StringAssert.Contains(exception.Message, "far");
+        StringAssert.Contains(exception.Message, "out of range");
+        Assert.AreEqual(1, exception.Diagnostics.Count);
+        Assert.AreEqual("far", exception.Diagnostics[0].LabelName);
+        Assert.AreEqual(Arm64InstructionId.B_only_branch_imm, exception.Diagnostics[0].InstructionId);
+    }
+
+    [TestMethod]
+    public void TestTryEndReturnsDiagnostics()
+    {
+        using var asm = new Arm64Assembler();
+
+        asm.B(out var missing);
+
+        var success = asm.TryEnd(out var diagnostics);
+
+        Assert.IsFalse(success);
+        Assert.AreEqual(1, diagnostics.Count);
+        Assert.AreEqual("missing", diagnostics[0].LabelName);
+    }
+
+    [TestMethod]
+    public void TestDebugMapCapturesGeneratedCallerInfo()
+    {
+        using var asm = new Arm64Assembler(0xB000);
+
+        var expectedLine = CurrentLine() + 1;
+        asm.ADC(X0, X1, X2);
+
+        Assert.IsNotNull(asm.DebugMap);
+        var entries = asm.DebugMap.Entries.Where(x => x.Kind == Arm64AssemblerDebugInfoKind.LineInfo).ToArray();
+        Assert.AreEqual(1, entries.Length);
+        var entry = entries[0];
+        Assert.AreEqual(0u, entry.Offset);
+        Assert.AreEqual(0xB000UL, entry.Address);
+        Assert.AreEqual(Arm64InstructionId.ADC_64_addsub_carry, entry.InstructionId);
+        StringAssert.EndsWith(entry.FilePath, "TestAssembler.cs");
+        Assert.AreEqual(expectedLine, entry.LineNumber);
+    }
+
+    [TestMethod]
     public void TestCustomInstructionBufferStillSupported()
     {
         var instructionBuffer = new Arm64InstructionBufferByList();
@@ -389,4 +486,6 @@ public class TestAssembler : VerifyBase
 
         return MemoryMarshal.Cast<uint, byte>(CollectionsMarshal.AsSpan(bufferList.Instructions)).ToArray();
     }
+
+    private static int CurrentLine([CallerLineNumber] int lineNumber = 0) => lineNumber;
 }

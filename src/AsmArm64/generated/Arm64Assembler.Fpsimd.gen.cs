@@ -18,761 +18,764 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDAPUR Bt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_b_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDAPUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDAPUR(Bt, src));
+    public Arm64Assembler LDAPUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDAPUR(Bt, src), Arm64InstructionId.LDAPUR_b_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDAPUR Ht, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_h_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDAPUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDAPUR(Ht, src));
+    public Arm64Assembler LDAPUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDAPUR(Ht, src), Arm64InstructionId.LDAPUR_h_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDAPUR St, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_s_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDAPUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDAPUR(St, src));
+    public Arm64Assembler LDAPUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDAPUR(St, src), Arm64InstructionId.LDAPUR_s_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDAPUR Dt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_d_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDAPUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDAPUR(Dt, src));
+    public Arm64Assembler LDAPUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDAPUR(Dt, src), Arm64InstructionId.LDAPUR_d_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load-acquire RCpc SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDAPUR Qt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_q_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDAPUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDAPUR(Qt, src));
+    public Arm64Assembler LDAPUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDAPUR(Qt, src), Arm64InstructionId.LDAPUR_q_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>LDNP St1, St2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDNP_s_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDNP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDNP(St1, St2, src));
+    public Arm64Assembler LDNP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDNP(St1, St2, src), Arm64InstructionId.LDNP_s_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>LDNP Dt1, Dt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDNP_d_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDNP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDNP(Dt1, Dt2, src));
+    public Arm64Assembler LDNP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDNP(Dt1, Dt2, src), Arm64InstructionId.LDNP_d_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>LDNP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDNP_q_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDNP(Qt1, Qt2, src));
+    public Arm64Assembler LDNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDNP(Qt1, Qt2, src), Arm64InstructionId.LDNP_q_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP St1, St2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_s_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor src, int imm)
-         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src, imm));
+    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor src, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src, imm), Arm64InstructionId.LDP_s_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Dt1, Dt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_d_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor src, int imm)
-         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src, imm));
+    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor src, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src, imm), Arm64InstructionId.LDP_d_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Qt1, Qt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm)
-         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src, imm));
+    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src, imm), Arm64InstructionId.LDP_q_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP St1, St2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_s_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src));
+    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src), Arm64InstructionId.LDP_s_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Dt1, Dt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_d_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src));
+    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src), Arm64InstructionId.LDP_d_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Qt1, Qt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_q_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src));
+    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src), Arm64InstructionId.LDP_q_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP St1, St2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_s_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src));
+    public Arm64Assembler LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(St1, St2, src), Arm64InstructionId.LDP_s_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Dt1, Dt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_d_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src));
+    public Arm64Assembler LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Dt1, Dt2, src), Arm64InstructionId.LDP_d_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_q_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src));
+    public Arm64Assembler LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDP(Qt1, Qt2, src), Arm64InstructionId.LDP_q_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src));
+    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src), Arm64InstructionId.LDR_b_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src));
+    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src), Arm64InstructionId.LDR_b_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor src, short simm)
-         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src, simm));
+    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor src, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src, simm), Arm64InstructionId.LDR_b_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor src, short simm)
-         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src, simm));
+    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor src, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src, simm), Arm64InstructionId.LDR_h_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR St, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64BaseMemoryAccessor src, short simm)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, src, simm));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64BaseMemoryAccessor src, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, src, simm), Arm64InstructionId.LDR_s_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Dt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor src, short simm)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src, simm));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor src, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src, simm), Arm64InstructionId.LDR_d_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Qt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor src, short simm)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src, simm));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor src, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src, simm), Arm64InstructionId.LDR_q_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src));
+    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src), Arm64InstructionId.LDR_b_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src));
+    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src), Arm64InstructionId.LDR_h_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR St, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, src));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, src), Arm64InstructionId.LDR_s_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Dt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src), Arm64InstructionId.LDR_d_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Qt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src), Arm64InstructionId.LDR_q_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src));
+    public Arm64Assembler LDR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Bt, src), Arm64InstructionId.LDR_b_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src));
+    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src), Arm64InstructionId.LDR_h_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR St, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, src));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, src), Arm64InstructionId.LDR_s_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Dt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src), Arm64InstructionId.LDR_d_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>LDR Qt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src), Arm64InstructionId.LDR_q_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR St, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64Label label)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, RecordLabelOffset(label, 43328)));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, RecordLabelOffset(label, 43328, Arm64InstructionId.LDR_s_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDR_s_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDR.
     /// </summary>
+    /// <remarks><code>LDR St, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    public Arm64Assembler LDR(Arm64RegisterS St, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
     {
         LabelForward(out label, labelExpression);
-        return LDR(St, label);
+        return LDR(St, label, debugFilePath, debugLineNumber);
     }
     /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Dt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64Label label)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, RecordLabelOffset(label, 43352)));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, RecordLabelOffset(label, 43352, Arm64InstructionId.LDR_d_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDR_d_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDR.
     /// </summary>
+    /// <remarks><code>LDR Dt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    public Arm64Assembler LDR(Arm64RegisterD Dt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
     {
         LabelForward(out label, labelExpression);
-        return LDR(Dt, label);
+        return LDR(Dt, label, debugFilePath, debugLineNumber);
     }
     /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Qt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64Label label)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, RecordLabelOffset(label, 43376)));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, RecordLabelOffset(label, 43376, Arm64InstructionId.LDR_q_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDR_q_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDR.
     /// </summary>
+    /// <remarks><code>LDR Qt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
     {
         LabelForward(out label, labelExpression);
-        return LDR(Qt, label);
+        return LDR(Qt, label, debugFilePath, debugLineNumber);
     }
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src));
+    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src), Arm64InstructionId.LDR_h_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src));
+    public Arm64Assembler LDR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Ht, src), Arm64InstructionId.LDR_h_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64RegisterXExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, src));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64RegisterXExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, src), Arm64InstructionId.LDR_s_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(St, src));
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(St, src), Arm64InstructionId.LDR_s_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64RegisterXExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64RegisterXExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src), Arm64InstructionId.LDR_d_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src));
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Dt, src), Arm64InstructionId.LDR_d_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64RegisterXExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64RegisterXExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src), Arm64InstructionId.LDR_q_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>LDR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src));
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDR(Qt, src), Arm64InstructionId.LDR_q_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load unprivileged pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>LDTNP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTNP_q_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDTNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDTNP(Qt1, Qt2, src));
+    public Arm64Assembler LDTNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDTNP(Qt1, Qt2, src), Arm64InstructionId.LDTNP_q_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDTP Qt1, Qt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm)
-         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src, imm));
+    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src, imm), Arm64InstructionId.LDTP_q_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDTP Qt1, Qt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_q_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement src)
-         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src));
+    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src), Arm64InstructionId.LDTP_q_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>LDTP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_q_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src));
+    public Arm64Assembler LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDTP(Qt1, Qt2, src), Arm64InstructionId.LDTP_q_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDUR Bt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_b_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDUR(Bt, src));
+    public Arm64Assembler LDUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDUR(Bt, src), Arm64InstructionId.LDUR_b_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDUR Ht, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_h_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDUR(Ht, src));
+    public Arm64Assembler LDUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDUR(Ht, src), Arm64InstructionId.LDUR_h_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDUR St, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_s_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDUR(St, src));
+    public Arm64Assembler LDUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDUR(St, src), Arm64InstructionId.LDUR_s_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDUR Dt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_d_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDUR(Dt, src));
+    public Arm64Assembler LDUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDUR(Dt, src), Arm64InstructionId.LDUR_d_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Load SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>LDUR Qt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_q_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src)
-         => AddInstruction(Arm64InstructionFactory.LDUR(Qt, src));
+    public Arm64Assembler LDUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor src, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.LDUR(Qt, src), Arm64InstructionId.LDUR_q_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STLUR Bt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_b_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STLUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STLUR(Bt, dst));
+    public Arm64Assembler STLUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STLUR(Bt, dst), Arm64InstructionId.STLUR_b_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STLUR Ht, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_h_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STLUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STLUR(Ht, dst));
+    public Arm64Assembler STLUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STLUR(Ht, dst), Arm64InstructionId.STLUR_h_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STLUR St, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_s_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STLUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STLUR(St, dst));
+    public Arm64Assembler STLUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STLUR(St, dst), Arm64InstructionId.STLUR_s_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STLUR Dt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_d_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STLUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STLUR(Dt, dst));
+    public Arm64Assembler STLUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STLUR(Dt, dst), Arm64InstructionId.STLUR_d_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store-release SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STLUR Qt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_q_ldapstl_simd), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STLUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STLUR(Qt, dst));
+    public Arm64Assembler STLUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STLUR(Qt, dst), Arm64InstructionId.STLUR_q_ldapstl_simd, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>STNP St1, St2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STNP_s_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STNP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STNP(St1, St2, dst));
+    public Arm64Assembler STNP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STNP(St1, St2, dst), Arm64InstructionId.STNP_s_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>STNP Dt1, Dt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STNP_d_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STNP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STNP(Dt1, Dt2, dst));
+    public Arm64Assembler STNP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STNP(Dt1, Dt2, dst), Arm64InstructionId.STNP_d_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>STNP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STNP_q_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STNP(Qt1, Qt2, dst));
+    public Arm64Assembler STNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STNP(Qt1, Qt2, dst), Arm64InstructionId.STNP_q_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP St1, St2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_s_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor dst, int imm)
-         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst, imm));
+    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor dst, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst, imm), Arm64InstructionId.STP_s_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Dt1, Dt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_d_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor dst, int imm)
-         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst, imm));
+    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor dst, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst, imm), Arm64InstructionId.STP_d_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Qt1, Qt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm)
-         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst, imm));
+    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst, imm), Arm64InstructionId.STP_q_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP St1, St2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_s_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst));
+    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst), Arm64InstructionId.STP_s_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Dt1, Dt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_d_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst));
+    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst), Arm64InstructionId.STP_d_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Qt1, Qt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_q_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst));
+    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst), Arm64InstructionId.STP_q_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP St1, St2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_s_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst));
+    public Arm64Assembler STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(St1, St2, dst), Arm64InstructionId.STP_s_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Dt1, Dt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_d_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst));
+    public Arm64Assembler STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Dt1, Dt2, dst), Arm64InstructionId.STP_d_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_q_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst));
+    public Arm64Assembler STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STP(Qt1, Qt2, dst), Arm64InstructionId.STP_q_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst));
+    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst), Arm64InstructionId.STR_b_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst));
+    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst), Arm64InstructionId.STR_b_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor dst, short simm)
-         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst, simm));
+    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor dst, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst, simm), Arm64InstructionId.STR_b_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor dst, short simm)
-         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst, simm));
+    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor dst, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst, simm), Arm64InstructionId.STR_h_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR St, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterS St, Arm64BaseMemoryAccessor dst, short simm)
-         => AddInstruction(Arm64InstructionFactory.STR(St, dst, simm));
+    public Arm64Assembler STR(Arm64RegisterS St, Arm64BaseMemoryAccessor dst, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(St, dst, simm), Arm64InstructionId.STR_s_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Dt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor dst, short simm)
-         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst, simm));
+    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor dst, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst, simm), Arm64InstructionId.STR_d_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Qt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor dst, short simm)
-         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst, simm));
+    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor dst, short simm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst, simm), Arm64InstructionId.STR_q_ldst_immpost, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst));
+    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst), Arm64InstructionId.STR_b_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst));
+    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst), Arm64InstructionId.STR_h_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR St, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STR(St, dst));
+    public Arm64Assembler STR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(St, dst), Arm64InstructionId.STR_s_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Dt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst));
+    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst), Arm64InstructionId.STR_d_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Qt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst));
+    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst), Arm64InstructionId.STR_q_ldst_immpre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst));
+    public Arm64Assembler STR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Bt, dst), Arm64InstructionId.STR_b_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst));
+    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst), Arm64InstructionId.STR_h_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR St, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(St, dst));
+    public Arm64Assembler STR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(St, dst), Arm64InstructionId.STR_s_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Dt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst));
+    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst), Arm64InstructionId.STR_d_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (immediate offset).
     /// </summary>
     /// <remarks><code>STR Qt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst));
+    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst), Arm64InstructionId.STR_q_ldst_pos, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst));
+    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst), Arm64InstructionId.STR_h_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst));
+    public Arm64Assembler STR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Ht, dst), Arm64InstructionId.STR_h_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterS St, Arm64RegisterXExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(St, dst));
+    public Arm64Assembler STR(Arm64RegisterS St, Arm64RegisterXExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(St, dst), Arm64InstructionId.STR_s_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(St, dst));
+    public Arm64Assembler STR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(St, dst), Arm64InstructionId.STR_s_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64RegisterXExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst));
+    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64RegisterXExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst), Arm64InstructionId.STR_d_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst));
+    public Arm64Assembler STR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Dt, dst), Arm64InstructionId.STR_d_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64RegisterXExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst));
+    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64RegisterXExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst), Arm64InstructionId.STR_q_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
     /// <remarks><code>STR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst));
+    public Arm64Assembler STR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STR(Qt, dst), Arm64InstructionId.STR_q_ldst_regoff, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store unprivileged pair of SIMD&amp;FP registers, with non-temporal hint.
     /// </summary>
     /// <remarks><code>STTNP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTNP_q_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STTNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STTNP(Qt1, Qt2, dst));
+    public Arm64Assembler STTNP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STTNP(Qt1, Qt2, dst), Arm64InstructionId.STTNP_q_ldstnapair_offs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STTP Qt1, Qt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm)
-         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst, imm));
+    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst, imm), Arm64InstructionId.STTP_q_ldstpair_post, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STTP Qt1, Qt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_q_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement dst)
-         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst));
+    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor.PreIncrement dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst), Arm64InstructionId.STTP_q_ldstpair_pre, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store unprivileged pair of SIMD&amp;FP registers.
     /// </summary>
     /// <remarks><code>STTP Qt1, Qt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_q_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst));
+    public Arm64Assembler STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STTP(Qt1, Qt2, dst), Arm64InstructionId.STTP_q_ldstpair_off, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STUR Bt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_b_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STUR(Bt, dst));
+    public Arm64Assembler STUR(Arm64RegisterB Bt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STUR(Bt, dst), Arm64InstructionId.STUR_b_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STUR Ht, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_h_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STUR(Ht, dst));
+    public Arm64Assembler STUR(Arm64RegisterH Ht, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STUR(Ht, dst), Arm64InstructionId.STUR_h_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STUR St, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_s_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STUR(St, dst));
+    public Arm64Assembler STUR(Arm64RegisterS St, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STUR(St, dst), Arm64InstructionId.STUR_s_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STUR Dt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_d_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STUR(Dt, dst));
+    public Arm64Assembler STUR(Arm64RegisterD Dt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STUR(Dt, dst), Arm64InstructionId.STUR_d_ldst_unscaled, debugFilePath, debugLineNumber);
     /// <summary>
     /// Store SIMD&amp;FP register (unscaled offset).
     /// </summary>
     /// <remarks><code>STUR Qt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_q_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler STUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst)
-         => AddInstruction(Arm64InstructionFactory.STUR(Qt, dst));
+    public Arm64Assembler STUR(Arm64RegisterQ Qt, Arm64ImmediateMemoryAccessor dst, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.STUR(Qt, dst), Arm64InstructionId.STUR_q_ldst_unscaled, debugFilePath, debugLineNumber);
 }

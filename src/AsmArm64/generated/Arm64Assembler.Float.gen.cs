@@ -18,1861 +18,1861 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>BFCVT Hd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFCVT_bs_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler BFCVT(Arm64RegisterH Hd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.BFCVT(Hd, Sn));
+    public Arm64Assembler BFCVT(Arm64RegisterH Hd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.BFCVT(Hd, Sn), Arm64InstructionId.BFCVT_bs_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point absolute value (scalar).
     /// </summary>
     /// <remarks><code>FABS Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FABS_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FABS(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FABS(Hd, Hn));
+    public Arm64Assembler FABS(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FABS(Hd, Hn), Arm64InstructionId.FABS_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point absolute value (scalar).
     /// </summary>
     /// <remarks><code>FABS Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FABS_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FABS(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FABS(Sd, Sn));
+    public Arm64Assembler FABS(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FABS(Sd, Sn), Arm64InstructionId.FABS_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point absolute value (scalar).
     /// </summary>
     /// <remarks><code>FABS Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FABS_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FABS(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FABS(Dd, Dn));
+    public Arm64Assembler FABS(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FABS(Dd, Dn), Arm64InstructionId.FABS_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point add (scalar).
     /// </summary>
     /// <remarks><code>FADD Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FADD_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FADD(Hd, Hn, Hm));
+    public Arm64Assembler FADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FADD(Hd, Hn, Hm), Arm64InstructionId.FADD_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point add (scalar).
     /// </summary>
     /// <remarks><code>FADD Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FADD_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FADD(Sd, Sn, Sm));
+    public Arm64Assembler FADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FADD(Sd, Sn, Sm), Arm64InstructionId.FADD_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point add (scalar).
     /// </summary>
     /// <remarks><code>FADD Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FADD_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FADD(Dd, Dn, Dm));
+    public Arm64Assembler FADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FADD(Dd, Dn, Dm), Arm64InstructionId.FADD_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMP Hn, Hm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_h_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMP(Arm64RegisterH Hn, Arm64RegisterH Hm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMP(Hn, Hm, nzcv, cond));
+    public Arm64Assembler FCCMP(Arm64RegisterH Hn, Arm64RegisterH Hm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMP(Hn, Hm, nzcv, cond), Arm64InstructionId.FCCMP_h_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMP Sn, Sm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_s_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMP(Arm64RegisterS Sn, Arm64RegisterS Sm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMP(Sn, Sm, nzcv, cond));
+    public Arm64Assembler FCCMP(Arm64RegisterS Sn, Arm64RegisterS Sm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMP(Sn, Sm, nzcv, cond), Arm64InstructionId.FCCMP_s_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMP Dn, Dm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_d_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMP(Arm64RegisterD Dn, Arm64RegisterD Dm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMP(Dn, Dm, nzcv, cond));
+    public Arm64Assembler FCCMP(Arm64RegisterD Dn, Arm64RegisterD Dm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMP(Dn, Dm, nzcv, cond), Arm64InstructionId.FCCMP_d_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMPE Hn, Hm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_h_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMPE(Arm64RegisterH Hn, Arm64RegisterH Hm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMPE(Hn, Hm, nzcv, cond));
+    public Arm64Assembler FCCMPE(Arm64RegisterH Hn, Arm64RegisterH Hm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMPE(Hn, Hm, nzcv, cond), Arm64InstructionId.FCCMPE_h_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMPE Sn, Sm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_s_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMPE(Arm64RegisterS Sn, Arm64RegisterS Sm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMPE(Sn, Sm, nzcv, cond));
+    public Arm64Assembler FCCMPE(Arm64RegisterS Sn, Arm64RegisterS Sm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMPE(Sn, Sm, nzcv, cond), Arm64InstructionId.FCCMPE_s_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCCMPE Dn, Dm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_d_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCCMPE(Arm64RegisterD Dn, Arm64RegisterD Dm, byte nzcv, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCCMPE(Dn, Dm, nzcv, cond));
+    public Arm64Assembler FCCMPE(Arm64RegisterD Dn, Arm64RegisterD Dm, byte nzcv, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCCMPE(Dn, Dm, nzcv, cond), Arm64InstructionId.FCCMPE_d_floatccmp, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_h_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Hn, Hm));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Hn, Hm), Arm64InstructionId.FCMP_h_floatcmp);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_hz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterH Hn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Hn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Hn, zero), Arm64InstructionId.FCMP_hz_floatcmp);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_s_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Sn, Sm));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Sn, Sm), Arm64InstructionId.FCMP_s_floatcmp);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Sn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_sz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterS Sn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Sn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Sn, zero), Arm64InstructionId.FCMP_sz_floatcmp);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_d_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Dn, Dm));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Dn, Dm), Arm64InstructionId.FCMP_d_floatcmp);
     /// <summary>
     /// Floating-point quiet compare (scalar).
     /// </summary>
     /// <remarks><code>FCMP Dn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_dz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMP(Arm64RegisterD Dn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMP(Dn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMP(Dn, zero), Arm64InstructionId.FCMP_dz_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_h_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Hn, Hm));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Hn, Hm), Arm64InstructionId.FCMPE_h_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_hz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterH Hn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Hn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Hn, zero), Arm64InstructionId.FCMPE_hz_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_s_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Sn, Sm));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Sn, Sm), Arm64InstructionId.FCMPE_s_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Sn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_sz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterS Sn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Sn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Sn, zero), Arm64InstructionId.FCMPE_sz_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_d_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Dn, Dm));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Dn, Dm), Arm64InstructionId.FCMPE_d_floatcmp);
     /// <summary>
     /// Floating-point signaling compare (scalar).
     /// </summary>
     /// <remarks><code>FCMPE Dn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_dz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler FCMPE(Arm64RegisterD Dn, float zero = 0.0f)
-         => AddInstruction(Arm64InstructionFactory.FCMPE(Dn, zero));
+         => AddInstruction(Arm64InstructionFactory.FCMPE(Dn, zero), Arm64InstructionId.FCMPE_dz_floatcmp);
     /// <summary>
     /// Floating-point conditional select (scalar).
     /// </summary>
     /// <remarks><code>FCSEL Hd, Hn, Hm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_h_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCSEL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCSEL(Hd, Hn, Hm, cond));
+    public Arm64Assembler FCSEL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCSEL(Hd, Hn, Hm, cond), Arm64InstructionId.FCSEL_h_floatsel, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional select (scalar).
     /// </summary>
     /// <remarks><code>FCSEL Sd, Sn, Sm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_s_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCSEL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCSEL(Sd, Sn, Sm, cond));
+    public Arm64Assembler FCSEL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCSEL(Sd, Sn, Sm, cond), Arm64InstructionId.FCSEL_s_floatsel, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point conditional select (scalar).
     /// </summary>
     /// <remarks><code>FCSEL Dd, Dn, Dm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_d_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCSEL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64ConditionalKind cond)
-         => AddInstruction(Arm64InstructionFactory.FCSEL(Dd, Dn, Dm, cond));
+    public Arm64Assembler FCSEL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64ConditionalKind cond, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCSEL(Dd, Dn, Dm, cond), Arm64InstructionId.FCSEL_d_floatsel, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_sh_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Sd, Hn));
+    public Arm64Assembler FCVT(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Sd, Hn), Arm64InstructionId.FCVT_sh_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_dh_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Dd, Hn));
+    public Arm64Assembler FCVT(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Dd, Hn), Arm64InstructionId.FCVT_dh_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Hd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_hs_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterH Hd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Hd, Sn));
+    public Arm64Assembler FCVT(Arm64RegisterH Hd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Hd, Sn), Arm64InstructionId.FCVT_hs_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_ds_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Dd, Sn));
+    public Arm64Assembler FCVT(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Dd, Sn), Arm64InstructionId.FCVT_ds_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Hd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_hd_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterH Hd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Hd, Dn));
+    public Arm64Assembler FCVT(Arm64RegisterH Hd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Hd, Dn), Arm64InstructionId.FCVT_hd_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert precision (scalar).
     /// </summary>
     /// <remarks><code>FCVT Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVT_sd_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVT(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVT(Sd, Dn));
+    public Arm64Assembler FCVT(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVT(Sd, Dn), Arm64InstructionId.FCVT_sd_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAS Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Sd, Hn));
+    public Arm64Assembler FCVTAS(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Sd, Hn), Arm64InstructionId.FCVTAS_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAS Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Dd, Hn));
+    public Arm64Assembler FCVTAS(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Dd, Hn), Arm64InstructionId.FCVTAS_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAS Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Dd, Sn));
+    public Arm64Assembler FCVTAS(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Dd, Sn), Arm64InstructionId.FCVTAS_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAS Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Sd, Dn));
+    public Arm64Assembler FCVTAS(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Sd, Dn), Arm64InstructionId.FCVTAS_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Hn));
+    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Hn), Arm64InstructionId.FCVTAS_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Hn));
+    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Hn), Arm64InstructionId.FCVTAS_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Sn));
+    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Sn), Arm64InstructionId.FCVTAS_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Sn));
+    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Sn), Arm64InstructionId.FCVTAS_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Dn));
+    public Arm64Assembler FCVTAS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Wd, Dn), Arm64InstructionId.FCVTAS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAS Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAS_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Dn));
+    public Arm64Assembler FCVTAS(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAS(Xd, Dn), Arm64InstructionId.FCVTAS_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAU Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Sd, Hn));
+    public Arm64Assembler FCVTAU(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Sd, Hn), Arm64InstructionId.FCVTAU_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAU Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Dd, Hn));
+    public Arm64Assembler FCVTAU(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Dd, Hn), Arm64InstructionId.FCVTAU_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAU Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Dd, Sn));
+    public Arm64Assembler FCVTAU(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Dd, Sn), Arm64InstructionId.FCVTAU_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTAU Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Sd, Dn));
+    public Arm64Assembler FCVTAU(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Sd, Dn), Arm64InstructionId.FCVTAU_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Hn));
+    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Hn), Arm64InstructionId.FCVTAU_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Hn));
+    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Hn), Arm64InstructionId.FCVTAU_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Sn));
+    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Sn), Arm64InstructionId.FCVTAU_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Sn));
+    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Sn), Arm64InstructionId.FCVTAU_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Dn));
+    public Arm64Assembler FCVTAU(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Wd, Dn), Arm64InstructionId.FCVTAU_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FCVTAU Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTAU_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Dn));
+    public Arm64Assembler FCVTAU(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTAU(Xd, Dn), Arm64InstructionId.FCVTAU_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMS Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Sd, Hn));
+    public Arm64Assembler FCVTMS(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Sd, Hn), Arm64InstructionId.FCVTMS_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMS Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Dd, Hn));
+    public Arm64Assembler FCVTMS(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Dd, Hn), Arm64InstructionId.FCVTMS_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMS Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Dd, Sn));
+    public Arm64Assembler FCVTMS(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Dd, Sn), Arm64InstructionId.FCVTMS_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMS Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Sd, Dn));
+    public Arm64Assembler FCVTMS(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Sd, Dn), Arm64InstructionId.FCVTMS_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Hn));
+    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Hn), Arm64InstructionId.FCVTMS_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Hn));
+    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Hn), Arm64InstructionId.FCVTMS_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Sn));
+    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Sn), Arm64InstructionId.FCVTMS_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Sn));
+    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Sn), Arm64InstructionId.FCVTMS_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Dn));
+    public Arm64Assembler FCVTMS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Wd, Dn), Arm64InstructionId.FCVTMS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMS Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMS_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Dn));
+    public Arm64Assembler FCVTMS(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMS(Xd, Dn), Arm64InstructionId.FCVTMS_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMU Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Sd, Hn));
+    public Arm64Assembler FCVTMU(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Sd, Hn), Arm64InstructionId.FCVTMU_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMU Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Dd, Hn));
+    public Arm64Assembler FCVTMU(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Dd, Hn), Arm64InstructionId.FCVTMU_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMU Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Dd, Sn));
+    public Arm64Assembler FCVTMU(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Dd, Sn), Arm64InstructionId.FCVTMU_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTMU Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Sd, Dn));
+    public Arm64Assembler FCVTMU(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Sd, Dn), Arm64InstructionId.FCVTMU_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Hn));
+    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Hn), Arm64InstructionId.FCVTMU_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Hn));
+    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Hn), Arm64InstructionId.FCVTMU_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Sn));
+    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Sn), Arm64InstructionId.FCVTMU_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Sn));
+    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Sn), Arm64InstructionId.FCVTMU_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Dn));
+    public Arm64Assembler FCVTMU(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Wd, Dn), Arm64InstructionId.FCVTMU_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTMU Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTMU_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Dn));
+    public Arm64Assembler FCVTMU(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTMU(Xd, Dn), Arm64InstructionId.FCVTMU_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNS Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Sd, Hn));
+    public Arm64Assembler FCVTNS(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Sd, Hn), Arm64InstructionId.FCVTNS_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNS Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Dd, Hn));
+    public Arm64Assembler FCVTNS(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Dd, Hn), Arm64InstructionId.FCVTNS_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNS Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Dd, Sn));
+    public Arm64Assembler FCVTNS(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Dd, Sn), Arm64InstructionId.FCVTNS_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNS Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Sd, Dn));
+    public Arm64Assembler FCVTNS(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Sd, Dn), Arm64InstructionId.FCVTNS_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Hn));
+    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Hn), Arm64InstructionId.FCVTNS_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Hn));
+    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Hn), Arm64InstructionId.FCVTNS_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Sn));
+    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Sn), Arm64InstructionId.FCVTNS_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Sn));
+    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Sn), Arm64InstructionId.FCVTNS_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Dn));
+    public Arm64Assembler FCVTNS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Wd, Dn), Arm64InstructionId.FCVTNS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNS Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNS_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Dn));
+    public Arm64Assembler FCVTNS(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNS(Xd, Dn), Arm64InstructionId.FCVTNS_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNU Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Sd, Hn));
+    public Arm64Assembler FCVTNU(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Sd, Hn), Arm64InstructionId.FCVTNU_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNU Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Dd, Hn));
+    public Arm64Assembler FCVTNU(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Dd, Hn), Arm64InstructionId.FCVTNU_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNU Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Dd, Sn));
+    public Arm64Assembler FCVTNU(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Dd, Sn), Arm64InstructionId.FCVTNU_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTNU Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Sd, Dn));
+    public Arm64Assembler FCVTNU(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Sd, Dn), Arm64InstructionId.FCVTNU_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Hn));
+    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Hn), Arm64InstructionId.FCVTNU_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Hn));
+    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Hn), Arm64InstructionId.FCVTNU_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Sn));
+    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Sn), Arm64InstructionId.FCVTNU_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Sn));
+    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Sn), Arm64InstructionId.FCVTNU_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Dn));
+    public Arm64Assembler FCVTNU(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Wd, Dn), Arm64InstructionId.FCVTNU_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FCVTNU Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTNU_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Dn));
+    public Arm64Assembler FCVTNU(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTNU(Xd, Dn), Arm64InstructionId.FCVTNU_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPS Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Sd, Hn));
+    public Arm64Assembler FCVTPS(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Sd, Hn), Arm64InstructionId.FCVTPS_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPS Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Dd, Hn));
+    public Arm64Assembler FCVTPS(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Dd, Hn), Arm64InstructionId.FCVTPS_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPS Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Dd, Sn));
+    public Arm64Assembler FCVTPS(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Dd, Sn), Arm64InstructionId.FCVTPS_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPS Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Sd, Dn));
+    public Arm64Assembler FCVTPS(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Sd, Dn), Arm64InstructionId.FCVTPS_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Hn));
+    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Hn), Arm64InstructionId.FCVTPS_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Hn));
+    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Hn), Arm64InstructionId.FCVTPS_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Sn));
+    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Sn), Arm64InstructionId.FCVTPS_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Sn));
+    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Sn), Arm64InstructionId.FCVTPS_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Dn));
+    public Arm64Assembler FCVTPS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Wd, Dn), Arm64InstructionId.FCVTPS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPS Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPS_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Dn));
+    public Arm64Assembler FCVTPS(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPS(Xd, Dn), Arm64InstructionId.FCVTPS_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPU Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Sd, Hn));
+    public Arm64Assembler FCVTPU(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Sd, Hn), Arm64InstructionId.FCVTPU_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPU Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Dd, Hn));
+    public Arm64Assembler FCVTPU(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Dd, Hn), Arm64InstructionId.FCVTPU_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPU Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Dd, Sn));
+    public Arm64Assembler FCVTPU(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Dd, Sn), Arm64InstructionId.FCVTPU_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTPU Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Sd, Dn));
+    public Arm64Assembler FCVTPU(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Sd, Dn), Arm64InstructionId.FCVTPU_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Hn));
+    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Hn), Arm64InstructionId.FCVTPU_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Hn));
+    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Hn), Arm64InstructionId.FCVTPU_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Sn));
+    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Sn), Arm64InstructionId.FCVTPU_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Sn));
+    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Sn), Arm64InstructionId.FCVTPU_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Dn));
+    public Arm64Assembler FCVTPU(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Wd, Dn), Arm64InstructionId.FCVTPU_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FCVTPU Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTPU_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Dn));
+    public Arm64Assembler FCVTPU(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTPU(Xd, Dn), Arm64InstructionId.FCVTPU_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZS Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Sd, Hn));
+    public Arm64Assembler FCVTZS(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Sd, Hn), Arm64InstructionId.FCVTZS_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZS Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Dd, Hn));
+    public Arm64Assembler FCVTZS(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Dd, Hn), Arm64InstructionId.FCVTZS_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZS Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Dd, Sn));
+    public Arm64Assembler FCVTZS(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Dd, Sn), Arm64InstructionId.FCVTZS_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZS Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Sd, Dn));
+    public Arm64Assembler FCVTZS(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Sd, Dn), Arm64InstructionId.FCVTZS_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Hn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Hn, fbits), Arm64InstructionId.FCVTZS_32h_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Hn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Hn, fbits), Arm64InstructionId.FCVTZS_64h_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Sn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Sn, fbits), Arm64InstructionId.FCVTZS_32s_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Sn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Sn, fbits), Arm64InstructionId.FCVTZS_64s_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Dn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Dn, fbits), Arm64InstructionId.FCVTZS_32d_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Dn, fbits));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Dn, fbits), Arm64InstructionId.FCVTZS_64d_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Hn));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Hn), Arm64InstructionId.FCVTZS_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Hn));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Hn), Arm64InstructionId.FCVTZS_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Sn));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Sn), Arm64InstructionId.FCVTZS_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Sn));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Sn), Arm64InstructionId.FCVTZS_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Dn));
+    public Arm64Assembler FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Wd, Dn), Arm64InstructionId.FCVTZS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Dn));
+    public Arm64Assembler FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZS(Xd, Dn), Arm64InstructionId.FCVTZS_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZU Sd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterS Sd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Sd, Hn));
+    public Arm64Assembler FCVTZU(Arm64RegisterS Sd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Sd, Hn), Arm64InstructionId.FCVTZU_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZU Dd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterD Dd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Dd, Hn));
+    public Arm64Assembler FCVTZU(Arm64RegisterD Dd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Dd, Hn), Arm64InstructionId.FCVTZU_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZU Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Dd, Sn));
+    public Arm64Assembler FCVTZU(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Dd, Sn), Arm64InstructionId.FCVTZU_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>FCVTZU Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Sd, Dn));
+    public Arm64Assembler FCVTZU(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Sd, Dn), Arm64InstructionId.FCVTZU_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Hn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Hn, fbits), Arm64InstructionId.FCVTZU_32h_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Hn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Hn, fbits), Arm64InstructionId.FCVTZU_64h_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Sn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Sn, fbits), Arm64InstructionId.FCVTZU_32s_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Sn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Sn, fbits), Arm64InstructionId.FCVTZU_64s_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Dn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Dn, fbits), Arm64InstructionId.FCVTZU_32d_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Dn, fbits));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Dn, fbits), Arm64InstructionId.FCVTZU_64d_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Hn));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Hn), Arm64InstructionId.FCVTZU_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Hn));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Hn), Arm64InstructionId.FCVTZU_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Sn));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Sn), Arm64InstructionId.FCVTZU_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Sn));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Sn), Arm64InstructionId.FCVTZU_64s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Dn));
+    public Arm64Assembler FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Wd, Dn), Arm64InstructionId.FCVTZU_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Dn));
+    public Arm64Assembler FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FCVTZU(Xd, Dn), Arm64InstructionId.FCVTZU_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point divide (scalar).
     /// </summary>
     /// <remarks><code>FDIV Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FDIV_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FDIV(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FDIV(Hd, Hn, Hm));
+    public Arm64Assembler FDIV(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FDIV(Hd, Hn, Hm), Arm64InstructionId.FDIV_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point divide (scalar).
     /// </summary>
     /// <remarks><code>FDIV Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FDIV_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FDIV(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FDIV(Sd, Sn, Sm));
+    public Arm64Assembler FDIV(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FDIV(Sd, Sn, Sm), Arm64InstructionId.FDIV_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point divide (scalar).
     /// </summary>
     /// <remarks><code>FDIV Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FDIV_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FDIV(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FDIV(Dd, Dn, Dm));
+    public Arm64Assembler FDIV(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FDIV(Dd, Dn, Dm), Arm64InstructionId.FDIV_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point Javascript convert to signed fixed-point, rounding toward zero.
     /// </summary>
     /// <remarks><code>FJCVTZS Wd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FJCVTZS_32d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FJCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FJCVTZS(Wd, Dn));
+    public Arm64Assembler FJCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FJCVTZS(Wd, Dn), Arm64InstructionId.FJCVTZS_32d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FMADD Hd, Hn, Hm, Ha</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMADD_h_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha)
-         => AddInstruction(Arm64InstructionFactory.FMADD(Hd, Hn, Hm, Ha));
+    public Arm64Assembler FMADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMADD(Hd, Hn, Hm, Ha), Arm64InstructionId.FMADD_h_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FMADD Sd, Sn, Sm, Sa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMADD_s_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa)
-         => AddInstruction(Arm64InstructionFactory.FMADD(Sd, Sn, Sm, Sa));
+    public Arm64Assembler FMADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMADD(Sd, Sn, Sm, Sa), Arm64InstructionId.FMADD_s_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FMADD Dd, Dn, Dm, Da</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMADD_d_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da)
-         => AddInstruction(Arm64InstructionFactory.FMADD(Dd, Dn, Dm, Da));
+    public Arm64Assembler FMADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMADD(Dd, Dn, Dm, Da), Arm64InstructionId.FMADD_d_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum (scalar).
     /// </summary>
     /// <remarks><code>FMAX Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAX_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAX(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FMAX(Hd, Hn, Hm));
+    public Arm64Assembler FMAX(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAX(Hd, Hn, Hm), Arm64InstructionId.FMAX_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum (scalar).
     /// </summary>
     /// <remarks><code>FMAX Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAX_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAX(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FMAX(Sd, Sn, Sm));
+    public Arm64Assembler FMAX(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAX(Sd, Sn, Sm), Arm64InstructionId.FMAX_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum (scalar).
     /// </summary>
     /// <remarks><code>FMAX Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAX_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAX(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FMAX(Dd, Dn, Dm));
+    public Arm64Assembler FMAX(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAX(Dd, Dn, Dm), Arm64InstructionId.FMAX_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum number (scalar).
     /// </summary>
     /// <remarks><code>FMAXNM Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAXNM_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAXNM(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FMAXNM(Hd, Hn, Hm));
+    public Arm64Assembler FMAXNM(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAXNM(Hd, Hn, Hm), Arm64InstructionId.FMAXNM_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum number (scalar).
     /// </summary>
     /// <remarks><code>FMAXNM Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAXNM_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAXNM(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FMAXNM(Sd, Sn, Sm));
+    public Arm64Assembler FMAXNM(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAXNM(Sd, Sn, Sm), Arm64InstructionId.FMAXNM_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point maximum number (scalar).
     /// </summary>
     /// <remarks><code>FMAXNM Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMAXNM_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMAXNM(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FMAXNM(Dd, Dn, Dm));
+    public Arm64Assembler FMAXNM(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMAXNM(Dd, Dn, Dm), Arm64InstructionId.FMAXNM_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum (scalar).
     /// </summary>
     /// <remarks><code>FMIN Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMIN_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMIN(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FMIN(Hd, Hn, Hm));
+    public Arm64Assembler FMIN(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMIN(Hd, Hn, Hm), Arm64InstructionId.FMIN_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum (scalar).
     /// </summary>
     /// <remarks><code>FMIN Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMIN_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMIN(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FMIN(Sd, Sn, Sm));
+    public Arm64Assembler FMIN(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMIN(Sd, Sn, Sm), Arm64InstructionId.FMIN_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum (scalar).
     /// </summary>
     /// <remarks><code>FMIN Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMIN_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMIN(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FMIN(Dd, Dn, Dm));
+    public Arm64Assembler FMIN(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMIN(Dd, Dn, Dm), Arm64InstructionId.FMIN_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum number (scalar).
     /// </summary>
     /// <remarks><code>FMINNM Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMINNM_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMINNM(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FMINNM(Hd, Hn, Hm));
+    public Arm64Assembler FMINNM(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMINNM(Hd, Hn, Hm), Arm64InstructionId.FMINNM_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum number (scalar).
     /// </summary>
     /// <remarks><code>FMINNM Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMINNM_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMINNM(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FMINNM(Sd, Sn, Sm));
+    public Arm64Assembler FMINNM(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMINNM(Sd, Sn, Sm), Arm64InstructionId.FMINNM_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point minimum number (scalar).
     /// </summary>
     /// <remarks><code>FMINNM Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMINNM_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMINNM(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FMINNM(Dd, Dn, Dm));
+    public Arm64Assembler FMINNM(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMINNM(Dd, Dn, Dm), Arm64InstructionId.FMINNM_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Wd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_32h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterW Wd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Wd, Hn));
+    public Arm64Assembler FMOV(Arm64RegisterW Wd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Wd, Hn), Arm64InstructionId.FMOV_32h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Xd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_64h_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Hn));
+    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Hn), Arm64InstructionId.FMOV_64h_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Hd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_h32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Wn));
+    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Wn), Arm64InstructionId.FMOV_h32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Sd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_s32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, Wn));
+    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, Wn), Arm64InstructionId.FMOV_s32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Wd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_32s_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterW Wd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Wd, Sn));
+    public Arm64Assembler FMOV(Arm64RegisterW Wd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Wd, Sn), Arm64InstructionId.FMOV_32s_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Hd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_h64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Xn));
+    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Xn), Arm64InstructionId.FMOV_h64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Dd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_d64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, Xn));
+    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, Xn), Arm64InstructionId.FMOV_d64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Vd.D[1], Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_v64i_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterV_D.Indexed Vd_D, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Vd_D, Xn));
+    public Arm64Assembler FMOV(Arm64RegisterV_D.Indexed Vd_D, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Vd_D, Xn), Arm64InstructionId.FMOV_v64i_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Xd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_64d_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Dn));
+    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Dn), Arm64InstructionId.FMOV_64d_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move to or from general-purpose register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Xd, Vn.D[1]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_64vx_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterV_D.Indexed Vn_D)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Vn_D));
+    public Arm64Assembler FMOV(Arm64RegisterX Xd, Arm64RegisterV_D.Indexed Vn_D, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Xd, Vn_D), Arm64InstructionId.FMOV_64vx_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Hn));
+    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, Hn), Arm64InstructionId.FMOV_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, Sn));
+    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, Sn), Arm64InstructionId.FMOV_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move register without conversion.
     /// </summary>
     /// <remarks><code>FMOV Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, Dn));
+    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, Dn), Arm64InstructionId.FMOV_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move immediate (scalar).
     /// </summary>
     /// <remarks><code>FMOV Hd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_h_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64FloatImmediate imm)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, imm));
+    public Arm64Assembler FMOV(Arm64RegisterH Hd, Arm64FloatImmediate imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Hd, imm), Arm64InstructionId.FMOV_h_floatimm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move immediate (scalar).
     /// </summary>
     /// <remarks><code>FMOV Sd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_s_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64FloatImmediate imm)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, imm));
+    public Arm64Assembler FMOV(Arm64RegisterS Sd, Arm64FloatImmediate imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Sd, imm), Arm64InstructionId.FMOV_s_floatimm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point move immediate (scalar).
     /// </summary>
     /// <remarks><code>FMOV Dd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_d_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64FloatImmediate imm)
-         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, imm));
+    public Arm64Assembler FMOV(Arm64RegisterD Dd, Arm64FloatImmediate imm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMOV(Dd, imm), Arm64InstructionId.FMOV_d_floatimm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FMSUB Hd, Hn, Hm, Ha</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMSUB_h_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha)
-         => AddInstruction(Arm64InstructionFactory.FMSUB(Hd, Hn, Hm, Ha));
+    public Arm64Assembler FMSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMSUB(Hd, Hn, Hm, Ha), Arm64InstructionId.FMSUB_h_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FMSUB Sd, Sn, Sm, Sa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMSUB_s_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa)
-         => AddInstruction(Arm64InstructionFactory.FMSUB(Sd, Sn, Sm, Sa));
+    public Arm64Assembler FMSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMSUB(Sd, Sn, Sm, Sa), Arm64InstructionId.FMSUB_s_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FMSUB Dd, Dn, Dm, Da</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMSUB_d_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da)
-         => AddInstruction(Arm64InstructionFactory.FMSUB(Dd, Dn, Dm, Da));
+    public Arm64Assembler FMSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMSUB(Dd, Dn, Dm, Da), Arm64InstructionId.FMSUB_d_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply (scalar).
     /// </summary>
     /// <remarks><code>FMUL Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMUL_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMUL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FMUL(Hd, Hn, Hm));
+    public Arm64Assembler FMUL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMUL(Hd, Hn, Hm), Arm64InstructionId.FMUL_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply (scalar).
     /// </summary>
     /// <remarks><code>FMUL Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMUL_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMUL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FMUL(Sd, Sn, Sm));
+    public Arm64Assembler FMUL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMUL(Sd, Sn, Sm), Arm64InstructionId.FMUL_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply (scalar).
     /// </summary>
     /// <remarks><code>FMUL Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMUL_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FMUL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FMUL(Dd, Dn, Dm));
+    public Arm64Assembler FMUL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FMUL(Dd, Dn, Dm), Arm64InstructionId.FMUL_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negate (scalar).
     /// </summary>
     /// <remarks><code>FNEG Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNEG_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNEG(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FNEG(Hd, Hn));
+    public Arm64Assembler FNEG(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNEG(Hd, Hn), Arm64InstructionId.FNEG_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negate (scalar).
     /// </summary>
     /// <remarks><code>FNEG Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNEG_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNEG(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FNEG(Sd, Sn));
+    public Arm64Assembler FNEG(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNEG(Sd, Sn), Arm64InstructionId.FNEG_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negate (scalar).
     /// </summary>
     /// <remarks><code>FNEG Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNEG_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNEG(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FNEG(Dd, Dn));
+    public Arm64Assembler FNEG(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNEG(Dd, Dn), Arm64InstructionId.FNEG_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FNMADD Hd, Hn, Hm, Ha</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMADD_h_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha)
-         => AddInstruction(Arm64InstructionFactory.FNMADD(Hd, Hn, Hm, Ha));
+    public Arm64Assembler FNMADD(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMADD(Hd, Hn, Hm, Ha), Arm64InstructionId.FNMADD_h_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FNMADD Sd, Sn, Sm, Sa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMADD_s_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa)
-         => AddInstruction(Arm64InstructionFactory.FNMADD(Sd, Sn, Sm, Sa));
+    public Arm64Assembler FNMADD(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMADD(Sd, Sn, Sm, Sa), Arm64InstructionId.FNMADD_s_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-add (scalar).
     /// </summary>
     /// <remarks><code>FNMADD Dd, Dn, Dm, Da</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMADD_d_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da)
-         => AddInstruction(Arm64InstructionFactory.FNMADD(Dd, Dn, Dm, Da));
+    public Arm64Assembler FNMADD(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMADD(Dd, Dn, Dm, Da), Arm64InstructionId.FNMADD_d_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FNMSUB Hd, Hn, Hm, Ha</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMSUB_h_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha)
-         => AddInstruction(Arm64InstructionFactory.FNMSUB(Hd, Hn, Hm, Ha));
+    public Arm64Assembler FNMSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64RegisterH Ha, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMSUB(Hd, Hn, Hm, Ha), Arm64InstructionId.FNMSUB_h_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FNMSUB Sd, Sn, Sm, Sa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMSUB_s_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa)
-         => AddInstruction(Arm64InstructionFactory.FNMSUB(Sd, Sn, Sm, Sa));
+    public Arm64Assembler FNMSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64RegisterS Sa, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMSUB(Sd, Sn, Sm, Sa), Arm64InstructionId.FNMSUB_s_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
     /// <remarks><code>FNMSUB Dd, Dn, Dm, Da</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMSUB_d_floatdp3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da)
-         => AddInstruction(Arm64InstructionFactory.FNMSUB(Dd, Dn, Dm, Da));
+    public Arm64Assembler FNMSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64RegisterD Da, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMSUB(Dd, Dn, Dm, Da), Arm64InstructionId.FNMSUB_d_floatdp3, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply-negate (scalar).
     /// </summary>
     /// <remarks><code>FNMUL Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMUL_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMUL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FNMUL(Hd, Hn, Hm));
+    public Arm64Assembler FNMUL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMUL(Hd, Hn, Hm), Arm64InstructionId.FNMUL_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply-negate (scalar).
     /// </summary>
     /// <remarks><code>FNMUL Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMUL_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMUL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FNMUL(Sd, Sn, Sm));
+    public Arm64Assembler FNMUL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMUL(Sd, Sn, Sm), Arm64InstructionId.FNMUL_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point multiply-negate (scalar).
     /// </summary>
     /// <remarks><code>FNMUL Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FNMUL_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FNMUL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FNMUL(Dd, Dn, Dm));
+    public Arm64Assembler FNMUL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FNMUL(Dd, Dn, Dm), Arm64InstructionId.FNMUL_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINT32X Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT32X_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT32X(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINT32X(Sd, Sn));
+    public Arm64Assembler FRINT32X(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT32X(Sd, Sn), Arm64InstructionId.FRINT32X_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINT32X Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT32X_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT32X(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINT32X(Dd, Dn));
+    public Arm64Assembler FRINT32X(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT32X(Dd, Dn), Arm64InstructionId.FRINT32X_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINT32Z Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT32Z_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT32Z(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINT32Z(Sd, Sn));
+    public Arm64Assembler FRINT32Z(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT32Z(Sd, Sn), Arm64InstructionId.FRINT32Z_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINT32Z Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT32Z_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT32Z(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINT32Z(Dd, Dn));
+    public Arm64Assembler FRINT32Z(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT32Z(Dd, Dn), Arm64InstructionId.FRINT32Z_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINT64X Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT64X_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT64X(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINT64X(Sd, Sn));
+    public Arm64Assembler FRINT64X(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT64X(Sd, Sn), Arm64InstructionId.FRINT64X_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINT64X Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT64X_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT64X(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINT64X(Dd, Dn));
+    public Arm64Assembler FRINT64X(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT64X(Dd, Dn), Arm64InstructionId.FRINT64X_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINT64Z Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT64Z_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT64Z(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINT64Z(Sd, Sn));
+    public Arm64Assembler FRINT64Z(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT64Z(Sd, Sn), Arm64InstructionId.FRINT64Z_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINT64Z Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINT64Z_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINT64Z(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINT64Z(Dd, Dn));
+    public Arm64Assembler FRINT64Z(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINT64Z(Dd, Dn), Arm64InstructionId.FRINT64Z_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FRINTA Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTA_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTA(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTA(Hd, Hn));
+    public Arm64Assembler FRINTA(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTA(Hd, Hn), Arm64InstructionId.FRINTA_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FRINTA Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTA_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTA(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTA(Sd, Sn));
+    public Arm64Assembler FRINTA(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTA(Sd, Sn), Arm64InstructionId.FRINTA_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
     /// <remarks><code>FRINTA Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTA_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTA(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTA(Dd, Dn));
+    public Arm64Assembler FRINTA(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTA(Dd, Dn), Arm64InstructionId.FRINTA_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTI Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTI_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTI(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTI(Hd, Hn));
+    public Arm64Assembler FRINTI(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTI(Hd, Hn), Arm64InstructionId.FRINTI_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTI Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTI_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTI(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTI(Sd, Sn));
+    public Arm64Assembler FRINTI(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTI(Sd, Sn), Arm64InstructionId.FRINTI_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTI Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTI_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTI(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTI(Dd, Dn));
+    public Arm64Assembler FRINTI(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTI(Dd, Dn), Arm64InstructionId.FRINTI_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTM Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTM_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTM(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTM(Hd, Hn));
+    public Arm64Assembler FRINTM(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTM(Hd, Hn), Arm64InstructionId.FRINTM_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTM Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTM_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTM(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTM(Sd, Sn));
+    public Arm64Assembler FRINTM(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTM(Sd, Sn), Arm64InstructionId.FRINTM_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTM Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTM_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTM(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTM(Dd, Dn));
+    public Arm64Assembler FRINTM(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTM(Dd, Dn), Arm64InstructionId.FRINTM_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FRINTN Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTN_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTN(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTN(Hd, Hn));
+    public Arm64Assembler FRINTN(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTN(Hd, Hn), Arm64InstructionId.FRINTN_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FRINTN Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTN_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTN(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTN(Sd, Sn));
+    public Arm64Assembler FRINTN(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTN(Sd, Sn), Arm64InstructionId.FRINTN_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
     /// <remarks><code>FRINTN Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTN_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTN(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTN(Dd, Dn));
+    public Arm64Assembler FRINTN(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTN(Dd, Dn), Arm64InstructionId.FRINTN_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTP Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTP_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTP(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTP(Hd, Hn));
+    public Arm64Assembler FRINTP(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTP(Hd, Hn), Arm64InstructionId.FRINTP_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTP Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTP_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTP(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTP(Sd, Sn));
+    public Arm64Assembler FRINTP(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTP(Sd, Sn), Arm64InstructionId.FRINTP_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
     /// <remarks><code>FRINTP Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTP_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTP(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTP(Dd, Dn));
+    public Arm64Assembler FRINTP(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTP(Dd, Dn), Arm64InstructionId.FRINTP_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTX Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTX_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTX(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTX(Hd, Hn));
+    public Arm64Assembler FRINTX(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTX(Hd, Hn), Arm64InstructionId.FRINTX_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTX Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTX_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTX(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTX(Sd, Sn));
+    public Arm64Assembler FRINTX(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTX(Sd, Sn), Arm64InstructionId.FRINTX_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
     /// <remarks><code>FRINTX Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTX_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTX(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTX(Dd, Dn));
+    public Arm64Assembler FRINTX(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTX(Dd, Dn), Arm64InstructionId.FRINTX_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINTZ Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTZ_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTZ(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FRINTZ(Hd, Hn));
+    public Arm64Assembler FRINTZ(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTZ(Hd, Hn), Arm64InstructionId.FRINTZ_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINTZ Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTZ_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTZ(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FRINTZ(Sd, Sn));
+    public Arm64Assembler FRINTZ(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTZ(Sd, Sn), Arm64InstructionId.FRINTZ_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point round to integral, toward zero (scalar).
     /// </summary>
     /// <remarks><code>FRINTZ Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FRINTZ_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FRINTZ(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FRINTZ(Dd, Dn));
+    public Arm64Assembler FRINTZ(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FRINTZ(Dd, Dn), Arm64InstructionId.FRINTZ_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point square root (scalar).
     /// </summary>
     /// <remarks><code>FSQRT Hd, Hn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSQRT_h_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSQRT(Arm64RegisterH Hd, Arm64RegisterH Hn)
-         => AddInstruction(Arm64InstructionFactory.FSQRT(Hd, Hn));
+    public Arm64Assembler FSQRT(Arm64RegisterH Hd, Arm64RegisterH Hn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSQRT(Hd, Hn), Arm64InstructionId.FSQRT_h_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point square root (scalar).
     /// </summary>
     /// <remarks><code>FSQRT Sd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSQRT_s_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSQRT(Arm64RegisterS Sd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.FSQRT(Sd, Sn));
+    public Arm64Assembler FSQRT(Arm64RegisterS Sd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSQRT(Sd, Sn), Arm64InstructionId.FSQRT_s_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point square root (scalar).
     /// </summary>
     /// <remarks><code>FSQRT Dd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSQRT_d_floatdp1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSQRT(Arm64RegisterD Dd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.FSQRT(Dd, Dn));
+    public Arm64Assembler FSQRT(Arm64RegisterD Dd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSQRT(Dd, Dn), Arm64InstructionId.FSQRT_d_floatdp1, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point subtract (scalar).
     /// </summary>
     /// <remarks><code>FSUB Hd, Hn, Hm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSUB_h_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm)
-         => AddInstruction(Arm64InstructionFactory.FSUB(Hd, Hn, Hm));
+    public Arm64Assembler FSUB(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSUB(Hd, Hn, Hm), Arm64InstructionId.FSUB_h_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point subtract (scalar).
     /// </summary>
     /// <remarks><code>FSUB Sd, Sn, Sm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSUB_s_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm)
-         => AddInstruction(Arm64InstructionFactory.FSUB(Sd, Sn, Sm));
+    public Arm64Assembler FSUB(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSUB(Sd, Sn, Sm), Arm64InstructionId.FSUB_s_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Floating-point subtract (scalar).
     /// </summary>
     /// <remarks><code>FSUB Dd, Dn, Dm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FSUB_d_floatdp2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler FSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm)
-         => AddInstruction(Arm64InstructionFactory.FSUB(Dd, Dn, Dm));
+    public Arm64Assembler FSUB(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.FSUB(Dd, Dn, Dm), Arm64InstructionId.FSUB_d_floatdp2, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Sn));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Sn), Arm64InstructionId.SCVTF_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>SCVTF Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Sn));
+    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Sn), Arm64InstructionId.SCVTF_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Dn));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Dn), Arm64InstructionId.SCVTF_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>SCVTF Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Dn));
+    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Dn), Arm64InstructionId.SCVTF_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Wn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Wn, fbits), Arm64InstructionId.SCVTF_h32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Xn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Xn, fbits), Arm64InstructionId.SCVTF_h64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Sd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Wn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Wn, fbits), Arm64InstructionId.SCVTF_s32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Sd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Xn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Xn, fbits), Arm64InstructionId.SCVTF_s64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Dd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Wn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Wn, fbits), Arm64InstructionId.SCVTF_d32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Dd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Xn, fbits));
+    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Xn, fbits), Arm64InstructionId.SCVTF_d64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Wn));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Wn), Arm64InstructionId.SCVTF_h32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Sd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Wn));
+    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Wn), Arm64InstructionId.SCVTF_s32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Dd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Wn));
+    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Wn), Arm64InstructionId.SCVTF_d32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Hd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Xn));
+    public Arm64Assembler SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Hd, Xn), Arm64InstructionId.SCVTF_h64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Sd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Xn));
+    public Arm64Assembler SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Sd, Xn), Arm64InstructionId.SCVTF_s64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Signed integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>SCVTF Dd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Xn));
+    public Arm64Assembler SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.SCVTF(Dd, Xn), Arm64InstructionId.SCVTF_d64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_sisd_32h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Sn));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Sn), Arm64InstructionId.UCVTF_sisd_32h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>UCVTF Dd, Sn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_sisd_32d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterS Sn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Sn));
+    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterS Sn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Sn), Arm64InstructionId.UCVTF_sisd_32d, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_sisd_64h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Dn));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Dn), Arm64InstructionId.UCVTF_sisd_64h, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar SIMD&amp;FP).
     /// </summary>
     /// <remarks><code>UCVTF Sd, Dn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_sisd_64s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterD Dn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Dn));
+    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterD Dn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Dn), Arm64InstructionId.UCVTF_sisd_64s, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Wn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Wn, fbits), Arm64InstructionId.UCVTF_h32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Xn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Xn, fbits), Arm64InstructionId.UCVTF_h64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Sd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Wn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Wn, fbits), Arm64InstructionId.UCVTF_s32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Sd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Xn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Xn, fbits), Arm64InstructionId.UCVTF_s64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Dd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Wn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Wn, fbits), Arm64InstructionId.UCVTF_d32_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Dd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Xn, fbits));
+    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Xn, fbits), Arm64InstructionId.UCVTF_d64_float2fix, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Wn));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Wn), Arm64InstructionId.UCVTF_h32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Sd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Wn));
+    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Wn), Arm64InstructionId.UCVTF_s32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Dd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d32_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Wn));
+    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Wn), Arm64InstructionId.UCVTF_d32_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Hd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Xn));
+    public Arm64Assembler UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Hd, Xn), Arm64InstructionId.UCVTF_h64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Sd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Xn));
+    public Arm64Assembler UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Sd, Xn), Arm64InstructionId.UCVTF_s64_float2int, debugFilePath, debugLineNumber);
     /// <summary>
     /// Unsigned integer convert to floating-point (scalar).
     /// </summary>
     /// <remarks><code>UCVTF Dd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d64_float2int), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn)
-         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Xn));
+    public Arm64Assembler UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+         => AddInstruction(Arm64InstructionFactory.UCVTF(Dd, Xn), Arm64InstructionId.UCVTF_d64_float2int, debugFilePath, debugLineNumber);
 }

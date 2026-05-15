@@ -166,9 +166,10 @@ partial class Arm64Processor
 
             foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
             {
+                var emitCallerInfo = pair.Value.All(CanEmitCallerInfoWithoutOptionalOperandAmbiguity);
                 foreach (var variation in pair.Value)
                 {
-                    WriteInstructionVariationForAssembler(w, variation);
+                    WriteInstructionVariationForAssembler(w, variation, emitCallerInfo);
                 }
             }
 
@@ -226,7 +227,7 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
-    private void WriteInstructionVariationForAssembler(CodeWriter w, InstructionVariation instructionVariation)
+    private void WriteInstructionVariationForAssembler(CodeWriter w, InstructionVariation instructionVariation, bool emitCallerInfo)
     {
         var instruction = instructionVariation.Instruction;
 
@@ -254,6 +255,10 @@ partial class Arm64Processor
             }
         }
 
+        if (emitCallerInfo)
+        {
+            WriteDebugParameters(w, instructionVariation.Operands.Count > 0);
+        }
         w.WriteLine(")");
         w.Indent();
 
@@ -270,7 +275,9 @@ partial class Arm64Processor
 
             if (operand.Descriptor is LabelOperandDescriptor)
             {
-                w.Write($"RecordLabelOffset({operand.OperandName}, {operand.Descriptor.TableEncodingOffset})");
+                w.Write(emitCallerInfo
+                    ? $"RecordLabelOffset({operand.OperandName}, {operand.Descriptor.TableEncodingOffset}, Arm64InstructionId.{instruction.Id}, debugFilePath, debugLineNumber)"
+                    : $"RecordLabelOffset({operand.OperandName}, {operand.Descriptor.TableEncodingOffset}, Arm64InstructionId.{instruction.Id})");
             }
             else
             {
@@ -283,13 +290,15 @@ partial class Arm64Processor
             }
         }
 
-        w.WriteLine("));");
+        w.WriteLine(emitCallerInfo
+            ? $"), Arm64InstructionId.{instruction.Id}, debugFilePath, debugLineNumber);"
+            : $"), Arm64InstructionId.{instruction.Id});");
         w.UnIndent();
 
-        WriteInstructionVariationForwardLabelOverloadForAssembler(w, instructionVariation);
+        WriteInstructionVariationForwardLabelOverloadForAssembler(w, instructionVariation, emitCallerInfo);
     }
 
-    private static void WriteInstructionVariationForwardLabelOverloadForAssembler(CodeWriter w, InstructionVariation instructionVariation)
+    private static void WriteInstructionVariationForwardLabelOverloadForAssembler(CodeWriter w, InstructionVariation instructionVariation, bool emitCallerInfo)
     {
         var labelOperands = instructionVariation.Operands.Where(x => x.Descriptor is LabelOperandDescriptor).ToArray();
         if (labelOperands.Length != 1) return;
@@ -325,7 +334,12 @@ partial class Arm64Processor
         {
             w.Write(", ");
         }
-        w.WriteLine($"[CallerArgumentExpression(nameof({labelOperand.OperandName}))] string? labelExpression = null)");
+        w.Write($"[CallerArgumentExpression(nameof({labelOperand.OperandName}))] string? labelExpression = null");
+        if (emitCallerInfo)
+        {
+            WriteDebugParameters(w, true);
+        }
+        w.WriteLine(")");
         w.OpenBraceBlock();
         w.WriteLine($"LabelForward(out {labelOperand.OperandName}, labelExpression);");
         w.Write($"return {instructionVariation.Mnemonic}(");
@@ -343,8 +357,25 @@ partial class Arm64Processor
                 w.Write(operand.OperandName2);
             }
         }
-        w.WriteLine(");");
+        if (emitCallerInfo && instructionVariation.Operands.Count > 0)
+        {
+            w.Write(", ");
+        }
+        w.WriteLine(emitCallerInfo ? "debugFilePath, debugLineNumber);" : ");");
         w.CloseBraceBlock();
+    }
+
+    private static bool CanEmitCallerInfoWithoutOptionalOperandAmbiguity(InstructionVariation instructionVariation)
+        => instructionVariation.Operands.All(operand => !operand.Descriptor.IsOptional && operand.DefaultValue is null && operand.DefaultValue2 is null);
+
+    private static void WriteDebugParameters(CodeWriter w, bool prependComma)
+    {
+        if (prependComma)
+        {
+            w.Write(", ");
+        }
+
+        w.Write("[CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0");
     }
 
     private void CombineInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, List<InstructionVariation> variations)

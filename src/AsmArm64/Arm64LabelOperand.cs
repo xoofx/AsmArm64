@@ -54,18 +54,45 @@ public readonly struct Arm64LabelOperand : IArm64Operand
     {
         var labelKind = (Arm64LabelEncodingKind)(descriptor >> 8);
         var encodingCount = (byte)(descriptor >> 24);
+        var totalBitSize = encodingCount == 1
+            ? (byte)(descriptor >> 40)
+            : (byte)((byte)(descriptor >> 40) + (byte)(descriptor >> 56));
+
+        long scaledOffset = offset;
         switch (labelKind)
         {
             case Arm64LabelEncodingKind.OffsetMul4:
-                offset >>= 2;
+                if ((offset & 3) != 0) throw new ArgumentOutOfRangeException(nameof(offset), offset, "The label offset must be 4-byte aligned.");
+                scaledOffset = offset >> 2;
                 break;
             case Arm64LabelEncodingKind.NegativeEncodedAsUnsigned:
-                offset = -(offset >> 2);
+                if ((offset & 3) != 0) throw new ArgumentOutOfRangeException(nameof(offset), offset, "The label offset must be 4-byte aligned.");
+                scaledOffset = -(offset >> 2);
                 break;
             case Arm64LabelEncodingKind.PageOffset:
-                offset >>= 12;
+                scaledOffset = offset >> 12;
                 break;
         }
+
+        if (labelKind == Arm64LabelEncodingKind.NegativeEncodedAsUnsigned)
+        {
+            var maxUnsigned = (1L << totalBitSize) - 1;
+            if (scaledOffset < 0 || scaledOffset > maxUnsigned)
+            {
+                throw new ArgumentOutOfRangeException(nameof(offset), offset, $"The scaled label offset {scaledOffset} is outside the encodable unsigned range 0..{maxUnsigned}.");
+            }
+        }
+        else
+        {
+            var minSigned = -(1L << (totalBitSize - 1));
+            var maxSigned = (1L << (totalBitSize - 1)) - 1;
+            if (scaledOffset < minSigned || scaledOffset > maxSigned)
+            {
+                throw new ArgumentOutOfRangeException(nameof(offset), offset, $"The scaled label offset {scaledOffset} is outside the encodable signed range {minSigned}..{maxSigned}.");
+            }
+        }
+
+        offset = (int)scaledOffset;
 
         if (encodingCount == 1)
         {
@@ -158,7 +185,7 @@ public readonly struct Arm64LabelOperand : IArm64Operand
         if (operand.Kind != Arm64OperandKind.Label) ThrowInvalidCast(operand.Kind);
         return new Arm64LabelOperand(operand);
     }
-    
+
     [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowInvalidCast(Arm64OperandKind kind) => throw new InvalidCastException($"Cannot cast Operand `{kind}` to {nameof(Arm64LabelOperand)}");
-} 
+}

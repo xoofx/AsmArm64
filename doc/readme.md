@@ -242,3 +242,23 @@ Notice the API to create and use the labels:
   - A label can be associated with an absolute address if required.
 - `Arm64Assembler.Label` to bind a label to the current position in the buffer
 
+### Diagnostics and debug maps
+
+`End()` validates pending label patches before returning. If a label is still unbound or a label target cannot be encoded in the instruction's immediate field, the assembler throws `Arm64AssemblerException`. The exception exposes structured `Arm64AssemblerDiagnostic` entries with the offset, address, label name, instruction id, and source file/line when available.
+
+```csharp
+using var asm = new Arm64Assembler(0x1000);
+
+asm.B(out var missing);
+
+if (!asm.TryEnd(out var diagnostics))
+{
+    foreach (var diagnostic in diagnostics)
+    {
+        Console.WriteLine(diagnostic);
+    }
+}
+```
+
+Generated assembler overloads record caller file/line information in `Arm64Assembler.DebugMap` when caller-info parameters can be added without creating ambiguous optional-operand overloads. Set `DebugMap` to `null` to disable logging, or replace it with a custom `IArm64AssemblerDebugMap` implementation.
+
