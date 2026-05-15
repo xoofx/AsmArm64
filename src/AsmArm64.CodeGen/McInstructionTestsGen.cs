@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Formats.Tar;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
+using SharpYaml;
 
 namespace AsmArm64.CodeGen;
 
@@ -109,8 +110,7 @@ public partial class McInstructionTestsGen
             return;
         }
         
-        SharpYaml.Serialization.Serializer serializer = new();
-        var testCases = (List<object>)((Dictionary<object, object>)serializer.Deserialize(stream)!)["test_cases"];
+        var testCases = (List<object>)(YamlSerializer.Deserialize<Dictionary<object, object>?>(stream))?["test_cases"]!;
         foreach (var testCase in testCases.OfType<Dictionary<object, object>>())
         {
             var input = (Dictionary<object, object>)(testCase["input"]);
