@@ -5,6 +5,7 @@
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoWarn>$(NoWarn);MSTEST0042</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
