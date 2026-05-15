@@ -259,6 +259,15 @@ partial class Arm64Assembler
     public Arm64Assembler LDR(Arm64RegisterS St, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(St, RecordLabelOffset(label, 43328)));
     /// <summary>
+    /// Creates a forward label and emits LDR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDR(Arm64RegisterS St, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDR(St, label);
+    }
+    /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Dt, label</code></remarks>
@@ -266,12 +275,30 @@ partial class Arm64Assembler
     public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Dt, RecordLabelOffset(label, 43352)));
     /// <summary>
+    /// Creates a forward label and emits LDR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDR(Arm64RegisterD Dt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDR(Dt, label);
+    }
+    /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Qt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Qt, RecordLabelOffset(label, 43376)));
+    /// <summary>
+    /// Creates a forward label and emits LDR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDR(Qt, label);
+    }
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>

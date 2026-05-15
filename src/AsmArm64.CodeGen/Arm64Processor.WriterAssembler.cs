@@ -285,6 +285,66 @@ partial class Arm64Processor
 
         w.WriteLine("));");
         w.UnIndent();
+
+        WriteInstructionVariationForwardLabelOverloadForAssembler(w, instructionVariation);
+    }
+
+    private static void WriteInstructionVariationForwardLabelOverloadForAssembler(CodeWriter w, InstructionVariation instructionVariation)
+    {
+        var labelOperands = instructionVariation.Operands.Where(x => x.Descriptor is LabelOperandDescriptor).ToArray();
+        if (labelOperands.Length != 1) return;
+
+        var instruction = instructionVariation.Instruction;
+        var labelOperand = labelOperands[0];
+
+        w.WriteSummary($"Creates a forward label and emits {EscapeHtmlEntities(instructionVariation.Mnemonic)}.");
+        w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
+        w.WriteLine($"[Arm64LinkInstructionId(Arm64InstructionId.{instruction.Id}), MethodImpl(MethodImplOptions.AggressiveInlining)]");
+        w.Write($"public Arm64Assembler {instructionVariation.Mnemonic}(");
+
+        for (var i = 0; i < instructionVariation.Operands.Count; i++)
+        {
+            var operand = instructionVariation.Operands[i];
+
+            if (i > 0)
+            {
+                w.Write(", ");
+            }
+
+            if (operand.Descriptor is LabelOperandDescriptor)
+            {
+                w.Write($"out Arm64Label {operand.OperandName}");
+            }
+            else
+            {
+                operand.WriterParameters(w);
+            }
+        }
+
+        if (instructionVariation.Operands.Count > 0)
+        {
+            w.Write(", ");
+        }
+        w.WriteLine($"[CallerArgumentExpression(nameof({labelOperand.OperandName}))] string? labelExpression = null)");
+        w.OpenBraceBlock();
+        w.WriteLine($"LabelForward(out {labelOperand.OperandName}, labelExpression);");
+        w.Write($"return {instructionVariation.Mnemonic}(");
+        for (var i = 0; i < instructionVariation.Operands.Count; i++)
+        {
+            var operand = instructionVariation.Operands[i];
+            if (i > 0)
+            {
+                w.Write(", ");
+            }
+            w.Write(operand.OperandName);
+            if (operand.OperandName2 != null)
+            {
+                w.Write(", ");
+                w.Write(operand.OperandName2);
+            }
+        }
+        w.WriteLine(");");
+        w.CloseBraceBlock();
     }
 
     private void CombineInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, List<InstructionVariation> variations)

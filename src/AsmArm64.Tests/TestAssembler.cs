@@ -178,6 +178,46 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestGeneratedForwardLabelOverload()
+    {
+        using var asm = new Arm64Assembler(0x5000);
+
+        asm.CBZ(X0, out var done)
+           .MOVZ(X0, 1)
+           .Label(done)
+           .RET()
+           .End();
+
+        Assert.AreEqual("done", done.Name);
+        Assert.AreEqual(0x5008UL, done.Address);
+
+        var instructions = MemoryMarshal.Cast<byte, uint>(asm.Buffer);
+        var branch = Arm64Instruction.Decode(instructions[0]);
+        var labelOperand = (Arm64LabelOperand)branch.GetOperand(1);
+        Assert.AreEqual(8, labelOperand.Offset);
+    }
+
+    [TestMethod]
+    public void TestRepresentativeGeneratedForwardLabelOverloads()
+    {
+        using var b = new Arm64Assembler();
+        b.B(out var branchTarget).Label(branchTarget).End();
+        Assert.IsTrue(branchTarget.IsBound);
+
+        using var bl = new Arm64Assembler();
+        bl.BL(out var callTarget).Label(callTarget).End();
+        Assert.IsTrue(callTarget.IsBound);
+
+        using var tbz = new Arm64Assembler();
+        tbz.TBZ(X0, 0, out var testTarget).Label(testTarget).End();
+        Assert.IsTrue(testTarget.IsBound);
+
+        using var adr = new Arm64Assembler();
+        adr.ADR(X0, out var addressTarget).Label(addressTarget).End();
+        Assert.IsTrue(addressTarget.IsBound);
+    }
+
+    [TestMethod]
     public void TestCustomInstructionBufferStillSupported()
     {
         var instructionBuffer = new Arm64InstructionBufferByList();

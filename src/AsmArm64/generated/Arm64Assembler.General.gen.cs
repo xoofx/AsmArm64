@@ -175,12 +175,30 @@ partial class Arm64Assembler
     public Arm64Assembler ADR(Arm64RegisterX Xd, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.ADR(Xd, RecordLabelOffset(label, 584)));
     /// <summary>
+    /// Creates a forward label and emits ADR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.ADR_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler ADR(Arm64RegisterX Xd, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return ADR(Xd, label);
+    }
+    /// <summary>
     /// Form PC-relative address to 4KB page.
     /// </summary>
     /// <remarks><code>ADRP Xd, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADRP_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler ADRP(Arm64RegisterX Xd, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.ADRP(Xd, RecordLabelOffset(label, 608)));
+    /// <summary>
+    /// Creates a forward label and emits ADRP.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.ADRP_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler ADRP(Arm64RegisterX Xd, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return ADRP(Xd, label);
+    }
     /// <summary>
     /// Bitwise AND (immediate).
     /// </summary>
@@ -329,6 +347,15 @@ partial class Arm64Assembler
     public Arm64Assembler AUTIASPPC(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.AUTIASPPC(RecordLabelOffset(label, 1136)));
     /// <summary>
+    /// Creates a forward label and emits AUTIASPPC.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.AUTIASPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler AUTIASPPC(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return AUTIASPPC(label);
+    }
+    /// <summary>
     /// Authenticate return address using key A, using a register.
     /// </summary>
     /// <remarks><code>AUTIASPPCR Xn</code></remarks>
@@ -356,6 +383,15 @@ partial class Arm64Assembler
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler AUTIBSPPC(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.AUTIBSPPC(RecordLabelOffset(label, 1224)));
+    /// <summary>
+    /// Creates a forward label and emits AUTIBSPPC.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler AUTIBSPPC(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return AUTIBSPPC(label);
+    }
     /// <summary>
     /// Authenticate return address using key B, using a register.
     /// </summary>
@@ -385,6 +421,15 @@ partial class Arm64Assembler
     public Arm64Assembler B(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.B(RecordLabelOffset(label, 1260)));
     /// <summary>
+    /// Creates a forward label and emits B.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.B_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler B(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return B(label);
+    }
+    /// <summary>
     /// Branch conditionally.
     /// </summary>
     /// <remarks><code>B cond, label</code></remarks>
@@ -392,12 +437,30 @@ partial class Arm64Assembler
     public Arm64Assembler B(Arm64ConditionalKind cond, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.B(cond, RecordLabelOffset(label, 1284)));
     /// <summary>
+    /// Creates a forward label and emits B.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.B_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler B(Arm64ConditionalKind cond, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return B(cond, label);
+    }
+    /// <summary>
     /// Branch consistent conditionally.
     /// </summary>
     /// <remarks><code>BC cond, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BC_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler BC(Arm64ConditionalKind cond, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.BC(cond, RecordLabelOffset(label, 1308)));
+    /// <summary>
+    /// Creates a forward label and emits BC.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.BC_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler BC(Arm64ConditionalKind cond, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return BC(cond, label);
+    }
     /// <summary>
     /// Bitfield clear.
     /// </summary>
@@ -489,6 +552,15 @@ partial class Arm64Assembler
     [Arm64LinkInstructionId(Arm64InstructionId.BL_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler BL(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.BL(RecordLabelOffset(label, 1724)));
+    /// <summary>
+    /// Creates a forward label and emits BL.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.BL_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler BL(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return BL(label);
+    }
     /// <summary>
     /// Branch with link to register.
     /// </summary>
@@ -791,12 +863,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBEQ(Wt, Wm, RecordLabelOffset(label, 3564)));
     /// <summary>
+    /// Creates a forward label and emits CBBEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBEQ_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBEQ(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare bytes and branch.
     /// </summary>
     /// <remarks><code>CBBGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBGE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBGE(Wt, Wm, RecordLabelOffset(label, 3468)));
+    /// <summary>
+    /// Creates a forward label and emits CBBGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBGE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBGE(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare bytes and branch.
     /// </summary>
@@ -805,12 +895,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBGT(Wt, Wm, RecordLabelOffset(label, 3436)));
     /// <summary>
+    /// Creates a forward label and emits CBBGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBGT_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBGT(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare bytes and branch.
     /// </summary>
     /// <remarks><code>CBBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBHI_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBHI(Wt, Wm, RecordLabelOffset(label, 3500)));
+    /// <summary>
+    /// Creates a forward label and emits CBBHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBHI_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBHI(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare bytes and branch.
     /// </summary>
@@ -819,12 +927,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBHS(Wt, Wm, RecordLabelOffset(label, 3532)));
     /// <summary>
+    /// Creates a forward label and emits CBBHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBHS_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBHS(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare signed less than or equal bytes and branch.
     /// </summary>
     /// <remarks><code>CBBLE Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLE_cbbge_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBLE(Wm, Wt, RecordLabelOffset(label, 3628)));
+    /// <summary>
+    /// Creates a forward label and emits CBBLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLE_cbbge_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBLE(Wm, Wt, label);
+    }
     /// <summary>
     /// Compare unsigned lower than bytes and branch.
     /// </summary>
@@ -833,12 +959,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBLO(Wm, Wt, RecordLabelOffset(label, 3660)));
     /// <summary>
+    /// Creates a forward label and emits CBBLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLO_cbbhi_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBLO(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare unsigned lower than or equal bytes and branch.
     /// </summary>
     /// <remarks><code>CBBLS Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLS_cbbhs_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBLS(Wm, Wt, RecordLabelOffset(label, 3692)));
+    /// <summary>
+    /// Creates a forward label and emits CBBLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLS_cbbhs_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBLS(Wm, Wt, label);
+    }
     /// <summary>
     /// Compare signed less than bytes and branch.
     /// </summary>
@@ -847,12 +991,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBLT(Wm, Wt, RecordLabelOffset(label, 3724)));
     /// <summary>
+    /// Creates a forward label and emits CBBLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLT_cbbgt_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBLT(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare bytes and branch.
     /// </summary>
     /// <remarks><code>CBBNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBNE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBBNE(Wt, Wm, RecordLabelOffset(label, 3596)));
+    /// <summary>
+    /// Creates a forward label and emits CBBNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBNE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBBNE(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -861,12 +1023,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBEQ(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Wt, imm, RecordLabelOffset(label, 2796)));
     /// <summary>
+    /// Creates a forward label and emits CBEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBEQ(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBEQ(Wt, imm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBEQ Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBEQ(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Xt, imm, RecordLabelOffset(label, 2988)));
+    /// <summary>
+    /// Creates a forward label and emits CBEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBEQ(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBEQ(Xt, imm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -875,12 +1055,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Wt, Wm, RecordLabelOffset(label, 3180)));
     /// <summary>
+    /// Creates a forward label and emits CBEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBEQ(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBEQ Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBEQ(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Xt, Xm, RecordLabelOffset(label, 3372)));
+    /// <summary>
+    /// Creates a forward label and emits CBEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBEQ(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBEQ(Xt, Xm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -889,12 +1087,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGE(Wt, Wm, RecordLabelOffset(label, 3084)));
     /// <summary>
+    /// Creates a forward label and emits CBGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGE(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBGE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBGE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGE(Xt, Xm, RecordLabelOffset(label, 3276)));
+    /// <summary>
+    /// Creates a forward label and emits CBGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGE(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGE(Xt, Xm, label);
+    }
     /// <summary>
     /// Compare signed greater than or equal immediate and branch.
     /// </summary>
@@ -903,12 +1119,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBGE(Arm64RegisterW Wt, byte immp1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGE(Wt, immp1, RecordLabelOffset(label, 3756)));
     /// <summary>
+    /// Creates a forward label and emits CBGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGE(Arm64RegisterW Wt, byte immp1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGE(Wt, immp1, label);
+    }
+    /// <summary>
     /// Compare signed greater than or equal immediate and branch.
     /// </summary>
     /// <remarks><code>CBGE Xt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBGE(Arm64RegisterX Xt, byte immp1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGE(Xt, immp1, RecordLabelOffset(label, 3788)));
+    /// <summary>
+    /// Creates a forward label and emits CBGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGE(Arm64RegisterX Xt, byte immp1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGE(Xt, immp1, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -917,12 +1151,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBGT(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGT(Wt, imm, RecordLabelOffset(label, 2668)));
     /// <summary>
+    /// Creates a forward label and emits CBGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGT(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGT(Wt, imm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBGT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBGT(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGT(Xt, imm, RecordLabelOffset(label, 2860)));
+    /// <summary>
+    /// Creates a forward label and emits CBGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGT(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGT(Xt, imm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -931,12 +1183,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGT(Wt, Wm, RecordLabelOffset(label, 3052)));
     /// <summary>
+    /// Creates a forward label and emits CBGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGT(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBGT Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBGT(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBGT(Xt, Xm, RecordLabelOffset(label, 3244)));
+    /// <summary>
+    /// Creates a forward label and emits CBGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBGT(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBGT(Xt, Xm, label);
+    }
     /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
@@ -945,12 +1215,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHEQ(Wt, Wm, RecordLabelOffset(label, 3948)));
     /// <summary>
+    /// Creates a forward label and emits CBHEQ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHEQ_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHEQ(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHGE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHGE(Wt, Wm, RecordLabelOffset(label, 3852)));
+    /// <summary>
+    /// Creates a forward label and emits CBHGE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHGE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHGE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHGE(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
@@ -959,12 +1247,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHGT(Wt, Wm, RecordLabelOffset(label, 3820)));
     /// <summary>
+    /// Creates a forward label and emits CBHGT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHGT_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHGT(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHGT(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHHI_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHHI(Wt, Wm, RecordLabelOffset(label, 3884)));
+    /// <summary>
+    /// Creates a forward label and emits CBHHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHHI_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHHI(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHHI(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
@@ -973,12 +1279,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHHS(Wt, Wm, RecordLabelOffset(label, 3916)));
     /// <summary>
+    /// Creates a forward label and emits CBHHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHHS_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHHS(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHHS(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBHI Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHI(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHI(Wt, imm, RecordLabelOffset(label, 2732)));
+    /// <summary>
+    /// Creates a forward label and emits CBHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHI(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHI(Wt, imm, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -987,12 +1311,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHI(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHI(Xt, imm, RecordLabelOffset(label, 2924)));
     /// <summary>
+    /// Creates a forward label and emits CBHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHI(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHI(Xt, imm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHI(Wt, Wm, RecordLabelOffset(label, 3116)));
+    /// <summary>
+    /// Creates a forward label and emits CBHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHI(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -1001,12 +1343,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHI(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHI(Xt, Xm, RecordLabelOffset(label, 3308)));
     /// <summary>
+    /// Creates a forward label and emits CBHI.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHI(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHI(Xt, Xm, label);
+    }
+    /// <summary>
     /// Compare signed less than or equal halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHLE Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLE_cbhge_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHLE(Wm, Wt, RecordLabelOffset(label, 4012)));
+    /// <summary>
+    /// Creates a forward label and emits CBHLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLE_cbhge_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHLE(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHLE(Wm, Wt, label);
+    }
     /// <summary>
     /// Compare unsigned lower than halfwords and branch.
     /// </summary>
@@ -1015,12 +1375,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHLO(Wm, Wt, RecordLabelOffset(label, 4044)));
     /// <summary>
+    /// Creates a forward label and emits CBHLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLO_cbhhi_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHLO(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHLO(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare unsigned lower than or equal halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHLS Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLS_cbhhs_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHLS(Wm, Wt, RecordLabelOffset(label, 4076)));
+    /// <summary>
+    /// Creates a forward label and emits CBHLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLS_cbhhs_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHLS(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHLS(Wm, Wt, label);
+    }
     /// <summary>
     /// Compare signed less than halfwords and branch.
     /// </summary>
@@ -1029,12 +1407,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHLT(Wm, Wt, RecordLabelOffset(label, 4108)));
     /// <summary>
+    /// Creates a forward label and emits CBHLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLT_cbhgt_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHLT(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHLT(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHNE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHNE(Wt, Wm, RecordLabelOffset(label, 3980)));
+    /// <summary>
+    /// Creates a forward label and emits CBHNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHNE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHNE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHNE(Wt, Wm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -1043,12 +1439,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHS(Wt, Wm, RecordLabelOffset(label, 3148)));
     /// <summary>
+    /// Creates a forward label and emits CBHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHS(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBHS Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHS(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHS(Xt, Xm, RecordLabelOffset(label, 3340)));
+    /// <summary>
+    /// Creates a forward label and emits CBHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHS(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHS(Xt, Xm, label);
+    }
     /// <summary>
     /// Compare unsigned greater than or equal immediate and branch.
     /// </summary>
@@ -1057,12 +1471,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBHS(Arm64RegisterW Wt, byte immp1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHS(Wt, immp1, RecordLabelOffset(label, 4140)));
     /// <summary>
+    /// Creates a forward label and emits CBHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHS(Arm64RegisterW Wt, byte immp1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHS(Wt, immp1, label);
+    }
+    /// <summary>
     /// Compare unsigned greater than or equal immediate and branch.
     /// </summary>
     /// <remarks><code>CBHS Xt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBHS(Arm64RegisterX Xt, byte immp1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBHS(Xt, immp1, RecordLabelOffset(label, 4172)));
+    /// <summary>
+    /// Creates a forward label and emits CBHS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBHS(Arm64RegisterX Xt, byte immp1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBHS(Xt, immp1, label);
+    }
     /// <summary>
     /// Compare signed less than or equal immediate and branch.
     /// </summary>
@@ -1071,12 +1503,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLE(Arm64RegisterW Wt, sbyte imms1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLE(Wt, imms1, RecordLabelOffset(label, 4204)));
     /// <summary>
+    /// Creates a forward label and emits CBLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLE(Arm64RegisterW Wt, sbyte imms1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLE(Wt, imms1, label);
+    }
+    /// <summary>
     /// Compare signed less than or equal immediate and branch.
     /// </summary>
     /// <remarks><code>CBLE Xt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLE(Arm64RegisterX Xt, sbyte imms1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLE(Xt, imms1, RecordLabelOffset(label, 4236)));
+    /// <summary>
+    /// Creates a forward label and emits CBLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLE(Arm64RegisterX Xt, sbyte imms1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLE(Xt, imms1, label);
+    }
     /// <summary>
     /// Compare signed less than or equal register and branch.
     /// </summary>
@@ -1085,12 +1535,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLE(Wm, Wt, RecordLabelOffset(label, 4268)));
     /// <summary>
+    /// Creates a forward label and emits CBLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLE(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare signed less than or equal register and branch.
     /// </summary>
     /// <remarks><code>CBLE Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLE(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLE(Xm, Xt, RecordLabelOffset(label, 4300)));
+    /// <summary>
+    /// Creates a forward label and emits CBLE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLE(Arm64RegisterX Xm, Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLE(Xm, Xt, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -1099,12 +1567,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLO(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLO(Wt, imm, RecordLabelOffset(label, 2764)));
     /// <summary>
+    /// Creates a forward label and emits CBLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLO(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLO(Wt, imm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBLO Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLO(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLO(Xt, imm, RecordLabelOffset(label, 2956)));
+    /// <summary>
+    /// Creates a forward label and emits CBLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLO(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLO(Xt, imm, label);
+    }
     /// <summary>
     /// Compare unsigned lower than register and branch.
     /// </summary>
@@ -1113,12 +1599,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLO(Wm, Wt, RecordLabelOffset(label, 4332)));
     /// <summary>
+    /// Creates a forward label and emits CBLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLO(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare unsigned lower than register and branch.
     /// </summary>
     /// <remarks><code>CBLO Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLO(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLO(Xm, Xt, RecordLabelOffset(label, 4364)));
+    /// <summary>
+    /// Creates a forward label and emits CBLO.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLO(Arm64RegisterX Xm, Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLO(Xm, Xt, label);
+    }
     /// <summary>
     /// Compare unsigned lower than or equal immediate and branch.
     /// </summary>
@@ -1127,12 +1631,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLS(Arm64RegisterW Wt, sbyte imms1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLS(Wt, imms1, RecordLabelOffset(label, 4396)));
     /// <summary>
+    /// Creates a forward label and emits CBLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLS(Arm64RegisterW Wt, sbyte imms1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLS(Wt, imms1, label);
+    }
+    /// <summary>
     /// Compare unsigned lower than or equal immediate and branch.
     /// </summary>
     /// <remarks><code>CBLS Xt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLS(Arm64RegisterX Xt, sbyte imms1, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLS(Xt, imms1, RecordLabelOffset(label, 4428)));
+    /// <summary>
+    /// Creates a forward label and emits CBLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLS(Arm64RegisterX Xt, sbyte imms1, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLS(Xt, imms1, label);
+    }
     /// <summary>
     /// Compare unsigned lower than or equal register and branch.
     /// </summary>
@@ -1141,12 +1663,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLS(Wm, Wt, RecordLabelOffset(label, 4460)));
     /// <summary>
+    /// Creates a forward label and emits CBLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLS(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare unsigned lower than or equal register and branch.
     /// </summary>
     /// <remarks><code>CBLS Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLS(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLS(Xm, Xt, RecordLabelOffset(label, 4492)));
+    /// <summary>
+    /// Creates a forward label and emits CBLS.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLS(Arm64RegisterX Xm, Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLS(Xm, Xt, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -1155,12 +1695,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLT(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLT(Wt, imm, RecordLabelOffset(label, 2700)));
     /// <summary>
+    /// Creates a forward label and emits CBLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLT(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLT(Wt, imm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBLT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLT(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLT(Xt, imm, RecordLabelOffset(label, 2892)));
+    /// <summary>
+    /// Creates a forward label and emits CBLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLT(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLT(Xt, imm, label);
+    }
     /// <summary>
     /// Compare signed less than register and branch.
     /// </summary>
@@ -1169,12 +1727,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLT(Wm, Wt, RecordLabelOffset(label, 4524)));
     /// <summary>
+    /// Creates a forward label and emits CBLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLT(Wm, Wt, label);
+    }
+    /// <summary>
     /// Compare signed less than register and branch.
     /// </summary>
     /// <remarks><code>CBLT Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBLT(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBLT(Xm, Xt, RecordLabelOffset(label, 4556)));
+    /// <summary>
+    /// Creates a forward label and emits CBLT.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBLT(Arm64RegisterX Xm, Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBLT(Xm, Xt, label);
+    }
     /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
@@ -1183,12 +1759,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBNE(Arm64RegisterW Wt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNE(Wt, imm, RecordLabelOffset(label, 2828)));
     /// <summary>
+    /// Creates a forward label and emits CBNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNE(Arm64RegisterW Wt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNE(Wt, imm, label);
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBNE Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBNE(Arm64RegisterX Xt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNE(Xt, imm, RecordLabelOffset(label, 3020)));
+    /// <summary>
+    /// Creates a forward label and emits CBNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNE(Arm64RegisterX Xt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNE(Xt, imm, label);
+    }
     /// <summary>
     /// Compare registers and branch.
     /// </summary>
@@ -1197,12 +1791,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNE(Wt, Wm, RecordLabelOffset(label, 3212)));
     /// <summary>
+    /// Creates a forward label and emits CBNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNE(Wt, Wm, label);
+    }
+    /// <summary>
     /// Compare registers and branch.
     /// </summary>
     /// <remarks><code>CBNE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBNE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNE(Xt, Xm, RecordLabelOffset(label, 3404)));
+    /// <summary>
+    /// Creates a forward label and emits CBNE.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNE(Arm64RegisterX Xt, Arm64RegisterX Xm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNE(Xt, Xm, label);
+    }
     /// <summary>
     /// Compare and branch on nonzero.
     /// </summary>
@@ -1211,12 +1823,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBNZ(Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNZ(Wt, RecordLabelOffset(label, 4580)));
     /// <summary>
+    /// Creates a forward label and emits CBNZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNZ(Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNZ(Wt, label);
+    }
+    /// <summary>
     /// Compare and branch on nonzero.
     /// </summary>
     /// <remarks><code>CBNZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBNZ(Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBNZ(Xt, RecordLabelOffset(label, 4604)));
+    /// <summary>
+    /// Creates a forward label and emits CBNZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBNZ(Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBNZ(Xt, label);
+    }
     /// <summary>
     /// Compare and branch on zero.
     /// </summary>
@@ -1225,12 +1855,30 @@ partial class Arm64Assembler
     public Arm64Assembler CBZ(Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBZ(Wt, RecordLabelOffset(label, 4628)));
     /// <summary>
+    /// Creates a forward label and emits CBZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBZ(Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBZ(Wt, label);
+    }
+    /// <summary>
     /// Compare and branch on zero.
     /// </summary>
     /// <remarks><code>CBZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler CBZ(Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.CBZ(Xt, RecordLabelOffset(label, 4652)));
+    /// <summary>
+    /// Creates a forward label and emits CBZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler CBZ(Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return CBZ(Xt, label);
+    }
     /// <summary>
     /// Conditional compare negative (immediate).
     /// </summary>
@@ -3157,12 +3805,30 @@ partial class Arm64Assembler
     public Arm64Assembler LDR(Arm64RegisterW Wt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Wt, RecordLabelOffset(label, 10952)));
     /// <summary>
+    /// Creates a forward label and emits LDR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDR(Arm64RegisterW Wt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDR(Wt, label);
+    }
+    /// <summary>
     /// Load register (literal).
     /// </summary>
     /// <remarks><code>LDR Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler LDR(Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Xt, RecordLabelOffset(label, 10976)));
+    /// <summary>
+    /// Creates a forward label and emits LDR.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDR(Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDR(Xt, label);
+    }
     /// <summary>
     /// Load register (register).
     /// </summary>
@@ -3429,6 +4095,15 @@ partial class Arm64Assembler
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler LDRSW(Arm64RegisterX Xt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDRSW(Xt, RecordLabelOffset(label, 11920)));
+    /// <summary>
+    /// Creates a forward label and emits LDRSW.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler LDRSW(Arm64RegisterX Xt, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return LDRSW(Xt, label);
+    }
     /// <summary>
     /// Load register signed word (register).
     /// </summary>
@@ -4907,6 +5582,15 @@ partial class Arm64Assembler
     public Arm64Assembler PRFM(Arm64PrefetchOperationKind prfop, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.PRFM(prfop, RecordLabelOffset(label, 16452)));
     /// <summary>
+    /// Creates a forward label and emits PRFM.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler PRFM(Arm64PrefetchOperationKind prfop, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return PRFM(prfop, label);
+    }
+    /// <summary>
     /// Prefetch memory (register).
     /// </summary>
     /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
@@ -5411,6 +6095,15 @@ partial class Arm64Assembler
     public Arm64Assembler RETAASPPC(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.RETAASPPC(RecordLabelOffset(label, 17940)));
     /// <summary>
+    /// Creates a forward label and emits RETAASPPC.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.RETAASPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler RETAASPPC(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return RETAASPPC(label);
+    }
+    /// <summary>
     /// Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
     /// <remarks><code>RETAASPPCR Xm</code></remarks>
@@ -5431,6 +6124,15 @@ partial class Arm64Assembler
     [Arm64LinkInstructionId(Arm64InstructionId.RETABSPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler RETABSPPC(Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.RETABSPPC(RecordLabelOffset(label, 17956)));
+    /// <summary>
+    /// Creates a forward label and emits RETABSPPC.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.RETABSPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler RETABSPPC(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return RETABSPPC(label);
+    }
     /// <summary>
     /// Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
@@ -7448,12 +8150,30 @@ partial class Arm64Assembler
     public Arm64Assembler TBNZ(Arm64RegisterXOrW Rt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.TBNZ(Rt, imm, RecordLabelOffset(label, 24336)));
     /// <summary>
+    /// Creates a forward label and emits TBNZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.TBNZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler TBNZ(Arm64RegisterXOrW Rt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return TBNZ(Rt, imm, label);
+    }
+    /// <summary>
     /// Test bit and branch if zero.
     /// </summary>
     /// <remarks><code>TBZ Rt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TBZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Arm64Assembler TBZ(Arm64RegisterXOrW Rt, byte imm, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.TBZ(Rt, imm, RecordLabelOffset(label, 24368)));
+    /// <summary>
+    /// Creates a forward label and emits TBZ.
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.TBZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Arm64Assembler TBZ(Arm64RegisterXOrW Rt, byte imm, out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        LabelForward(out label, labelExpression);
+        return TBZ(Rt, imm, label);
+    }
     /// <summary>
     /// Test bits (immediate).
     /// </summary>
