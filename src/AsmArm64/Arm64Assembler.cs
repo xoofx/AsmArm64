@@ -146,8 +146,8 @@ public partial class Arm64Assembler : IDisposable
         ThrowIfDisposed();
         foreach (var unboundLabel in _instructionsWithLabelToPatch)
         {
-            var labelReference = GetLabel(unboundLabel.LabelId);
-            if (!labelReference.IsBound) throw new InvalidOperationException($"Label {unboundLabel.LabelId} is not bound");
+            var labelReference = unboundLabel.Label;
+            if (!labelReference.IsBound) throw new InvalidOperationException($"Label {labelReference} is not bound");
             var offset = (int)(labelReference.Address - (BaseAddress + unboundLabel.InstructionOffset));
             var rawInstruction = _buffer.ReadAt(unboundLabel.InstructionOffset);
             rawInstruction |= Arm64LabelOperand.Encode(unboundLabel.LabelOperandDescriptor, offset);
@@ -204,9 +204,10 @@ public partial class Arm64Assembler : IDisposable
     {
         ThrowIfDisposed();
         var index = _labels.Count + 1;
-        _labels.Add(new(address, name));
+        var label = new Arm64Label(address, name) { Id = new Arm64LabelId(index) };
+        _labels.Add(label);
         _isFinalized = false;
-        return new Arm64LabelId(index);
+        return label.Id;
     }
 
     /// <summary>
@@ -223,7 +224,7 @@ public partial class Arm64Assembler : IDisposable
         var currentAddress = CurrentAddress;
         if (labelReference.Address == ulong.MaxValue)
         {
-            _labels[index] = new(currentAddress, labelReference.Name);
+            labelReference.Address = currentAddress;
             _isFinalized = false;
         }
         else
@@ -237,7 +238,95 @@ public partial class Arm64Assembler : IDisposable
     /// </summary>
     /// <param name="labelId">The label identifier.</param>
     /// <returns>The label.</returns>
-    public Arm64Label GetLabel(Arm64LabelId labelId) => labelId.Index == 0 ? default : _labels[labelId.Index - 1];
+    public Arm64Label GetLabel(Arm64LabelId labelId) => labelId.Index == 0 ? Arm64Label.Empty : _labels[labelId.Index - 1];
+
+    /// <summary>
+    /// Creates an unbound label.
+    /// </summary>
+    /// <param name="name">The optional label name.</param>
+    /// <returns>The created label.</returns>
+    public Arm64Label CreateLabel(string? name = null)
+    {
+        ThrowIfDisposed();
+        _isFinalized = false;
+        return new Arm64Label(name);
+    }
+
+    /// <summary>
+    /// Creates and binds a label at the current address.
+    /// </summary>
+    /// <param name="label">The created label.</param>
+    /// <param name="labelExpression">The source expression used for label-name inference.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler Label(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        label = new Arm64Label(Arm64Label.ParseCSharpExpression(labelExpression));
+        return Label(label);
+    }
+
+    /// <summary>
+    /// Creates and binds a named label at the current address.
+    /// </summary>
+    /// <param name="name">The label name.</param>
+    /// <param name="label">The created label.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler Label(string? name, out Arm64Label label)
+    {
+        label = new Arm64Label(name);
+        return Label(label);
+    }
+
+    /// <summary>
+    /// Creates an unbound forward label.
+    /// </summary>
+    /// <param name="label">The created forward label.</param>
+    /// <param name="labelExpression">The source expression used for label-name inference.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler LabelForward(out Arm64Label label, [CallerArgumentExpression(nameof(label))] string? labelExpression = null)
+    {
+        ThrowIfDisposed();
+        label = new Arm64Label(Arm64Label.ParseCSharpExpression(labelExpression));
+        _isFinalized = false;
+        return this;
+    }
+
+    /// <summary>
+    /// Creates a named unbound forward label.
+    /// </summary>
+    /// <param name="name">The label name.</param>
+    /// <param name="label">The created forward label.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler LabelForward(string? name, out Arm64Label label)
+    {
+        ThrowIfDisposed();
+        label = new Arm64Label(name);
+        _isFinalized = false;
+        return this;
+    }
+
+    /// <summary>
+    /// Binds a label at the current address.
+    /// </summary>
+    /// <param name="label">The label to bind.</param>
+    /// <param name="force">A value indicating whether an already-bound label should be rebound.</param>
+    /// <returns>This assembler.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="label"/> is <c>null</c>.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="label"/> is empty.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when <paramref name="label"/> is already bound and <paramref name="force"/> is <c>false</c>.</exception>
+    public Arm64Assembler Label(Arm64Label label, bool force = false)
+    {
+        ArgumentNullException.ThrowIfNull(label);
+        ThrowIfDisposed();
+        if (label.IsEmpty) throw new ArgumentException("Label is empty.", nameof(label));
+        if (label.IsBound && !force)
+        {
+            throw new InvalidOperationException($"Label {label} is already bound to address {label.Address}");
+        }
+
+        label.Address = CurrentAddress;
+        _isFinalized = false;
+        return this;
+    }
 
     /// <summary>
     /// Appends bytes to the owned assembler buffer.
@@ -382,18 +471,22 @@ public partial class Arm64Assembler : IDisposable
     /// <exception cref="NotSupportedException">Thrown when this assembler was created with a custom instruction buffer.</exception>
     public byte[] ToArray() => GetByteBuffer().ToArray();
 
-    private int RecordLabelOffset(Arm64LabelId labelId, nint operandDescriptorEncodingOffset)
+    private int RecordLabelOffset(Arm64Label label, nint operandDescriptorEncodingOffset)
     {
         ThrowIfDisposed();
-        var labelReference = GetLabel(labelId);
-        if (labelReference.IsEmpty) throw new ArgumentException("Label is not defined", nameof(labelId));
+        ArgumentNullException.ThrowIfNull(label);
+        var labelReference = label;
+        if (labelReference.IsEmpty) throw new ArgumentException("Label is not defined", nameof(label));
         if (!labelReference.IsBound)
         {
-            _instructionsWithLabelToPatch.Add(new(CurrentOffset, labelId, Arm64Instruction.GetOperandDescriptor(operandDescriptorEncodingOffset)));
+            _instructionsWithLabelToPatch.Add(new(CurrentOffset, labelReference, Arm64Instruction.GetOperandDescriptor(operandDescriptorEncodingOffset)));
             return 0;
         }
         return (int)(labelReference.Address - CurrentAddress);
     }
+
+    private int RecordLabelOffset(Arm64LabelId labelId, nint operandDescriptorEncodingOffset)
+        => RecordLabelOffset(GetLabel(labelId), operandDescriptorEncodingOffset);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Arm64Assembler AddInstruction(Arm64RawInstruction rawInstruction)
@@ -429,5 +522,5 @@ public partial class Arm64Assembler : IDisposable
         ObjectDisposedException.ThrowIf(_isDisposed, this);
     }
 
-    private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64LabelId LabelId, ulong LabelOperandDescriptor);
+    private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64Label Label, ulong LabelOperandDescriptor);
 }

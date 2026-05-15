@@ -16,10 +16,10 @@ public class TestAssembler : VerifyBase
     {
         var accessor = new Arm64InstructionBufferByList();
         var asm = new Arm64Assembler(accessor);
-        var label = asm.CreateLabelId("Hello");
+        var label = asm.CreateLabel("Hello");
         asm.B(Arm64ConditionalKind.AL, label);
-        asm.BindLabel(label);
-        asm.Assemble();
+        asm.Label(label);
+        asm.End();
 
         var instructions = accessor.Instructions;
         Assert.AreEqual(1, instructions.Count);
@@ -122,11 +122,11 @@ public class TestAssembler : VerifyBase
     {
         using var asm = new Arm64Assembler();
 
-        var label = asm.CreateLabelId("target");
+        var label = asm.CreateLabel("target");
         asm.B(Arm64ConditionalKind.AL, label);
         Assert.IsTrue(asm.HasPendingPatches);
 
-        asm.BindLabel(label);
+        asm.Label(label);
         asm.End();
 
         Assert.IsFalse(asm.HasPendingPatches);
@@ -149,6 +149,32 @@ public class TestAssembler : VerifyBase
         Assert.AreSame(asm, returned);
         Assert.AreEqual(12u, asm.SizeInBytes);
         Assert.IsTrue(asm.IsFinalized);
+    }
+
+    [TestMethod]
+    public void TestObjectLabelHelpers()
+    {
+        using var asm = new Arm64Assembler(0x4000);
+
+        asm.Label(out var inferred);
+        Assert.AreEqual("inferred", inferred.Name);
+        Assert.AreEqual(0x4000UL, inferred.Address);
+
+        asm.LabelForward("done", out var done)
+           .CBZ(X0, done)
+           .MOVZ(X0, 1)
+           .Label(done)
+           .RET()
+           .End();
+
+        Assert.AreEqual("done", done.Name);
+        Assert.IsTrue(done.IsBound);
+        Assert.AreEqual(0x4008UL, done.Address);
+
+        var instructions = MemoryMarshal.Cast<byte, uint>(asm.Buffer);
+        var branch = Arm64Instruction.Decode(instructions[0]);
+        var labelOperand = (Arm64LabelOperand)branch.GetOperand(1);
+        Assert.AreEqual(8, labelOperand.Offset);
     }
 
     [TestMethod]
@@ -281,12 +307,11 @@ public class TestAssembler : VerifyBase
 
         // // Main entry point
         // _start:
-        var labelStart = asm.CreateLabelId("_start");
-        asm.BindLabel(labelStart);
+        asm.Label("_start", out var labelStart);
         //     mov     x0, #5         // Call sum_loop(5)
         asm.MOVZ(X0, 5);
         //     bl      sum_loop       // Call the function, result in x0
-        var labelSumLoop = asm.CreateLabelId("sum_loop");
+        var labelSumLoop = asm.CreateLabel("sum_loop");
         asm.BL(labelSumLoop);
         // 
         //     // Do something with result (for now, just returning)
@@ -298,15 +323,14 @@ public class TestAssembler : VerifyBase
         // // - Takes x0 as the loop limit
         // // - Returns the sum in x0
         // sum_loop:
-        asm.BindLabel(labelSumLoop);
+        asm.Label(labelSumLoop);
         //     mov     x1, #0         // Accumulator (sum)
         asm.MOVZ(X1, 0);
         //     mov     x2, #0         // Counter
         asm.MOVZ(X2, 0);
         // 
         // loop_start:
-        var labelLoopStart = asm.CreateLabelId("loop_start");
-        asm.BindLabel(labelLoopStart);
+        asm.Label("loop_start", out var labelLoopStart);
         //     add     x1, x1, x2     // Add counter (x2) to sum (x1)
         asm.ADD(X1, X1, X2);
         //     add     x2, x2, #1     // Increment counter

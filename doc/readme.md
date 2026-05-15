@@ -185,12 +185,11 @@ using static Arm64Factory;
 using var asm = new Arm64Assembler(0x1_0000);
 // Main entry point
 // _start:
-var labelStart = asm.CreateLabelId("_start");
-asm.BindLabel(labelStart);
+asm.Label("_start", out var labelStart);
 //     mov     x0, #5         // Call sum_loop(5)
 //     bl      sum_loop       // Call the function, result in x0
 //     ret                    // Return from _start (normally would return to a caller)
-var labelSumLoop = asm.CreateLabelId("sum_loop");
+var labelSumLoop = asm.CreateLabel("sum_loop");
 asm.MOVZ(X0, 5)
    .BL(labelSumLoop)
    .RET();
@@ -200,15 +199,14 @@ asm.MOVZ(X0, 5)
 // // - Takes x0 as the loop limit
 // // - Returns the sum in x0
 // sum_loop:
-asm.BindLabel(labelSumLoop);
+asm.Label(labelSumLoop);
 //     mov     x1, #0         // Accumulator (sum)
 //     mov     x2, #0         // Counter
 asm.MOVZ(X1, 0)
    .MOVZ(X2, 0);
 // 
 // loop_start:
-var labelLoopStart = asm.CreateLabelId("loop_start");
-asm.BindLabel(labelLoopStart);
+asm.Label("loop_start", out var labelLoopStart);
 //     add     x1, x1, x2     // Add counter (x2) to sum (x1)
 //     add     x2, x2, #1     // Increment counter
 //     cmp     x2, x0         // Compare counter with limit
@@ -228,7 +226,7 @@ ReadOnlySpan<byte> code = asm.Buffer;
 Generated instruction methods return the assembler, so calls can be chained as shown above. Statement-style calls still work when the returned assembler is ignored.
 
 Notice the API to create and use the labels:
-- `Arm64Assembler.CreateLabelId` to create a label with a unique identifier
+- `Arm64Assembler.CreateLabel` or `Arm64Assembler.LabelForward` to create an unbound label
   - A label can be associated with an absolute address if required.
-- `Arm64Assembler.BindLabel` to bind a label to the current position in the buffer
+- `Arm64Assembler.Label` to bind a label to the current position in the buffer
 

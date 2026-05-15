@@ -256,21 +256,21 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDR St, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterS St, Arm64LabelId label)
+    public Arm64Assembler LDR(Arm64RegisterS St, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(St, RecordLabelOffset(label, 43328)));
     /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Dt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64LabelId label)
+    public Arm64Assembler LDR(Arm64RegisterD Dt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Dt, RecordLabelOffset(label, 43352)));
     /// <summary>
     /// Load SIMD&amp;FP register (PC-relative literal).
     /// </summary>
     /// <remarks><code>LDR Qt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64LabelId label)
+    public Arm64Assembler LDR(Arm64RegisterQ Qt, Arm64Label label)
          => AddInstruction(Arm64InstructionFactory.LDR(Qt, RecordLabelOffset(label, 43376)));
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
