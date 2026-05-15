@@ -7,7 +7,7 @@ namespace AsmArm64;
 /// <summary>
 /// Represents a label in ARM64 assembler output.
 /// </summary>
-public sealed class Arm64Label
+public sealed class Arm64Label : Arm64AddressExpression
 {
     internal static readonly Arm64Label Empty = new(isEmpty: true);
 
@@ -59,6 +59,45 @@ public sealed class Arm64Label
     public bool IsEmpty => _isEmpty;
 
     internal Arm64LabelId Id { get; set; }
+
+    /// <inheritdoc />
+    public override long Evaluate()
+    {
+        if (!IsBound) throw new InvalidOperationException($"Label {this} is not bound.");
+        if (Address > long.MaxValue) throw new OverflowException($"Label {this} address is too large to evaluate as a signed 64-bit value.");
+        return (long)Address;
+    }
+
+    /// <inheritdoc />
+    public override void CollectLabels(ISet<Arm64Label> labels)
+    {
+        ArgumentNullException.ThrowIfNull(labels);
+        if (!IsEmpty) labels.Add(this);
+    }
+
+    /// <summary>
+    /// Adds a signed constant to a label address.
+    /// </summary>
+    /// <param name="label">The label.</param>
+    /// <param name="right">The value to add.</param>
+    /// <returns>The resulting address expression.</returns>
+    public static Arm64AddressExpression operator +(Arm64Label label, long right) => new Arm64AddressAddExpression(label, right);
+
+    /// <summary>
+    /// Subtracts a signed constant from a label address.
+    /// </summary>
+    /// <param name="label">The label.</param>
+    /// <param name="right">The value to subtract.</param>
+    /// <returns>The resulting address expression.</returns>
+    public static Arm64AddressExpression operator -(Arm64Label label, long right) => new Arm64AddressAddExpression(label, checked(-right));
+
+    /// <summary>
+    /// Subtracts one label address from another.
+    /// </summary>
+    /// <param name="left">The left label.</param>
+    /// <param name="right">The right label.</param>
+    /// <returns>The resulting expression.</returns>
+    public static Arm64Expression operator -(Arm64Label left, Arm64Label right) => new Arm64SubtractExpression(left, right);
 
     /// <inheritdoc />
     public override string ToString() => Name ?? (IsBound ? $"0x{Address:X16}" : "0x????");

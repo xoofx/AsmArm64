@@ -247,7 +247,7 @@ partial class Arm64Processor
 
             if (operand.Descriptor is LabelOperandDescriptor)
             {
-                w.Write($"Arm64Label {operand.OperandName}");
+                w.Write($"Arm64AddressExpression {operand.OperandName}");
             }
             else
             {

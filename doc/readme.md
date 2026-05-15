@@ -262,3 +262,27 @@ if (!asm.TryEnd(out var diagnostics))
 
 Generated assembler overloads record caller file/line information in `Arm64Assembler.DebugMap` when caller-info parameters can be added without creating ambiguous optional-operand overloads. Set `DebugMap` to `null` to disable logging, or replace it with a custom `IArm64AssemblerDebugMap` implementation.
 
+### Label expressions
+
+Label operands accept `Arm64AddressExpression`, so a label can be adjusted by a signed addend and patched once all referenced labels are bound:
+
+```csharp
+using var asm = new Arm64Assembler(0x1000);
+
+asm.B(out var target)
+   .NOP()
+   .Label(target)
+   .B(target + 4)
+   .End();
+```
+
+Use label subtraction for diagnostics or layout calculations after labels are bound:
+
+```csharp
+asm.Label(out var start)
+   .NOP()
+   .Label(out var end);
+
+long byteLength = (end - start).Evaluate();
+```
+

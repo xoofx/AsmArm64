@@ -158,8 +158,8 @@ public partial class Arm64Assembler : IDisposable
         _diagnostics?.Clear();
         foreach (var unboundLabel in _instructionsWithLabelToPatch)
         {
-            var labelReference = unboundLabel.Label;
-            if (!labelReference.IsBound)
+            var labelReference = GetFirstUnboundLabel(unboundLabel.Expression);
+            if (labelReference is not null)
             {
                 var diagnostic = CreateDiagnostic(
                     $"Label '{labelReference}' is not bound for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}.",
@@ -171,12 +171,12 @@ public partial class Arm64Assembler : IDisposable
             int offset;
             try
             {
-                offset = ComputeRelativeOffset(labelReference.Address, BaseAddress + unboundLabel.InstructionOffset);
+                offset = EvaluateExpressionOffset(unboundLabel.Expression, BaseAddress + unboundLabel.InstructionOffset);
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException or OverflowException)
             {
                 var diagnostic = CreateDiagnostic(
-                    $"Label '{labelReference}' is out of range for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}. {ex.Message}",
+                    $"Expression '{unboundLabel.Expression}' is out of range for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}. {ex.Message}",
                     unboundLabel);
                 AddDiagnostic(diagnostic);
                 ThrowAssemblerException(diagnostic.Message);
@@ -190,7 +190,7 @@ public partial class Arm64Assembler : IDisposable
             catch (ArgumentOutOfRangeException ex)
             {
                 var diagnostic = CreateDiagnostic(
-                    $"Label '{labelReference}' is out of range for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}; computed offset is {offset}. {ex.Message}",
+                    $"Expression '{unboundLabel.Expression}' is out of range for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}; computed offset is {offset}. {ex.Message}",
                     unboundLabel);
                 AddDiagnostic(diagnostic);
                 ThrowAssemblerException(diagnostic.Message);
@@ -536,34 +536,32 @@ public partial class Arm64Assembler : IDisposable
     /// <exception cref="NotSupportedException">Thrown when this assembler was created with a custom instruction buffer.</exception>
     public byte[] ToArray() => GetByteBuffer().ToArray();
 
-    private int RecordLabelOffset(Arm64Label label, nint operandDescriptorEncodingOffset, Arm64InstructionId instructionId = Arm64InstructionId.Invalid, string? debugFilePath = null, int debugLineNumber = 0)
+    private int RecordLabelOffset(Arm64AddressExpression expression, nint operandDescriptorEncodingOffset, Arm64InstructionId instructionId = Arm64InstructionId.Invalid, string? debugFilePath = null, int debugLineNumber = 0)
     {
         ThrowIfDisposed();
-        ArgumentNullException.ThrowIfNull(label);
-        var labelReference = label;
-        if (labelReference.IsEmpty) throw new ArgumentException("Label is not defined", nameof(label));
+        ArgumentNullException.ThrowIfNull(expression);
         var descriptor = Arm64Instruction.GetOperandDescriptor(operandDescriptorEncodingOffset);
-        if (!labelReference.IsBound)
+        if (GetFirstUnboundLabel(expression) is not null)
         {
-            _instructionsWithLabelToPatch.Add(new(CurrentOffset, labelReference, descriptor, instructionId, debugFilePath, debugLineNumber));
+            _instructionsWithLabelToPatch.Add(new(CurrentOffset, expression, descriptor, instructionId, debugFilePath, debugLineNumber));
             return 0;
         }
 
         int offset;
         try
         {
-            offset = ComputeRelativeOffset(labelReference.Address, CurrentAddress);
+            offset = EvaluateExpressionOffset(expression, CurrentAddress);
             _ = Arm64LabelOperand.Encode(descriptor, offset);
         }
-        catch (ArgumentOutOfRangeException ex)
+        catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException or OverflowException)
         {
             _diagnostics?.Clear();
             var diagnostic = new Arm64AssemblerDiagnostic(
                 Arm64AssemblerDiagnosticSeverity.Error,
-                $"Label '{labelReference}' is out of range for instruction at 0x{CurrentAddress:X16}; computed offset is {(long)labelReference.Address - (long)CurrentAddress}. {ex.Message}",
+                $"Expression '{expression}' is out of range for instruction at 0x{CurrentAddress:X16}. {ex.Message}",
                 CurrentOffset,
                 CurrentAddress,
-                labelReference.Name,
+                GetDiagnosticLabelName(expression),
                 instructionId,
                 debugFilePath,
                 debugLineNumber);
@@ -627,6 +625,27 @@ public partial class Arm64Assembler : IDisposable
         return negativeDelta == (ulong)int.MaxValue + 1 ? int.MinValue : -(int)negativeDelta;
     }
 
+    private static int EvaluateExpressionOffset(Arm64Expression expression, ulong sourceAddress)
+    {
+        var targetAddress = expression.Evaluate();
+        if (targetAddress < 0) throw new ArgumentOutOfRangeException(nameof(expression), targetAddress, "The expression evaluated to a negative address.");
+        return ComputeRelativeOffset((ulong)targetAddress, sourceAddress);
+    }
+
+    private static Arm64Label? GetFirstUnboundLabel(Arm64Expression expression)
+    {
+        var labels = new HashSet<Arm64Label>();
+        expression.CollectLabels(labels);
+        return labels.FirstOrDefault(label => !label.IsBound);
+    }
+
+    private static string? GetDiagnosticLabelName(Arm64Expression expression)
+    {
+        var labels = new HashSet<Arm64Label>();
+        expression.CollectLabels(labels);
+        return labels.FirstOrDefault(label => label.Name is not null)?.Name;
+    }
+
     private void LogDebugInfo(Arm64AssemblerDebugInfoKind kind, Arm64InstructionId instructionId, string? debugFilePath, int debugLineNumber, string? name)
     {
         DebugMap?.LogDebugInfo(new Arm64AssemblerDebugLineInfo(kind, CurrentOffset, CurrentAddress, debugFilePath, debugLineNumber, name, instructionId));
@@ -638,7 +657,7 @@ public partial class Arm64Assembler : IDisposable
             message,
             patch.InstructionOffset,
             BaseAddress + patch.InstructionOffset,
-            patch.Label.Name,
+            GetDiagnosticLabelName(patch.Expression),
             patch.InstructionId,
             patch.DebugFilePath,
             patch.DebugLineNumber);
@@ -653,5 +672,5 @@ public partial class Arm64Assembler : IDisposable
         throw new Arm64AssemblerException(message, _diagnostics?.ToArray() ?? Array.Empty<Arm64AssemblerDiagnostic>());
     }
 
-    private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64Label Label, ulong LabelOperandDescriptor, Arm64InstructionId InstructionId, string? DebugFilePath, int DebugLineNumber);
+    private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64AddressExpression Expression, ulong LabelOperandDescriptor, Arm64InstructionId InstructionId, string? DebugFilePath, int DebugLineNumber);
 }

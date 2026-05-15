@@ -315,6 +315,55 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestExpressionEvaluationAfterLabelsAreBound()
+    {
+        using var asm = new Arm64Assembler(0xC000);
+
+        asm.Label(out var labelA)
+           .NOP()
+           .NOP()
+           .Label(out var labelB);
+
+        Arm64Expression delta = labelB - labelA;
+        Arm64AddressExpression adjusted = labelA + 12;
+
+        Assert.AreEqual(8, delta.Evaluate());
+        Assert.AreEqual(0xC00CUL, (ulong)adjusted.Evaluate());
+
+        var labels = new HashSet<Arm64Label>();
+        adjusted.CollectLabels(labels);
+        CollectionAssert.Contains(labels.ToArray(), labelA);
+    }
+
+    [TestMethod]
+    public void TestLabelArithmeticBranchAndAdrOperands()
+    {
+        using var branchAsm = new Arm64Assembler(0xD000);
+        branchAsm.B(out var branchTarget)
+                 .NOP()
+                 .Label(branchTarget)
+                 .B(branchTarget + 4)
+                 .End();
+
+        var branchInstructions = MemoryMarshal.Cast<byte, uint>(branchAsm.Buffer);
+        Assert.AreEqual(Arm64InstructionFactory.B(8), branchInstructions[0]);
+        Assert.AreEqual(Arm64InstructionFactory.B(4), branchInstructions[2]);
+        var firstBranch = Arm64Instruction.Decode(branchInstructions[0]);
+        var secondBranch = Arm64Instruction.Decode(branchInstructions[2]);
+        Assert.AreEqual(8, ((Arm64LabelOperand)firstBranch.GetOperand(0)).Offset);
+        Assert.AreEqual(4, ((Arm64LabelOperand)secondBranch.GetOperand(0)).Offset);
+
+        using var adrAsm = new Arm64Assembler(0xE000);
+        adrAsm.Label(out var adrBase)
+              .ADR(X0, adrBase + 16)
+              .End();
+
+        var adrInstruction = Arm64Instruction.Decode(MemoryMarshal.Cast<byte, uint>(adrAsm.Buffer)[0]);
+        Assert.AreEqual(Arm64InstructionFactory.ADR(X0, 16), MemoryMarshal.Cast<byte, uint>(adrAsm.Buffer)[0]);
+        Assert.AreEqual(16, ((Arm64LabelOperand)adrInstruction.GetOperand(1)).Offset);
+    }
+
+    [TestMethod]
     public void TestCustomInstructionBufferStillSupported()
     {
         var instructionBuffer = new Arm64InstructionBufferByList();

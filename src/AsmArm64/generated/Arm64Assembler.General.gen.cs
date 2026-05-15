@@ -172,7 +172,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>ADR Xd, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADR_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler ADR(Arm64RegisterX Xd, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler ADR(Arm64RegisterX Xd, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.ADR(Xd, RecordLabelOffset(label, 584, Arm64InstructionId.ADR_only_pcreladdr, debugFilePath, debugLineNumber)), Arm64InstructionId.ADR_only_pcreladdr, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits ADR.
@@ -189,7 +189,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>ADRP Xd, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADRP_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler ADRP(Arm64RegisterX Xd, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler ADRP(Arm64RegisterX Xd, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.ADRP(Xd, RecordLabelOffset(label, 608, Arm64InstructionId.ADRP_only_pcreladdr, debugFilePath, debugLineNumber)), Arm64InstructionId.ADRP_only_pcreladdr, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits ADRP.
@@ -346,7 +346,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>AUTIASPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIASPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIASPPC(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler AUTIASPPC(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.AUTIASPPC(RecordLabelOffset(label, 1136, Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits AUTIASPPC.
@@ -384,7 +384,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>AUTIBSPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler AUTIBSPPC(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler AUTIBSPPC(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.AUTIBSPPC(RecordLabelOffset(label, 1224, Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits AUTIBSPPC.
@@ -422,7 +422,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>B label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.B_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler B(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler B(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.B(RecordLabelOffset(label, 1260, Arm64InstructionId.B_only_branch_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.B_only_branch_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits B.
@@ -439,7 +439,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>B cond, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.B_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler B(Arm64ConditionalKind cond, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler B(Arm64ConditionalKind cond, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.B(cond, RecordLabelOffset(label, 1284, Arm64InstructionId.B_only_condbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.B_only_condbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits B.
@@ -456,7 +456,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>BC cond, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BC_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler BC(Arm64ConditionalKind cond, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler BC(Arm64ConditionalKind cond, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.BC(cond, RecordLabelOffset(label, 1308, Arm64InstructionId.BC_only_condbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.BC_only_condbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits BC.
@@ -557,7 +557,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>BL label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BL_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler BL(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler BL(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.BL(RecordLabelOffset(label, 1724, Arm64InstructionId.BL_only_branch_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.BL_only_branch_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits BL.
@@ -868,7 +868,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBEQ_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBEQ(Wt, Wm, RecordLabelOffset(label, 3564, Arm64InstructionId.CBBEQ_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBEQ_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBEQ.
@@ -885,7 +885,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBGE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBGE(Wt, Wm, RecordLabelOffset(label, 3468, Arm64InstructionId.CBBGE_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBGE_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBGE.
@@ -902,7 +902,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBGT_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBGT(Wt, Wm, RecordLabelOffset(label, 3436, Arm64InstructionId.CBBGT_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBGT_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBGT.
@@ -919,7 +919,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBHI_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBHI(Wt, Wm, RecordLabelOffset(label, 3500, Arm64InstructionId.CBBHI_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBHI_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBHI.
@@ -936,7 +936,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBHS_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBHS(Wt, Wm, RecordLabelOffset(label, 3532, Arm64InstructionId.CBBHS_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBHS_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBHS.
@@ -953,7 +953,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBLE Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLE_cbbge_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBLE(Wm, Wt, RecordLabelOffset(label, 3628, Arm64InstructionId.CBBLE_cbbge_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBLE_cbbge_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBLE.
@@ -970,7 +970,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBLO Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLO_cbbhi_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBLO(Wm, Wt, RecordLabelOffset(label, 3660, Arm64InstructionId.CBBLO_cbbhi_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBLO_cbbhi_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBLO.
@@ -987,7 +987,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBLS Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLS_cbbhs_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBLS(Wm, Wt, RecordLabelOffset(label, 3692, Arm64InstructionId.CBBLS_cbbhs_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBLS_cbbhs_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBLS.
@@ -1004,7 +1004,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBLT Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBLT_cbbgt_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBLT(Wm, Wt, RecordLabelOffset(label, 3724, Arm64InstructionId.CBBLT_cbbgt_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBLT_cbbgt_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBLT.
@@ -1021,7 +1021,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBBNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBNE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBBNE(Wt, Wm, RecordLabelOffset(label, 3596, Arm64InstructionId.CBBNE_8_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBBNE_8_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBBNE.
@@ -1038,7 +1038,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBEQ Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBEQ(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBEQ(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Wt, imm, RecordLabelOffset(label, 2796, Arm64InstructionId.CBEQ_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBEQ_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBEQ.
@@ -1055,7 +1055,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBEQ Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBEQ(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBEQ(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Xt, imm, RecordLabelOffset(label, 2988, Arm64InstructionId.CBEQ_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBEQ_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBEQ.
@@ -1072,7 +1072,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Wt, Wm, RecordLabelOffset(label, 3180, Arm64InstructionId.CBEQ_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBEQ_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBEQ.
@@ -1089,7 +1089,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBEQ Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBEQ(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBEQ(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBEQ(Xt, Xm, RecordLabelOffset(label, 3372, Arm64InstructionId.CBEQ_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBEQ_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBEQ.
@@ -1106,7 +1106,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGE(Wt, Wm, RecordLabelOffset(label, 3084, Arm64InstructionId.CBGE_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGE_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGE.
@@ -1123,7 +1123,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGE(Xt, Xm, RecordLabelOffset(label, 3276, Arm64InstructionId.CBGE_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGE_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGE.
@@ -1140,7 +1140,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGE Wt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGE(Arm64RegisterW Wt, byte immp1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGE(Arm64RegisterW Wt, byte immp1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGE(Wt, immp1, RecordLabelOffset(label, 3756, Arm64InstructionId.CBGE_cbgt_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGE_cbgt_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGE.
@@ -1157,7 +1157,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGE Xt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGE(Arm64RegisterX Xt, byte immp1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGE(Arm64RegisterX Xt, byte immp1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGE(Xt, immp1, RecordLabelOffset(label, 3788, Arm64InstructionId.CBGE_cbgt_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGE_cbgt_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGE.
@@ -1174,7 +1174,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGT Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGT(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGT(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGT(Wt, imm, RecordLabelOffset(label, 2668, Arm64InstructionId.CBGT_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGT_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGT.
@@ -1191,7 +1191,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGT(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGT(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGT(Xt, imm, RecordLabelOffset(label, 2860, Arm64InstructionId.CBGT_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGT_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGT.
@@ -1208,7 +1208,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGT(Wt, Wm, RecordLabelOffset(label, 3052, Arm64InstructionId.CBGT_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGT_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGT.
@@ -1225,7 +1225,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBGT Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBGT(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBGT(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBGT(Xt, Xm, RecordLabelOffset(label, 3244, Arm64InstructionId.CBGT_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBGT_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBGT.
@@ -1242,7 +1242,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHEQ_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHEQ(Wt, Wm, RecordLabelOffset(label, 3948, Arm64InstructionId.CBHEQ_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHEQ_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHEQ.
@@ -1259,7 +1259,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHGE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHGE(Wt, Wm, RecordLabelOffset(label, 3852, Arm64InstructionId.CBHGE_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHGE_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHGE.
@@ -1276,7 +1276,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHGT_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHGT(Wt, Wm, RecordLabelOffset(label, 3820, Arm64InstructionId.CBHGT_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHGT_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHGT.
@@ -1293,7 +1293,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHHI_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHHI(Wt, Wm, RecordLabelOffset(label, 3884, Arm64InstructionId.CBHHI_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHHI_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHHI.
@@ -1310,7 +1310,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHHS_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHHS(Wt, Wm, RecordLabelOffset(label, 3916, Arm64InstructionId.CBHHS_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHHS_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHHS.
@@ -1327,7 +1327,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHI Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHI(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHI(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHI(Wt, imm, RecordLabelOffset(label, 2732, Arm64InstructionId.CBHI_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHI_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHI.
@@ -1344,7 +1344,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHI Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHI(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHI(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHI(Xt, imm, RecordLabelOffset(label, 2924, Arm64InstructionId.CBHI_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHI_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHI.
@@ -1361,7 +1361,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHI(Wt, Wm, RecordLabelOffset(label, 3116, Arm64InstructionId.CBHI_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHI_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHI.
@@ -1378,7 +1378,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHI Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHI(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHI(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHI(Xt, Xm, RecordLabelOffset(label, 3308, Arm64InstructionId.CBHI_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHI_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHI.
@@ -1395,7 +1395,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHLE Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLE_cbhge_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHLE(Wm, Wt, RecordLabelOffset(label, 4012, Arm64InstructionId.CBHLE_cbhge_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHLE_cbhge_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHLE.
@@ -1412,7 +1412,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHLO Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLO_cbhhi_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHLO(Wm, Wt, RecordLabelOffset(label, 4044, Arm64InstructionId.CBHLO_cbhhi_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHLO_cbhhi_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHLO.
@@ -1429,7 +1429,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHLS Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLS_cbhhs_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHLS(Wm, Wt, RecordLabelOffset(label, 4076, Arm64InstructionId.CBHLS_cbhhs_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHLS_cbhhs_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHLS.
@@ -1446,7 +1446,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHLT Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHLT_cbhgt_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHLT(Wm, Wt, RecordLabelOffset(label, 4108, Arm64InstructionId.CBHLT_cbhgt_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHLT_cbhgt_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHLT.
@@ -1463,7 +1463,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHNE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHNE(Wt, Wm, RecordLabelOffset(label, 3980, Arm64InstructionId.CBHNE_16_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHNE_16_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHNE.
@@ -1480,7 +1480,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHS(Wt, Wm, RecordLabelOffset(label, 3148, Arm64InstructionId.CBHS_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHS_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHS.
@@ -1497,7 +1497,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHS Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHS(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHS(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHS(Xt, Xm, RecordLabelOffset(label, 3340, Arm64InstructionId.CBHS_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHS_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHS.
@@ -1514,7 +1514,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHS Wt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHS(Arm64RegisterW Wt, byte immp1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHS(Arm64RegisterW Wt, byte immp1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHS(Wt, immp1, RecordLabelOffset(label, 4140, Arm64InstructionId.CBHS_cbhi_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHS_cbhi_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHS.
@@ -1531,7 +1531,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBHS Xt, #immp1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBHS(Arm64RegisterX Xt, byte immp1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBHS(Arm64RegisterX Xt, byte immp1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBHS(Xt, immp1, RecordLabelOffset(label, 4172, Arm64InstructionId.CBHS_cbhi_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBHS_cbhi_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBHS.
@@ -1548,7 +1548,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLE Wt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLE(Arm64RegisterW Wt, sbyte imms1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLE(Arm64RegisterW Wt, sbyte imms1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLE(Wt, imms1, RecordLabelOffset(label, 4204, Arm64InstructionId.CBLE_cblt_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLE_cblt_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLE.
@@ -1565,7 +1565,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLE Xt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLE(Arm64RegisterX Xt, sbyte imms1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLE(Arm64RegisterX Xt, sbyte imms1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLE(Xt, imms1, RecordLabelOffset(label, 4236, Arm64InstructionId.CBLE_cblt_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLE_cblt_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLE.
@@ -1582,7 +1582,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLE Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLE(Wm, Wt, RecordLabelOffset(label, 4268, Arm64InstructionId.CBLE_cbge_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLE_cbge_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLE.
@@ -1599,7 +1599,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLE Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLE(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLE(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLE(Xm, Xt, RecordLabelOffset(label, 4300, Arm64InstructionId.CBLE_cbge_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLE_cbge_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLE.
@@ -1616,7 +1616,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLO Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLO(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLO(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLO(Wt, imm, RecordLabelOffset(label, 2764, Arm64InstructionId.CBLO_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLO_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLO.
@@ -1633,7 +1633,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLO Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLO(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLO(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLO(Xt, imm, RecordLabelOffset(label, 2956, Arm64InstructionId.CBLO_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLO_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLO.
@@ -1650,7 +1650,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLO Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLO(Wm, Wt, RecordLabelOffset(label, 4332, Arm64InstructionId.CBLO_cbhi_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLO_cbhi_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLO.
@@ -1667,7 +1667,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLO Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLO(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLO(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLO(Xm, Xt, RecordLabelOffset(label, 4364, Arm64InstructionId.CBLO_cbhi_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLO_cbhi_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLO.
@@ -1684,7 +1684,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLS Wt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLS(Arm64RegisterW Wt, sbyte imms1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLS(Arm64RegisterW Wt, sbyte imms1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLS(Wt, imms1, RecordLabelOffset(label, 4396, Arm64InstructionId.CBLS_cblo_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLS_cblo_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLS.
@@ -1701,7 +1701,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLS Xt, #imms1, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLS(Arm64RegisterX Xt, sbyte imms1, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLS(Arm64RegisterX Xt, sbyte imms1, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLS(Xt, imms1, RecordLabelOffset(label, 4428, Arm64InstructionId.CBLS_cblo_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLS_cblo_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLS.
@@ -1718,7 +1718,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLS Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLS(Wm, Wt, RecordLabelOffset(label, 4460, Arm64InstructionId.CBLS_cbhs_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLS_cbhs_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLS.
@@ -1735,7 +1735,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLS Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLS(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLS(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLS(Xm, Xt, RecordLabelOffset(label, 4492, Arm64InstructionId.CBLS_cbhs_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLS_cbhs_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLS.
@@ -1752,7 +1752,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLT Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLT(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLT(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLT(Wt, imm, RecordLabelOffset(label, 2700, Arm64InstructionId.CBLT_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLT_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLT.
@@ -1769,7 +1769,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLT(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLT(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLT(Xt, imm, RecordLabelOffset(label, 2892, Arm64InstructionId.CBLT_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLT_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLT.
@@ -1786,7 +1786,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLT Wm, Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLT(Wm, Wt, RecordLabelOffset(label, 4524, Arm64InstructionId.CBLT_cbgt_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLT_cbgt_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLT.
@@ -1803,7 +1803,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBLT Xm, Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBLT(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBLT(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBLT(Xm, Xt, RecordLabelOffset(label, 4556, Arm64InstructionId.CBLT_cbgt_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBLT_cbgt_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBLT.
@@ -1820,7 +1820,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNE Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNE(Arm64RegisterW Wt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNE(Arm64RegisterW Wt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNE(Wt, imm, RecordLabelOffset(label, 2828, Arm64InstructionId.CBNE_32_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNE_32_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNE.
@@ -1837,7 +1837,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNE Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNE(Arm64RegisterX Xt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNE(Arm64RegisterX Xt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNE(Xt, imm, RecordLabelOffset(label, 3020, Arm64InstructionId.CBNE_64_imm, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNE_64_imm, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNE.
@@ -1854,7 +1854,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNE(Wt, Wm, RecordLabelOffset(label, 3212, Arm64InstructionId.CBNE_32_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNE_32_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNE.
@@ -1871,7 +1871,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNE(Xt, Xm, RecordLabelOffset(label, 3404, Arm64InstructionId.CBNE_64_regs, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNE_64_regs, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNE.
@@ -1888,7 +1888,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNZ Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNZ(Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNZ(Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNZ(Wt, RecordLabelOffset(label, 4580, Arm64InstructionId.CBNZ_32_compbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNZ_32_compbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNZ.
@@ -1905,7 +1905,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBNZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBNZ(Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBNZ(Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBNZ(Xt, RecordLabelOffset(label, 4604, Arm64InstructionId.CBNZ_64_compbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.CBNZ_64_compbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBNZ.
@@ -1922,7 +1922,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBZ Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBZ(Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBZ(Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBZ(Wt, RecordLabelOffset(label, 4628, Arm64InstructionId.CBZ_32_compbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.CBZ_32_compbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBZ.
@@ -1939,7 +1939,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>CBZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler CBZ(Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler CBZ(Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.CBZ(Xt, RecordLabelOffset(label, 4652, Arm64InstructionId.CBZ_64_compbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.CBZ_64_compbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits CBZ.
@@ -3874,7 +3874,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDR Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterW Wt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler LDR(Arm64RegisterW Wt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.LDR(Wt, RecordLabelOffset(label, 10952, Arm64InstructionId.LDR_32_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDR_32_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDR.
@@ -3891,7 +3891,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDR Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDR(Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler LDR(Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.LDR(Xt, RecordLabelOffset(label, 10976, Arm64InstructionId.LDR_64_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDR_64_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDR.
@@ -4167,7 +4167,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDRSW Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler LDRSW(Arm64RegisterX Xt, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler LDRSW(Arm64RegisterX Xt, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.LDRSW(Xt, RecordLabelOffset(label, 11920, Arm64InstructionId.LDRSW_64_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.LDRSW_64_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits LDRSW.
@@ -5654,7 +5654,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>PRFM (prfop|#imm5), label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler PRFM(Arm64PrefetchOperationKind prfop, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler PRFM(Arm64PrefetchOperationKind prfop, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.PRFM(prfop, RecordLabelOffset(label, 16452, Arm64InstructionId.PRFM_p_loadlit, debugFilePath, debugLineNumber)), Arm64InstructionId.PRFM_p_loadlit, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits PRFM.
@@ -6168,7 +6168,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>RETAASPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETAASPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler RETAASPPC(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler RETAASPPC(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.RETAASPPC(RecordLabelOffset(label, 17940, Arm64InstructionId.RETAASPPC_only_miscbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.RETAASPPC_only_miscbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits RETAASPPC.
@@ -6199,7 +6199,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>RETABSPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETABSPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler RETABSPPC(Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler RETABSPPC(Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.RETABSPPC(RecordLabelOffset(label, 17956, Arm64InstructionId.RETABSPPC_only_miscbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.RETABSPPC_only_miscbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits RETABSPPC.
@@ -8225,7 +8225,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>TBNZ Rt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TBNZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TBNZ(Arm64RegisterXOrW Rt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler TBNZ(Arm64RegisterXOrW Rt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.TBNZ(Rt, imm, RecordLabelOffset(label, 24336, Arm64InstructionId.TBNZ_only_testbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.TBNZ_only_testbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits TBNZ.
@@ -8242,7 +8242,7 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>TBZ Rt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TBZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public Arm64Assembler TBZ(Arm64RegisterXOrW Rt, byte imm, Arm64Label label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    public Arm64Assembler TBZ(Arm64RegisterXOrW Rt, byte imm, Arm64AddressExpression label, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
          => AddInstruction(Arm64InstructionFactory.TBZ(Rt, imm, RecordLabelOffset(label, 24368, Arm64InstructionId.TBZ_only_testbranch, debugFilePath, debugLineNumber)), Arm64InstructionId.TBZ_only_testbranch, debugFilePath, debugLineNumber);
     /// <summary>
     /// Creates a forward label and emits TBZ.

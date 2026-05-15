@@ -64,6 +64,8 @@ asm.ADD(X1, X1, X2)
 
 Generated instruction methods return the assembler, so calls can be chained. Statement-style calls still work when the returned assembler is ignored.
 
+Labels can be used in simple address expressions for label operands, e.g. `asm.B(loop + 4)` or `asm.ADR(X0, dataLabel + 16)`. Subtracting labels (`labelB - labelA`) evaluates to a signed expression once both labels are bound.
+
 When generated overloads can do so without creating ambiguous optional-operand signatures, they also record caller file/line information in `asm.DebugMap`. Finalization failures such as unbound labels or out-of-range labels throw `Arm64AssemblerException` with structured `Arm64AssemblerDiagnostic` entries; `TryEnd(out var diagnostics)` is available for non-throwing tooling workflows.
 
 ### Disassembler API
