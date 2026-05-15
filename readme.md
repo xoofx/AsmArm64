@@ -71,7 +71,7 @@ asm.Assemble();
 ### Disassembler API
 
 ```c#
-var instructionBuffer = ...; /// Retrieve the buffer from above
+ReadOnlySpan<byte> instructionBuffer = ...; /// Retrieve the buffer from above
 var disassembler = new Arm64Disassembler();
 var textWriter = new StringWriter();
 disassembler.Disassemble(instructionBuffer, textWriter);

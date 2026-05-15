@@ -50,6 +50,23 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDisassemblerReadOnlySpan()
+    {
+        var instructionBuffer = AssembleInstructionsSample();
+        var disassembler = new Arm64Disassembler();
+
+        ReadOnlySpan<byte> readOnlyBuffer = instructionBuffer;
+        var disassembledText = disassembler.Disassemble(readOnlyBuffer);
+
+        using var textWriter = new StringWriter();
+        disassembler.Disassemble(readOnlyBuffer, textWriter);
+
+        StringAssert.Contains(disassembledText, "mov x0, #5");
+        StringAssert.Contains(disassembledText, "ret");
+        Assert.AreEqual(disassembledText, textWriter.ToString());
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerCustomLabels()
     {
         var instructionBuffer = AssembleInstructionsSample();

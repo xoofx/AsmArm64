@@ -45,7 +45,7 @@ foreach (var operand in instruction.Operands)
 ```
 ### Disassembling a sequence of instructions
 
-The API `Arm64Disassembler` is a more advanced API that can be used to disassemble a sequence of instructions. The `Arm64Disassembler` object can be used to disassemble instructions from a given buffer.
+The API `Arm64Disassembler` is a more advanced API that can be used to disassemble a sequence of instructions. The `Arm64Disassembler` object can be used to disassemble instructions from a given byte buffer (`byte[]`, `Span<byte>`, or `ReadOnlySpan<byte>`).
 
 ```c#
 var buffer = new byte[] { 0xA0, 0x00, 0x80, 0xD2, 0xC0, 0x03, 0x5F, 0xD6 };

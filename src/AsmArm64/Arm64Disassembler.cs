@@ -44,8 +44,28 @@ public class Arm64Disassembler
     /// Disassembles the specified byte buffer and returns the disassembled instructions as a string.
     /// </summary>
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="buffer"/> is <c>null</c>.</exception>
+    /// <returns>A string containing the disassembled instructions.</returns>
+    public string Disassemble(byte[] buffer)
+    {
+        ArgumentNullException.ThrowIfNull(buffer);
+        return Disassemble((ReadOnlySpan<byte>)buffer);
+    }
+
+    /// <summary>
+    /// Disassembles the specified byte buffer and returns the disassembled instructions as a string.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <returns>A string containing the disassembled instructions.</returns>
     public string Disassemble(Span<byte> buffer)
+        => Disassemble((ReadOnlySpan<byte>)buffer);
+
+    /// <summary>
+    /// Disassembles the specified byte buffer and returns the disassembled instructions as a string.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <returns>A string containing the disassembled instructions.</returns>
+    public string Disassemble(ReadOnlySpan<byte> buffer)
     {
         var writer = new StringWriter();
         Disassemble(buffer, writer);
@@ -57,8 +77,32 @@ public class Arm64Disassembler
     /// </summary>
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
-    public void Disassemble(Span<byte> buffer, TextWriter writer)
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="buffer"/> or <paramref name="writer"/> is <c>null</c>.</exception>
+    public void Disassemble(byte[] buffer, TextWriter writer)
     {
+        ArgumentNullException.ThrowIfNull(buffer);
+        Disassemble((ReadOnlySpan<byte>)buffer, writer);
+    }
+
+    /// <summary>
+    /// Disassembles the specified byte buffer and writes the disassembled instructions to the specified <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="writer"/> is <c>null</c>.</exception>
+    public void Disassemble(Span<byte> buffer, TextWriter writer)
+        => Disassemble((ReadOnlySpan<byte>)buffer, writer);
+
+    /// <summary>
+    /// Disassembles the specified byte buffer and writes the disassembled instructions to the specified <see cref="TextWriter"/>.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="writer"/> is <c>null</c>.</exception>
+    public void Disassemble(ReadOnlySpan<byte> buffer, TextWriter writer)
+    {
+        ArgumentNullException.ThrowIfNull(writer);
+
         var rawInstructions = MemoryMarshal.Cast<byte, uint>(buffer);
 
         // Clear the internal pending labels
