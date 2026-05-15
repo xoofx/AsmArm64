@@ -137,6 +137,21 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestGeneratedAssemblerMethodsAreFluent()
+    {
+        using var asm = new Arm64Assembler();
+
+        var returned = asm.MOVZ(X0, 1)
+                          .ADD(X0, X0, 2)
+                          .RET()
+                          .End();
+
+        Assert.AreSame(asm, returned);
+        Assert.AreEqual(12u, asm.SizeInBytes);
+        Assert.IsTrue(asm.IsFinalized);
+    }
+
+    [TestMethod]
     public void TestCustomInstructionBufferStillSupported()
     {
         var instructionBuffer = new Arm64InstructionBufferByList();

@@ -396,12 +396,13 @@ public partial class Arm64Assembler : IDisposable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private void AddInstruction(Arm64RawInstruction rawInstruction)
+    private Arm64Assembler AddInstruction(Arm64RawInstruction rawInstruction)
     {
         ThrowIfDisposed();
         _buffer.WriteAt(CurrentOffset, rawInstruction);
         CurrentOffset += 4;
         _isFinalized = false;
+        return this;
     }
 
     /// <summary>

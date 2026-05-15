@@ -233,7 +233,7 @@ partial class Arm64Processor
         w.WriteSummary($"{EscapeHtmlEntities(instruction.Summary)}.");
         w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
         w.WriteLine($"[Arm64LinkInstructionId(Arm64InstructionId.{instruction.Id}), MethodImpl(MethodImplOptions.AggressiveInlining)]");
-        w.Write($"public void {instructionVariation.Mnemonic}(");
+        w.Write($"public Arm64Assembler {instructionVariation.Mnemonic}(");
 
         for (var i = 0; i < instructionVariation.Operands.Count; i++)
         {

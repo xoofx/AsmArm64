@@ -18,27 +18,27 @@ partial class Arm64Assembler
     /// </summary>
     /// <remarks><code>LDRAA Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAA_64_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
+    public Arm64Assembler LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
          => AddInstruction(Arm64InstructionFactory.LDRAA(Xt, src));
     /// <summary>
     /// Load register, with pointer authentication.
     /// </summary>
     /// <remarks><code>LDRAA Xt, [Xn|SP{, #simm}]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAA_64w_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
+    public Arm64Assembler LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
          => AddInstruction(Arm64InstructionFactory.LDRAA(Xt, src));
     /// <summary>
     /// Load register, with pointer authentication.
     /// </summary>
     /// <remarks><code>LDRAB Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAB_64_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
+    public Arm64Assembler LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
          => AddInstruction(Arm64InstructionFactory.LDRAB(Xt, src));
     /// <summary>
     /// Load register, with pointer authentication.
     /// </summary>
     /// <remarks><code>LDRAB Xt, [Xn|SP{, #simm}]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAB_64w_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
+    public Arm64Assembler LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
          => AddInstruction(Arm64InstructionFactory.LDRAB(Xt, src));
 }

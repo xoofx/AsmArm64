@@ -188,14 +188,12 @@ using var asm = new Arm64Assembler(0x1_0000);
 var labelStart = asm.CreateLabelId("_start");
 asm.BindLabel(labelStart);
 //     mov     x0, #5         // Call sum_loop(5)
-asm.MOVZ(X0, 5);
 //     bl      sum_loop       // Call the function, result in x0
-var labelSumLoop = asm.CreateLabelId("sum_loop");
-asm.BL(labelSumLoop);
-// 
-//     // Do something with result (for now, just returning)
 //     ret                    // Return from _start (normally would return to a caller)
-asm.RET();
+var labelSumLoop = asm.CreateLabelId("sum_loop");
+asm.MOVZ(X0, 5)
+   .BL(labelSumLoop)
+   .RET();
 // 
 // 
 // // Function: sum_loop(x0)
@@ -204,30 +202,30 @@ asm.RET();
 // sum_loop:
 asm.BindLabel(labelSumLoop);
 //     mov     x1, #0         // Accumulator (sum)
-asm.MOVZ(X1, 0);
 //     mov     x2, #0         // Counter
-asm.MOVZ(X2, 0);
+asm.MOVZ(X1, 0)
+   .MOVZ(X2, 0);
 // 
 // loop_start:
 var labelLoopStart = asm.CreateLabelId("loop_start");
 asm.BindLabel(labelLoopStart);
 //     add     x1, x1, x2     // Add counter (x2) to sum (x1)
-asm.ADD(X1, X1, X2);
 //     add     x2, x2, #1     // Increment counter
-asm.ADD(X2, X2, 1);
-// 
 //     cmp     x2, x0         // Compare counter with limit
-asm.CMP(X2, X0);
 //     blt     loop_start     // If counter < limit, continue loop
-asm.B(LT, labelLoopStart);
-// 
 //     mov     x0, x1         // Store result in x0 (return value)
-asm.MOV(X0, X1);
 //     ret                    // Return to caller
-asm.RET();
-asm.End();
+asm.ADD(X1, X1, X2)
+   .ADD(X2, X2, 1)
+   .CMP(X2, X0)
+   .B(LT, labelLoopStart)
+   .MOV(X0, X1)
+   .RET()
+   .End();
 ReadOnlySpan<byte> code = asm.Buffer;
 ```
+
+Generated instruction methods return the assembler, so calls can be chained as shown above. Statement-style calls still work when the returned assembler is ignored.
 
 Notice the API to create and use the labels:
 - `Arm64Assembler.CreateLabelId` to create a label with a unique identifier
