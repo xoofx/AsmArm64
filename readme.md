@@ -10,7 +10,7 @@ AsmArm64 is a powerful ARM64 Assembler and Disassembler .NET library.
   - Automatically generated from ARM XML specification files from latest update `2024-12`.
   - Note that SVE/SVE2/SME are not yet supported.
 - Unique **strongly typed** assembler API
-- **Easily disassemble** instructions and operands, including the knowledge of which operands are being read/write.
+- **Easily disassemble** instructions and operands, including the knowledge of which operands and status flags are being read/write.
 - **High performance** / **zero allocation** library for disassembling / assembling instructions.
 - `15,000+` unit tests battle testing this library
 - Compatible with `net8.0+` and NativeAOT.

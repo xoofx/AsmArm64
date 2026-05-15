@@ -140,6 +140,18 @@ For example:
   ```c#
   Arm64InstructionFactory.ADD(SP, X18, X3, _SXTX, 1); // ADD SP, X18, X3, SXTX #1
   ```
+### Instruction status flag metadata
+
+Decoded instructions expose the condition/status flags they read and write:
+
+```c#
+var instruction = Arm64Instruction.Decode(Arm64InstructionFactory.ADCS(X0, X1, X2));
+Arm64StatusFlags read = instruction.ReadStatusFlags;       // C
+Arm64StatusFlags written = instruction.WrittenStatusFlags; // NZCV
+```
+
+The same metadata is available from `Arm64InstructionId.GetStatusFlagAccess()` when only the instruction id is available. This metadata describes architectural status flags (`N`, `Z`, `C`, `V`), not register operand read/write flags. For conditional compare instructions, the `nzcv` immediate is not treated as reading current flags; the condition reads `NZCV`, and the instruction writes `NZCV`.
+
 ### Assembling a sequence of instructions
 
 The API `Arm64Assembler` is a more advanced API that can be used to assemble a sequence of instructions. By default, the `Arm64Assembler` object owns a byte buffer exposed through `Buffer` and `ToArray()`.
