@@ -608,6 +608,24 @@ public partial class Arm64Assembler : IDisposable
     /// <exception cref="NotSupportedException">Thrown when this assembler was created with a custom instruction buffer.</exception>
     public byte[] ToArray() => GetByteBuffer().ToArray();
 
+    /// <summary>
+    /// Disassembles the assembled bytes owned by this assembler.
+    /// </summary>
+    /// <param name="options">Optional disassembler options. When omitted, the assembler base address is used.</param>
+    /// <returns>The disassembled text.</returns>
+    /// <exception cref="NotSupportedException">Thrown when this assembler was created with a custom instruction buffer.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when default options are used and <see cref="BaseAddress"/> cannot be represented as a signed 64-bit value.</exception>
+    public string Disassemble(Arm64DisassemblerOptions? options = null)
+    {
+        if (options is null)
+        {
+            if (BaseAddress > long.MaxValue) throw new ArgumentOutOfRangeException(nameof(BaseAddress), "The base address must fit in a signed 64-bit value for disassembler options.");
+            options = new Arm64DisassemblerOptions { BaseAddress = (long)BaseAddress };
+        }
+
+        return new Arm64Disassembler(options).Disassemble(Buffer);
+    }
+
     private int RecordLabelOffset(Arm64AddressExpression expression, nint operandDescriptorEncodingOffset, Arm64InstructionId instructionId = Arm64InstructionId.Invalid, string? debugFilePath = null, int debugLineNumber = 0)
     {
         ThrowIfDisposed();

@@ -76,6 +76,11 @@ var disassembler = new Arm64Disassembler();
 var textWriter = new StringWriter();
 disassembler.Disassemble(instructionBuffer, textWriter);
 Console.WriteLine(textWriter);
+
+// For quick roundtrips, use:
+string text = asm.Disassemble();
+// or:
+string text2 = Arm64Disassembler.DisassembleToString(instructionBuffer, asm.BaseAddress);
 ```
 
 will print:

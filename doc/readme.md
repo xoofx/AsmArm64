@@ -365,3 +365,23 @@ var disassembler = new Arm64Disassembler
 
 The default is `Arm64DisassemblerAutoLabelKind.All`, which preserves the previous behavior of labeling all supported PC-relative operands plus the first instruction when `PrintLabelBeforeFirstInstruction` is enabled.
 
+### Quick assemble/disassemble roundtrip
+
+When an assembler owns its byte buffer, call `Disassemble()` after `End()` for a quick listing using the assembler base address:
+
+```csharp
+using var asm = new Arm64Assembler(0x1000);
+
+asm.MOVZ(X0, 1)
+   .RET()
+   .End();
+
+string text = asm.Disassemble();
+```
+
+For a standalone buffer, use the static helper:
+
+```csharp
+string text = Arm64Disassembler.DisassembleToString(code, baseAddress: 0x1000);
+```
+

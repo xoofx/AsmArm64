@@ -36,6 +36,26 @@ public class Arm64Disassembler
     }
 
     /// <summary>
+    /// Disassembles the specified byte buffer using default options and returns the text.
+    /// </summary>
+    /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
+    /// <param name="baseAddress">The base address used for address and label formatting.</param>
+    /// <returns>A string containing the disassembled instructions.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="baseAddress"/> cannot be represented as a signed 64-bit value.</exception>
+    public static string DisassembleToString(ReadOnlySpan<byte> buffer, ulong baseAddress = 0x1_0000UL)
+    {
+        if (baseAddress > long.MaxValue) throw new ArgumentOutOfRangeException(nameof(baseAddress), "The base address must fit in a signed 64-bit value for disassembler options.");
+        var disassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                BaseAddress = (long)baseAddress
+            }
+        };
+        return disassembler.Disassemble(buffer);
+    }
+
+    /// <summary>
     /// Gets the options used for disassembling.
     /// </summary>
     public Arm64DisassemblerOptions Options { get; }

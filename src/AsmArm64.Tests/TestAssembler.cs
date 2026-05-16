@@ -527,6 +527,30 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDisassembleConvenienceRoundtrip()
+    {
+        using var asm = new Arm64Assembler(0x1234_0000);
+
+        asm.Label(out var start)
+           .MOVZ(X0, 1)
+           .B(out var done)
+           .ADD(X0, X0, 1)
+           .Label(done)
+           .RET()
+           .End();
+
+        var instanceText = asm.Disassemble();
+        StringAssert.Contains(instanceText, "LL_01:");
+        StringAssert.Contains(instanceText, "mov x0, #1");
+        StringAssert.Contains(instanceText, "b LL_02");
+        StringAssert.Contains(instanceText, "ret");
+        Assert.AreEqual(0x1234_0000UL, start.Address);
+
+        var staticText = Arm64Disassembler.DisassembleToString(asm.Buffer, 0x1234_0000);
+        Assert.AreEqual(instanceText, staticText);
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerCustomLabels()
     {
         var instructionBuffer = AssembleInstructionsSample();
