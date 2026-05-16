@@ -396,6 +396,24 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestAddressPageHelpersAndAdrpPageSemantics()
+    {
+        var symbol = new Arm64Label(0x3008UL, "symbol");
+        Assert.AreEqual(0x3000, symbol.Page().Evaluate());
+        Assert.AreEqual(8, symbol.PageOffset().Evaluate());
+
+        using var asm = new Arm64Assembler(0x1000);
+        asm.NOP()
+           .ADRP(X0, symbol)
+           .End();
+
+        var instructions = MemoryMarshal.Cast<byte, uint>(asm.Buffer);
+        Assert.AreEqual(Arm64InstructionFactory.ADRP(X0, 0x2000), instructions[1]);
+        var adrp = Arm64Instruction.Decode(instructions[1]);
+        Assert.AreEqual(0x2000, ((Arm64LabelOperand)adrp.GetOperand(1)).Offset);
+    }
+
+    [TestMethod]
     public void TestCustomInstructionBufferStillSupported()
     {
         var instructionBuffer = new Arm64InstructionBufferByList();

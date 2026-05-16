@@ -243,7 +243,7 @@ public partial class Arm64Assembler : IDisposable
             int offset;
             try
             {
-                offset = EvaluateExpressionOffset(unboundLabel.Expression, BaseAddress + unboundLabel.InstructionOffset);
+                offset = EvaluateExpressionOffset(unboundLabel.Expression, BaseAddress + unboundLabel.InstructionOffset, unboundLabel.LabelOperandDescriptor);
             }
             catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException or OverflowException)
             {
@@ -640,7 +640,7 @@ public partial class Arm64Assembler : IDisposable
         int offset;
         try
         {
-            offset = EvaluateExpressionOffset(expression, CurrentAddress);
+            offset = EvaluateExpressionOffset(expression, CurrentAddress, descriptor);
             _ = Arm64LabelOperand.Encode(descriptor, offset);
         }
         catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException or OverflowException)
@@ -715,11 +715,21 @@ public partial class Arm64Assembler : IDisposable
         return negativeDelta == (ulong)int.MaxValue + 1 ? int.MinValue : -(int)negativeDelta;
     }
 
-    private static int EvaluateExpressionOffset(Arm64Expression expression, ulong sourceAddress)
+    private static int EvaluateExpressionOffset(Arm64Expression expression, ulong sourceAddress, ulong labelOperandDescriptor)
     {
         var targetAddress = expression.Evaluate();
         if (targetAddress < 0) throw new ArgumentOutOfRangeException(nameof(expression), targetAddress, "The expression evaluated to a negative address.");
-        return ComputeRelativeOffset((ulong)targetAddress, sourceAddress);
+
+        var target = (ulong)targetAddress;
+        var source = sourceAddress;
+        var labelKind = (Arm64LabelEncodingKind)(labelOperandDescriptor >> 8);
+        if (labelKind == Arm64LabelEncodingKind.PageOffset)
+        {
+            target &= ~((ulong)Arm64Address.PageSize - 1);
+            source &= ~((ulong)Arm64Address.PageSize - 1);
+        }
+
+        return ComputeRelativeOffset(target, source);
     }
 
     private static Arm64Label? GetFirstUnboundLabel(Arm64Expression expression)

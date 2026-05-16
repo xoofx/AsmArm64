@@ -329,6 +329,17 @@ asm.Label(out var start)
 long byteLength = (end - start).Evaluate();
 ```
 
+For ARM64 page-relative address materialization, `ADRP` uses the 4KB page delta between the current instruction page and the target page. The address helper methods make that explicit:
+
+```csharp
+var symbol = new Arm64Label(0x1234_5678, "symbol");
+
+asm.ADRP(X0, symbol.Page())
+   .ADD(X0, X0, (uint)symbol.PageOffset().Evaluate());
+```
+
+`ADRP(Xd, label)` applies the same page-relative semantics even when the label itself is not page-aligned.
+
 ### Disassembler invalid data handling
 
 ARM64 instructions are 4 bytes wide. By default the disassembler throws `ArgumentException` when the input length is not a multiple of 4. Configure `Arm64DisassemblerOptions.InvalidDataMode` to emit or ignore trailing bytes:

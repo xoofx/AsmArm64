@@ -68,3 +68,47 @@ internal sealed class Arm64SubtractExpression : Arm64Expression
 
     public override string ToString() => $"{Left} - {Right}";
 }
+
+internal sealed class Arm64AddressPageExpression : Arm64AddressExpression
+{
+    public Arm64AddressPageExpression(Arm64AddressExpression expression)
+    {
+        ArgumentNullException.ThrowIfNull(expression);
+        Expression = expression;
+    }
+
+    public Arm64AddressExpression Expression { get; }
+
+    public override long Evaluate()
+    {
+        var address = Expression.Evaluate();
+        if (address < 0) throw new ArgumentOutOfRangeException(nameof(Expression), address, "The expression evaluated to a negative address.");
+        return address & ~(Arm64Address.PageSize - 1);
+    }
+
+    public override void CollectLabels(ISet<Arm64Label> labels) => Expression.CollectLabels(labels);
+
+    public override string ToString() => $"Page({Expression})";
+}
+
+internal sealed class Arm64AddressPageOffsetExpression : Arm64Expression
+{
+    public Arm64AddressPageOffsetExpression(Arm64AddressExpression expression)
+    {
+        ArgumentNullException.ThrowIfNull(expression);
+        Expression = expression;
+    }
+
+    public Arm64AddressExpression Expression { get; }
+
+    public override long Evaluate()
+    {
+        var address = Expression.Evaluate();
+        if (address < 0) throw new ArgumentOutOfRangeException(nameof(Expression), address, "The expression evaluated to a negative address.");
+        return address & (Arm64Address.PageSize - 1);
+    }
+
+    public override void CollectLabels(ISet<Arm64Label> labels) => Expression.CollectLabels(labels);
+
+    public override string ToString() => $"PageOffset({Expression})";
+}
