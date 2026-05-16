@@ -49,6 +49,11 @@ public sealed class Arm64Label : Arm64AddressExpression
     public string? Name { get; }
 
     /// <summary>
+    /// Gets a value indicating whether this label represents an external symbol that should produce relocation records instead of an internal patch.
+    /// </summary>
+    public bool IsExternal { get; internal set; }
+
+    /// <summary>
     /// Gets a value indicating whether the label is bound.
     /// </summary>
     public bool IsBound => !_isEmpty && Address != ulong.MaxValue;
@@ -59,6 +64,18 @@ public sealed class Arm64Label : Arm64AddressExpression
     public bool IsEmpty => _isEmpty;
 
     internal Arm64LabelId Id { get; set; }
+
+    /// <summary>
+    /// Creates an unresolved external-symbol label.
+    /// </summary>
+    /// <param name="name">The external symbol name.</param>
+    /// <returns>The external label.</returns>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is <c>null</c> or empty.</exception>
+    public static Arm64Label External(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("External label name cannot be empty.", nameof(name));
+        return new Arm64Label(name) { IsExternal = true };
+    }
 
     /// <inheritdoc />
     public override long Evaluate()

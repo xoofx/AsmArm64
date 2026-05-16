@@ -16,6 +16,7 @@ public partial class Arm64Assembler : IDisposable
 {
     private readonly List<Arm64Label> _labels;
     private readonly List<UnboundInstructionLabel> _instructionsWithLabelToPatch;
+    private readonly List<Arm64Relocation> _relocations;
     private readonly Arm64InstructionBuffer _buffer;
     private readonly Arm64AssemblerBuffer? _ownedBuffer;
     private List<Action>? _resolveEndCallbacks;
@@ -46,6 +47,7 @@ public partial class Arm64Assembler : IDisposable
         ArgumentNullException.ThrowIfNull(buffer);
         _labels = new();
         _instructionsWithLabelToPatch = new();
+        _relocations = new();
         BaseAddress = 0x1_0000UL;
         _buffer = buffer;
         _ownedBuffer = ownsBuffer ? (Arm64AssemblerBuffer)buffer : null;
@@ -97,7 +99,9 @@ public partial class Arm64Assembler : IDisposable
         ThrowIfDisposed();
         _labels.Clear();
         _instructionsWithLabelToPatch.Clear();
+        _relocations.Clear();
         _resolveEndCallbacks?.Clear();
+        _literalPool?.Clear();
         _diagnostics?.Clear();
         DebugMap?.Clear();
         _ownedBuffer?.Clear();
@@ -105,6 +109,11 @@ public partial class Arm64Assembler : IDisposable
         _isFinalized = false;
         return this;
     }
+
+    /// <summary>
+    /// Gets relocation records produced by the last successful <see cref="End"/> call.
+    /// </summary>
+    public IReadOnlyList<Arm64Relocation> Relocations => _relocations;
 
     /// <summary>
     /// Begins a new assembly session at the specified address.
@@ -228,11 +237,18 @@ public partial class Arm64Assembler : IDisposable
     {
         ThrowIfDisposed();
         _diagnostics?.Clear();
+        _relocations.Clear();
         foreach (var unboundLabel in _instructionsWithLabelToPatch)
         {
             var labelReference = GetFirstUnboundLabel(unboundLabel.Expression);
             if (labelReference is not null)
             {
+                if (labelReference.IsExternal)
+                {
+                    _relocations.Add(new Arm64Relocation(Arm64RelocationKind.PcRelative, unboundLabel.InstructionOffset, labelReference, 0));
+                    continue;
+                }
+
                 var diagnostic = CreateDiagnostic(
                     $"Label '{labelReference}' is not bound for instruction at 0x{BaseAddress + unboundLabel.InstructionOffset:X16}.",
                     unboundLabel);
@@ -388,6 +404,14 @@ public partial class Arm64Assembler : IDisposable
         _isFinalized = false;
         return new Arm64Label(name);
     }
+
+    /// <summary>
+    /// Creates an external-symbol label that remains unresolved and produces relocation records during <see cref="End"/>.
+    /// </summary>
+    /// <param name="name">The external symbol name.</param>
+    /// <returns>The external label.</returns>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is <c>null</c> or empty.</exception>
+    public Arm64Label ExternalLabel(string name) => Arm64Label.External(name);
 
     /// <summary>
     /// Creates and binds a label at the current address.
@@ -602,6 +626,74 @@ public partial class Arm64Assembler : IDisposable
     }
 
     /// <summary>
+    /// Arranges fixed-address blocks followed by floating blocks into the owned assembler buffer.
+    /// </summary>
+    /// <param name="blocks">The blocks to arrange.</param>
+    /// <returns>This assembler.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="blocks"/> or a block is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when a fixed block overlaps the current output.</exception>
+    public Arm64Assembler ArrangeBlocks(params Arm64Block[] blocks)
+    {
+        ArgumentNullException.ThrowIfNull(blocks);
+        foreach (var block in blocks)
+        {
+            ArgumentNullException.ThrowIfNull(block);
+        }
+
+        foreach (var block in blocks.OrderBy(x => x.Address is null).ThenBy(x => x.Address ?? 0UL))
+        {
+            if (block.Address is { } address)
+            {
+                if (address < CurrentAddress) throw new InvalidOperationException($"Block '{block.Label}' at 0x{address:X16} overlaps the current output ending at 0x{CurrentAddress:X16}.");
+                AppendBytes(checked((int)(address - CurrentAddress)));
+            }
+            else
+            {
+                Align(block.Alignment);
+            }
+
+            Label(block.Label, force: true);
+            Append(block.Buffer);
+        }
+
+        return this;
+    }
+
+    /// <summary>
+    /// Creates a literal pool entry for a 64-bit value.
+    /// </summary>
+    /// <param name="value">The literal value.</param>
+    /// <param name="name">The optional literal label name.</param>
+    /// <returns>The label associated with the literal.</returns>
+    public Arm64Label Literal(ulong value, string? name = null)
+    {
+        var label = CreateLabel(name);
+        Span<byte> data = stackalloc byte[sizeof(ulong)];
+        BinaryPrimitives.WriteUInt64LittleEndian(data, value);
+        (_literalPool ??= new()).Add(new(label, data.ToArray(), 8));
+        return label;
+    }
+
+    /// <summary>
+    /// Flushes pending literal pool entries at the current position.
+    /// </summary>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler FlushLiteralPool()
+    {
+        if (_literalPool is null || _literalPool.Count == 0) return this;
+
+        foreach (var literal in _literalPool)
+        {
+            Align(literal.Alignment);
+            Label(literal.Label);
+            Append(literal.Data);
+        }
+
+        _literalPool.Clear();
+        return this;
+    }
+
+    /// <summary>
     /// Copies the assembled bytes to a new array.
     /// </summary>
     /// <returns>A new array containing the assembled bytes.</returns>
@@ -773,4 +865,8 @@ public partial class Arm64Assembler : IDisposable
     }
 
     private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64AddressExpression Expression, ulong LabelOperandDescriptor, Arm64InstructionId InstructionId, string? DebugFilePath, int DebugLineNumber);
+
+    private List<PendingLiteral>? _literalPool;
+
+    private readonly record struct PendingLiteral(Arm64Label Label, byte[] Data, uint Alignment);
 }

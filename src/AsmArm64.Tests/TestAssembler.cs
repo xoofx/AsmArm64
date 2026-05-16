@@ -428,6 +428,50 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestArrangeBlocksFixedFloatingAlignmentAndOverlap()
+    {
+        using var asm = new Arm64Assembler(0x1000);
+        var fixedLabel = asm.CreateLabel("fixed");
+        var floatingLabel = asm.CreateLabel("floating");
+
+        asm.AppendByte(0xAA)
+           .ArrangeBlocks(
+               new Arm64Block(floatingLabel, [0x11, 0x22], alignment: 4),
+               new Arm64Block(fixedLabel, [0xBB], address: 0x1004));
+
+        CollectionAssert.AreEqual(new byte[] { 0xAA, 0, 0, 0, 0xBB, 0, 0, 0, 0x11, 0x22 }, asm.ToArray());
+        Assert.AreEqual(0x1004UL, fixedLabel.Address);
+        Assert.AreEqual(0x1008UL, floatingLabel.Address);
+
+        using var overlapAsm = new Arm64Assembler(0x2000);
+        overlapAsm.AppendBytes(4);
+        var overlap = overlapAsm.CreateLabel("overlap");
+        Assert.Throws<InvalidOperationException>(() => overlapAsm.ArrangeBlocks(new Arm64Block(overlap, [0xCC], address: 0x2002)));
+    }
+
+    [TestMethod]
+    public void TestLiteralPoolAndExternalRelocation()
+    {
+        using var asm = new Arm64Assembler(0x3000);
+        var literal = asm.Literal(0x1122334455667788UL, "constant");
+        var external = asm.ExternalLabel("puts");
+
+        asm.LDR(X0, literal)
+           .BL(external)
+           .FlushLiteralPool()
+           .End();
+
+        var instructions = MemoryMarshal.Cast<byte, uint>(asm.Buffer);
+        Assert.AreEqual(Arm64InstructionFactory.LDR(X0, 8), instructions[0]);
+        Assert.AreEqual(0x3008UL, literal.Address);
+        CollectionAssert.AreEqual(new byte[] { 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11 }, asm.Buffer.Slice(8, 8).ToArray());
+        Assert.AreEqual(1, asm.Relocations.Count);
+        Assert.AreEqual(Arm64RelocationKind.PcRelative, asm.Relocations[0].Kind);
+        Assert.AreEqual(4u, asm.Relocations[0].Offset);
+        Assert.AreSame(external, asm.Relocations[0].Label);
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerSimple()
     {
         var instructionBuffer = AssembleInstructionsSample();

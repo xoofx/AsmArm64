@@ -68,6 +68,8 @@ Labels can be used in simple address expressions for label operands, e.g. `asm.B
 
 When generated overloads can do so without creating ambiguous optional-operand signatures, they also record caller file/line information in `asm.DebugMap`. `BeginFunction`, `EndFunction`, `BeginCodeSection`, `EndCodeSection`, `BeginDataSection`, and `EndDataSection` add named markers to the same map for tooling and annotated disassembly. Finalization failures such as unbound labels or out-of-range labels throw `Arm64AssemblerException` with structured `Arm64AssemblerDiagnostic` entries; `TryEnd(out var diagnostics)` is available for non-throwing tooling workflows.
 
+For larger layouts, `Arm64Block`/`ArrangeBlocks` can place fixed and aligned floating blocks, `Literal`/`FlushLiteralPool` emits explicit literal pools for `LDR literal`, and `ExternalLabel` records unresolved symbol relocations in `asm.Relocations`.
+
 ### Disassembler API
 
 ```c#

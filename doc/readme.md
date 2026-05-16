@@ -356,6 +356,36 @@ var disassembler = new Arm64Disassembler
 Console.WriteLine(disassembler.Disassemble(codeWithTrailingBytes));
 ```
 
+### Blocks, literal pools, and relocations
+
+Use `Arm64Block` with `ArrangeBlocks` for simple fixed/floating layout. Fixed blocks are placed by absolute address with zero-filled gaps; floating blocks are placed afterward with their requested alignment:
+
+```csharp
+var data = asm.CreateLabel("data");
+asm.ArrangeBlocks(new Arm64Block(data, [1, 2, 3, 4], alignment: 4, address: 0x2000));
+```
+
+Literal pools are explicit. Create a literal label, use it with an `LDR literal`, then flush the pool where it should be emitted. Normal label range checks run during `End()`:
+
+```csharp
+var literal = asm.Literal(0x1122334455667788UL, "constant");
+asm.LDR(X0, literal)
+   .FlushLiteralPool()
+   .End();
+```
+
+External symbols can remain unresolved and produce relocation records instead of label diagnostics:
+
+```csharp
+var puts = asm.ExternalLabel("puts");
+asm.BL(puts).End();
+
+foreach (var relocation in asm.Relocations)
+{
+    Console.WriteLine($"{relocation.Kind} at 0x{relocation.Offset:X}: {relocation.Label.Name}");
+}
+```
+
 ### Disassembler auto-labels
 
 `Arm64DisassemblerOptions.AutoLabelKinds` controls which PC-relative operands are turned into generated local labels. Use this to keep data references such as `ADR` and `LDR literal` as absolute addresses while still labeling control flow:
