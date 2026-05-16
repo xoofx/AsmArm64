@@ -122,6 +122,78 @@ public partial class Arm64Assembler : IDisposable
     }
 
     /// <summary>
+    /// Marks the beginning of a code section in the debug map.
+    /// </summary>
+    /// <param name="name">The optional section name.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler BeginCodeSection(string? name = null)
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.CodeSectionBegin, Arm64InstructionId.Invalid, null, 0, name);
+        return this;
+    }
+
+    /// <summary>
+    /// Marks the end of a code section in the debug map.
+    /// </summary>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler EndCodeSection()
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.CodeSectionEnd, Arm64InstructionId.Invalid, null, 0, null);
+        return this;
+    }
+
+    /// <summary>
+    /// Marks the beginning of a data section in the debug map.
+    /// </summary>
+    /// <param name="name">The optional section name.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler BeginDataSection(string? name = null)
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.DataSectionBegin, Arm64InstructionId.Invalid, null, 0, name);
+        return this;
+    }
+
+    /// <summary>
+    /// Marks the end of a data section in the debug map.
+    /// </summary>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler EndDataSection()
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.DataSectionEnd, Arm64InstructionId.Invalid, null, 0, null);
+        return this;
+    }
+
+    /// <summary>
+    /// Marks the beginning of a function in the debug map.
+    /// </summary>
+    /// <param name="name">The optional function name.</param>
+    /// <param name="debugFilePath">The caller source file path.</param>
+    /// <param name="debugLineNumber">The caller source line number.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler BeginFunction(string? name = null, [CallerFilePath] string? debugFilePath = null, [CallerLineNumber] int debugLineNumber = 0)
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.FunctionBegin, Arm64InstructionId.Invalid, debugFilePath, debugLineNumber, name);
+        return this;
+    }
+
+    /// <summary>
+    /// Marks the end of a function in the debug map.
+    /// </summary>
+    /// <param name="name">The optional function name.</param>
+    /// <returns>This assembler.</returns>
+    public Arm64Assembler EndFunction(string? name = null)
+    {
+        ThrowIfDisposed();
+        LogDebugInfo(Arm64AssemblerDebugInfoKind.FunctionEnd, Arm64InstructionId.Invalid, null, 0, name);
+        return this;
+    }
+
+    /// <summary>
     /// Sets the current origin without clearing already emitted bytes.
     /// </summary>
     /// <param name="address">The new current address.</param>

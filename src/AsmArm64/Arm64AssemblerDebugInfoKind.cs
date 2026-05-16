@@ -20,6 +20,36 @@ public enum Arm64AssemblerDebugInfoKind
     LineInfo,
 
     /// <summary>
+    /// The entry marks the beginning of a code section.
+    /// </summary>
+    CodeSectionBegin,
+
+    /// <summary>
+    /// The entry marks the end of a code section.
+    /// </summary>
+    CodeSectionEnd,
+
+    /// <summary>
+    /// The entry marks the beginning of a data section.
+    /// </summary>
+    DataSectionBegin,
+
+    /// <summary>
+    /// The entry marks the end of a data section.
+    /// </summary>
+    DataSectionEnd,
+
+    /// <summary>
+    /// The entry marks the beginning of a function.
+    /// </summary>
+    FunctionBegin,
+
+    /// <summary>
+    /// The entry marks the end of a function.
+    /// </summary>
+    FunctionEnd,
+
+    /// <summary>
     /// The entry marks the end of an assembly session.
     /// </summary>
     End,

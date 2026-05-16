@@ -260,7 +260,50 @@ if (!asm.TryEnd(out var diagnostics))
 }
 ```
 
-Generated assembler overloads record caller file/line information in `Arm64Assembler.DebugMap` when caller-info parameters can be added without creating ambiguous optional-operand overloads. Set `DebugMap` to `null` to disable logging, or replace it with a custom `IArm64AssemblerDebugMap` implementation.
+Generated assembler overloads record caller file/line information in `Arm64Assembler.DebugMap` when caller-info parameters can be added without creating ambiguous optional-operand overloads. Section and function helpers add markers to the same map:
+
+```csharp
+using var asm = new Arm64Assembler(0x1000);
+
+asm.BeginFunction("sum")
+   .BeginCodeSection("text")
+   .MOVZ(X0, 5)
+   .RET()
+   .EndCodeSection()
+   .BeginDataSection("rodata")
+   .AppendUInt32(0x12345678)
+   .EndDataSection()
+   .EndFunction("sum")
+   .End();
+
+foreach (var entry in asm.DebugMap!.Entries)
+{
+    Console.WriteLine(entry);
+}
+```
+
+Set `DebugMap` to `null` to disable logging, or replace it with a custom `IArm64AssemblerDebugMap` implementation. A disassembler comment formatter can use the debug map to annotate instruction addresses:
+
+```csharp
+var disassembler = new Arm64Disassembler
+{
+    Options =
+    {
+        BaseAddress = (long)asm.BaseAddress,
+        TryFormatComment = (offset, instruction, destination, out int written) =>
+        {
+            var entry = asm.DebugMap?.Entries.LastOrDefault(x => x.Offset == (uint)offset);
+            if (entry is { FilePath: not null })
+            {
+                return destination.TryWrite($"{Path.GetFileName(entry.FilePath)}:{entry.LineNumber}", out written);
+            }
+
+            written = 0;
+            return false;
+        }
+    }
+};
+```
 
 ### Label expressions
 

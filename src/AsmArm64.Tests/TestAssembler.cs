@@ -315,6 +315,38 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDebugMapCapturesSectionAndFunctionMarkers()
+    {
+        using var asm = new Arm64Assembler(0xB100);
+
+        var expectedLine = CurrentLine() + 1;
+        asm.BeginFunction("sum")
+           .BeginCodeSection("text")
+           .NOP()
+           .EndCodeSection()
+           .BeginDataSection("rodata")
+           .AppendUInt32(0x12345678)
+           .EndDataSection()
+           .EndFunction("sum")
+           .End();
+
+        Assert.IsNotNull(asm.DebugMap);
+        var entries = asm.DebugMap.Entries;
+        var functionBegin = entries.Single(x => x.Kind == Arm64AssemblerDebugInfoKind.FunctionBegin);
+        Assert.AreEqual("sum", functionBegin.Name);
+        Assert.AreEqual(0u, functionBegin.Offset);
+        Assert.AreEqual(0xB100UL, functionBegin.Address);
+        StringAssert.EndsWith(functionBegin.FilePath, "TestAssembler.cs");
+        Assert.AreEqual(expectedLine, functionBegin.LineNumber);
+
+        Assert.IsTrue(entries.Any(x => x.Kind == Arm64AssemblerDebugInfoKind.CodeSectionBegin && x.Name == "text"));
+        Assert.IsTrue(entries.Any(x => x.Kind == Arm64AssemblerDebugInfoKind.CodeSectionEnd && x.Offset == 4));
+        Assert.IsTrue(entries.Any(x => x.Kind == Arm64AssemblerDebugInfoKind.DataSectionBegin && x.Name == "rodata" && x.Offset == 4));
+        Assert.IsTrue(entries.Any(x => x.Kind == Arm64AssemblerDebugInfoKind.DataSectionEnd && x.Offset == 8));
+        Assert.IsTrue(entries.Any(x => x.Kind == Arm64AssemblerDebugInfoKind.FunctionEnd && x.Name == "sum" && x.Offset == 8));
+    }
+
+    [TestMethod]
     public void TestExpressionEvaluationAfterLabelsAreBound()
     {
         using var asm = new Arm64Assembler(0xC000);
