@@ -16,7 +16,5 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0xa0, 0xd4, 0x66, 0x4e }, "fadd v0.2d, v5.2d, v6.2d")]
-    [DataRow(new byte[] { 0xa0, 0xd4, 0x66, 0x4e }, "fadd v0.2d, v5.2d, v6.2d")]
-    [DataRow(new byte[] { 0xa0, 0xd4, 0x66, 0x4e }, "fadd v0.2d, v5.2d, v6.2d")]
     public void case_insen_reg_names_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

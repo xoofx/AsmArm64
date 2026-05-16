@@ -16,6 +16,5 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0xe8, 0x23, 0x20, 0x1e }, "fcmp s31, #0.0")]
-    [DataRow(new byte[] { 0xe8, 0x23, 0x20, 0x1e }, "fcmp s31, #0.0")]
     public void a64_ignored_fields_txt(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

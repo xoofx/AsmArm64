@@ -110,17 +110,22 @@ public partial class McInstructionTestsGen
             return;
         }
         
-        var testCases = (List<object>)(YamlSerializer.Deserialize<Dictionary<object, object>?>(stream))?["test_cases"]!;
-        foreach (var testCase in testCases.OfType<Dictionary<object, object>>())
+        var document = YamlSerializer.Deserialize<Dictionary<string, object>?>(stream);
+        if (document is null || !document.TryGetValue("test_cases", out var testCasesObject) || testCasesObject is not IEnumerable<object> testCases)
         {
-            var input = (Dictionary<object, object>)(testCase["input"]);
-            var bytes = ((List<object>)input["bytes"]).Select(x => (int)x).ToArray();
+            return;
+        }
+
+        foreach (var testCase in testCases.OfType<IDictionary<string, object>>())
+        {
+            var input = (IDictionary<string, object>)(testCase["input"]);
+            var bytes = ((List<object>)input["bytes"]).Select(Convert.ToInt32).ToArray();
             var options = (List<object>)(input["options"]);
 
-            var expected = (Dictionary<object, object>)(testCase["expected"]);
+            var expected = (IDictionary<string, object>)(testCase["expected"]);
             var insns = (List<object>)expected["insns"];
             Debug.Assert(insns.Count == 1);
-            var insn = (Dictionary<object, object>)insns[0];
+            var insn = (IDictionary<string, object>)insns[0];
             var asm = (string)insn["asm_text"];
             // options.Contains("specrestrict") ||
             if (options.Contains("v8r"))
@@ -130,8 +135,10 @@ public partial class McInstructionTestsGen
 
             asm = ReplaceWithBetterAsm(asm);
 
-            AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
-            TestCount++;
+            if (AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}")))))
+            {
+                TestCount++;
+            }
         }
     }
 
@@ -296,7 +303,7 @@ public partial class McInstructionTestsGen
 
     private static readonly Regex MatchSpace = new(@"\s+");
 
-    private void AddTestInstruction(string name, TestInstruction testInstruction)
+    private bool AddTestInstruction(string name, TestInstruction testInstruction)
     {
         if (!_mapFileNameToTestInstructions.TryGetValue(name, out var list))
         {
@@ -304,7 +311,13 @@ public partial class McInstructionTestsGen
             _mapFileNameToTestInstructions.Add(name, list);
         }
 
+        if (list.Contains(testInstruction))
+        {
+            return false;
+        }
+
         list.Add(testInstruction);
+        return true;
     }
 
     private CodeWriter GetWriter(string filePath, bool isTest = false)

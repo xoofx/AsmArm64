@@ -19,9 +19,5 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x03, 0x43, 0x18, 0xd5 }, "msr ALLINT, x3")]
     [DataRow(new byte[] { 0x1f, 0x41, 0x01, 0xd5 }, "msr ALLINT, #1")]
     [DataRow(new byte[] { 0xa7, 0xc9, 0x38, 0xd5 }, "mrs x7, ICC_NMIAR1_EL1")]
-    [DataRow(new byte[] { 0x02, 0x43, 0x38, 0xd5 }, "mrs x2, ALLINT")]
-    [DataRow(new byte[] { 0x03, 0x43, 0x18, 0xd5 }, "msr ALLINT, x3")]
-    [DataRow(new byte[] { 0x1f, 0x41, 0x01, 0xd5 }, "msr ALLINT, #1")]
-    [DataRow(new byte[] { 0xa7, 0xc9, 0x38, 0xd5 }, "mrs x7, ICC_NMIAR1_EL1")]
     public void armv8_8a_nmi_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

@@ -86,7 +86,5 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x1f, 0xf6, 0x03, 0x6f }, "fmov v31.2d, #1.00000000")]
     [DataRow(new byte[] { 0xe0, 0x1f, 0xbf, 0x0e }, "mov v0.8b, v31.8b")]
     [DataRow(new byte[] { 0x0f, 0x1e, 0xb0, 0x4e }, "mov v15.16b, v16.16b")]
-    [DataRow(new byte[] { 0xe0, 0x1f, 0xbf, 0x0e }, "mov v0.8b, v31.8b")]
-    [DataRow(new byte[] { 0x0f, 0x1e, 0xb0, 0x4e }, "mov v15.16b, v16.16b")]
     public void neon_mov_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

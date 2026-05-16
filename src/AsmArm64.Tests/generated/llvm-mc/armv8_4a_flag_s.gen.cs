@@ -22,12 +22,5 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0xed, 0x4b, 0x00, 0x3a }, "setf16 wzr")]
     [DataRow(new byte[] { 0x2f, 0x84, 0x1f, 0xba }, "rmif x1, #63, #15")]
     [DataRow(new byte[] { 0xef, 0x87, 0x1f, 0xba }, "rmif xzr, #63, #15")]
-    [DataRow(new byte[] { 0x1f, 0x40, 0x00, 0xd5 }, "cfinv")]
-    [DataRow(new byte[] { 0x2d, 0x08, 0x00, 0x3a }, "setf8 w1")]
-    [DataRow(new byte[] { 0xed, 0x0b, 0x00, 0x3a }, "setf8 wzr")]
-    [DataRow(new byte[] { 0x2d, 0x48, 0x00, 0x3a }, "setf16 w1")]
-    [DataRow(new byte[] { 0xed, 0x4b, 0x00, 0x3a }, "setf16 wzr")]
-    [DataRow(new byte[] { 0x2f, 0x84, 0x1f, 0xba }, "rmif x1, #63, #15")]
-    [DataRow(new byte[] { 0xef, 0x87, 0x1f, 0xba }, "rmif xzr, #63, #15")]
     public void armv8_4a_flag_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

@@ -16,6 +16,5 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0x1f, 0x40, 0x00, 0xd5 }, "cfinv")]
-    [DataRow(new byte[] { 0x1f, 0x40, 0x00, 0xd5 }, "cfinv")]
     public void armv8_4a_flagm_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }
