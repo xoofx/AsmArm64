@@ -376,6 +376,24 @@ var disassembler = new Arm64Disassembler
 
 The default is `Arm64DisassemblerAutoLabelKind.All`, which preserves the previous behavior of labeling all supported PC-relative operands plus the first instruction when `PrintLabelBeforeFirstInstruction` is enabled.
 
+### Disassembler formatting options
+
+Formatting can be tuned without replacing the disassembler. `Arm64DisassemblerOptions.Style` applies a preset (`Default`, `Gas`, or `Llvm`), and individual options can customize generated label text, comment prefix, address prefix, and disassembler-owned hex casing:
+
+```csharp
+var disassembler = new Arm64Disassembler
+{
+    Options =
+    {
+        Style = Arm64DisassemblyStyle.Gas,
+        LocalLabelFormat = ".L{0}",
+        CommentPrefix = ";",
+        AddressPrefix = "0x",
+        UseUppercaseHex = false
+    }
+};
+```
+
 ### Quick assemble/disassemble roundtrip
 
 When an assembler owns its byte buffer, call `Disassemble()` after `End()` for a quick listing using the assembler base address:

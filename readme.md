@@ -106,7 +106,7 @@ LL_03:
     ret
 ```
 
-`Arm64DisassemblerOptions.TryFormatLabel` can be used to resolve absolute addresses to label or symbol names, for example from PDB data. `Arm64DisassemblerOptions.AutoLabelKinds` controls which PC-relative operands get generated local labels (branches, calls, `ADR`/`ADRP`, or literal loads). `Arm64DisassemblerOptions.InvalidDataMode` controls trailing bytes that are not a complete 4-byte instruction: throw, emit a `.byte` directive, or ignore them.
+`Arm64DisassemblerOptions.TryFormatLabel` can be used to resolve absolute addresses to label or symbol names, for example from PDB data. `Arm64DisassemblerOptions.AutoLabelKinds` controls which PC-relative operands get generated local labels (branches, calls, `ADR`/`ADRP`, or literal loads). Formatting options include style presets, comment prefix, address prefix, generated local-label format, and hex casing. `Arm64DisassemblerOptions.InvalidDataMode` controls trailing bytes that are not a complete 4-byte instruction: throw, emit a `.byte` directive, or ignore them.
 
 ## 📖 User Guide
 

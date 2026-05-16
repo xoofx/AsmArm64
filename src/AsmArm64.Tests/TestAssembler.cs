@@ -569,6 +569,42 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDisassemblerFormattingOptions()
+    {
+        using var asm = new Arm64Assembler(0x1000);
+        asm.NOP().End();
+
+        var disassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                BaseAddress = 0x1000,
+                PrintAddress = true,
+                PrintAssemblyBytes = true,
+                UseUppercaseHex = false,
+                AddressPrefix = "0x",
+                LocalLabelFormat = ".L{0}",
+                CommentPrefix = ";",
+                TryFormatComment = (long offset, Arm64Instruction instruction, Span<char> destination, out int written) =>
+                {
+                    written = "comment".Length;
+                    return "comment".AsSpan().TryCopyTo(destination);
+                }
+            }
+        };
+
+        var text = disassembler.Disassemble(asm.Buffer);
+        StringAssert.Contains(text, ".L1:");
+        StringAssert.Contains(text, "0x0000000000001000");
+        StringAssert.Contains(text, "1f 20 03 d5");
+        StringAssert.Contains(text, "; comment");
+
+        disassembler.Options.Style = Arm64DisassemblyStyle.Llvm;
+        Assert.AreEqual(".LBB0_{0}", disassembler.Options.LocalLabelFormat);
+        Assert.IsFalse(disassembler.Options.UseUppercaseHex);
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerCustomLabels()
     {
         var instructionBuffer = AssembleInstructionsSample();

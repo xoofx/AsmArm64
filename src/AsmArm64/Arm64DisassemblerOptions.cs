@@ -9,9 +9,16 @@ namespace AsmArm64;
 /// </summary>
 public class Arm64DisassemblerOptions
 {
+    internal const string DefaultLocalLabelFormat = "LL_{0:00}";
+
     private int _formatLineBufferLength;
     private int _indentSize;
     private int _instructionTextPaddingLength;
+    private string _localLabelPrefix;
+    private string _localLabelFormat;
+    private string _commentPrefix;
+    private string _addressPrefix;
+    private Arm64DisassemblyStyle _style;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64DisassemblerOptions"/> class.
@@ -21,13 +28,17 @@ public class Arm64DisassemblerOptions
         BaseAddress = 0x1_0000;
         FormatLineBufferLength = 4096;
         IndentSize = 4;
-        LocalLabelPrefix = "LL_";
+        _localLabelPrefix = "LL_";
+        _localLabelFormat = DefaultLocalLabelFormat;
+        _commentPrefix = "//";
+        _addressPrefix = string.Empty;
         PrintNewLineBeforeLabel = true;
         PrintNewLineAfterBranch = true;
         PrintLabelBeforeFirstInstruction = true;
         InstructionTextPaddingLength = 16;
         InvalidDataMode = Arm64InvalidDataMode.Throw;
         AutoLabelKinds = Arm64DisassemblerAutoLabelKind.All;
+        UseUppercaseHex = true;
     }
 
     /// <summary>
@@ -81,7 +92,98 @@ public class Arm64DisassemblerOptions
     /// <summary>
     /// Gets or sets the prefix for local labels.
     /// </summary>
-    public string LocalLabelPrefix { get; set; }
+    /// <exception cref="ArgumentNullException">Thrown when the value is <c>null</c>.</exception>
+    public string LocalLabelPrefix
+    {
+        get => _localLabelPrefix;
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+            _localLabelPrefix = value;
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the composite format string used for generated local labels. The label index is argument 0.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">Thrown when the value is <c>null</c>.</exception>
+    public string LocalLabelFormat
+    {
+        get => _localLabelFormat;
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+            _localLabelFormat = value;
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the prefix used before generated instruction comments.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">Thrown when the value is <c>null</c>.</exception>
+    public string CommentPrefix
+    {
+        get => _commentPrefix;
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+            _commentPrefix = value;
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the prefix emitted before addresses printed by the disassembler.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">Thrown when the value is <c>null</c>.</exception>
+    public string AddressPrefix
+    {
+        get => _addressPrefix;
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+            _addressPrefix = value;
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether disassembler-owned hexadecimal text uses upper-case digits.
+    /// </summary>
+    public bool UseUppercaseHex { get; set; }
+
+    /// <summary>
+    /// Gets or sets the formatting style preset.
+    /// </summary>
+    public Arm64DisassemblyStyle Style
+    {
+        get => _style;
+        set
+        {
+            _style = value;
+            switch (value)
+            {
+                case Arm64DisassemblyStyle.Default:
+                    CommentPrefix = "//";
+                    AddressPrefix = string.Empty;
+                    LocalLabelFormat = DefaultLocalLabelFormat;
+                    UseUppercaseHex = true;
+                    break;
+                case Arm64DisassemblyStyle.Gas:
+                    CommentPrefix = "//";
+                    AddressPrefix = "0x";
+                    LocalLabelFormat = ".L{0:00}";
+                    UseUppercaseHex = false;
+                    break;
+                case Arm64DisassemblyStyle.Llvm:
+                    CommentPrefix = "//";
+                    AddressPrefix = "0x";
+                    LocalLabelFormat = ".LBB0_{0}";
+                    UseUppercaseHex = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "Unknown disassembly style.");
+            }
+        }
+    }
 
     /// <summary>
     /// Gets or sets a value indicating whether to print the address.

@@ -4,6 +4,7 @@
 
 using System.Buffers;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace AsmArm64;
@@ -203,7 +204,8 @@ public class Arm64Disassembler
                 {
                     if (Options.PrintAddress)
                     {
-                        textSpan.TryWrite($"{Options.BaseAddress + _currentOffset:X16}", out var localCharsWritten);
+                        FormatAddress(Options.BaseAddress + _currentOffset).AsSpan().TryCopyTo(textSpan);
+                        var localCharsWritten = Options.AddressPrefix.Length + 16;
                         charsWritten += localCharsWritten;
                         runningSpan = textSpan.Slice(localCharsWritten);
 
@@ -215,7 +217,9 @@ public class Arm64Disassembler
                     if (Options.PrintAssemblyBytes)
                     {
                         var bytes = MemoryMarshal.AsBytes(new Span<uint>(ref rawInstruction));
-                        runningSpan.TryWrite($"{bytes[0]:X2} {bytes[1]:X2} {bytes[2]:X2} {bytes[3]:X2}", out var localCharsWritten);
+                        var assemblyBytes = $"{FormatHexByte(bytes[0])} {FormatHexByte(bytes[1])} {FormatHexByte(bytes[2])} {FormatHexByte(bytes[3])}";
+                        assemblyBytes.AsSpan().TryCopyTo(runningSpan);
+                        var localCharsWritten = assemblyBytes.Length;
                         charsWritten += localCharsWritten;
                         runningSpan = runningSpan.Slice(localCharsWritten);
 
@@ -250,10 +254,18 @@ public class Arm64Disassembler
                         charsWritten += 4;
                         runningSpan = runningSpan.Slice(4);
 
-                        if ("// ".TryCopyTo(runningSpan))
+                        var commentPrefix = Options.CommentPrefix;
+                        if (commentPrefix.Length == 0 || commentPrefix.AsSpan().TryCopyTo(runningSpan))
                         {
-                            charsWritten += 3;
-                            runningSpan = runningSpan.Slice(3);
+                            charsWritten += commentPrefix.Length;
+                            runningSpan = runningSpan.Slice(commentPrefix.Length);
+                            if (commentPrefix.Length != 0)
+                            {
+                                runningSpan[0] = ' ';
+                                charsWritten++;
+                                runningSpan = runningSpan.Slice(1);
+                            }
+
                             if (Options.TryFormatComment(_currentOffset, instruction, runningSpan, out var commentsCharsWritten))
                             {
                                 charsWritten += commentsCharsWritten;
@@ -327,6 +339,17 @@ public class Arm64Disassembler
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
         => writer.Write(GetIndentSpan(textSpan));
 
+    private string FormatAddress(long address)
+        => Options.AddressPrefix + address.ToString(Options.UseUppercaseHex ? "X16" : "x16", CultureInfo.InvariantCulture);
+
+    private string FormatHexByte(byte value)
+        => value.ToString(Options.UseUppercaseHex ? "X2" : "x2", CultureInfo.InvariantCulture);
+
+    private string FormatLocalLabel(int labelIndex)
+        => Options.LocalLabelFormat == Arm64DisassemblerOptions.DefaultLocalLabelFormat
+            ? $"{Options.LocalLabelPrefix}{labelIndex:00}"
+            : string.Format(CultureInfo.InvariantCulture, Options.LocalLabelFormat, labelIndex);
+
     private bool ShouldAutoLabel(Arm64InstructionId id)
     {
         var enabledKinds = Options.AutoLabelKinds;
@@ -358,7 +381,9 @@ public class Arm64Disassembler
 
         if (Options.PrintAddress)
         {
-            textSpan.TryWrite($"{Options.BaseAddress + _currentOffset:X16}", out var addressCharsWritten);
+            var addressText = FormatAddress(Options.BaseAddress + _currentOffset);
+            addressText.AsSpan().TryCopyTo(textSpan);
+            var addressCharsWritten = addressText.Length;
             charsWritten += addressCharsWritten;
             runningSpan = textSpan.Slice(addressCharsWritten);
 
@@ -386,7 +411,9 @@ public class Arm64Disassembler
                 runningSpan = runningSpan.Slice(2);
             }
 
-            runningSpan.TryWrite($"0x{trailingBytes[i]:X2}", out var byteCharsWritten);
+            var byteText = $"0x{FormatHexByte(trailingBytes[i])}";
+            byteText.AsSpan().TryCopyTo(runningSpan);
+            var byteCharsWritten = byteText.Length;
             charsWritten += byteCharsWritten;
             runningSpan = runningSpan.Slice(byteCharsWritten);
         }
@@ -409,7 +436,7 @@ public class Arm64Disassembler
             }
             else
             {
-                var result = textSpan.TryWrite($"{Options.LocalLabelPrefix}{labelIndex:00}:", out charsWritten);
+                var result = textSpan.TryWrite($"{FormatLocalLabel(labelIndex)}:", out charsWritten);
                 Debug.Assert(result);
             }
             writer.WriteLine(textSpan.Slice(0, charsWritten));
@@ -437,11 +464,16 @@ public class Arm64Disassembler
         {
             if (_internalLabels.TryGetValue((int)absoluteOffset, out var labelIndex))
             {
-                return textSpan.TryWrite($"{Options.LocalLabelPrefix}{labelIndex:00}", out charsWritten);
+                var labelText = FormatLocalLabel(labelIndex);
+                charsWritten = labelText.Length;
+                return labelText.AsSpan().TryCopyTo(textSpan);
             }
 
             // If not found, we will provide print absolute address
-            textSpan.TryWrite($"#0x{Options.BaseAddress + absoluteOffset:X16}", out charsWritten);
+            var operandAddressPrefix = string.IsNullOrEmpty(Options.AddressPrefix) ? "0x" : Options.AddressPrefix;
+            var addressText = $"#{operandAddressPrefix}{(Options.BaseAddress + absoluteOffset).ToString(Options.UseUppercaseHex ? "X16" : "x16", CultureInfo.InvariantCulture)}";
+            addressText.AsSpan().TryCopyTo(textSpan);
+            charsWritten = addressText.Length;
             return false;
         }
 
