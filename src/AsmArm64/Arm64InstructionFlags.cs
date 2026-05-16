@@ -18,8 +18,4 @@ public enum Arm64InstructionFlags : byte
     /// The instruction has a label.
     /// </summary>
     HasLabel = 1,
-    /// <summary>
-    /// The instruction updates arithmetic CPU flags.
-    /// </summary>
-    HasSetFlags = 2,
 }

@@ -2491,12 +2491,12 @@ partial class Arm64InstructionDecoderTable
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
         // ADCS_32_addsub_carry           - ADCS        Wd, Wn, Wm
-        5,0,3,0,4,0,2,3,
+        5,0,3,0,4,0,0,3,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         // ADCS_64_addsub_carry           - ADCS        Xd, Xn, Xm
-        6,0,3,0,4,0,2,3,
+        6,0,3,0,4,0,0,3,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -2549,37 +2549,37 @@ partial class Arm64InstructionDecoderTable
         17,17,0,16,                         // Xm       - r
         151,5,0,106,                        // LSL?     - r
         // ADDS_32s_addsub_ext            - ADDS        Wd, Wn|WSP, Wm {, extend, {#amount}}
-        15,0,10,0,4,0,2,4,
+        15,0,10,0,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,20,0,5,                          // Wn|WSP   - r
         17,19,0,16,                         // Wm       - r
         152,109,106,0,                      // extend?  - r
         // ADDS_64s_addsub_ext            - ADDS        Xd, Xn|SP, Rm {, extend, {#amount}}
-        16,0,10,0,4,0,130,4,
+        16,0,10,0,4,0,128,4,
         33,17,0,0,0,0,0,0,                  // Xd       - w
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         17,21,0,16,8,0,0,0,                 // Rm       - r
         152,109,106,128,0,0,0,0,            // extend?  - r
         // ADDS_32s_addsub_imm            - ADDS        Wd, Wn|WSP, #imm {, shift}
-        17,0,10,0,4,0,130,4,
+        17,0,10,0,4,0,128,4,
         33,19,0,0,0,0,0,0,                  // Wd       - w
         17,20,0,5,0,0,0,0,                  // Wn|WSP   - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // ADDS_64s_addsub_imm            - ADDS        Xd, Xn|SP, #imm {, shift}
-        18,0,10,0,4,0,130,4,
+        18,0,10,0,4,0,128,4,
         33,17,0,0,0,0,0,0,                  // Xd       - w
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // ADDS_32_addsub_shift           - ADDS        Wd, Wn, Wm {, shift, #amount}
-        19,0,10,0,4,0,2,4,
+        19,0,10,0,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,1,86,202,                       // shift?   - r
         // ADDS_64_addsub_shift           - ADDS        Xd, Xn, Xm {, shift, #amount}
-        20,0,10,0,4,0,2,4,
+        20,0,10,0,4,0,0,4,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -2615,23 +2615,23 @@ partial class Arm64InstructionDecoderTable
         17,17,0,16,                         // Xm       - r
         151,2,86,202,                       // shift?   - r
         // ANDS_32s_log_imm               - ANDS        Wd, Wn, #imm
-        27,0,19,0,4,0,130,3,
+        27,0,19,0,4,0,128,3,
         33,19,0,0,0,0,0,0,                  // Wd       - w
         17,19,0,5,0,0,0,0,                  // Wn       - r
         21,1,15,1,10,12,0,0,                // imm      - r
         // ANDS_64s_log_imm               - ANDS        Xd, Xn, #imm
-        28,0,19,0,4,0,130,3,
+        28,0,19,0,4,0,128,3,
         33,17,0,0,0,0,0,0,                  // Xd       - w
         17,17,0,5,0,0,0,0,                  // Xn       - r
         21,1,16,1,10,13,0,0,                // imm      - r
         // ANDS_32_log_shift              - ANDS        Wd, Wn, Wm {, shift, #amount}
-        29,0,19,0,4,0,2,4,
+        29,0,19,0,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,2,86,202,                       // shift?   - r
         // ANDS_64_log_shift              - ANDS        Xd, Xn, Xm {, shift, #amount}
-        30,0,19,0,4,0,2,4,
+        30,0,19,0,4,0,0,4,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -2801,13 +2801,13 @@ partial class Arm64InstructionDecoderTable
         17,17,0,16,                         // Xm       - r
         151,2,86,202,                       // shift?   - r
         // BICS_32_log_shift              - BICS        Wd, Wn, Wm {, shift, #amount}
-        73,0,64,0,4,0,2,4,
+        73,0,64,0,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,2,86,202,                       // shift?   - r
         // BICS_64_log_shift              - BICS        Xd, Xn, Xm {, shift, #amount}
-        74,0,64,0,4,0,2,4,
+        74,0,64,0,4,0,0,4,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -3457,62 +3457,62 @@ partial class Arm64InstructionDecoderTable
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         // CMN_adds_32s_addsub_ext        - CMN         Wn|WSP, Wm {, extend, {#amount}}
-        206,0,156,0,4,0,2,3,
+        206,0,156,0,4,0,0,3,
         17,20,0,5,                          // Wn|WSP   - r
         17,19,0,16,                         // Wm       - r
         152,109,106,0,                      // extend?  - r
         // CMN_adds_64s_addsub_ext        - CMN         Xn|SP, Rm {, extend, {#amount}}
-        207,0,156,0,4,0,130,3,
+        207,0,156,0,4,0,128,3,
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         17,21,0,16,8,0,0,0,                 // Rm       - r
         152,109,106,128,0,0,0,0,            // extend?  - r
         // CMN_adds_32s_addsub_imm        - CMN         Wn|WSP, #imm {, shift}
-        208,0,156,0,4,0,130,3,
+        208,0,156,0,4,0,128,3,
         17,20,0,5,0,0,0,0,                  // Wn|WSP   - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // CMN_adds_64s_addsub_imm        - CMN         Xn|SP, #imm {, shift}
-        209,0,156,0,4,0,130,3,
+        209,0,156,0,4,0,128,3,
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // CMN_adds_32_addsub_shift       - CMN         Wn, Wm {, shift, #amount}
-        210,0,156,0,4,0,2,3,
+        210,0,156,0,4,0,0,3,
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,1,86,202,                       // shift?   - r
         // CMN_adds_64_addsub_shift       - CMN         Xn, Xm {, shift, #amount}
-        211,0,156,0,4,0,2,3,
+        211,0,156,0,4,0,0,3,
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
         151,1,86,202,                       // shift?   - r
         // CMP_subs_32s_addsub_ext        - CMP         Wn|WSP, Wm {, extend, {#amount}}
-        212,0,157,0,4,0,2,3,
+        212,0,157,0,4,0,0,3,
         17,20,0,5,                          // Wn|WSP   - r
         17,19,0,16,                         // Wm       - r
         152,109,106,0,                      // extend?  - r
         // CMP_subs_64s_addsub_ext        - CMP         Xn|SP, Rm {, extend, {#amount}}
-        213,0,157,0,4,0,130,3,
+        213,0,157,0,4,0,128,3,
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         17,21,0,16,8,0,0,0,                 // Rm       - r
         152,109,106,128,0,0,0,0,            // extend?  - r
         // CMP_subs_32s_addsub_imm        - CMP         Wn|WSP, #imm {, shift}
-        214,0,157,0,4,0,130,3,
+        214,0,157,0,4,0,128,3,
         17,20,0,5,0,0,0,0,                  // Wn|WSP   - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // CMP_subs_64s_addsub_imm        - CMP         Xn|SP, #imm {, shift}
-        215,0,157,0,4,0,130,3,
+        215,0,157,0,4,0,128,3,
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // CMP_subs_32_addsub_shift       - CMP         Wn, Wm {, shift, #amount}
-        216,0,157,0,4,0,2,3,
+        216,0,157,0,4,0,0,3,
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,1,86,202,                       // shift?   - r
         // CMP_subs_64_addsub_shift       - CMP         Xn, Xm {, shift, #amount}
-        217,0,157,0,4,0,2,3,
+        217,0,157,0,4,0,0,3,
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
         151,1,86,202,                       // shift?   - r
@@ -5848,12 +5848,12 @@ partial class Arm64InstructionDecoderTable
         17,17,0,16,                         // Xm       - r
         151,1,86,202,                       // shift?   - r
         // NEGS_subs_32_addsub_shift      - NEGS        Wd, Wm {, shift, #amount}
-        203,2,143,2,4,0,2,3,
+        203,2,143,2,4,0,0,3,
         33,19,0,0,                          // Wd       - w
         17,19,0,16,                         // Wm       - r
         151,1,86,202,                       // shift?   - r
         // NEGS_subs_64_addsub_shift      - NEGS        Xd, Xm {, shift, #amount}
-        204,2,143,2,4,0,2,3,
+        204,2,143,2,4,0,0,3,
         33,17,0,0,                          // Xd       - w
         17,17,0,16,                         // Xm       - r
         151,1,86,202,                       // shift?   - r
@@ -5866,11 +5866,11 @@ partial class Arm64InstructionDecoderTable
         33,17,0,0,                          // Xd       - w
         17,17,0,16,                         // Xm       - r
         // NGCS_sbcs_32_addsub_carry      - NGCS        Wd, Wm
-        207,2,145,2,4,0,2,2,
+        207,2,145,2,4,0,0,2,
         33,19,0,0,                          // Wd       - w
         17,19,0,16,                         // Wm       - r
         // NGCS_sbcs_64_addsub_carry      - NGCS        Xd, Xm
-        208,2,145,2,4,0,2,2,
+        208,2,145,2,4,0,0,2,
         33,17,0,0,                          // Xd       - w
         17,17,0,16,                         // Xm       - r
         // NOP_hi_hints                   - NOP        
@@ -6429,12 +6429,12 @@ partial class Arm64InstructionDecoderTable
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
         // SBCS_32_addsub_carry           - SBCS        Wd, Wn, Wm
-        78,3,25,3,4,0,2,3,
+        78,3,25,3,4,0,0,3,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         // SBCS_64_addsub_carry           - SBCS        Xd, Xn, Xm
-        79,3,25,3,4,0,2,3,
+        79,3,25,3,4,0,0,3,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -7475,37 +7475,37 @@ partial class Arm64InstructionDecoderTable
         17,17,0,16,                         // Xm       - r
         151,5,0,106,                        // LSL?     - r
         // SUBS_32s_addsub_ext            - SUBS        Wd, Wn|WSP, Wm {, extend, {#amount}}
-        55,4,30,4,4,0,2,4,
+        55,4,30,4,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,20,0,5,                          // Wn|WSP   - r
         17,19,0,16,                         // Wm       - r
         152,109,106,0,                      // extend?  - r
         // SUBS_64s_addsub_ext            - SUBS        Xd, Xn|SP, Rm {, extend, {#amount}}
-        56,4,30,4,4,0,130,4,
+        56,4,30,4,4,0,128,4,
         33,17,0,0,0,0,0,0,                  // Xd       - w
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         17,21,0,16,8,0,0,0,                 // Rm       - r
         152,109,106,128,0,0,0,0,            // extend?  - r
         // SUBS_32s_addsub_imm            - SUBS        Wd, Wn|WSP, #imm {, shift}
-        57,4,30,4,4,0,130,4,
+        57,4,30,4,4,0,128,4,
         33,19,0,0,0,0,0,0,                  // Wd       - w
         17,20,0,5,0,0,0,0,                  // Wn|WSP   - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // SUBS_64s_addsub_imm            - SUBS        Xd, Xn|SP, #imm {, shift}
-        58,4,30,4,4,0,130,4,
+        58,4,30,4,4,0,128,4,
         33,17,0,0,0,0,0,0,                  // Xd       - w
         17,18,0,5,0,0,0,0,                  // Xn|SP    - r
         21,1,0,1,10,12,0,0,                 // imm      - r
         151,4,0,54,0,0,0,0,                 // shift?   - r
         // SUBS_32_addsub_shift           - SUBS        Wd, Wn, Wm {, shift, #amount}
-        59,4,30,4,4,0,2,4,
+        59,4,30,4,4,0,0,4,
         33,19,0,0,                          // Wd       - w
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,1,86,202,                       // shift?   - r
         // SUBS_64_addsub_shift           - SUBS        Xd, Xn, Xm {, shift, #amount}
-        60,4,30,4,4,0,2,4,
+        60,4,30,4,4,0,0,4,
         33,17,0,0,                          // Xd       - w
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
@@ -7724,20 +7724,20 @@ partial class Arm64InstructionDecoderTable
         105,4,73,4,6,77,0,1,
         25,11,0,0,                          // CSYNC    - r
         // TST_ands_32s_log_imm           - TST         Wn, #imm
-        106,4,74,4,4,0,130,2,
+        106,4,74,4,4,0,128,2,
         17,19,0,5,0,0,0,0,                  // Wn       - r
         21,1,15,1,10,12,0,0,                // imm      - r
         // TST_ands_64s_log_imm           - TST         Xn, #imm
-        107,4,74,4,4,0,130,2,
+        107,4,74,4,4,0,128,2,
         17,17,0,5,0,0,0,0,                  // Xn       - r
         21,1,16,1,10,13,0,0,                // imm      - r
         // TST_ands_32_log_shift          - TST         Wn, Wm {, shift, #amount}
-        108,4,74,4,4,0,2,3,
+        108,4,74,4,4,0,0,3,
         17,19,0,5,                          // Wn       - r
         17,19,0,16,                         // Wm       - r
         151,2,86,202,                       // shift?   - r
         // TST_ands_64_log_shift          - TST         Xn, Xm {, shift, #amount}
-        109,4,74,4,4,0,2,3,
+        109,4,74,4,4,0,0,3,
         17,17,0,5,                          // Xn       - r
         17,17,0,16,                         // Xm       - r
         151,2,86,202,                       // shift?   - r

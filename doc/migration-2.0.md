@@ -68,8 +68,6 @@ Generated assembler instruction methods now return the assembler so calls can be
 
 Label finalization errors throw `Arm64AssemblerException` with structured diagnostics. Use `TryEnd(out var diagnostics)` for non-throwing workflows.
 
-Status flag metadata is available through `Arm64Instruction.ReadStatusFlags`, `Arm64Instruction.WrittenStatusFlags`, and `Arm64InstructionId` extension methods.
-
 ## Scope
 
 AsmArm64 remains an assembler/disassembler library. It does not include an ARM64 simulator or emulator.

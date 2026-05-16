@@ -12,6 +12,5 @@ internal enum Arm64InstructionEncodingFlags : byte
 {
     None = Arm64InstructionFlags.None,
     HasLabel = Arm64InstructionFlags.HasLabel,
-    HasSetFlags = Arm64InstructionFlags.HasSetFlags,
     Encoding8Bytes = 1 << 7,
 }

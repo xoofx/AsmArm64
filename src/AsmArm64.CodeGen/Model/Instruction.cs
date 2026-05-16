@@ -119,12 +119,6 @@ class Instruction : IJsonOnDeserialized
 
     public int TableEncodingOffset { get; set; }
 
-    [JsonIgnore]
-    public byte ReadStatusFlags { get; set; }
-
-    [JsonIgnore]
-    public byte WrittenStatusFlags { get; set; }
-
     public void Encode(Span<byte> buffer)
     {
         MemoryMarshal.Write(buffer, (ushort)Index);
@@ -137,10 +131,6 @@ class Instruction : IJsonOnDeserialized
             flags |= Arm64InstructionEncodingFlags.HasLabel;
         }
 
-        if (DocVars.TryGetValue("cond-setting", out var str) && str.Equals("S", StringComparison.OrdinalIgnoreCase))
-        {
-            flags |= Arm64InstructionEncodingFlags.HasSetFlags;
-        }
         buffer[6] = (byte)flags;
         buffer[7] = (byte)Operands.Count;
     }

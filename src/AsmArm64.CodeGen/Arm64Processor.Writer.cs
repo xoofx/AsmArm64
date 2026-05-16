@@ -29,7 +29,6 @@ partial class Arm64Processor
         // Generate instruction related code/data
         GenerateMnemonicEnum();
         GenerateInstructionIdEnum();
-        GenerateInstructionStatusFlagsTable();
         GenerateInstructionClass();
         GenerateArchitecture();
         GenerateFeatures();
@@ -49,90 +48,6 @@ partial class Arm64Processor
         // Generate enums
         GenerateEnums();
     }
-
-    private void GenerateInstructionStatusFlagsTable()
-    {
-        var data = new byte[_instructions.Count + 1];
-        var readCount = 0;
-        var writtenCount = 0;
-        var suspiciousInstructions = new List<string>();
-        foreach (var instruction in _instructions)
-        {
-            var access = GetStatusFlagAccessByte(instruction.Id);
-            data[instruction.Index] = access;
-            instruction.ReadStatusFlags = (byte)(access & 0x0F);
-            instruction.WrittenStatusFlags = (byte)(access >> 4);
-            if (instruction.ReadStatusFlags != 0) readCount++;
-            if (instruction.WrittenStatusFlags != 0) writtenCount++;
-
-            var mnemonic = instruction.Id.Split('_', 2)[0];
-            if ((mnemonic.StartsWith('C') || instruction.Id.Contains("cond", StringComparison.OrdinalIgnoreCase)) && access == 0)
-            {
-                suspiciousInstructions.Add(instruction.Id);
-            }
-        }
-
-        AnsiConsole.MarkupLine($"[dim]Status flag metadata: {readCount} read, {writtenCount} write, {suspiciousInstructions.Count} suspicious.[/]");
-        foreach (var instructionId in suspiciousInstructions.Take(16))
-        {
-            AnsiConsole.MarkupLine($"[dim]  suspicious: {Markup.Escape(instructionId)}[/]");
-        }
-
-        using var w = GetWriter("Arm64InstructionStatusFlagsTable.gen.cs");
-        w.WriteLine("namespace AsmArm64;");
-        w.WriteLine();
-        w.WriteLine("internal static class Arm64InstructionStatusFlagsTable");
-        w.OpenBraceBlock();
-        w.WriteLine("// Low nibble = read Arm64StatusFlags, high nibble = written Arm64StatusFlags.");
-        w.WriteLine("public static ReadOnlySpan<byte> Data => _data;");
-        w.WriteLine("private static readonly byte[] _data =");
-        w.WriteLine("[");
-        w.Indent();
-        for (var i = 0; i < data.Length; i += 16)
-        {
-            var count = Math.Min(16, data.Length - i);
-            w.WriteLine(string.Join(", ", data.AsSpan(i, count).ToArray().Select(x => $"0x{x:X2}")) + ",");
-        }
-        w.UnIndent();
-        w.WriteLine("];");
-        w.CloseBraceBlock();
-    }
-
-    private static byte GetStatusFlagAccessByte(string instructionId)
-    {
-        const byte carry = 1 << 2;
-        const byte nzcv = 0xF;
-
-        var mnemonic = instructionId.Split('_', 2)[0];
-        byte read = 0;
-        byte written = 0;
-
-        if (instructionId.Contains("condbranch", StringComparison.Ordinal) || ReadsNzcv(mnemonic))
-        {
-            read |= nzcv;
-        }
-        if (ReadsCarry(mnemonic))
-        {
-            read |= carry;
-        }
-        if (WritesNzcv(mnemonic))
-        {
-            written |= nzcv;
-        }
-        if (mnemonic == "CFINV")
-        {
-            read |= carry;
-            written |= carry;
-        }
-
-        return (byte)(read | (written << 4));
-    }
-
-    private static bool ReadsNzcv(string mnemonic) => mnemonic is "CCMP" or "CCMN" or "FCCMP" or "FCCMPE" or "CSEL" or "CSINC" or "CSINV" or "CSNEG" or "CSET" or "CSETM" or "CINC" or "CINV" or "CNEG" or "FCSEL";
-
-    private static bool ReadsCarry(string mnemonic) => mnemonic is "ADC" or "ADCS" or "SBC" or "SBCS" or "NGC" or "NGCS";
-
-    private static bool WritesNzcv(string mnemonic) => mnemonic is "ADCS" or "ADDS" or "ANDS" or "BICS" or "CMP" or "CMN" or "TST" or "SUBS" or "SBCS" or "NGCS" or "NEGS" or "CCMP" or "CCMN" or "FCCMP" or "FCCMPE" or "FCMP" or "FCMPE";
 
     private void GenerateDecoderTables()
     {

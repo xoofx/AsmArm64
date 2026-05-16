@@ -59,21 +59,6 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     public Arm64InstructionFlags Flags => (Arm64InstructionFlags)((byte)(Descriptor >> 48) & 0x7F); // Don't expose bit 7 (flags encoding as 8 bytes)
 
     /// <summary>
-    /// Gets the architectural status flags whose current values can affect this instruction.
-    /// </summary>
-    public Arm64StatusFlags ReadStatusFlags => StatusFlags.Read;
-
-    /// <summary>
-    /// Gets the architectural status flags updated by this instruction.
-    /// </summary>
-    public Arm64StatusFlags WrittenStatusFlags => StatusFlags.Written;
-
-    /// <summary>
-    /// Gets the architectural status flag access metadata for this instruction.
-    /// </summary>
-    public Arm64StatusFlagAccess StatusFlags => Arm64InstructionMetadata.GetStatusFlagAccess(Id);
-
-    /// <summary>
     /// Gets the feature expression ID of the instruction.
     /// </summary>
     public Arm64FeatureExpressionId FeatureExpressionId => (Arm64FeatureExpressionId)(byte)(Descriptor >> 40);
