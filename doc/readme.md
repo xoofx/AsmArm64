@@ -286,3 +286,19 @@ asm.Label(out var start)
 long byteLength = (end - start).Evaluate();
 ```
 
+### Disassembler invalid data handling
+
+ARM64 instructions are 4 bytes wide. By default the disassembler throws `ArgumentException` when the input length is not a multiple of 4. Configure `Arm64DisassemblerOptions.InvalidDataMode` to emit or ignore trailing bytes:
+
+```csharp
+var disassembler = new Arm64Disassembler
+{
+    Options =
+    {
+        InvalidDataMode = Arm64InvalidDataMode.EmitBytes
+    }
+};
+
+Console.WriteLine(disassembler.Disassemble(codeWithTrailingBytes));
+```
+

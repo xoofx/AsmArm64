@@ -26,6 +26,7 @@ public class Arm64DisassemblerOptions
         PrintNewLineAfterBranch = true;
         PrintLabelBeforeFirstInstruction = true;
         InstructionTextPaddingLength = 16;
+        InvalidDataMode = Arm64InvalidDataMode.Throw;
     }
 
     /// <summary>
@@ -124,6 +125,11 @@ public class Arm64DisassemblerOptions
     /// Gets or sets a value indicating whether to print a new line before a label.
     /// </summary>
     public bool PrintNewLineBeforeLabel { get; set; }
+
+    /// <summary>
+    /// Gets or sets how trailing bytes that do not form a complete ARM64 instruction are handled.
+    /// </summary>
+    public Arm64InvalidDataMode InvalidDataMode { get; set; }
 
     /// <summary>
     /// Gets or sets the format provider.

@@ -408,6 +408,47 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDisassemblerTrailingByteModes()
+    {
+        var instructionBuffer = Arm64InstructionFactory.NOP();
+        var bytes = MemoryMarshal.AsBytes(new[] { instructionBuffer }.AsSpan()).ToArray();
+        var buffer = bytes.Concat(new byte[] { 0xAA, 0xBB }).ToArray();
+
+        var throwingDisassembler = new Arm64Disassembler();
+        var exception = Assert.Throws<ArgumentException>(() => throwingDisassembler.Disassemble(buffer));
+        StringAssert.Contains(exception.Message, "6 bytes");
+        StringAssert.Contains(exception.Message, "4-byte");
+
+        var emitDisassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                InvalidDataMode = Arm64InvalidDataMode.EmitBytes,
+                PrintLabelBeforeFirstInstruction = false,
+                PrintNewLineBeforeLabel = false
+            }
+        };
+
+        var emitText = emitDisassembler.Disassemble(buffer);
+        StringAssert.Contains(emitText, "nop");
+        StringAssert.Contains(emitText, ".byte 0xAA, 0xBB");
+
+        var ignoreDisassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                InvalidDataMode = Arm64InvalidDataMode.Ignore,
+                PrintLabelBeforeFirstInstruction = false,
+                PrintNewLineBeforeLabel = false
+            }
+        };
+
+        var ignoreText = ignoreDisassembler.Disassemble(buffer);
+        StringAssert.Contains(ignoreText, "nop");
+        Assert.IsFalse(ignoreText.Contains(".byte", StringComparison.Ordinal));
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerCustomLabels()
     {
         var instructionBuffer = AssembleInstructionsSample();

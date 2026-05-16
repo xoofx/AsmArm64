@@ -101,7 +101,7 @@ LL_03:
     ret
 ```
 
-`Arm64DisassemblerOptions.TryFormatLabel` can be used to resolve absolute addresses to label or symbol names, for example from PDB data.
+`Arm64DisassemblerOptions.TryFormatLabel` can be used to resolve absolute addresses to label or symbol names, for example from PDB data. `Arm64DisassemblerOptions.InvalidDataMode` controls trailing bytes that are not a complete 4-byte instruction: throw, emit a `.byte` directive, or ignore them.
 
 ## 📖 User Guide
 

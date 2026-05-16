@@ -103,7 +103,16 @@ public class Arm64Disassembler
     {
         ArgumentNullException.ThrowIfNull(writer);
 
-        var rawInstructions = MemoryMarshal.Cast<byte, uint>(buffer);
+        var trailingByteCount = buffer.Length & 3;
+        if (trailingByteCount != 0 && Options.InvalidDataMode == Arm64InvalidDataMode.Throw)
+        {
+            throw new ArgumentException($"The buffer length ({buffer.Length} bytes) is not aligned to the required 4-byte ARM64 instruction size.", nameof(buffer));
+        }
+
+        var instructionByteLength = buffer.Length - trailingByteCount;
+        var instructionBuffer = buffer.Slice(0, instructionByteLength);
+        var trailingBytes = buffer.Slice(instructionByteLength);
+        var rawInstructions = MemoryMarshal.Cast<byte, uint>(instructionBuffer);
 
         // Clear the internal pending labels
         // And collect any new internal labels from the buffer
@@ -132,7 +141,7 @@ public class Arm64Disassembler
                 {
                     var labelOperand = (Arm64LabelOperand)operand;
                     var absoluteOffset = i * 4 + labelOperand.Offset;
-                    if (absoluteOffset >= 0 && absoluteOffset <= buffer.Length)
+                    if (absoluteOffset >= 0 && absoluteOffset <= instructionByteLength)
                     {
                         _internalLabels.TryAdd((int)absoluteOffset, _internalLabels.Count + 1);
                     }
@@ -253,7 +262,12 @@ public class Arm64Disassembler
 
             _currentOffset = rawInstructions.Length * 4;
             // Print any pending labels
-            PrintLabel(_currentOffset, textSpan, writer, false, false, true);
+            PrintLabel(_currentOffset, textSpan, writer, false, false, trailingByteCount == 0);
+
+            if (trailingByteCount != 0 && Options.InvalidDataMode == Arm64InvalidDataMode.EmitBytes)
+            {
+                PrintTrailingBytes(trailingBytes, textSpan, writer);
+            }
         }
         finally
         {
@@ -292,6 +306,49 @@ public class Arm64Disassembler
 
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
         => writer.Write(GetIndentSpan(textSpan));
+
+    private void PrintTrailingBytes(ReadOnlySpan<byte> trailingBytes, Span<char> textSpan, TextWriter writer)
+    {
+        var runningSpan = textSpan;
+        var charsWritten = 0;
+
+        if (Options.PrintAddress)
+        {
+            textSpan.TryWrite($"{Options.BaseAddress + _currentOffset:X16}", out var addressCharsWritten);
+            charsWritten += addressCharsWritten;
+            runningSpan = textSpan.Slice(addressCharsWritten);
+
+            TryWriteSpaces(runningSpan, Options.IndentSize);
+            charsWritten += Options.IndentSize;
+            runningSpan = runningSpan.Slice(Options.IndentSize);
+        }
+        else
+        {
+            TryWriteSpaces(runningSpan, Options.IndentSize);
+            charsWritten += Options.IndentSize;
+            runningSpan = runningSpan.Slice(Options.IndentSize);
+        }
+
+        ".byte ".TryCopyTo(runningSpan);
+        charsWritten += 6;
+        runningSpan = runningSpan.Slice(6);
+
+        for (var i = 0; i < trailingBytes.Length; i++)
+        {
+            if (i > 0)
+            {
+                ", ".TryCopyTo(runningSpan);
+                charsWritten += 2;
+                runningSpan = runningSpan.Slice(2);
+            }
+
+            runningSpan.TryWrite($"0x{trailingBytes[i]:X2}", out var byteCharsWritten);
+            charsWritten += byteCharsWritten;
+            runningSpan = runningSpan.Slice(byteCharsWritten);
+        }
+
+        writer.WriteLine(textSpan.Slice(0, charsWritten));
+    }
 
     private void PrintLabel(int offset, Span<char> textSpan, TextWriter writer, bool nextNewLine, bool isFirstLabel, bool isLast)
     {
