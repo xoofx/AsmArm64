@@ -472,6 +472,70 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestRawFactoryApisWorkWithoutAssemblerLifecycle()
+    {
+        var raw = Arm64InstructionFactory.ADD(X0, X1, 1);
+        var instruction = Arm64Instruction.Decode(raw);
+
+        Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+        Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+    }
+
+    [TestMethod]
+    public void TestRealisticFunctionGenerationWithDebugComments()
+    {
+        using var asm = new Arm64Assembler(0x4000);
+        var helper = asm.ExternalLabel("helper");
+        var literal = asm.Literal(0x0102030405060708UL, "constant");
+
+        asm.BeginFunction("sum")
+           .BeginCodeSection("text")
+           .MOVZ(X0, 4)
+           .MOVZ(X1, 0)
+           .Label(out var loop)
+           .ADD(X1, X1, X0)
+           .SUBS(X0, X0, 1)
+           .B(GT, loop)
+           .BL(helper)
+           .LDR(X2, literal)
+           .RET()
+           .EndCodeSection()
+           .BeginDataSection("literals")
+           .FlushLiteralPool()
+           .EndDataSection()
+           .EndFunction("sum")
+           .End();
+
+        Assert.AreEqual(1, asm.Relocations.Count);
+        Assert.AreEqual("helper", asm.Relocations[0].Label.Name);
+        Assert.IsTrue(asm.SizeInBytes >= 40);
+
+        var disassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                BaseAddress = (long)asm.BaseAddress,
+                TryFormatComment = (long offset, Arm64Instruction instruction, Span<char> destination, out int written) =>
+                {
+                    var entry = asm.DebugMap!.Entries.LastOrDefault(x => x.Offset == (uint)offset && x.Kind == Arm64AssemblerDebugInfoKind.LineInfo);
+                    if (entry.InstructionId != Arm64InstructionId.Invalid)
+                    {
+                        return destination.TryWrite($"{entry.InstructionId}", out written);
+                    }
+
+                    written = 0;
+                    return false;
+                }
+            }
+        };
+
+        var text = disassembler.Disassemble(asm.Buffer);
+        StringAssert.Contains(text, "b.gt LL_");
+        StringAssert.Contains(text, "ldr x2, LL_");
+        StringAssert.Contains(text, "// MOVZ_64_movewide");
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerSimple()
     {
         var instructionBuffer = AssembleInstructionsSample();

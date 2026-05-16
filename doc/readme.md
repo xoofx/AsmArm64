@@ -305,6 +305,28 @@ var disassembler = new Arm64Disassembler
 };
 ```
 
+The same `TryFormatLabel` hook can resolve symbols from PDBs, linker map files, or any application-owned symbol table because it receives the absolute target address:
+
+```csharp
+var symbols = new Dictionary<long, string>
+{
+    [0x1000] = "start",
+    [0x1040] = "loop",
+};
+
+disassembler.Options.TryFormatLabel = (address, destination, out int written) =>
+{
+    if (symbols.TryGetValue(address, out var name))
+    {
+        written = name.Length;
+        return name.AsSpan().TryCopyTo(destination);
+    }
+
+    written = 0;
+    return false;
+};
+```
+
 ### Label expressions
 
 Label operands accept `Arm64AddressExpression`, so a label can be adjusted by a signed addend and patched once all referenced labels are bound:
@@ -424,6 +446,22 @@ var disassembler = new Arm64Disassembler
 };
 ```
 
+Status flag access can be shown today with `TryFormatComment`:
+
+```csharp
+disassembler.Options.TryFormatComment = (offset, instruction, destination, out int written) =>
+{
+    var access = instruction.StatusFlags;
+    if (!access.ReadsAny && !access.WritesAny)
+    {
+        written = 0;
+        return false;
+    }
+
+    return destination.TryWrite($"reads: {access.Read}; writes: {access.Written}", out written);
+};
+```
+
 ### Quick assemble/disassemble roundtrip
 
 When an assembler owns its byte buffer, call `Disassemble()` after `End()` for a quick listing using the assembler base address:
@@ -443,4 +481,10 @@ For a standalone buffer, use the static helper:
 ```csharp
 string text = Arm64Disassembler.DisassembleToString(code, baseAddress: 0x1000);
 ```
+
+### Performance guidance and scope
+
+The default `Arm64Assembler` owns a growable byte buffer and is optimized for convenient code generation. Reuse an assembler with `Begin(...)`/`Reset()` when repeatedly generating code, and call `ToArray()` only when a stable copy is required. Advanced users that only emit instructions can still provide a custom `Arm64InstructionBuffer` to control storage.
+
+AsmArm64 is scoped to assembly, disassembly, metadata, diagnostics, and layout helpers. It is not an ARM64 simulator or emulator.
 
