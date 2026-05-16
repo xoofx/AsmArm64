@@ -481,6 +481,52 @@ public class TestAssembler : VerifyBase
     }
 
     [TestMethod]
+    public void TestDisassemblerAutoLabelKindsControlAdrAndLiteralLabels()
+    {
+        using var asm = new Arm64Assembler(0xF000);
+        asm.ADR(X0, out var adrTarget)
+           .LDR(X1, out var literalTarget)
+           .B(out var branchTarget)
+           .Label(adrTarget)
+           .NOP()
+           .Label(literalTarget)
+           .NOP()
+           .Label(branchTarget)
+           .RET()
+           .End();
+
+        var branchOnlyDisassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                AutoLabelKinds = Arm64DisassemblerAutoLabelKind.FirstInstruction | Arm64DisassemblerAutoLabelKind.Branches,
+                PrintNewLineBeforeLabel = false,
+                PrintNewLineAfterBranch = false,
+            }
+        };
+
+        var branchOnlyText = branchOnlyDisassembler.Disassemble(asm.Buffer);
+        StringAssert.Contains(branchOnlyText, "adr x0, #12");
+        StringAssert.Contains(branchOnlyText, "ldr x1, #12");
+        StringAssert.Contains(branchOnlyText, "b LL_02");
+
+        var allPcRelativeDisassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                AutoLabelKinds = Arm64DisassemblerAutoLabelKind.All,
+                PrintNewLineBeforeLabel = false,
+                PrintNewLineAfterBranch = false,
+            }
+        };
+
+        var allText = allPcRelativeDisassembler.Disassemble(asm.Buffer);
+        StringAssert.Contains(allText, "adr x0, LL_02");
+        StringAssert.Contains(allText, "ldr x1, LL_03");
+        StringAssert.Contains(allText, "b LL_04");
+    }
+
+    [TestMethod]
     public async Task TestDisassemblerCustomLabels()
     {
         var instructionBuffer = AssembleInstructionsSample();

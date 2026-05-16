@@ -120,7 +120,7 @@ public class Arm64Disassembler
         _internalLabels.Clear();
 
         // Create a label for the first instruction if requested
-        if (Options.PrintLabelBeforeFirstInstruction)
+        if (Options.PrintLabelBeforeFirstInstruction && Options.AutoLabelKinds.HasFlag(Arm64DisassemblerAutoLabelKind.FirstInstruction))
         {
             _internalLabels.Add(0, 1);
         }
@@ -137,7 +137,7 @@ public class Arm64Disassembler
             for (int j = 0; j < instruction.OperandCount; j++)
             {
                 var operand = instruction.GetOperand(j);
-                if (operand.Kind == Arm64OperandKind.Label)
+                if (operand.Kind == Arm64OperandKind.Label && ShouldAutoLabel(instruction.Id))
                 {
                     var labelOperand = (Arm64LabelOperand)operand;
                     var absoluteOffset = i * 4 + labelOperand.Offset;
@@ -306,6 +306,30 @@ public class Arm64Disassembler
 
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
         => writer.Write(GetIndentSpan(textSpan));
+
+    private bool ShouldAutoLabel(Arm64InstructionId id)
+    {
+        var enabledKinds = Options.AutoLabelKinds;
+        if (enabledKinds == Arm64DisassemblerAutoLabelKind.None) return false;
+
+        var targetKind = GetAutoLabelKind(id);
+        return targetKind != Arm64DisassemblerAutoLabelKind.None && (enabledKinds & targetKind) != 0;
+    }
+
+    private static Arm64DisassemblerAutoLabelKind GetAutoLabelKind(Arm64InstructionId id)
+    {
+        if (id == Arm64InstructionId.ADR_only_pcreladdr) return Arm64DisassemblerAutoLabelKind.Adr;
+        if (id == Arm64InstructionId.ADRP_only_pcreladdr) return Arm64DisassemblerAutoLabelKind.Adrp;
+        if (id == Arm64InstructionId.BL_only_branch_imm) return Arm64DisassemblerAutoLabelKind.Calls;
+        if (id == Arm64InstructionId.B_only_branch_imm) return Arm64DisassemblerAutoLabelKind.Branches;
+        if (id == Arm64InstructionId.B_only_condbranch || id == Arm64InstructionId.BC_only_condbranch) return Arm64DisassemblerAutoLabelKind.ConditionalBranches;
+
+        var idText = id.ToString();
+        if (idText.Contains("_loadlit", StringComparison.Ordinal)) return Arm64DisassemblerAutoLabelKind.LiteralLoads;
+        if (idText.StartsWith("CB", StringComparison.Ordinal) || idText.StartsWith("TB", StringComparison.Ordinal)) return Arm64DisassemblerAutoLabelKind.TestCompareBranches;
+        if (id.IsBranch()) return Arm64DisassemblerAutoLabelKind.Branches;
+        return Arm64DisassemblerAutoLabelKind.None;
+    }
 
     private void PrintTrailingBytes(ReadOnlySpan<byte> trailingBytes, Span<char> textSpan, TextWriter writer)
     {

@@ -27,6 +27,7 @@ public class Arm64DisassemblerOptions
         PrintLabelBeforeFirstInstruction = true;
         InstructionTextPaddingLength = 16;
         InvalidDataMode = Arm64InvalidDataMode.Throw;
+        AutoLabelKinds = Arm64DisassemblerAutoLabelKind.All;
     }
 
     /// <summary>
@@ -125,6 +126,11 @@ public class Arm64DisassemblerOptions
     /// Gets or sets a value indicating whether to print a new line before a label.
     /// </summary>
     public bool PrintNewLineBeforeLabel { get; set; }
+
+    /// <summary>
+    /// Gets or sets which PC-relative targets are converted to generated local labels.
+    /// </summary>
+    public Arm64DisassemblerAutoLabelKind AutoLabelKinds { get; set; }
 
     /// <summary>
     /// Gets or sets how trailing bytes that do not form a complete ARM64 instruction are handled.

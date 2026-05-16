@@ -345,3 +345,23 @@ var disassembler = new Arm64Disassembler
 Console.WriteLine(disassembler.Disassemble(codeWithTrailingBytes));
 ```
 
+### Disassembler auto-labels
+
+`Arm64DisassemblerOptions.AutoLabelKinds` controls which PC-relative operands are turned into generated local labels. Use this to keep data references such as `ADR` and `LDR literal` as absolute addresses while still labeling control flow:
+
+```csharp
+var disassembler = new Arm64Disassembler
+{
+    Options =
+    {
+        AutoLabelKinds = Arm64DisassemblerAutoLabelKind.FirstInstruction |
+                         Arm64DisassemblerAutoLabelKind.Branches |
+                         Arm64DisassemblerAutoLabelKind.Calls |
+                         Arm64DisassemblerAutoLabelKind.ConditionalBranches |
+                         Arm64DisassemblerAutoLabelKind.TestCompareBranches
+    }
+};
+```
+
+The default is `Arm64DisassemblerAutoLabelKind.All`, which preserves the previous behavior of labeling all supported PC-relative operands plus the first instruction when `PrintLabelBeforeFirstInstruction` is enabled.
+
