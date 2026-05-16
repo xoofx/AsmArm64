@@ -119,6 +119,12 @@ class Instruction : IJsonOnDeserialized
 
     public int TableEncodingOffset { get; set; }
 
+    [JsonIgnore]
+    public byte ReadStatusFlags { get; set; }
+
+    [JsonIgnore]
+    public byte WrittenStatusFlags { get; set; }
+
     public void Encode(Span<byte> buffer)
     {
         MemoryMarshal.Write(buffer, (ushort)Index);

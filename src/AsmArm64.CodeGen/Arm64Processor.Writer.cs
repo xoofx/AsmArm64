@@ -53,9 +53,29 @@ partial class Arm64Processor
     private void GenerateInstructionStatusFlagsTable()
     {
         var data = new byte[_instructions.Count + 1];
+        var readCount = 0;
+        var writtenCount = 0;
+        var suspiciousInstructions = new List<string>();
         foreach (var instruction in _instructions)
         {
-            data[instruction.Index] = GetStatusFlagAccessByte(instruction.Id);
+            var access = GetStatusFlagAccessByte(instruction.Id);
+            data[instruction.Index] = access;
+            instruction.ReadStatusFlags = (byte)(access & 0x0F);
+            instruction.WrittenStatusFlags = (byte)(access >> 4);
+            if (instruction.ReadStatusFlags != 0) readCount++;
+            if (instruction.WrittenStatusFlags != 0) writtenCount++;
+
+            var mnemonic = instruction.Id.Split('_', 2)[0];
+            if ((mnemonic.StartsWith('C') || instruction.Id.Contains("cond", StringComparison.OrdinalIgnoreCase)) && access == 0)
+            {
+                suspiciousInstructions.Add(instruction.Id);
+            }
+        }
+
+        AnsiConsole.MarkupLine($"[dim]Status flag metadata: {readCount} read, {writtenCount} write, {suspiciousInstructions.Count} suspicious.[/]");
+        foreach (var instructionId in suspiciousInstructions.Take(16))
+        {
+            AnsiConsole.MarkupLine($"[dim]  suspicious: {Markup.Escape(instructionId)}[/]");
         }
 
         using var w = GetWriter("Arm64InstructionStatusFlagsTable.gen.cs");
@@ -65,7 +85,6 @@ partial class Arm64Processor
         w.OpenBraceBlock();
         w.WriteLine("// Low nibble = read Arm64StatusFlags, high nibble = written Arm64StatusFlags.");
         w.WriteLine("public static ReadOnlySpan<byte> Data => _data;");
-        w.WriteLine();
         w.WriteLine("private static readonly byte[] _data =");
         w.WriteLine("[");
         w.Indent();

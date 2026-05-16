@@ -15,7 +15,6 @@ internal static class Arm64InstructionStatusFlagsTable
 {
     // Low nibble = read Arm64StatusFlags, high nibble = written Arm64StatusFlags.
     public static ReadOnlySpan<byte> Data => _data;
-
     private static readonly byte[] _data =
     [
         0x00, 0x00, 0x00, 0x04, 0x04, 0xF4, 0xF4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0,

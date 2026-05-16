@@ -36,6 +36,31 @@ public class TestInstructionStatusFlags
         Assert.AreEqual(default, Arm64InstructionId.Invalid.GetStatusFlagAccess());
     }
 
+    [TestMethod]
+    public void TestStaticInstructionIdLookupApis()
+    {
+        var addWithFlags = Arm64InstructionId.ADDS_64_addsub_shift;
+        Assert.AreEqual(Arm64StatusFlags.None, addWithFlags.GetReadStatusFlags());
+        Assert.AreEqual(Arm64StatusFlags.NZCV, addWithFlags.GetWrittenStatusFlags());
+        Assert.IsTrue(addWithFlags.GetStatusFlagAccess().Writes(Arm64StatusFlags.Z));
+
+        var conditionalBranch = Arm64InstructionId.B_only_condbranch;
+        Assert.AreEqual(Arm64StatusFlags.NZCV, conditionalBranch.GetReadStatusFlags());
+        Assert.AreEqual(Arm64StatusFlags.None, conditionalBranch.GetWrittenStatusFlags());
+        Assert.IsTrue(conditionalBranch.GetStatusFlagAccess().ReadsAny);
+    }
+
+    [TestMethod]
+    public void TestGeneratedStatusFlagMetadataMasksAreValid()
+    {
+        foreach (Arm64InstructionId id in Enum.GetValues<Arm64InstructionId>())
+        {
+            var access = id.GetStatusFlagAccess();
+            Assert.AreEqual(Arm64StatusFlags.None, access.Read & ~Arm64StatusFlags.NZCV, $"Unexpected read flags for {id}.");
+            Assert.AreEqual(Arm64StatusFlags.None, access.Written & ~Arm64StatusFlags.NZCV, $"Unexpected written flags for {id}.");
+        }
+    }
+
     private static void AssertStatusFlags(uint rawInstruction, Arm64StatusFlags expectedRead, Arm64StatusFlags expectedWritten)
     {
         var instruction = Arm64Instruction.Decode(rawInstruction);
