@@ -32,14 +32,7 @@ public readonly unsafe struct Arm64Operands : IEnumerable<Arm64Operand>
     /// <param name="index">The index of the operand.</param>
     /// <returns>The operand at the specified index.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
-    public Arm64Operand this[int index]
-    {
-        get
-        {
-            ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)Count);
-            return _instruction.IsOperandEncodingSize4Bytes ? new Arm64Operand(*((ulong*)_instruction.OperandsPtr + index), _instruction.RawValue) : new Arm64Operand(*((uint*)_instruction.OperandsPtr + index), _instruction.RawValue);
-        }
-    }
+    public Arm64Operand this[int index] => _instruction.GetOperand(index);
 
     /// <summary>
     /// Returns an enumerator that iterates through the collection.
