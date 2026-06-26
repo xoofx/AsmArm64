@@ -838,7 +838,11 @@ public class TestAssembler : VerifyBase
         asm.RET();
         asm.Assemble();
 
+#if NETFRAMEWORK
+        return MemoryMarshal.Cast<uint, byte>(bufferList.Instructions.ToArray()).ToArray();
+#else
         return MemoryMarshal.Cast<uint, byte>(CollectionsMarshal.AsSpan(bufferList.Instructions)).ToArray();
+#endif
     }
 
     private static int CurrentLine([CallerLineNumber] int lineNumber = 0) => lineNumber;
