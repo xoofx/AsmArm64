@@ -7,7 +7,10 @@ namespace AsmArm64;
 /// <summary>
 /// Interface for accessing ARM64 memory.
 /// </summary>
-public interface IArm64MemoryAccessor : ISpanFormattable
+public interface IArm64MemoryAccessor
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Gets the base register kind.

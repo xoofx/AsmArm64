@@ -13,7 +13,10 @@ using EntryIndex = int;
 /// <summary>
 /// Encoded instruction table for ARM64.
 /// </summary>
-public readonly unsafe struct Arm64Instruction : ISpanFormattable
+public readonly unsafe struct Arm64Instruction
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     internal readonly ulong Descriptor;
     internal readonly byte* OperandsPtr;

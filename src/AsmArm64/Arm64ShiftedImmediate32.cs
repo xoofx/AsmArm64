@@ -7,7 +7,10 @@ namespace AsmArm64;
 /// <summary>
 /// Represents a 32-bit shifted immediate value.
 /// </summary>
-public readonly record struct Arm64ShiftedImmediate32 : ISpanFormattable
+public readonly record struct Arm64ShiftedImmediate32
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64ShiftedImmediate32"/> struct.

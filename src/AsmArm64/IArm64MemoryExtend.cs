@@ -7,7 +7,10 @@ namespace AsmArm64;
 /// <summary>
 /// Represents an interface for ARM64 memory with an extend operation.
 /// </summary>
-public interface IArm64MemoryExtend : ISpanFormattable
+public interface IArm64MemoryExtend
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Gets the kind of the extend operation.

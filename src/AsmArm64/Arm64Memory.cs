@@ -130,7 +130,11 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
         Span<char> span = stackalloc char[32];
         var result = TryFormat(span, out var charsWritten, format, formatProvider);
         Debug.Assert(result);
+#if NETSTANDARD2_0
+        return new string(span.Slice(0, charsWritten).ToArray());
+#else
         return new string(span.Slice(0, charsWritten));
+#endif
     }
 
     /// <inheritdoc />

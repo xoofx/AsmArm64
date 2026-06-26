@@ -7,7 +7,10 @@ namespace AsmArm64;
 /// <summary>
 /// Defines the interface for a register group.
 /// </summary>
-public interface IArm64RegisterGroup : ISpanFormattable
+public interface IArm64RegisterGroup
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Gets the base register of this group

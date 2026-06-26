@@ -7,7 +7,10 @@ namespace AsmArm64;
 /// <summary>
 /// Represents an interface for an ARM64 operand.
 /// </summary>
-public interface IArm64Operand : ISpanFormattable
+public interface IArm64Operand
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Gets the kind of the operand.
