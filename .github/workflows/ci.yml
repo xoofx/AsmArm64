@@ -17,6 +17,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: NuGet Login
+        if: ${{ github.event_name == 'push' && github.repository_owner == 'xoofx' }}
         uses: NuGet/login@v1
         id: nuget-login
         with:
