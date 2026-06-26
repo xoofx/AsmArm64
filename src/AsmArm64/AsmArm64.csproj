@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
+  </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
     <!-- Enable AOT analyzers -->
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
@@ -128,4 +130,17 @@
       <DependentUpon>Arm64SystemRegisterKind.tt</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <!-- Settings for netstandard2.0 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Buffers" />
+    <PackageReference Include="System.Memory" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
 </Project>
