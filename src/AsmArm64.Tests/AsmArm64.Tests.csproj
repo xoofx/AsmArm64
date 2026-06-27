@@ -7,9 +7,8 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <EnableMSTestRunner>true</EnableMSTestRunner>
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net481'">
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
