@@ -9,7 +9,10 @@ namespace AsmArm64;
 /// <summary>
 /// Represents an 8-bit floating-point immediate value.
 /// </summary>
-public readonly record struct Arm64FloatImmediate : ISpanFormattable
+public readonly record struct Arm64FloatImmediate
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64FloatImmediate"/> struct with the specified encoded value.

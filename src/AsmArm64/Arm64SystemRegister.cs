@@ -10,7 +10,10 @@ namespace AsmArm64;
 /// <summary>
 /// Defines a system register for ARM64.
 /// </summary>
-public readonly struct Arm64SystemRegister : IEquatable<Arm64SystemRegister>, ISpanFormattable
+public readonly struct Arm64SystemRegister : IEquatable<Arm64SystemRegister>
+#if !NETSTANDARD2_0
+    , ISpanFormattable
+#endif
 {
     // 16-bit value for the Arm64SystemRegisterId enum index
     // 16-bit value for the system register

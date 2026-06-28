@@ -216,7 +216,11 @@ public class Arm64Disassembler
 
                     if (Options.PrintAssemblyBytes)
                     {
+#if NETSTANDARD2_0
+                        Span<byte> bytes = BitConverter.GetBytes(rawInstruction);
+#else
                         var bytes = MemoryMarshal.AsBytes(new Span<uint>(ref rawInstruction));
+#endif
                         var assemblyBytes = $"{FormatHexByte(bytes[0])} {FormatHexByte(bytes[1])} {FormatHexByte(bytes[2])} {FormatHexByte(bytes[3])}";
                         assemblyBytes.AsSpan().TryCopyTo(runningSpan);
                         var localCharsWritten = assemblyBytes.Length;
@@ -275,10 +279,13 @@ public class Arm64Disassembler
                     }
 
                     runningSpan = textSpan.Slice(0, charsWritten);
+
+#if NETSTANDARD2_0
+                    writer.WriteLine(runningSpan.TrimEnd(' ').ToString());
+#else
                     runningSpan = runningSpan.TrimEnd(' ');
-
                     writer.WriteLine(runningSpan);
-
+#endif
                     if (instruction.Id.IsBranch())
                     {
                         nextNewLine = true;
@@ -337,7 +344,11 @@ public class Arm64Disassembler
     }
 
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
+#if NETSTANDARD2_0
+        => writer.Write(GetIndentSpan(textSpan).ToArray());
+#else
         => writer.Write(GetIndentSpan(textSpan));
+#endif
 
     private string FormatAddress(long address)
         => Options.AddressPrefix + address.ToString(Options.UseUppercaseHex ? "X16" : "x16", CultureInfo.InvariantCulture);
@@ -418,7 +429,11 @@ public class Arm64Disassembler
             runningSpan = runningSpan.Slice(byteCharsWritten);
         }
 
+#if NETSTANDARD2_0
+        writer.WriteLine(textSpan.Slice(0, charsWritten).ToArray());
+#else
         writer.WriteLine(textSpan.Slice(0, charsWritten));
+#endif
     }
 
     private void PrintLabel(int offset, Span<char> textSpan, TextWriter writer, bool nextNewLine, bool isFirstLabel, bool isLast)
@@ -439,7 +454,12 @@ public class Arm64Disassembler
                 var result = textSpan.TryWrite($"{FormatLocalLabel(labelIndex)}:", out charsWritten);
                 Debug.Assert(result);
             }
+
+#if NETSTANDARD2_0
+            writer.WriteLine(textSpan.Slice(0, charsWritten).ToArray());
+#else
             writer.WriteLine(textSpan.Slice(0, charsWritten));
+#endif
         }
         else
         {

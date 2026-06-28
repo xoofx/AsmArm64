@@ -9,7 +9,10 @@ namespace AsmArm64;
 /// <summary>
 /// Represents an 8-bit immediate bitmask that can be used to encode a 64-bit mask.
 /// </summary>
-public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
+public readonly record struct Arm64BitMaskImmediate64
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64BitMaskImmediate64"/> struct.
@@ -136,5 +139,7 @@ public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
     /// <param name="provider">The format provider to use.</param>
     /// <returns><c>true</c> if the formatting was successful; otherwise, <c>false</c>.</returns>
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format = default, IFormatProvider? provider = null)
-        => format.Length == 0 || format[0] == 'X' ? destination.TryWrite(provider, $"0x{Value():16X}", out charsWritten) : Value().TryFormat(destination, out charsWritten, format, provider);
+        => format.Length == 0 || format[0] == 'X'
+            ? destination.TryWrite(provider, $"0x{Value():16X}", out charsWritten)
+            : Value().TryFormat(destination, out charsWritten, format, provider);
 }

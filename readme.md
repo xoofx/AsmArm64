@@ -13,7 +13,7 @@ AsmArm64 is a powerful ARM64 Assembler and Disassembler .NET library.
 - **Easily disassemble** instructions and operands, including the knowledge of which operands and status flags are being read/write.
 - **High performance** / **zero allocation** library for disassembling / assembling instructions.
 - `15,000+` unit tests battle testing this library
-- Compatible with `net8.0+` and NativeAOT.
+- Compatible with `net8.0+` and NativeAOT. (`netstandard2.0` is also supported, but support is limited)
 
 ## 💻 Example
 

@@ -8,7 +8,10 @@ namespace AsmArm64;
 /// Represents a label, a relative offset from the current instruction.
 /// </summary>
 /// <param name="Value">A relative offset to the current instruction</param>
-public readonly record struct Arm64LabelOffset(int Value) : ISpanFormattable
+public readonly record struct Arm64LabelOffset(int Value)
+#if !NETSTANDARD2_0
+    : ISpanFormattable
+#endif
 {
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
