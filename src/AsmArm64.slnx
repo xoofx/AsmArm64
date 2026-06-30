@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/01-General/">
+    <File Path="../.editorconfig" />
+    <File Path="../.gitattributes" />
+    <File Path="../.github/workflows/ci.yml" />
+    <File Path="../.gitignore" />
+    <File Path="../AGENTS.md" />
+    <File Path="../license.txt" />
+    <File Path="../readme.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="dotnet-releaser.toml" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/02-Doc/">
+    <File Path="../doc/readme.md" />
+  </Folder>
+  <Project Path="AsmArm64.Bench/AsmArm64.Bench.csproj" />
+  <Project Path="AsmArm64.CodeGen/AsmArm64.CodeGen.csproj" />
+  <Project Path="AsmArm64.Tests/AsmArm64.Tests.csproj" />
+  <Project Path="AsmArm64/AsmArm64.csproj" />
+</Solution>
