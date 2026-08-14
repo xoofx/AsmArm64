@@ -1,0 +1,161 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <!-- Enable AOT analyzers -->
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>The most powerful ARM 64 (v8, v9) Assembler / Disassembler for .NET</Description>
+    <Copyright>Alexandre Mutel</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Authors>Alexandre Mutel</Authors>
+    <PackageTags>arm64;aarch64;assembler;disassembler;ARM</PackageTags>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageIcon>AsmArm64.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/xoofx/AsmArm64</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <!--Add support for sourcelink-->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>AsmArm64.Signed</PackageId>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AsmArm64\AsmArm64.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AsmArm64\**\*.cs" Exclude="..\AsmArm64\obj\**;..\AsmArm64\bin\**">
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="..\AsmArm64\Registers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)../../img/AsmArm64.png" Pack="true" PackagePath="/" />
+    <None Include="$(MSBuildThisFileDirectory)../../readme.md" Pack="true" PackagePath="/" />
+    <None Include="Arm64Memory.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Memory.tt</DependentUpon>
+    </None>
+    <None Include="Arm64RegisterDual.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64RegisterDual.tt</DependentUpon>
+    </None>
+    <None Include="Arm64RegisterGroup.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64RegisterGroup.tt</DependentUpon>
+    </None>
+    <None Include="Arm64Registers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Arm64ExtendKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64ExtendKind.gen.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64Memory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64Memory.gen.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64RegisterDual.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64RegisterDual.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64RegisterGroup.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64RegisterGroup.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64Registers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64Registers.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64Registers.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Registers.tt</DependentUpon>
+    </None>
+    <None Update="Arm64SystemRegisterKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64SystemRegisterKind.gen.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Arm64ExtendKind.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64ExtendKind.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64Memory.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Memory.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64RegisterDual.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64RegisterDual.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64RegisterGroup.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64RegisterGroup.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64Registers.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Registers.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64SystemRegisterKind.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64SystemRegisterKind.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Settings for netstandard2.0 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Buffers" />
+    <PackageReference Include="System.Memory" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+</Project>
