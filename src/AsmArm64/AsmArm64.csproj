@@ -27,6 +27,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -59,7 +61,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <InternalsVisibleTo Include="AsmArm64.Tests" />
+    <InternalsVisibleTo Include="AsmArm64.Tests" PublicKey="002400000480000094000000060200000024000052534131000400000100010069147d461511b6fbfb486584525a5e3d75bedbc9eada65d29245774013be05c17570b715c671c3812ffdb9d484c06d571da3f9ebd0c054343338e001846360981b5b182de08af9e208855f89b6f51ab845529812b44435dd1c0526d97eabc88709264edd528295e3bc82d089cc143340844b05006b0150ecfd76c928d3a4dca0" />
   </ItemGroup>
 
   <ItemGroup>
