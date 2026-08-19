@@ -5,3 +5,6 @@ project = "AsmArm64.slnx"
 [github]
 user = "xoofx"
 repo = "AsmArm64"
+[nuget]
+user = "xoofx"
+trusted_publishing = true
