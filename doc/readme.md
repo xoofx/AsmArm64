@@ -418,6 +418,14 @@ The default is `Arm64DisassemblerAutoLabelKind.All`, which preserves the previou
 
 ### Disassembler formatting options
 
+Individual instructions support `ToString("H", null)` for uppercase assembly text and
+`ToString("x", null)` / `ToString("X", null)` for hexadecimal immediates and label
+offsets (lowercase/uppercase hex digits). Numeric label offsets include `#` and a
+`0x` prefix in hexadecimal; negative offsets use signed magnitude, e.g. `b #-0x100`.
+`Arm64LabelOperand` and `Arm64LabelOffset` use the same conventions in `ToString`
+and `TryFormat`. A successful label-formatting callback takes precedence over
+numeric formatting.
+
 Formatting can be tuned without replacing the disassembler. `Arm64DisassemblerOptions.Style` applies a preset (`Default`, `Gas`, or `Llvm`), and individual options can customize generated label text, comment prefix, address prefix, and disassembler-owned hex casing:
 
 ```csharp

@@ -15,17 +15,14 @@ public readonly record struct Arm64LabelOffset(int Value)
 {
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
-    {
-        FormattableString formattable = $"{nameof(Value)}: {Value}";
-        return formattable.ToString(formatProvider);
-    }
+        => Arm64FormattingHelper.FormatLabelOffset(Value, format, formatProvider);
 
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-        => destination.TryWrite(provider, $"#{Value}", out charsWritten);
+        => Arm64FormattingHelper.TryFormatLabelOffset(Value, destination, out charsWritten, format, provider);
 
     /// <inheritdoc />
-    public override string ToString() => $"#{Value}";
+    public override string ToString() => ToString(null, null);
 
     /// <summary>
     /// Converts an offset to a label.

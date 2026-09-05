@@ -137,13 +137,7 @@ public readonly struct Arm64LabelOperand : IArm64Operand
 
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
-    {
-        // 8 ~= Shift max 3, amount maximum 2 digits, 1 space, 1 #
-        Span<char> span = stackalloc char[8];
-        var result = TryFormat(span, out var written, format, formatProvider);
-        Debug.Assert(result);
-        return span.Slice(0, written).ToString();
-    }
+        => Arm64FormattingHelper.FormatLabelOffset(Offset, format, formatProvider);
 
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
@@ -160,19 +154,7 @@ public readonly struct Arm64LabelOperand : IArm64Operand
             return true;
         }
 
-        if (destination.Length <= 1)
-        {
-            charsWritten = 0;
-            return false;
-        }
-        destination[0] = '#';
-        if (!Offset.TryFormat(destination.Slice(1), out var digitWritten, default, provider))
-        {
-            charsWritten = 0;
-            return false;
-        }
-        charsWritten = digitWritten + 1;
-        return true;
+        return Arm64FormattingHelper.TryFormatLabelOffset(Offset, destination, out charsWritten, format, provider);
     }
 
     /// <summary>
