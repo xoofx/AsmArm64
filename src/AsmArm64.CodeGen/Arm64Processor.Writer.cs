@@ -29,6 +29,7 @@ partial class Arm64Processor
         // Generate instruction related code/data
         GenerateMnemonicEnum();
         GenerateInstructionIdEnum();
+        GenerateInstructionAliases();
         GenerateInstructionClass();
         GenerateArchitecture();
         GenerateFeatures();
@@ -122,6 +123,35 @@ partial class Arm64Processor
             w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {EscapeHtmlEntities(instruction.Summary)}.");
             w.WriteLine($"{instruction.Id} = {instruction.Index},");
         }
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateInstructionAliases()
+    {
+        using var w = GetWriter("Arm64InstructionAliasTable.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteLine("internal static class Arm64InstructionAliasTable");
+        w.OpenBraceBlock();
+        w.WriteLine("internal static Arm64InstructionId GetBaseInstructionId(Arm64InstructionId id) => id switch");
+        w.OpenBraceBlock();
+        foreach (var instruction in _instructions.OrderBy(x => x.Id, StringComparer.Ordinal))
+        {
+            if (instruction.Alias is null) continue;
+            var visited = new HashSet<string> { instruction.Id };
+            var baseInstruction = instruction;
+            while (baseInstruction.Alias is not null)
+            {
+                baseInstruction = MapIdToInstruction[baseInstruction.Alias.InstructionId];
+                if (!visited.Add(baseInstruction.Id))
+                {
+                    throw new InvalidOperationException($"Cyclic alias relationship for {instruction.Id}");
+                }
+            }
+            w.WriteLine($"Arm64InstructionId.{instruction.Id} => Arm64InstructionId.{baseInstruction.Id},");
+        }
+        w.WriteLine("_ => id,");
+        w.CloseBraceBlockStatement();
         w.CloseBraceBlock();
     }
 

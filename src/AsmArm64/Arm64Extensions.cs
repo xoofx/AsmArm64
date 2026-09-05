@@ -41,6 +41,38 @@ public static partial class Arm64Extensions
     public static string ToText(this Arm64Mnemonic mnemonic, bool upperCase = false) => upperCase ? MnemonicUpperTable[(int)mnemonic] : MnemonicLowerTable[(int)mnemonic];
 
     /// <summary>
+    /// Gets the non-alias instruction ID underlying an instruction ID.
+    /// Non-alias IDs and <see cref="Arm64InstructionId.Invalid"/> are returned unchanged.
+    /// </summary>
+    /// <param name="id">The instruction ID.</param>
+    /// <returns>The base instruction ID, with all architectural alias relationships resolved.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">The ID is not defined.</exception>
+    public static Arm64InstructionId GetBaseInstructionId(this Arm64InstructionId id)
+    {
+        ValidateInstructionId(id);
+        return Arm64InstructionAliasTable.GetBaseInstructionId(id);
+    }
+
+    /// <summary>
+    /// Gets the mnemonic of an instruction ID. For an alias ID, this is the alias mnemonic.
+    /// </summary>
+    /// <param name="id">The instruction ID.</param>
+    /// <returns>The mnemonic, or <see cref="Arm64Mnemonic.Invalid"/> for the invalid instruction ID.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">The ID is not defined.</exception>
+    public static Arm64Mnemonic GetMnemonic(this Arm64InstructionId id)
+    {
+        ValidateInstructionId(id);
+        var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int)id];
+        return (Arm64Mnemonic)(ushort)(Arm64Instruction.GetOperandDescriptor(offset * 4) >> 16);
+    }
+
+    private static void ValidateInstructionId(Arm64InstructionId id)
+    {
+        if ((int)id >= Arm64InstructionDecoderTable.InstructionIdToBufferOffset.Length)
+            throw new ArgumentOutOfRangeException(nameof(id), id, "Unknown instruction ID.");
+    }
+
+    /// <summary>
     /// Gets the text representation of the specified <see cref="Arm64ShiftKind"/>.
     /// </summary>
     /// <param name="shiftType"></param>

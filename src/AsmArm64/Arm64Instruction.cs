@@ -47,6 +47,22 @@ public readonly unsafe struct Arm64Instruction
     public Arm64InstructionId Id => (Arm64InstructionId)(ushort)Descriptor;
 
     /// <summary>
+    /// Gets the original instruction encoding, independent of its alias representation.
+    /// </summary>
+    public Arm64RawInstruction RawInstruction => RawValue;
+
+    /// <summary>
+    /// Gets a view of this encoding as its base instruction, with the base mnemonic and operands.
+    /// Does not change this instance or recover the original assembler source spelling.
+    /// </summary>
+    /// <returns>The non-alias instruction, or this instruction if it is not an alias.</returns>
+    public Arm64Instruction AsBaseInstruction()
+    {
+        var baseId = Arm64InstructionAliasTable.GetBaseInstructionId(Id);
+        return baseId == Id ? this : Create(baseId, RawValue);
+    }
+
+    /// <summary>
     /// Gets the mnemonic of the instruction.
     /// </summary>
     public Arm64Mnemonic Mnemonic => (Arm64Mnemonic)(ushort)(Descriptor >> 16);
@@ -201,8 +217,10 @@ public readonly unsafe struct Arm64Instruction
     /// <param name="rawInstruction">The raw instruction.</param>
     /// <returns>The decoded instruction.</returns>
     public static Arm64Instruction Decode(Arm64RawInstruction rawInstruction)
+        => Create(DecodeId(rawInstruction), rawInstruction);
+
+    private static Arm64Instruction Create(Arm64InstructionId id, Arm64RawInstruction rawInstruction)
     {
-        var id = DecodeId(rawInstruction);
         var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int)id];
         var buffer = (byte*)Unsafe.AsPointer(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset * 4));
         var descriptor = (ulong*)buffer;

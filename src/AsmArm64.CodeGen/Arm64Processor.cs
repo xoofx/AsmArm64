@@ -106,6 +106,13 @@ partial class Arm64Processor
         GenerateDecoderTables();
     }
 
+    public async Task GenerateInstructionAliasesOnly()
+    {
+        _isaBaseSpecsFolder = await DownloadAndExtractTarGz(_isaTarGzUrl, true);
+        LoadInstructions();
+        GenerateInstructionAliases();
+    }
+
     private async Task GenerateCapstoneTests()
     {
         await AnsiConsole.Status().StartAsync($"Generating tests from Capstone {_capstoneArchiveFile}", ctx =>

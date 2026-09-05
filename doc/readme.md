@@ -426,6 +426,33 @@ offsets (lowercase/uppercase hex digits). Numeric label offsets include `#` and 
 and `TryFormat`. A successful label-formatting callback takes precedence over
 numeric formatting.
 
+#### Architectural aliases
+
+Decoding selects Arm's preferred disassembly aliases by default. For example,
+`MOVZ(X0, 0x100)` decodes as `mov x0, #256` with ID `MOV_movz_64_movewide`.
+An alias represents the same encoding but can have different operands, not merely
+a different mnemonic. Use a base-instruction view for encoding-oriented output:
+
+```csharp
+var instruction = Arm64Instruction.Decode(Arm64InstructionFactory.MOVZ(X0, 0x100));
+Console.WriteLine(instruction.AsBaseInstruction().ToString("X", null)); // movz x0, #0x100
+var baseId = instruction.Id.GetBaseInstructionId(); // MOVZ_64_movewide
+var mnemonic = baseId.GetMnemonic();               // MOVZ
+var encoding = instruction.RawInstruction;         // unchanged machine encoding
+```
+
+`AsBaseInstruction()` restores base operands, including hidden registers, inverted
+conditions, and encoded immediate/shift fields. It leaves the original decoded
+instance unchanged. `GetMnemonic()` on an alias ID returns the alias mnemonic;
+call `GetBaseInstructionId()` first to obtain the base mnemonic. Invalid IDs map
+to `Invalid`; undefined enum values throw `ArgumentOutOfRangeException`.
+Neither view recovers the author's original spelling or multi-instruction assembler
+pseudo-instructions. Alias relationships come from Arm's XML specification, not
+from parsing enum names. Regenerate just this metadata from `src/` with
+`dotnet run --project AsmArm64.CodeGen -c Release -- --instruction-aliases-only`.
+
+#### Listing styles
+
 Formatting can be tuned without replacing the disassembler. `Arm64DisassemblerOptions.Style` applies a preset (`Default`, `Gas`, or `Llvm`), and individual options can customize generated label text, comment prefix, address prefix, and disassembler-owned hex casing:
 
 ```csharp

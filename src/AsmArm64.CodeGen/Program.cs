@@ -13,6 +13,11 @@ internal class Program
         var capstoneTarGzUrl = "https://github.com/capstone-engine/capstone/archive/refs/tags/6.0.0-Alpha3.tar.gz";
 
         var processor = new Arm64Processor(isaTarGzUrl, systemRegisterTarGzUrl, capstoneTarGzUrl);
+        if (args is ["--instruction-aliases-only"])
+        {
+            await processor.GenerateInstructionAliasesOnly();
+            return;
+        }
         await processor.Run();
     }
 }
