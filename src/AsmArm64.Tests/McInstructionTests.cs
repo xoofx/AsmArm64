@@ -18,5 +18,6 @@ public partial class McInstructionTests
 
         var instructionToString = instruction.ToString();
         Assert.AreEqual(expectedAsm, instructionToString, $"asm not matching - {instruction.Id}");
+        Assert.AreEqual(expectedAsm, instruction.ToString(new Arm64InstructionFormattingOptions()), $"default options - {instruction.Id}");
     }
 }

@@ -426,6 +426,50 @@ offsets (lowercase/uppercase hex digits). Numeric label offsets include `#` and 
 and `TryFormat`. A successful label-formatting callback takes precedence over
 numeric formatting.
 
+Use `Arm64InstructionFormattingOptions` to combine text casing, hexadecimal digit
+casing, numeric styles, and alias selection independently. The same options work
+for individual instructions and full disassembly:
+
+```csharp
+var formatting = new Arm64InstructionFormattingOptions
+{
+    AliasMode = Arm64InstructionAliasMode.BaseInstruction,
+    UseUppercaseText = true,
+    UseUppercaseHex = false,
+    ImmediateFormat = Arm64NumericFormat.Hexadecimal,
+    MemoryOffsetFormat = Arm64NumericFormat.Hexadecimal,
+    LabelOffsetFormat = Arm64NumericFormat.Auto,
+};
+var instruction = Arm64Instruction.Decode(Arm64InstructionFactory.MOVZ(X0, 0xAB));
+Console.WriteLine(instruction.ToString(formatting)); // MOVZ X0, #0xab
+Span<char> text = stackalloc char[256];
+instruction.TryFormat(text, out int written, formatting);
+
+var disassembler = new Arm64Disassembler(new Arm64DisassemblerOptions
+{
+    InstructionFormatting = formatting,
+});
+```
+
+Numeric modes are `Default` (existing operand-specific conventions), `Decimal`,
+`Hexadecimal`, and `Auto` (magnitudes 0–9 decimal, larger magnitudes hexadecimal).
+Memory offsets include pre- and post-indexed displacements. Signed numbers use
+signed-magnitude hex; bit masks retain their encoded width in hex. Floating-point
+constants, shift/extend operands, and register indices retain their syntax-specific
+formatting. `PrintDefaultOperands = true` displays optional default operands, such
+as `ret x30` and `movz x0, #1, lsl #0`, including optional zero memory offsets.
+
+`FormatProvider` controls numeric culture; the disassembler's existing non-null
+`FormatProvider` overrides the provider in `InstructionFormatting`. For deterministic
+assembly text, use `CultureInfo.InvariantCulture`. A relative-offset label resolver
+can be supplied to `instruction.TryFormat(formatting, text, out written, resolver)`;
+returning false requests numeric fallback. Existing formatting overloads remain available.
+
+Typed options default to the existing presentation. Listing `Style` presets and
+`Arm64DisassemblerOptions.UseUppercaseHex` continue to affect listing-owned text
+only, not `InstructionFormatting`. Presets are not guarantees of exact GAS/LLVM
+syntax compatibility. Options are mutable and should not be modified during formatting.
+
 #### Architectural aliases
 
 Decoding selects Arm's preferred disassembly aliases by default. For example,

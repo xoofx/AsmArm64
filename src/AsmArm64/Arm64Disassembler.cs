@@ -241,7 +241,7 @@ public class Arm64Disassembler
 
                 // Write the instruction
                 {
-                    instruction.TryFormat(runningSpan, out var instructionCharsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate);
+                    instruction.TryFormat(runningSpan, out var instructionCharsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate, Options.InstructionFormatting);
                     charsWritten += instructionCharsWritten;
                     runningSpan = runningSpan.Slice(instructionCharsWritten);
 

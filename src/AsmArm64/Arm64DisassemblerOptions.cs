@@ -19,6 +19,7 @@ public class Arm64DisassemblerOptions
     private string _commentPrefix;
     private string _addressPrefix;
     private Arm64DisassemblyStyle _style;
+    private Arm64InstructionFormattingOptions _instructionFormatting = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64DisassemblerOptions"/> class.
@@ -45,6 +46,21 @@ public class Arm64DisassemblerOptions
     /// Gets or sets the delegate to format labels from absolute addresses.
     /// </summary>
     public Arm64TryFormatDelegate? TryFormatLabel { get; set; }
+
+    /// <summary>
+    /// Gets or sets the instruction text options shared with individual instruction formatting.
+    /// Listing styles and <see cref="UseUppercaseHex"/> do not change these options.
+    /// </summary>
+    /// <exception cref="ArgumentNullException">The options are null.</exception>
+    public Arm64InstructionFormattingOptions InstructionFormatting
+    {
+        get => _instructionFormatting;
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value);
+            _instructionFormatting = value;
+        }
+    }
 
     /// <summary>
     /// Gets or sets the delegate to format instruction comments.
@@ -240,7 +256,7 @@ public class Arm64DisassemblerOptions
     public Arm64InvalidDataMode InvalidDataMode { get; set; }
 
     /// <summary>
-    /// Gets or sets the format provider.
+    /// Gets or sets the numeric format provider. When non-null, overrides the provider in <see cref="InstructionFormatting"/>.
     /// </summary>
     public IFormatProvider? FormatProvider { get; set; }
 }

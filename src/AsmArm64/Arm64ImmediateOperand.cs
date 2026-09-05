@@ -194,6 +194,9 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
     /// <param name="tryFormatLabel">The try format label delegate.</param>
     /// <returns>True if the formatting was successful; otherwise, false.</returns>
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
+        => TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel, null, false);
+
+    internal bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel, Arm64InstructionFormattingOptions? options, bool isMemoryOffset)
     {
         var defaultValue = (instruction.Id == Arm64InstructionId.ISB_bi_barriers || instruction.Id == Arm64InstructionId.CLREX_bn_barriers) ? 15 : 0;
         isDefaultValue = (_isOptional && Value == defaultValue);
@@ -215,7 +218,22 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
         }
         else
         {
-            if (_displayAsHex)
+            if (options is not null)
+            {
+                var numericFormat = isMemoryOffset ? options.MemoryOffsetFormat : options.ImmediateFormat;
+                if (numericFormat != Arm64NumericFormat.Default)
+                {
+                    format = Arm64FormattingHelper.GetNumericFormat(numericFormat, options.UseUppercaseHex, Value);
+                    // Bit masks retain their encoded width in hex; signed values use signed magnitude.
+                    if (!_displayAsHex || !Arm64FormattingHelper.IsHex(format))
+                        return Arm64FormattingHelper.TryFormatLabelOffset(_is32 ? ValueAsInt : Value, destination, out charsWritten, format, provider);
+                }
+                else if (_displayAsHex)
+                {
+                    format = options.UseUppercaseHex ? "X" : "x";
+                }
+            }
+            else if (_displayAsHex)
             {
                 format = "x";
             }

@@ -235,6 +235,9 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
         => _accessor.TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
 
+    internal bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64InstructionFormattingOptions? options)
+        => _accessor.TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, options);
+
     /// <summary>
     /// Performs an explicit conversion from <see cref="Arm64Operand"/> to <see cref="Arm64MemoryOperand"/>.
     /// </summary>

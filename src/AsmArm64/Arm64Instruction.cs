@@ -2,7 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System.Diagnostics;
+using System.Buffers;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -119,11 +119,59 @@ public readonly unsafe struct Arm64Instruction
     /// <param name="formatProvider">The format provider.</param>
     /// <returns>The string representation of the instruction.</returns>
     public string ToString(string? format, IFormatProvider? formatProvider)
+        => FormatToString(format, formatProvider, null);
+
+    /// <summary>Formats this instruction using typed presentation options.</summary>
+    /// <param name="options">The formatting options.</param>
+    /// <returns>The formatted instruction.</returns>
+    /// <exception cref="ArgumentNullException">The options are null.</exception>
+    public string ToString(Arm64InstructionFormattingOptions options)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        return FormatToString(null, options.FormatProvider, options);
+    }
+
+    private string FormatToString(string? format, IFormatProvider? provider, Arm64InstructionFormattingOptions? options)
     {
         Span<char> buffer = stackalloc char[256];
-        var result = TryFormat(buffer, out var charsWritten, format.AsSpan(), formatProvider);
-        Debug.Assert(result);
-        return buffer.Slice(0, charsWritten).ToString();
+        if (TryFormat(buffer, out var charsWritten, format.AsSpan(), provider, null, options))
+            return buffer.Slice(0, charsWritten).ToString();
+
+        for (var length = 512; ; length = checked(length * 2))
+        {
+            var rented = ArrayPool<char>.Shared.Rent(length);
+            try
+            {
+                if (TryFormat(rented, out charsWritten, format.AsSpan(), provider, null, options))
+                    return rented.AsSpan(0, charsWritten).ToString();
+            }
+            finally
+            {
+                ArrayPool<char>.Shared.Return(rented);
+            }
+        }
+    }
+
+    /// <summary>Tries to format this instruction using typed presentation options.</summary>
+    /// <param name="destination">The destination buffer.</param>
+    /// <param name="charsWritten">The number of characters written, or zero on failure.</param>
+    /// <param name="options">The formatting options.</param>
+    /// <returns>False if the destination is too small; otherwise true.</returns>
+    /// <exception cref="ArgumentNullException">The options are null.</exception>
+    public bool TryFormat(Span<char> destination, out int charsWritten, Arm64InstructionFormattingOptions options)
+        => TryFormat(options, destination, out charsWritten, null);
+
+    /// <summary>Tries to format this instruction using typed options and a relative-offset label resolver.</summary>
+    /// <param name="options">The formatting options.</param>
+    /// <param name="destination">The destination buffer.</param>
+    /// <param name="charsWritten">The number of characters written, or zero on failure.</param>
+    /// <param name="tryResolveLabel">An optional resolver receiving the relative label offset. Returning false requests numeric fallback.</param>
+    /// <returns>False if the destination is too small; otherwise true.</returns>
+    /// <exception cref="ArgumentNullException">The options are null.</exception>
+    public bool TryFormat(Arm64InstructionFormattingOptions options, Span<char> destination, out int charsWritten, Arm64TryFormatDelegate? tryResolveLabel)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        return TryFormat(destination, out charsWritten, default, options.FormatProvider, tryResolveLabel, options);
     }
 
     /// <summary>
@@ -147,64 +195,56 @@ public readonly unsafe struct Arm64Instruction
     /// <param name="tryResolveLabel">The delegate to resolve labels.</param>
     /// <returns><c>true</c> if the formatting was successful; otherwise, <c>false</c>.</returns>
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryResolveLabel)
+        => TryFormat(destination, out charsWritten, format, provider, tryResolveLabel, null);
+
+    internal bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryResolveLabel, Arm64InstructionFormattingOptions? options)
     {
+        if (options?.AliasMode == Arm64InstructionAliasMode.BaseInstruction)
+            return AsBaseInstruction().TryFormatCore(destination, out charsWritten, format, provider, tryResolveLabel, options);
+        return TryFormatCore(destination, out charsWritten, format, provider, tryResolveLabel, options);
+    }
+
+    private bool TryFormatCore(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryResolveLabel, Arm64InstructionFormattingOptions? options)
+    {
+        if (options is not null)
+        {
+            format = options.UseUppercaseText ? "H" : "L";
+            provider ??= options.FormatProvider;
+        }
+        charsWritten = 0;
         var mnemonic = this.Mnemonic.ToText(format.Length == 1 && format[0] == 'H');
         if (destination.Length < mnemonic.Length)
         {
-            charsWritten = 0;
             return false;
         }
         mnemonic.AsSpan().CopyTo(destination);
         var written = mnemonic.Length;
-        if (destination.Length <= written)
-        {
-            charsWritten = 0;
-            return false;
-        }
 
         bool isSpecialCondition = Id == Arm64InstructionId.BC_only_condbranch || Id == Arm64InstructionId.B_only_condbranch;
+        Span<char> optionalBuffer = stackalloc char[256];
 
         for (int i = 0; i < OperandCount; i++)
         {
-            int previousCharsWritten = written;
-
-            if (!isSpecialCondition && i > 0)
-            {
-                if (destination.Length <= written)
-                {
-                    charsWritten = 0;
-                    return false;
-                }
-
-                destination[written] = (char)',';
-                written++;
-            }
-
-            if (destination.Length <= written)
-            {
-                charsWritten = 0;
-                return false;
-            }
-
-            destination[written] = isSpecialCondition && i == 0 ? (char)'.' : (char)' ';
-            written++;
             var operand = GetOperand(i);
-            if (!operand.TryFormat(this, destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider, tryResolveLabel))
+            var separator = isSpecialCondition && i == 0 ? "." : !isSpecialCondition && i > 0 ? ", " : " ";
+            var start = written + separator.Length;
+            var remaining = destination.Slice(Math.Min(start, destination.Length));
+            var suppressDefault = operand.IsOptional && options?.PrintDefaultOperands != true;
+            var isMemoryOffset = options is not null && operand.Kind == Arm64OperandKind.Immediate && i > 0 && GetOperand(i - 1).Kind == Arm64OperandKind.Memory;
+
+            // Optional defaults must be suppressible even when the final text exactly fills the destination.
+            if (suppressDefault && operand.TryFormat(this, optionalBuffer, out var optionalWritten, out var isDefault, format, provider, tryResolveLabel, options, isMemoryOffset))
             {
-                charsWritten = 0;
-                return false;
+                if (isDefault) continue;
+                if (start > destination.Length || !optionalBuffer.Slice(0, optionalWritten).TryCopyTo(remaining)) return false;
+                separator.AsSpan().CopyTo(destination.Slice(written));
+                written = start + optionalWritten;
+                continue;
             }
 
-            // If the argument is actually optional and is the default value, we don't write it
-            // So we roll back the written chars. Because TryFormat is expensive as it decode the operand, we don't want to call it twice (decode for default and decode for format)
-            if (operand.IsOptional && isDefaultValue)
-            {
-                written = previousCharsWritten;
-            }
-            else
-            {
-                written += operandWritten;
-            }
+            if (start > destination.Length || !operand.TryFormat(this, remaining, out var operandWritten, out _, format, provider, tryResolveLabel, options, isMemoryOffset)) return false;
+            separator.AsSpan().CopyTo(destination.Slice(written));
+            written = start + operandWritten;
         }
 
         charsWritten = written;

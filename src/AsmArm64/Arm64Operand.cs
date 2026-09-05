@@ -59,6 +59,9 @@ public readonly struct Arm64Operand : IArm64Operand
 
     /// <inheritdoc />
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
+        => TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel, null, false);
+
+    internal bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel, Arm64InstructionFormattingOptions? options, bool isMemoryOffset)
     {
         switch (Kind)
         {
@@ -67,16 +70,18 @@ public readonly struct Arm64Operand : IArm64Operand
             case Arm64OperandKind.SystemRegister:
                 return ((Arm64SystemRegisterOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
             case Arm64OperandKind.Immediate:
-                return ((Arm64ImmediateOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
+                return ((Arm64ImmediateOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel, options, isMemoryOffset);
             case Arm64OperandKind.Shift:
                 return ((Arm64ShiftOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
             case Arm64OperandKind.Memory:
-                return ((Arm64MemoryOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
+                return ((Arm64MemoryOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, options);
             case Arm64OperandKind.Extend:
                 return ((Arm64ExtendOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
             case Arm64OperandKind.RegisterGroup:
                 return ((Arm64RegisterGroupOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
             case Arm64OperandKind.Label:
+                if (options is not null)
+                    format = Arm64FormattingHelper.GetNumericFormat(options.LabelOffsetFormat, options.UseUppercaseHex, ((Arm64LabelOperand)this).Offset);
                 return ((Arm64LabelOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);
             case Arm64OperandKind.Enum:
                 return ((Arm64EnumOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryFormatLabel);

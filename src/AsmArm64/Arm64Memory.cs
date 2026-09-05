@@ -146,10 +146,13 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
     /// Tries to format the value of the current instance into the provided span of characters.
     /// </summary>
     public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+        => TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, null);
+
+    internal bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64InstructionFormattingOptions? options)
     {
         isDefaultValue = false;
         // At minimum we need [x0] ~= 4 characters
-        if (destination.Length <= 4)
+        if (destination.Length < 4)
         {
             charsWritten = 0;
             return false;
@@ -166,7 +169,7 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
         {
             if (OffsetKind == Arm64MemoryOffsetKind.Immediate)
             {
-                if (!HasOptionalOffset || this.Immediate != 0)
+                if (!HasOptionalOffset || this.Immediate != 0 || options?.PrintDefaultOperands == true)
                 {
                     if (destination.Length <= written + 2)
                     {
@@ -175,10 +178,10 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
                     }
                     destination[written] = ',';
                     destination[written + 1] = ' ';
-                    destination[written + 2] = '#';
-                    written += 3;
+                    written += 2;
 
-                    if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, "G", provider))
+                    var numericFormat = options is null ? "G" : Arm64FormattingHelper.GetNumericFormat(options.MemoryOffsetFormat, options.UseUppercaseHex, Immediate);
+                    if (!Arm64FormattingHelper.TryFormatLabelOffset(Immediate, destination.Slice(written), out var immediateWritten, numericFormat, provider))
                     {
                         charsWritten = 0;
                         return false;
@@ -205,7 +208,7 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
                 }
                 written += indexWritten;
 
-                if (Extend.Kind != Arm64ExtendKind.None && (!HasOptionalOffset || !Extend.IsDefault))
+                if (Extend.Kind != Arm64ExtendKind.None && (!HasOptionalOffset || !Extend.IsDefault || options?.PrintDefaultOperands == true))
                 {
                     if (destination.Length <= written + 1)
                     {

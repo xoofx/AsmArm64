@@ -12,6 +12,10 @@ internal static class Arm64FormattingHelper
     internal static ulong Magnitude(long value)
         => value < 0 ? unchecked(0UL - (ulong)value) : (ulong)value;
 
+    internal static string GetNumericFormat(Arm64NumericFormat format, bool uppercase, long value)
+        => format == Arm64NumericFormat.Hexadecimal || (format == Arm64NumericFormat.Auto && Magnitude(value) > 9)
+            ? (uppercase ? "X" : "x") : "G";
+
     internal static string FormatLabelOffset(long value, string? format, IFormatProvider? provider)
         => IsHex(format.AsSpan())
             ? (value < 0 ? "#-0x" : "#0x") + Magnitude(value).ToString(format, provider)
