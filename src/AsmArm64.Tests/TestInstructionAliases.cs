@@ -34,6 +34,8 @@ public class TestInstructionAliases
         var baseInstruction = instruction.AsBaseInstruction();
         Assert.AreEqual(preferredText, instruction.ToString());
         Assert.AreEqual(baseText, baseInstruction.ToString());
+        TestInstructionFormatting.AssertFormat(instruction,
+            new Arm64InstructionFormattingOptions { AliasMode = Arm64InstructionAliasMode.BaseInstruction }, baseText);
         Assert.AreEqual(raw, baseInstruction.RawInstruction);
         Assert.AreEqual(instruction.Id.GetBaseInstructionId(), baseInstruction.Id);
         Assert.AreEqual(baseInstruction.Mnemonic, baseInstruction.Id.GetMnemonic());

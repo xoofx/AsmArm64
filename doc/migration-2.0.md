@@ -64,6 +64,24 @@ Generated assembler instruction methods now return the assembler so calls can be
 
 `Arm64DisassemblerOptions.TryFormatLabel` receives absolute target addresses. This makes symbol lookup from PDBs, map files, or object metadata straightforward.
 
+`Arm64InstructionFormattingOptions` is shared by single-instruction formatting and
+`Arm64DisassemblerOptions.InstructionFormatting`. Preferred aliases remain the
+default; select `AliasMode = Arm64InstructionAliasMode.BaseInstruction` to print
+base mnemonics and operands. Existing string-format overloads remain supported.
+
+Numeric label operands now honor `x`/`X`, including signed hexadecimal offsets.
+`Arm64LabelOffset.ToString(format, provider)` now agrees with its other formatting
+methods (`#256`, rather than the former diagnostic `Value: 256`).
+
+Unresolved full-disassembler targets still default to relative offsets. Set
+`LabelFallback = Arm64DisassemblerLabelFallback.AbsoluteAddress` to request absolute
+hexadecimal targets explicitly. ADRP target calculations now use the PC page;
+unaligned targets no longer produce undefined generated labels, and excluded
+auto-label kinds no longer reuse other kinds' labels.
+
+Lines exceeding `FormatLineBufferLength` now throw `InvalidOperationException`
+instead of silently truncating output. Increase the configured capacity if needed.
+
 ## Diagnostics and metadata
 
 Label finalization errors throw `Arm64AssemblerException` with structured diagnostics. Use `TryEnd(out var diagnostics)` for non-throwing workflows.

@@ -3,7 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Buffers;
-using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
 
@@ -12,10 +12,12 @@ namespace AsmArm64;
 /// <summary>
 /// Disassembles ARM64 instructions from a byte buffer.
 /// </summary>
+/// <remarks>Instances are not thread-safe. Do not change options or reenter disassembly from formatting callbacks.</remarks>
 public class Arm64Disassembler
 {
     private readonly Dictionary<int, int> _internalLabels;
     private int _currentOffset;
+    private Arm64InstructionId _currentInstructionId;
     private readonly Arm64TryFormatDelegate _tryFormatLabelDelegate;
 
     /// <summary>
@@ -29,8 +31,10 @@ public class Arm64Disassembler
     /// Initializes a new instance of the <see cref="Arm64Disassembler"/> class with the specified options.
     /// </summary>
     /// <param name="options">The options to use for disassembling.</param>
+    /// <exception cref="ArgumentNullException">The options are null.</exception>
     public Arm64Disassembler(Arm64DisassemblerOptions options)
     {
+        ArgumentNullException.ThrowIfNull(options);
         _internalLabels = new();
         Options = options;
         _tryFormatLabelDelegate = TryFormatLabel;
@@ -43,6 +47,7 @@ public class Arm64Disassembler
     /// <param name="baseAddress">The base address used for address and label formatting.</param>
     /// <returns>A string containing the disassembled instructions.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="baseAddress"/> cannot be represented as a signed 64-bit value.</exception>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds the configured line buffer capacity.</exception>
     public static string DisassembleToString(ReadOnlySpan<byte> buffer, ulong baseAddress = 0x1_0000UL)
     {
         if (baseAddress > long.MaxValue) throw new ArgumentOutOfRangeException(nameof(baseAddress), "The base address must fit in a signed 64-bit value for disassembler options.");
@@ -67,6 +72,7 @@ public class Arm64Disassembler
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="buffer"/> is <c>null</c>.</exception>
     /// <returns>A string containing the disassembled instructions.</returns>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count.</exception>
     public string Disassemble(byte[] buffer)
     {
         ArgumentNullException.ThrowIfNull(buffer);
@@ -78,6 +84,7 @@ public class Arm64Disassembler
     /// </summary>
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <returns>A string containing the disassembled instructions.</returns>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count.</exception>
     public string Disassemble(Span<byte> buffer)
         => Disassemble((ReadOnlySpan<byte>)buffer);
 
@@ -86,6 +93,7 @@ public class Arm64Disassembler
     /// </summary>
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <returns>A string containing the disassembled instructions.</returns>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count.</exception>
     public string Disassemble(ReadOnlySpan<byte> buffer)
     {
         var writer = new StringWriter();
@@ -99,6 +107,7 @@ public class Arm64Disassembler
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="buffer"/> or <paramref name="writer"/> is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count.</exception>
     public void Disassemble(byte[] buffer, TextWriter writer)
     {
         ArgumentNullException.ThrowIfNull(buffer);
@@ -111,6 +120,7 @@ public class Arm64Disassembler
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="writer"/> is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count.</exception>
     public void Disassemble(Span<byte> buffer, TextWriter writer)
         => Disassemble((ReadOnlySpan<byte>)buffer, writer);
 
@@ -120,6 +130,7 @@ public class Arm64Disassembler
     /// <param name="buffer">The byte buffer containing the instructions to disassemble.</param>
     /// <param name="writer">The <see cref="TextWriter"/> to write the disassembled instructions to.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="writer"/> is <c>null</c>.</exception>
+    /// <exception cref="InvalidOperationException">A formatted line exceeds <see cref="Arm64DisassemblerOptions.FormatLineBufferLength"/> or a callback returns an invalid character count. Earlier lines may already have been written.</exception>
     public void Disassemble(ReadOnlySpan<byte> buffer, TextWriter writer)
     {
         ArgumentNullException.ThrowIfNull(writer);
@@ -161,8 +172,8 @@ public class Arm64Disassembler
                 if (operand.Kind == Arm64OperandKind.Label && ShouldAutoLabel(instruction.Id))
                 {
                     var labelOperand = (Arm64LabelOperand)operand;
-                    var absoluteOffset = i * 4 + labelOperand.Offset;
-                    if (absoluteOffset >= 0 && absoluteOffset <= instructionByteLength)
+                    var absoluteOffset = unchecked(GetTargetAddress(instruction.Id, i * 4, labelOperand.Offset) - Options.BaseAddress);
+                    if (absoluteOffset >= 0 && absoluteOffset <= instructionByteLength && (absoluteOffset & 3) == 0)
                     {
                         _internalLabels.TryAdd((int)absoluteOffset, _internalLabels.Count + 1);
                     }
@@ -175,7 +186,7 @@ public class Arm64Disassembler
         var textBuffer = ArrayPool<char>.Shared.Rent(Options.FormatLineBufferLength);
         try
         {
-            var textSpan = textBuffer.AsSpan();
+            var textSpan = textBuffer.AsSpan(0, Options.FormatLineBufferLength);
 
             bool nextNewLine = false;
 
@@ -187,6 +198,7 @@ public class Arm64Disassembler
                 var instruction = Arm64Instruction.Decode(rawInstruction);
 
                 _currentOffset = i * 4;
+                _currentInstructionId = instruction.Id;
                 PrintLabel(_currentOffset, textSpan, writer, nextNewLine, i == 0, false);
                 nextNewLine = false;
 
@@ -197,21 +209,14 @@ public class Arm64Disassembler
                 }
 
                 var runningSpan = textSpan;
-                int charsWritten = 0;
 
                 // Write the indent
                 if (Options.PrintAddress || Options.PrintAssemblyBytes)
                 {
                     if (Options.PrintAddress)
                     {
-                        FormatAddress(Options.BaseAddress + _currentOffset).AsSpan().TryCopyTo(textSpan);
-                        var localCharsWritten = Options.AddressPrefix.Length + 16;
-                        charsWritten += localCharsWritten;
-                        runningSpan = textSpan.Slice(localCharsWritten);
-
-                        TryWriteSpaces(runningSpan, Options.IndentSize);
-                        charsWritten += Options.IndentSize;
-                        runningSpan = runningSpan.Slice(Options.IndentSize);
+                        AppendText(ref runningSpan, FormatAddress(unchecked(Options.BaseAddress + _currentOffset)));
+                        AppendSpaces(ref runningSpan, Options.IndentSize);
                     }
 
                     if (Options.PrintAssemblyBytes)
@@ -222,70 +227,44 @@ public class Arm64Disassembler
                         var bytes = MemoryMarshal.AsBytes(new Span<uint>(ref rawInstruction));
 #endif
                         var assemblyBytes = $"{FormatHexByte(bytes[0])} {FormatHexByte(bytes[1])} {FormatHexByte(bytes[2])} {FormatHexByte(bytes[3])}";
-                        assemblyBytes.AsSpan().TryCopyTo(runningSpan);
-                        var localCharsWritten = assemblyBytes.Length;
-                        charsWritten += localCharsWritten;
-                        runningSpan = runningSpan.Slice(localCharsWritten);
-
-                        TryWriteSpaces(runningSpan, Options.IndentSize);
-                        charsWritten += Options.IndentSize;
-                        runningSpan = runningSpan.Slice(Options.IndentSize);
+                        AppendText(ref runningSpan, assemblyBytes);
+                        AppendSpaces(ref runningSpan, Options.IndentSize);
                     }
                 }
                 else
                 {
-                    TryWriteSpaces(runningSpan, Options.IndentSize);
-                    charsWritten += Options.IndentSize;
-                    runningSpan = runningSpan.Slice(Options.IndentSize);
+                    AppendSpaces(ref runningSpan, Options.IndentSize);
                 }
 
                 // Write the instruction
                 {
-                    instruction.TryFormat(runningSpan, out var instructionCharsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate, Options.InstructionFormatting);
-                    charsWritten += instructionCharsWritten;
+                    if (!instruction.TryFormat(runningSpan, out var instructionCharsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate, Options.InstructionFormatting))
+                        ThrowLineBufferTooSmall();
                     runningSpan = runningSpan.Slice(instructionCharsWritten);
 
                     // Write padding
-                    if (Options.InstructionTextPaddingLength > 0 && instructionCharsWritten < Options.InstructionTextPaddingLength && TryWriteSpaces(runningSpan, Options.InstructionTextPaddingLength - instructionCharsWritten))
+                    if (Options.TryFormatComment is not null && Options.InstructionTextPaddingLength > instructionCharsWritten)
                     {
-                        var paddingWritten = Options.InstructionTextPaddingLength - instructionCharsWritten;
-                        charsWritten += paddingWritten;
-                        runningSpan = runningSpan.Slice(paddingWritten);
+                        AppendSpaces(ref runningSpan, Options.InstructionTextPaddingLength - instructionCharsWritten);
                     }
 
-                    if (Options.TryFormatComment is not null && TryWriteSpaces(runningSpan, 4))
+                    if (Options.TryFormatComment is not null)
                     {
-                        charsWritten += 4;
-                        runningSpan = runningSpan.Slice(4);
-
+                        AppendSpaces(ref runningSpan, 4);
                         var commentPrefix = Options.CommentPrefix;
-                        if (commentPrefix.Length == 0 || commentPrefix.AsSpan().TryCopyTo(runningSpan))
+                        AppendText(ref runningSpan, commentPrefix);
+                        if (commentPrefix.Length != 0)
                         {
-                            charsWritten += commentPrefix.Length;
-                            runningSpan = runningSpan.Slice(commentPrefix.Length);
-                            if (commentPrefix.Length != 0)
-                            {
-                                runningSpan[0] = ' ';
-                                charsWritten++;
-                                runningSpan = runningSpan.Slice(1);
-                            }
-
-                            if (Options.TryFormatComment(_currentOffset, instruction, runningSpan, out var commentsCharsWritten))
-                            {
-                                charsWritten += commentsCharsWritten;
-                                runningSpan = runningSpan.Slice(commentsCharsWritten);
-                            }
+                            AppendSpaces(ref runningSpan, 1);
+                        }
+                        if (Options.TryFormatComment(_currentOffset, instruction, runningSpan, out var commentsCharsWritten))
+                        {
+                            ValidateFormattedLength(commentsCharsWritten, runningSpan.Length);
+                            runningSpan = runningSpan.Slice(commentsCharsWritten);
                         }
                     }
 
-                    runningSpan = textSpan.Slice(0, charsWritten);
-
-#if NETSTANDARD2_0
-                    writer.WriteLine(runningSpan.TrimEnd(' ').ToString());
-#else
-                    runningSpan = runningSpan.TrimEnd(' ');
-                    writer.WriteLine(runningSpan);
-#endif
+                    WriteLine(writer, textSpan.Slice(0, textSpan.Length - runningSpan.Length).TrimEnd(' '));
                     if (instruction.Id.IsBranch())
                     {
                         nextNewLine = true;
@@ -314,40 +293,34 @@ public class Arm64Disassembler
         }
     }
 
-    private Span<char> GetIndentSpan(Span<char> textSpan)
+    private static void AppendText(ref Span<char> destination, ReadOnlySpan<char> text)
     {
-        var indentSize = Math.Min((int)Options.IndentSize, textSpan.Length);
-        if (indentSize > 0)
-        {
-            for (int indent = 0; indent < indentSize; indent++)
-            {
-                textSpan[indent] = ' ';
-            }
-
-            return textSpan.Slice(0, indentSize);
-        }
-
-        return default;
+        if (!text.TryCopyTo(destination)) ThrowLineBufferTooSmall();
+        destination = destination.Slice(text.Length);
     }
 
-    private bool TryWriteSpaces(Span<char> textSpan, int count)
+    private static void AppendSpaces(ref Span<char> destination, int count)
     {
-        if (count > textSpan.Length)
-        {
-            return false;
-        }
-        for (int i = 0; i < count; i++)
-        {
-            textSpan[i] = ' ';
-        }
-        return true;
+        if ((uint)count > (uint)destination.Length) ThrowLineBufferTooSmall();
+        destination.Slice(0, count).Fill(' ');
+        destination = destination.Slice(count);
     }
 
-    private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
+    [DoesNotReturn]
+    private static void ThrowLineBufferTooSmall()
+        => throw new InvalidOperationException("The formatted line exceeds FormatLineBufferLength. Increase the disassembler's FormatLineBufferLength.");
+
+    private static void ValidateFormattedLength(int count, int available)
+    {
+        if ((uint)count > (uint)available)
+            throw new InvalidOperationException("The formatting callback returned an invalid character count.");
+    }
+
+    private static void WriteLine(TextWriter writer, ReadOnlySpan<char> text)
 #if NETSTANDARD2_0
-        => writer.Write(GetIndentSpan(textSpan).ToArray());
+        => writer.WriteLine(text.ToString());
 #else
-        => writer.Write(GetIndentSpan(textSpan));
+        => writer.WriteLine(text);
 #endif
 
     private string FormatAddress(long address)
@@ -388,52 +361,26 @@ public class Arm64Disassembler
     private void PrintTrailingBytes(ReadOnlySpan<byte> trailingBytes, Span<char> textSpan, TextWriter writer)
     {
         var runningSpan = textSpan;
-        var charsWritten = 0;
 
         if (Options.PrintAddress)
         {
-            var addressText = FormatAddress(Options.BaseAddress + _currentOffset);
-            addressText.AsSpan().TryCopyTo(textSpan);
-            var addressCharsWritten = addressText.Length;
-            charsWritten += addressCharsWritten;
-            runningSpan = textSpan.Slice(addressCharsWritten);
-
-            TryWriteSpaces(runningSpan, Options.IndentSize);
-            charsWritten += Options.IndentSize;
-            runningSpan = runningSpan.Slice(Options.IndentSize);
+            AppendText(ref runningSpan, FormatAddress(unchecked(Options.BaseAddress + _currentOffset)));
         }
-        else
-        {
-            TryWriteSpaces(runningSpan, Options.IndentSize);
-            charsWritten += Options.IndentSize;
-            runningSpan = runningSpan.Slice(Options.IndentSize);
-        }
+        AppendSpaces(ref runningSpan, Options.IndentSize);
 
-        ".byte ".TryCopyTo(runningSpan);
-        charsWritten += 6;
-        runningSpan = runningSpan.Slice(6);
+        AppendText(ref runningSpan, ".byte ");
 
         for (var i = 0; i < trailingBytes.Length; i++)
         {
             if (i > 0)
             {
-                ", ".TryCopyTo(runningSpan);
-                charsWritten += 2;
-                runningSpan = runningSpan.Slice(2);
+                AppendText(ref runningSpan, ", ");
             }
 
-            var byteText = $"0x{FormatHexByte(trailingBytes[i])}";
-            byteText.AsSpan().TryCopyTo(runningSpan);
-            var byteCharsWritten = byteText.Length;
-            charsWritten += byteCharsWritten;
-            runningSpan = runningSpan.Slice(byteCharsWritten);
+            AppendText(ref runningSpan, $"0x{FormatHexByte(trailingBytes[i])}");
         }
 
-#if NETSTANDARD2_0
-        writer.WriteLine(textSpan.Slice(0, charsWritten).ToArray());
-#else
-        writer.WriteLine(textSpan.Slice(0, charsWritten));
-#endif
+        WriteLine(writer, textSpan.Slice(0, textSpan.Length - runningSpan.Length));
     }
 
     private void PrintLabel(int offset, Span<char> textSpan, TextWriter writer, bool nextNewLine, bool isFirstLabel, bool isLast)
@@ -444,22 +391,18 @@ public class Arm64Disassembler
             {
                 writer.WriteLine();
             }
-            if (TryFormatLabelExtended(0, false, textSpan, out var charsWritten) && charsWritten + 1 < textSpan.Length)
+            var runningSpan = textSpan;
+            if (Options.TryFormatLabel is not null && Options.TryFormatLabel(unchecked(Options.BaseAddress + offset), runningSpan, out var charsWritten))
             {
-                textSpan[charsWritten] = ':';
-                charsWritten++;
+                ValidateFormattedLength(charsWritten, runningSpan.Length);
+                runningSpan = runningSpan.Slice(charsWritten);
             }
             else
             {
-                var result = textSpan.TryWrite($"{FormatLocalLabel(labelIndex)}:", out charsWritten);
-                Debug.Assert(result);
+                AppendText(ref runningSpan, FormatLocalLabel(labelIndex));
             }
-
-#if NETSTANDARD2_0
-            writer.WriteLine(textSpan.Slice(0, charsWritten).ToArray());
-#else
-            writer.WriteLine(textSpan.Slice(0, charsWritten));
-#endif
+            AppendText(ref runningSpan, ":");
+            WriteLine(writer, textSpan.Slice(0, textSpan.Length - runningSpan.Length));
         }
         else
         {
@@ -470,36 +413,42 @@ public class Arm64Disassembler
         }
     }
 
-    private bool TryFormatLabelExtended(long offset, bool handleInternalLabels, Span<char> textSpan, out int charsWritten)
+    private long GetTargetAddress(Arm64InstructionId id, int instructionOffset, long labelOffset)
     {
-        var absoluteOffset = _currentOffset + offset;
+        var address = unchecked(Options.BaseAddress + instructionOffset);
+        if (id == Arm64InstructionId.ADRP_only_pcreladdr) address &= ~0xFFFL;
+        return unchecked(address + labelOffset);
+    }
+
+    private bool TryFormatLabel(long offset, Span<char> textSpan, out int charsWritten)
+    {
+        var targetAddress = GetTargetAddress(_currentInstructionId, _currentOffset, offset);
 
         var tryFormatLabel = Options.TryFormatLabel;
-        if (tryFormatLabel is not null && tryFormatLabel(Options.BaseAddress + absoluteOffset, textSpan, out charsWritten))
+        if (tryFormatLabel is not null && tryFormatLabel(targetAddress, textSpan, out charsWritten))
         {
+            ValidateFormattedLength(charsWritten, textSpan.Length);
             return true;
         }
 
-        if (handleInternalLabels)
+        var absoluteOffset = unchecked(targetAddress - Options.BaseAddress);
+        string labelText;
+        if (ShouldAutoLabel(_currentInstructionId) && absoluteOffset >= 0 && absoluteOffset <= int.MaxValue && _internalLabels.TryGetValue((int)absoluteOffset, out var labelIndex))
         {
-            if (_internalLabels.TryGetValue((int)absoluteOffset, out var labelIndex))
-            {
-                var labelText = FormatLocalLabel(labelIndex);
-                charsWritten = labelText.Length;
-                return labelText.AsSpan().TryCopyTo(textSpan);
-            }
-
-            // If not found, we will provide print absolute address
+            labelText = FormatLocalLabel(labelIndex);
+        }
+        else if (Options.LabelFallback == Arm64DisassemblerLabelFallback.AbsoluteAddress)
+        {
             var operandAddressPrefix = string.IsNullOrEmpty(Options.AddressPrefix) ? "0x" : Options.AddressPrefix;
-            var addressText = $"#{operandAddressPrefix}{(Options.BaseAddress + absoluteOffset).ToString(Options.UseUppercaseHex ? "X16" : "x16", CultureInfo.InvariantCulture)}";
-            addressText.AsSpan().TryCopyTo(textSpan);
-            charsWritten = addressText.Length;
+            labelText = $"#{operandAddressPrefix}{targetAddress.ToString(Options.UseUppercaseHex ? "X16" : "x16", CultureInfo.InvariantCulture)}";
+        }
+        else
+        {
+            charsWritten = 0;
             return false;
         }
-
-        charsWritten = 0;
-        return false;
+        AppendText(ref textSpan, labelText);
+        charsWritten = labelText.Length;
+        return true;
     }
-
-    private bool TryFormatLabel(long offset, Span<char> textSpan, out int charsWritten) => TryFormatLabelExtended(offset, true, textSpan, out charsWritten);
 }

@@ -20,6 +20,7 @@ public class Arm64DisassemblerOptions
     private string _addressPrefix;
     private Arm64DisassemblyStyle _style;
     private Arm64InstructionFormattingOptions _instructionFormatting = new();
+    private Arm64DisassemblerLabelFallback _labelFallback;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Arm64DisassemblerOptions"/> class.
@@ -44,8 +45,25 @@ public class Arm64DisassemblerOptions
 
     /// <summary>
     /// Gets or sets the delegate to format labels from absolute addresses.
+    /// Returning false requests local-label or numeric fallback; returning true must supply a valid character count.
     /// </summary>
     public Arm64TryFormatDelegate? TryFormatLabel { get; set; }
+
+    /// <summary>
+    /// Gets or sets numeric fallback for unresolved targets. Defaults to relative offsets.
+    /// Symbol resolution takes precedence, followed by local labels eligible under <see cref="AutoLabelKinds"/>.
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">The fallback is undefined.</exception>
+    public Arm64DisassemblerLabelFallback LabelFallback
+    {
+        get => _labelFallback;
+        set
+        {
+            if (value is not Arm64DisassemblerLabelFallback.RelativeOffset and not Arm64DisassemblerLabelFallback.AbsoluteAddress)
+                throw new ArgumentOutOfRangeException(nameof(value), value, "Unknown label fallback.");
+            _labelFallback = value;
+        }
+    }
 
     /// <summary>
     /// Gets or sets the instruction text options shared with individual instruction formatting.
@@ -92,7 +110,8 @@ public class Arm64DisassemblerOptions
     public Arm64InstructionPrinterDelegate? PostInstructionPrinter { get; set; }
 
     /// <summary>
-    /// Gets or sets the length of the format line buffer.
+    /// Gets or sets the maximum formatted line length, excluding the newline. Defaults to 4096.
+    /// Disassembly throws <see cref="InvalidOperationException"/> if a line cannot fit; increase this value for long symbols, comments, or indentation.
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the value is less than 256.</exception>
     public int FormatLineBufferLength

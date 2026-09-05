@@ -409,12 +409,32 @@ var disassembler = new Arm64Disassembler
                          Arm64DisassemblerAutoLabelKind.Branches |
                          Arm64DisassemblerAutoLabelKind.Calls |
                          Arm64DisassemblerAutoLabelKind.ConditionalBranches |
-                         Arm64DisassemblerAutoLabelKind.TestCompareBranches
+                         Arm64DisassemblerAutoLabelKind.TestCompareBranches,
+        LabelFallback = Arm64DisassemblerLabelFallback.AbsoluteAddress
     }
 };
 ```
 
 The default is `Arm64DisassemblerAutoLabelKind.All`, which preserves the previous behavior of labeling all supported PC-relative operands plus the first instruction when `PrintLabelBeforeFirstInstruction` is enabled.
+
+Resolution order is: a successful `TryFormatLabel` callback, an eligible generated
+local label, then `LabelFallback`. The default fallback is `RelativeOffset`, using
+`InstructionFormatting.LabelOffsetFormat`. Select `AbsoluteAddress` for fixed-width
+16-digit hexadecimal targets, using the listing's `AddressPrefix` (or `0x` if empty)
+and `UseUppercaseHex`. For example, `B(256)` at base address `0x1000` can print
+`b #256`, `b #0x100`, or `b #0x0000000000001100` depending on these options.
+
+Target calculations use the current instruction address, not just the buffer's
+base address. `ADRP` uses the current instruction's 4 KiB page before adding its
+decoded displacement. Callbacks always receive the resulting absolute address;
+standalone instruction callbacks instead receive a relative offset because they
+have no PC context. Address arithmetic wraps at 64 bits; the existing signed
+`BaseAddress` and callback types retain their bit patterns for high addresses.
+
+Generated labels are limited to four-byte instruction boundaries within the
+buffer, including its end. Excluded instruction kinds do not reuse labels created
+by other kinds. For symbols or data references at other byte offsets, use the
+symbol callback or absolute-address fallback.
 
 ### Disassembler formatting options
 
@@ -469,6 +489,20 @@ Typed options default to the existing presentation. Listing `Style` presets and
 `Arm64DisassemblerOptions.UseUppercaseHex` continue to affect listing-owned text
 only, not `InstructionFormatting`. Presets are not guarantees of exact GAS/LLVM
 syntax compatibility. Options are mutable and should not be modified during formatting.
+
+The disassembler's pre/post-instruction and comment callbacks continue to receive
+the original decoded instruction, even when printing base-instruction text. Call
+`AsBaseInstruction()` in those callbacks if the base operand view is needed.
+
+`TryFormat` returns false with zero characters written when the destination is
+too small. Instruction `ToString` grows its buffer when necessary. Full-disassembly
+lines are bounded by `Arm64DisassemblerOptions.FormatLineBufferLength` (default
+4096, excluding the newline); increase it for long symbols, comments, or prefixes.
+Insufficient capacity throws `InvalidOperationException` instead of silently
+dropping text. Earlier lines may already have been written to a supplied writer.
+A successful callback must report a count within its supplied span; the disassembler
+rejects invalid counts. Returning false from a label/comment callback means fallback
+or no comment text, not a request to grow its buffer.
 
 #### Architectural aliases
 
