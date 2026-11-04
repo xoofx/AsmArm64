@@ -10,21 +10,39 @@ namespace AsmArm64;
 /// </summary>
 public sealed class Arm64InstructionFormattingOptions
 {
-    private Arm64InstructionAliasMode _aliasMode;
-    private Arm64NumericFormat _immediateFormat;
-    private Arm64NumericFormat _memoryOffsetFormat;
-    private Arm64NumericFormat _labelOffsetFormat;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64InstructionFormattingOptions"/> class with default values.
+    /// </summary>
+    public Arm64InstructionFormattingOptions() { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64InstructionFormattingOptions"/> class by copying another instance.
+    /// </summary>
+    /// <param name="options">The options to copy.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="options"/> is null.</exception>
+    public Arm64InstructionFormattingOptions(Arm64InstructionFormattingOptions options)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        AliasMode = options.AliasMode;
+        UseUppercaseText = options.UseUppercaseText;
+        UseUppercaseHex = options.UseUppercaseHex;
+        ImmediateFormat = options.ImmediateFormat;
+        MemoryOffsetFormat = options.MemoryOffsetFormat;
+        LabelOffsetFormat = options.LabelOffsetFormat;
+        PrintDefaultOperands = options.PrintDefaultOperands;
+        FormatProvider = options.FormatProvider;
+    }
 
     /// <summary>Gets or sets whether to print the decoded view or its base instruction.</summary>
     /// <exception cref="ArgumentOutOfRangeException">The mode is undefined.</exception>
     public Arm64InstructionAliasMode AliasMode
     {
-        get => _aliasMode;
+        get => field;
         set
         {
             if (value is not Arm64InstructionAliasMode.Preferred and not Arm64InstructionAliasMode.BaseInstruction)
                 throw new ArgumentOutOfRangeException(nameof(value), value, "Unknown alias mode.");
-            _aliasMode = value;
+            field = value;
         }
     }
 
@@ -38,24 +56,24 @@ public sealed class Arm64InstructionFormattingOptions
     /// <exception cref="ArgumentOutOfRangeException">The format is undefined.</exception>
     public Arm64NumericFormat ImmediateFormat
     {
-        get => _immediateFormat;
-        set { ValidateNumericFormat(value); _immediateFormat = value; }
+        get => field;
+        set { ValidateNumericFormat(value); field = value; }
     }
 
     /// <summary>Gets or sets memory displacement formatting, independently of integer immediates.</summary>
     /// <exception cref="ArgumentOutOfRangeException">The format is undefined.</exception>
     public Arm64NumericFormat MemoryOffsetFormat
     {
-        get => _memoryOffsetFormat;
-        set { ValidateNumericFormat(value); _memoryOffsetFormat = value; }
+        get => field;
+        set { ValidateNumericFormat(value); field = value; }
     }
 
     /// <summary>Gets or sets unresolved relative label offset formatting. Symbol names are unaffected.</summary>
     /// <exception cref="ArgumentOutOfRangeException">The format is undefined.</exception>
     public Arm64NumericFormat LabelOffsetFormat
     {
-        get => _labelOffsetFormat;
-        set { ValidateNumericFormat(value); _labelOffsetFormat = value; }
+        get => field;
+        set { ValidateNumericFormat(value); field = value; }
     }
 
     /// <summary>Gets or sets whether optional operands with their default values are printed. Defaults to false.</summary>

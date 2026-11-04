@@ -127,6 +127,41 @@ public class TestInstructionFormatting
         Assert.Throws<ArgumentNullException>(() => default(Arm64Instruction).ToString((Arm64InstructionFormattingOptions)null!));
     }
 
+    [TestMethod]
+    public void CopyConstructorCopiesAllOptions()
+    {
+        var source = new Arm64InstructionFormattingOptions
+        {
+            AliasMode = Arm64InstructionAliasMode.BaseInstruction,
+            UseUppercaseText = true,
+            UseUppercaseHex = true,
+            ImmediateFormat = Arm64NumericFormat.Hexadecimal,
+            MemoryOffsetFormat = Arm64NumericFormat.Decimal,
+            LabelOffsetFormat = Arm64NumericFormat.Auto,
+            PrintDefaultOperands = true,
+            FormatProvider = CultureInfo.InvariantCulture,
+        };
+
+        var copy = new Arm64InstructionFormattingOptions(source);
+
+        Assert.AreEqual(source.AliasMode, copy.AliasMode);
+        Assert.AreEqual(source.UseUppercaseText, copy.UseUppercaseText);
+        Assert.AreEqual(source.UseUppercaseHex, copy.UseUppercaseHex);
+        Assert.AreEqual(source.ImmediateFormat, copy.ImmediateFormat);
+        Assert.AreEqual(source.MemoryOffsetFormat, copy.MemoryOffsetFormat);
+        Assert.AreEqual(source.LabelOffsetFormat, copy.LabelOffsetFormat);
+        Assert.AreEqual(source.PrintDefaultOperands, copy.PrintDefaultOperands);
+        Assert.AreSame(source.FormatProvider, copy.FormatProvider);
+
+        // The copy is independent of its source.
+        copy.UseUppercaseText = false;
+        Assert.IsTrue(source.UseUppercaseText);
+
+        var instruction = Arm64Instruction.Decode(MOVZ(X0, 0xAB, default, 16));
+        AssertFormat(instruction, new Arm64InstructionFormattingOptions(source), "MOVZ X0, #0xAB, LSL #16");
+        Assert.Throws<ArgumentNullException>(() => new Arm64InstructionFormattingOptions(null!));
+    }
+
     internal static void AssertFormat(Arm64Instruction instruction, Arm64InstructionFormattingOptions options, string expected)
     {
         Assert.AreEqual(expected, instruction.ToString(options));
