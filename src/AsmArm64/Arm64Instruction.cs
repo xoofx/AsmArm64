@@ -14,8 +14,9 @@ using EntryIndex = int;
 /// Encoded instruction table for ARM64.
 /// </summary>
 public readonly unsafe struct Arm64Instruction
+    : IEquatable<Arm64Instruction>
 #if !NETSTANDARD2_0
-    : ISpanFormattable
+    , ISpanFormattable
 #endif
 {
     internal readonly ulong Descriptor;
@@ -108,6 +109,48 @@ public readonly unsafe struct Arm64Instruction
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
         return IsOperandEncodingSize4Bytes ? new Arm64Operand(*((uint*)OperandsPtr + index), RawValue) : new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue);
     }
+
+    /// <inheritdoc />
+    public bool Equals(Arm64Instruction other)
+        => Id == other.Id && RawValue == other.RawValue;
+
+    /// <inheritdoc />
+    public override bool Equals(object? obj)
+        => obj is Arm64Instruction other && Equals(other);
+
+    /// <inheritdoc />
+    public override int GetHashCode()
+    {
+#if NET
+        return HashCode.Combine(Id, RawValue);
+#else
+        unchecked
+        {
+            int hash = 17;
+            hash = hash * 31 + Id.GetHashCode();
+            hash = hash * 31 + RawValue.GetHashCode();
+            return hash;
+        }
+#endif
+    }
+
+    /// <summary>
+    /// Determines whether two specified instances of <see cref="Arm64Instruction"/> are equal.
+    /// </summary>
+    /// <param name="left">The first instance to compare.</param>
+    /// <param name="right">The second instance to compare.</param>
+    /// <returns>true if the instances are equal; otherwise, false.</returns>
+    public static bool operator ==(Arm64Instruction left, Arm64Instruction right)
+        => left.Equals(right);
+
+    /// <summary>
+    /// Determines whether two specified instances of <see cref="Arm64Instruction"/> are not equal.
+    /// </summary>
+    /// <param name="left">The first instance to compare.</param>
+    /// <param name="right">The second instance to compare.</param>
+    /// <returns>true if the instances are not equal; otherwise, false.</returns>
+    public static bool operator !=(Arm64Instruction left, Arm64Instruction right)
+        => !left.Equals(right);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
