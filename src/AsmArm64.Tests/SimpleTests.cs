@@ -92,6 +92,23 @@ public class SimpleTests
             var baseInstruction = instruction1.AsBaseInstruction(); // movz x0, #256
             Assert.AreNotEqual(instruction1, baseInstruction);
         }
+        {
+            // Operators, hash code, and object equality
+            var instruction1 = Arm64Instruction.Decode(Arm64InstructionFactory.MOVZ(Arm64RegisterX.X0, 0x100));
+            var instruction2 = Arm64Instruction.Decode(Arm64InstructionFactory.MOVZ(Arm64RegisterX.X0, 0x100));
+            var otherEncoding = Arm64Instruction.Decode(Arm64InstructionFactory.MOVZ(Arm64RegisterX.X1, 0x100));
+
+            Assert.IsTrue(instruction1 == instruction2);
+            Assert.IsFalse(instruction1 != instruction2);
+            Assert.AreEqual(instruction1.GetHashCode(), instruction2.GetHashCode());
+            Assert.IsTrue(instruction1.Equals((object)instruction2));
+
+            Assert.IsFalse(instruction1 == otherEncoding);
+            Assert.IsTrue(instruction1 != otherEncoding);
+            Assert.IsFalse(instruction1 == instruction1.AsBaseInstruction());
+            Assert.IsFalse(instruction1.Equals(null));
+            Assert.IsFalse(instruction1.Equals((object)instruction1.RawInstruction));
+        }
     }
 
     static Arm64Instruction Print(uint rawValue)
