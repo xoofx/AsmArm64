@@ -66,6 +66,34 @@ public class SimpleTests
         Assert.AreEqual("ADD X12, X7, X1", instruction.ToString("H", null));
     }
 
+    // Test `IEquatable<Arm64Instruction>` implementation behavior of Arm64Instruction.
+    [TestMethod]
+    public void TestArm64InstructionEquality()
+    {
+        {
+            // mov x0, #0x100
+            uint rawInstruction = Arm64InstructionFactory.MOV(Arm64RegisterX.X0, 0x100);
+            var instruction1 = Arm64Instruction.Decode(rawInstruction);
+            var instruction2 = Arm64Instruction.Decode(rawInstruction);
+
+            Assert.AreEqual(instruction1, instruction2);
+
+            var baseInstruction = instruction1.AsBaseInstruction(); // orr x0, xzr, #0x100
+            Assert.AreNotEqual(instruction1, baseInstruction);
+        }
+        {
+            // movz x0, #256
+            uint rawInstruction = Arm64InstructionFactory.MOVZ(Arm64RegisterX.X0, 0x100);
+            var instruction1 = Arm64Instruction.Decode(rawInstruction); // mov x0, #256
+            var instruction2 = Arm64Instruction.Decode(rawInstruction); // mov x0, #256
+
+            Assert.AreEqual(instruction1, instruction2);
+
+            var baseInstruction = instruction1.AsBaseInstruction(); // movz x0, #256
+            Assert.AreNotEqual(instruction1, baseInstruction);
+        }
+    }
+
     static Arm64Instruction Print(uint rawValue)
     {
         var instruction = Arm64Instruction.Decode(rawValue);
