@@ -471,6 +471,9 @@ var disassembler = new Arm64Disassembler(new Arm64DisassemblerOptions
 });
 ```
 
+To derive a variant without changing the original, copy it with
+`new Arm64InstructionFormattingOptions(formatting)` and adjust the copy.
+
 Numeric modes are `Default` (existing operand-specific conventions), `Decimal`,
 `Hexadecimal`, and `Auto` (magnitudes 0–9 decimal, larger magnitudes hexadecimal).
 Memory offsets include pre- and post-indexed displacements. Signed numbers use

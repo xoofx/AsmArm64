@@ -19,8 +19,10 @@ public sealed class Arm64InstructionFormattingOptions
     /// Initializes a new instance of the <see cref="Arm64InstructionFormattingOptions"/> class by copying another instance.
     /// </summary>
     /// <param name="options">The options to copy.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="options"/> is null.</exception>
     public Arm64InstructionFormattingOptions(Arm64InstructionFormattingOptions options)
     {
+        ArgumentNullException.ThrowIfNull(options);
         AliasMode = options.AliasMode;
         UseUppercaseText = options.UseUppercaseText;
         UseUppercaseHex = options.UseUppercaseHex;
